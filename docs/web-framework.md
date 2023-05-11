@@ -18,6 +18,8 @@ Decision: [Django][]
 
 All years are as full-time equivalents, even from part-time roles pre-2011
 
+TODO: I didn't finish writing out content here, let's finish that
+
 <!-- I'm handwaving Flask to include Pyramid as well, but the switch between Flask <> Pyramid at a company was fuzzy -->
 
 ## If I didn't choose Django
