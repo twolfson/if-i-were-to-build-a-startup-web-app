@@ -17,7 +17,7 @@ TODO: Have this act as a table of contents
         - TODO: Talk through serverless options
     - PostgreSQL
     - Bootstrap?? Tailwind??
-    - React but not for HTTP
+    - React, but not for HTTP
     - Runbook as documentation
     - Hosting provider selection
     - Documenting in-repo vs outside of repo
@@ -31,6 +31,8 @@ TODO: Have this act as a table of contents
     - Testing (integration, unit, visual)
     - Linting and programming style
     - Development Tools (e.g. Stellar)
+    - History and auditing
+    - Admin tooling
 
 TODO: Talk through innovation tokens?
 TODO: Talk through "cost savings" vs "time savings"
@@ -46,18 +48,18 @@ Let's dig in.
 ## Stage 0: Minimum Viable Product (MVP) without web app
 The goal of a startup is to provide value to others (e.g. time, money, intangibles).
 
-Setting up a web app takes time (e.g. server provisioning, defining models, setting up layout), and is a barrier to learning lessons quickly.
+Setting up a web app takes time (e.g. server provisioning, defining models, building pages), and is a barrier to learning lessons quickly.
 
-If I spend 1 month of Product Design and 1 month of build (very aggressive estimates), then launch and nobody wants it -- then that'd be a very frustrating experience.
+If I spend 1 month of [Product Design][] (excluding research) and 1 month of build (very aggressive estimates), then launch and nobody wants it -- then that'd be a very frustrating experience.
 
 Instead, use [Product][] techniques to derisk this upfront:
 
 - Conduct interviews ([User Research][])
-- Build [Figma][] prototypes
 - Gauge interest through waitlists
 - Onboard through Google Forms ([Underdog.io example][])
 - Transact over email
 
+[Product Design]: https://www.smashingmagazine.com/2018/01/comprehensive-guide-product-design/#plan-the-structure-of-a-product
 [Product]: https://www.productplan.com/learn/what-is-product-management/
 [User Research]: https://www.userinterviews.com/ux-research-field-guide-chapter/what-is-user-research
 [Figma]: https://www.figma.com/
@@ -73,6 +75,15 @@ If you'd like to learn more, I recommend [Startup School](https://www.startupsch
 
 [Find Work]: https://github.com/findworkco/app
 
+## Stage 1: Initial build
+Between [Stage 0] and building, I recommend continuing to do [User Research][] and leverage mockups/prototypes ([Product Design][]) to derisk the data model.
+
+UIs are hard to get right the first time, and any UI changes can cascade into larger userflow and multi-page code + schema changes.
+
+Assuming you've derisked though, let's get into tactical decisions:
+
+1. [Web Framework: Django](docs/web-framework.md)
+
 ## Low-level decisions
 ### Documentation
 TODO: Markdown vs reStructured Text vs plain text vs external (Slab, Notion, etc) something else
@@ -84,6 +95,9 @@ TODO: Releases + versioning
 TODO: Explain this
 
 ### Version Control System and hosting
+TODO: Explain this
+
+### Why are comparisons tables vs lists or something else?
 TODO: Explain this
 
 ## Context
