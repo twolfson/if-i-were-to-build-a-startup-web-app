@@ -1,4 +1,4 @@
-# if-i-were-to-build-a-startup-web-app
+# If I Were to Build a Startup Web App
 TODO: Snazzy graphic
 TODO: See TODOs
 
