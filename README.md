@@ -23,15 +23,18 @@ TODO: Have this act as a table of contents
     - Documenting in-repo vs outside of repo
     - Monorepo vs not
     - Monolith vs not
+    - Virtual environments
+    - Scripting (deployments, commands)
+3. Areas of Growth
     - Continuous Integration
     - Continuous Deployment
     - Testing (integration, unit, visual)
     - Linting and programming style
-    - Virtual environments
     - Development Tools (e.g. Stellar)
-    - Scripting
 
 TODO: Talk through innovation tokens?
+TODO: Talk through "cost savings" vs "time savings"
+TODO: Talk through "code maintenance as fact"
 
 ## Introduction
 I'm a startup engineer. 3x first engineer, former Uber engineer, and have worked at many more startups.
@@ -40,8 +43,32 @@ I've provided [more context at the bottom](README.md#context) of this README, bu
 
 Let's dig in.
 
-## Stage 0: MVP product without web app
-The
+## Stage 0: MVP without web app
+The goal of a startup is to provide value to others (e.g. time, money, intangibles).
+
+Setting up a web app takes time (e.g. server provisioning, defining models, setting up layout), and is a barrier to learning lessons quickly.
+
+If I spend 1 month of Product Design and 1 month of build (very aggressive estimates), then launch and nobody wants it -- then that'd be a very frustrating experience.
+
+Instead, use [Product][] techniques to derisk this upfront:
+
+- Conduct interviews ([User Research][])
+- Build prototypes
+- Build waitlists
+
+[User Research]: https://www.userinterviews.com/ux-research-field-guide-chapter/what-is-user-research
+
+[Product]: https://www.productplan.com/learn/what-is-product-management/
+
+> This is not my strong suit as with [Find Work][], I'd already convinced myself I was providing value to myself.
+>
+> And I haven't had a chance to test this thoroughly on a product from scratch since then.
+>
+> However, in retrospect, I should have taken a broader approach.
+
+If you'd like to learn more, I recommend [Startup School](https://www.startupschool.org/).
+
+[Find Work]: https://github.com/findworkco/app
 
 ## Low-level decisions
 ### Documentation
