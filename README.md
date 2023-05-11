@@ -9,7 +9,7 @@ Unless stated or seen otherwise, this was all written in roughly May 2023
 TODO: Fill in tl;dr with more info as we decide on things
 TODO: Have this act as a table of contents
 
-1. First, MVP without web app
+1. First, Minimum Viable Product (MVP) without web app
 2. Then:
     - No Docker
     - Django
@@ -43,7 +43,7 @@ I've provided [more context at the bottom](README.md#context) of this README, bu
 
 Let's dig in.
 
-## Stage 0: MVP without web app
+## Stage 0: Minimum Viable Product (MVP) without web app
 The goal of a startup is to provide value to others (e.g. time, money, intangibles).
 
 Setting up a web app takes time (e.g. server provisioning, defining models, setting up layout), and is a barrier to learning lessons quickly.
@@ -53,12 +53,15 @@ If I spend 1 month of Product Design and 1 month of build (very aggressive estim
 Instead, use [Product][] techniques to derisk this upfront:
 
 - Conduct interviews ([User Research][])
-- Build prototypes
-- Build waitlists
-
-[User Research]: https://www.userinterviews.com/ux-research-field-guide-chapter/what-is-user-research
+- Build [Figma][] prototypes
+- Gauge interest through waitlists
+- Onboard through Google Forms ([Underdog.io example][])
+- Transact over email
 
 [Product]: https://www.productplan.com/learn/what-is-product-management/
+[User Research]: https://www.userinterviews.com/ux-research-field-guide-chapter/what-is-user-research
+[Figma]: https://www.figma.com/
+[Underdog.io example]: https://twolfson.com/2021-06-24-lessons-of-a-startup-engineer#every-decision-is-a-business-decision
 
 > This is not my strong suit as with [Find Work][], I'd already convinced myself I was providing value to myself.
 >
