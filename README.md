@@ -1,23 +1,25 @@
 # If I Were to Build a Startup Web App
-TODO: Snazzy graphic
-TODO: See TODOs
+- TODO: Snazzy graphic
+- TODO: See TODOs
 
 Choices, explanations, and documentation around if I were to build a startup web app
 
 Unless stated or seen otherwise, this was all written in roughly May 2023
 
-TODO: Fill in tl;dr with more info as we decide on things
-TODO: Have this act as a table of contents
+- TODO: Fill in tl;dr with more info as we decide on things
+- TODO: Have this act as a table of contents
+- TODO: For each of these items, ensure we talk about things we're also sidestepping with our given choice (e.g. Django + batteries included)
 
 1. First, Minimum Viable Product (MVP) without web app
 2. Then:
-    - No Docker
-    - Django
+    1. Web framework: Django
         - TODO: Talk through languages
         - TODO: Talk through serverless options
+    2. Docker: No
     - PostgreSQL
-    - Bootstrap?? Tailwind??
     - React, but not for HTTP
+        - TODO: Talk through how if not using Django built-ins
+    - Bootstrap?? Tailwind??
     - Runbook as documentation
     - Hosting provider selection
     - Documenting in-repo vs outside of repo
