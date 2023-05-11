@@ -37,6 +37,12 @@ TODO: Markdown vs reStructured Text vs plain text vs external (Slab, Notion, etc
 ### Releases
 TODO: Releases + versioning
 
+### Squashed commits vs not
+TODO: Explain this
+
+### Version Control System and hosting
+TODO: Explain this
+
 ## Context
 NCX and I have decided to part ways. This will likely finalize at the end of May 2023.
 
