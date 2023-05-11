@@ -1,5 +1,6 @@
 # if-i-were-to-build-a-startup-web-app
 TODO: Snazzy graphic
+TODO: See TODOs
 
 Choices, explanations, and documentation around if I were to build a startup web app
 
@@ -15,15 +16,26 @@ TODO: Have this act as a table of contents
 - PostgreSQL
 - Bootstrap?? Tailwind??
 - React but not for HTTP
-- runbook as documentation
+- Runbook as documentation
 - Hosting provider selection
+- Documenting in-repo vs outside of repo
+- Monorepo vs not
+- Monolith vs not
 
 ## Introduction
-Hello dear reader! I'm not sure who you are, but I'm glad you're here!
+I've provided [context for why this exists][] the bottom of this README, but that's not why you're here. Let's dig in.
 
-As stated above, this is documentation around a theoretical scenario of myself making all the decisions and explorations for setting up a web app for a startup in roughly May 2023.
+[context for why this exists]: TODO
 
-I've provided context at the bottom of this document, but that's not why you're here. Let's dig in.
+## Stage 0: MVP product without web app
+The
+
+## Low-level housecleaning
+### Documentation
+TODO: Markdown vs reStructured Text vs plain text vs external (Slab, Notion, etc) something else
+
+### Releases
+TODO: Releases + versioning
 
 ## Context
 NCX and I have decided to part ways. This will likely finalize at the end of May 2023.
