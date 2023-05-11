@@ -50,7 +50,9 @@ NCX and I have decided to part ways. This will likely finalize at the end of May
 
 I've had some lingering architectural questions that I feel would best be solved through exploration.
 
-Additionally, the last time I publicly documented my architectural preferences and setup was through open sourcing Find Work in December 2019. And as expected in hindsight, these have aged alright -- not bad but not great either.
+Additionally, the last time I publicly documented my architectural preferences and setup was through open sourcing Find Work in December 2019.
+
+And as expected in hindsight, these have aged alright -- not bad but not great either.
 
 - https://github.com/findworkco/app
 - https://github.com/findworkco/scripts
