@@ -9,10 +9,12 @@ Unless stated or seen otherwise, this was all written in roughly May 2023
 TODO: Fill in tl;dr with more info as we decide on things
 TODO: Have this act as a table of contents
 
-1. First, MVP product without web app
+1. First, MVP without web app
 2. Then:
     - No Docker
     - Django
+        - TODO: Talk through languages
+        - TODO: Talk through serverless options
     - PostgreSQL
     - Bootstrap?? Tailwind??
     - React but not for HTTP
@@ -21,9 +23,20 @@ TODO: Have this act as a table of contents
     - Documenting in-repo vs outside of repo
     - Monorepo vs not
     - Monolith vs not
+    - Continuous Integration
+    - Continuous Deployment
+    - Testing (integration, unit, visual)
+    - Linting and programming style
+    - Virtual environments
+    - Development Tools (e.g. Stellar)
+    - Scripting
+
+TODO: Talk through innovation tokens?
 
 ## Introduction
-I've provided [context for why this exists][] the bottom of this README, but that's not why you're here.
+I'm a startup engineer. 3x first engineer, former Uber engineer, and have worked at many more startups.
+
+I've provided [more context at the bottom][] of this README, but that's not why you're here.
 
 Let's dig in.
 
@@ -32,7 +45,7 @@ Let's dig in.
 ## Stage 0: MVP product without web app
 The
 
-## Low-level housecleaning
+## Low-level decisions
 ### Documentation
 TODO: Markdown vs reStructured Text vs plain text vs external (Slab, Notion, etc) something else
 
