@@ -11,16 +11,16 @@ TODO: Have this act as a table of contents
 
 1. First, MVP product without web app
 2. Then:
-  - No Docker
-  - Django
-  - PostgreSQL
-  - Bootstrap?? Tailwind??
-  - React but not for HTTP
-  - Runbook as documentation
-  - Hosting provider selection
-  - Documenting in-repo vs outside of repo
-  - Monorepo vs not
-  - Monolith vs not
+  1. No Docker
+  2. Django
+  3. PostgreSQL
+  4. Bootstrap?? Tailwind??
+  5. React but not for HTTP
+  6. Runbook as documentation
+  7. Hosting provider selection
+  8. Documenting in-repo vs outside of repo
+  9. Monorepo vs not
+  10. Monolith vs not
 
 ## Introduction
 I've provided [context for why this exists][] the bottom of this README, but that's not why you're here. Let's dig in.
