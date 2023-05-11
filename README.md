@@ -23,9 +23,11 @@ TODO: Have this act as a table of contents
     - Monolith vs not
 
 ## Introduction
-I've provided [context for why this exists][] the bottom of this README, but that's not why you're here. Let's dig in.
+I've provided [context for why this exists][] the bottom of this README, but that's not why you're here.
 
-[context for why this exists]: TODO
+Let's dig in.
+
+[context for why this exists]: README.md#context
 
 ## Stage 0: MVP product without web app
 The
