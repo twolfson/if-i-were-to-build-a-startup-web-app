@@ -1,12 +1,37 @@
 # Web Framework
 Decision: [Django][]
 
-[Django] https://www.djangoproject.com/
+[Django]: https://www.djangoproject.com/
 
 ## Comparison
-|                      Name                      | Non-trivial previous experience? |                  Description                   |                                                                                                                                                                   Notes                                                                                                                                                                   |
-|------------------------------------------------|----------------------------------|------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| AWS Lambda with no framework (Python, Node.js) | ✔️ (1 year)                      | Write a function which acts as an endpoint     | It's a great infrastructure for trigger-based runs (e.g. S3 upload) with dynamic scale, but dependency management has a long way to go.<br/><br/>Additionally, it lacks significant ecosystem support so not a good web framework choice at the moment                                                                                    |
+<!-- Using <table> since it's more legible than <br> inline -->
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Non-trivial previous experience?</th>
+        <th>Description</th>
+        <th>Notes</th>
+    </tr>
+    <tr>
+        <td>
+            AWS Lambda with no framework (Python, Node.js)
+        </td>
+        <td>
+            ✔️ (1 year)
+        </td>
+        <td>
+            Write a function which acts as an endpoint
+        </td>
+        <td>
+            It's a great infrastructure for trigger-based runs (e.g. S3 upload) with dynamic scale, but dependency management has a long way to go.
+            <br/>
+            <br/>
+            Additionally, it lacks significant ecosystem support so not a good web framework choice at the moment
+        </td>
+    </tr>
+</table>
+
 | CodeIgniter (PHP)                              | ✔️ (0.5 years)                   | Lightweight framework                          | Only mentioning due to experience. PHP has a lot of baggage with it that's nice to sidestep if possible (e.g. [every page starting with `<?`](https://www.php.net/manual/en/language.basic-syntax.phptags.php))                                                                                                                           |
 | Django (Python)                                | ✔️ (2 years)                     | Full-fledged framework with batteries included | Significant amount support provided to hit the ground running productively. i.e. ORM, migrations, admin UI, users, thorough ecosystem. Hands down my #1 choice                                                                                                                                                                            |
 | Express (Node.js)                              | ✔️ (2.5 years)                   | Lightweight framework                          | Only does routing, nothing else. For a startup, table stakes usually involve an ORM (removes relationships as cognitive load + mitigate SQL injection by convention), templates (mitigates XSS by convention), Node.js migration tools (e.g. `sequelize` didn't autocreate from schema) so redoing model work twice. Just not a good idea |
