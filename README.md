@@ -37,7 +37,7 @@ TODO: Talk through "cost savings" vs "time savings"
 TODO: Talk through "code maintenance as fact"
 
 ## Introduction
-I'm a startup engineer. 3x first engineer, former Uber engineer, and have worked at many more startups.
+I'm a startup engineer. 3x first engineer, former Uber engineer, and have 12 years experience at these and more startups.
 
 I've provided [more context at the bottom](README.md#context) of this README, but that's not why you're here.
 
