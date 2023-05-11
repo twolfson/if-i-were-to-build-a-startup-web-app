@@ -36,11 +36,9 @@ TODO: Talk through innovation tokens?
 ## Introduction
 I'm a startup engineer. 3x first engineer, former Uber engineer, and have worked at many more startups.
 
-I've provided [more context at the bottom][] of this README, but that's not why you're here.
+I've provided [more context at the bottom](README.md#context) of this README, but that's not why you're here.
 
 Let's dig in.
-
-[context for why this exists]: README.md#context
 
 ## Stage 0: MVP product without web app
 The
