@@ -8,6 +8,9 @@ Django has batteries included for everything you'd ever want, plus a wonderful e
 
 Ruby on Rails is also quite strong, but I'm less of a fan due to Ruby feeling like it's not as strong of an ecosystem and being a language with unavoidable footguns (e.g. implicit returns, implicit parentheses).
 
+## Description
+A web framework is a foundational layer and system for building a web application within. It provides many features and functionality to get a product built as rapidly as possible. Full enumeration of such features is at the bottom of this file.
+
 ## Comparison
 |                        Name                        | Non-trivial previous experience? |                  Description                   |                                                                                                                                                                                                         Notes                                                                                                                                                                                                         |
 |----------------------------------------------------|----------------------------------|------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
