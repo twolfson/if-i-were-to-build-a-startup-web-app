@@ -43,7 +43,11 @@ All years stated above are as full-time equivalents, even from part-time roles p
 ## Everything We're Considering
 By going with Django, I sidestep a lot of research work and considerations (though arguably this file is that).
 
-Here's all the things we consider:
+Below are all the things we consider in the context of a web framework.
+
+As a reminder, the goal of a startup is to deliver value to others. The following are all solved problems.
+<br/>
+Time spent rebuilding solved problems is time that could be creating value instead.
 
 ## Fundamentals
 - Routing
@@ -80,25 +84,58 @@ Here's all the things we consider:
 - Users and authentication (AuthN) (e.g. Passport.js, Flask-Login)
     - What: Endpoints for users to sign up, login, perform "reset password", and change password
     - Why: A web app typically operate around interacting with person. User models will faciliate tracking this data, and authentication will associate a session with the user
-    - How: This requires an ORM and sessions being built into the framework. I've only seen this built-in on Django
+    - How:
+        - For built-in support, this requires an ORM and sessions inthe framework. I've only seen this built-in on Django
+        - If you need to set this up, always use an off the shelf library. It's near impossible to get right the first time without introducing security issues
 - Admin UI (e.g. Django Admin, Rails Admin)
-    - What: Internal tool -- TODO: Continue
+    - What: Internal tool to allow non-programmers (and programmers) to inspect and take actions (more than direct edits) on models
+    - Why:
+        - Engineers should never be the bottleneck for inspecting data or taking. It's inefficient time and cost-wise for a business
+        - Instead, self-serve approaches are better because they remove the need for communication entirely
+        - Additional reading: https://twolfson.com/2022-07-30-startup-time-investing-operational-processes
+    - How: For systems without built-in admin tools, there are a few options:
+        - Either build your own (ideally leveraging the underlying users + sessions infrastructure, but granting admin permissions)
+        - or use products like [Retool](https://retool.com/)
+            - The downside to products is you're either directly exposing your DB (and thus replicate business logic, leading to code drift/errors) OR you're building an API for the products to interface with (additional work + testing)
+        - or expose underlying DB through a modifiable interface (e.g. Airtable, Google Sheets) (same issue as direct exposure for Retool)
+- Testing infrastructure
+    - What: Providing built-in utilities for running performant tests out of the gate (e.g. [Django provides fixtures support](https://docs.djangoproject.com/en/4.2/topics/testing/tools/#django.test.TransactionTestCase.fixtures))
+    - Why:
+        - Testing can be tedious to set up right at first, and then it can run into performance issues (e.g. setting up fixtures for every test function)
+        - Instead, it's easier to get this from the start from the framework
+    - How:
+        - For some frameworks, this is so bad in that you might run a server and generate requests against it (rather than talking to the view directly)
+        - I've found this is viable yet costs a lot of time, which could have been avoided
+        - Try to interface directly with views and get good performance by leveraging database rollbacks across groups of tests
 
 ## Great to Have
 - Authorization (AuthZ)
     - What: Permission to take certain actions at a given endpoint or on a given model
     - Why: Basic access control should be handled by ORM relational lookups, but sometimes multiple users in an account might have different permission levels (e.g. view only). This helps manage that
 
-## Apathetic Inclusions
-If I didn't choose Django, there'd be a lot more additional research and setup work as well:
+## Nice to Have
+- Scripting support
+    - What: Infrastructure to run scripts, rather than writing or including your own
+    - Why:
+        - Django has some basic utilities for commands, like running them in tests
+        - Though honestly, extending them has proven a lot more valuable (e.g. distinguishing `--live-run` from `--dry-run`, building `--persist-temp`)
+- Interactive shell with server awareness
+    - What: REPL for running one-off queries and updates where scripting would be excessive
+    - Why:
+        - In rare occasions, manual updates are needed for data (e.g. backfill script went awry, special flag needs setting), it's good
+        - You get this for free with a typical REPL, but server awareness (e.g. [`shell_plus` from `django-extensions`](https://django-extensions.readthedocs.io/en/latest/shell_plus.html))
+- Ability to output SQL for catching `n+1` errors in any scenario
+    - What: Outputting SQL in various scenarios (e.g. running server, running commands) can help catch and resolve performance errors like `n+1` queries
+    - Why: `n+1` queries can make a 1 second query for 30,000 rows instead take 30,000 seconds
+    - How:
+        - `runserver_plus` and `shell_plus` from `django-extensions` both provide a `--print-sql` flag
+        - For commands, we had to build our own support for this, but it's a direct reuse of the work from `django-extensions`
 
-- Picking an authentication framework (e.g. Passport, Flask-Login)
-    - Please never ever roll your own here, it's too easy to get security wrong
-- Building an admin UI (in contrast to Django Admin and Rails Admin)
-    - Additional cost: Building/maintaining infrastructure for admin UI (e.g. permission levels, audit logging)
-- Building testing infrastructure
-    - Either need to stand up server on its own, or X
+## Apathetic Mentions
+- Generator utilities
+    - What: Built-in commands to help generate new models and controllers
+    - Why:
+        - It's intended for time saving
+        - but usually there's time spent reading + modifying, and I believe that's equivalent to copy/pasting from existing code (hence apathy)
+        - Ruby on Rails provides these utilities, https://guides.rubyonrails.org/command_line.html#bin-rails-generate
 
-For items listed as "picking", you could also build one obviously, but I wouldn't recommend it. They're solved problems.
-
-Again, the goal of a startup is to deliver value to others. Time spent rebuilding solved problems is time that could be creating value instead.

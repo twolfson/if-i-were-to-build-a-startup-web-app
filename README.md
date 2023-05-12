@@ -102,6 +102,10 @@ TODO: Explain this
 ### Why are comparisons tables vs lists or something else?
 TODO: Explain this
 
+
+TODO: Talk about Sentry and error monitoring
+TODO: Talk about server statsmonitoring
+
 ----
 
 TODO:
