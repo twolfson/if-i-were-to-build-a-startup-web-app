@@ -4,7 +4,7 @@
 
 Choices, explanations, and documentation around if I were to build a startup web app
 
-Unless stated or seen otherwise, this was all written in roughly May 2023
+Unless stated or seen otherwise, this was all written in May 2023
 
 - TODO: Fill in tl;dr with more info as we decide on things
 - TODO: Have this act as a table of contents
@@ -124,13 +124,13 @@ Secondary to this would be a runbook as its an operational process. Link to arti
 
 
 ## Context
-NCX and I have decided to part ways. This will likely finalize at the end of May 2023.
+I've decided to leave NCX at the end of May 2023.
 
-I've had some lingering architectural questions that I feel would best be solved through exploration.
+I've had some lingering architectural questions (outside of NCX, but full-time focused) that I feel would best be solved through exploration.
 
-Additionally, the last time I publicly documented my architectural preferences and setup was through open sourcing Find Work in December 2019.
+The last time I publicly documented my architectural preferences was through open sourcing Find Work in December 2019.
 
-And as expected in hindsight, these have aged alright -- not bad but not great either.
+And as expected in hindsight, these have aged in a mixed manner (not bad but not great either).
 
 - https://github.com/findworkco/app
 - https://github.com/findworkco/scripts
