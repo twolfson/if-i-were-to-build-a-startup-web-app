@@ -1,18 +1,48 @@
 # Database Analysis
 ## Decision
-PostgreSQL, TODO: Elaborate
+Winner: PostgreSQL, TODO: Elaborate
 
+Runner-up: MySQL, TODO: Elaborate
+
+## Description
+A database in the context of a web app is service/system that stores data for users interact with.
+
+For the sake of this discussion, I'll be interchanging **relational** with **SQL** and **non-relational** with **NoSQL** freely. I don't believe there's any distinction really, but I could be wrong here.
+
+NoSQL is more prevalent to describe its type of systems, whereas relational and SQL are seen equally as much.
+
+[NoSQL](https://en.wikipedia.org/wiki/NoSQL) encompasses many database types with different data structures:
+- Key-value, like Redis and Memcached
+- Document, like MongoDB
+- and pretty much anything else that's not tabular with relationships between them
+
+[Relational](https://en.wikipedia.org/wiki/Relational_database) is strictly tables and relationships between them (e.g. MySQL, PostgreSQL).
 ## Comparison
-|          Name          | Non-trivial previous experience? | Description | Notes |
-|------------------------|----------------------------------|-------------|-------|
-| DynamoDB               |                                  |             |       |
-| MySQL/MariaDB          |                                  |             |       |
-| PostgreSQL             |                                  |             |       |
-| Firebase/Supabase      |                                  |             |       |
-| MongoDB                |                                  |             |       |
-| DIY text files         |                                  |             |       |
-| SQLite                 |                                  |             |       |
-| Google Sheets/Airtable |                                  |             |       |
+|               Name               | Non-trivial previous experience? |                  Description                   |                                                                                                                                                                                                                                Notes                                                                                                                                                                                                                                 |
+|----------------------------------|----------------------------------|------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| DIY text files                   | ✔️ (0.5 years)                   | Make your own DB solution through `.txt` files | I did this 2008-2011 when I was in college. I was trying to save costs from running a server, but it was a terrible experience due to custom formats and concurrency issues. Thankfully the sites were barely used                                                                                                                                                                                                                                                   |
+| [DynamoDB][]                     |                                  | Key-value store (NoSQL)                        | I've only heard the name but it seems to mostly be a key-value store like Memcached and Redis. See Redis' notes                                                                                                                                                                                                                                                                                                                                                      |
+| [Elasticsearch][]                | ✔️ (1.5 years)                   | JSON document search engine (NoSQL)            | Elasticsearch is built as a search engine, not as a DB store. It's included because it's NoSQL, but it's not a fit as the primary store of a web app                                                                                                                                                                                                                                                                                                                 |
+| [Firebase][]                     |                                  | Document store (NoSQL)                         | Technically 2 products, [Firestore](https://firebase.google.com/products/firestore) and [Realtime Database](https://firebase.google.com/products/realtime-database) but I believe the underlying systems are both document stores.<br/><br/>As a result, they're prone to the same issues as MongoDB as well as not having a dedicated server for business logic, meaning additional work with their functions                                                       |
+| [Google Sheets/Airtable][] as DB | ✔️ (0.25 years)                  | "Relational" DB                                | Technically anything stored in a relational database can also be stored in a spreadsheet. This has the benefit of being transparent/modifiable immediately.<br/>However, since we chose Django, we get Django Admin which nullifies this point. There's also BI tools like Metabase which can solve that too<br/><br/>These are still solid for MVP explorations (e.g. form submission) but not long-term (e.g. no constraints, no foreign keys, bad at concurrency) |
+| [Memcached][]                    | ✔️ (0.1 years)                   | Key-value store (NoSQL)                        | Comparable to Redis, see its notes                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| [MongoDB][]                      | ✔️ (0.1 years)                   | Document store (NoSQL)                         | Lots of traction but also lots of bad growth history. I don't have much experience with it.<br/>My understanding of [denormalization](https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design) which requires duplicating data across documents is concerning, especially from a scaling perspective. And beginners won't learn about it until they're well bought into the system                                                              |
+| [MySQL/MariaDB][]                | ✔️ (4.75 years)                  | Relational DB                                  | Fantastic tool with limited footguns (e.g. always sort by primary key by default) but a lot of shortcomings for developer efficiency<br/>(e.g. schema changes cannot be done in transactions - so partial migrations can exit in broken state, bulk creation doesn't return ids - TODO: I know there are more)                                                                                                                                                       |
+| [PostgreSQL][]                   | ✔️ (3 years)                     | Relational DB                                  | Amazing database with wonderful ecosystem. It does have some footguns (e.g. no default sort) but its pros far outweigh those (e.g. handles cons of MySQL, friendlier CLI than `mysql`)                                                                                                                                                                                                                                                                               |
+| [Redis][]                        | ✔️ (2 years)                     | Key-value store (NoSQL)                        | Wonderful tool to cache values (e.g. HTTP responses, DB lookups, sessions) but unreasonable to use as a persistent storage system.<br/>It was not designed for that, and values are limited in their capabilities (e.g. would be serializing JSON, which then can't have nested queries)                                                                                                                                                                             |
+| [RocksDB][]                      |                                  | Key-value store through local files (NoSQL)    | Same drawbacks as Redis (key-value store) but with no provider drawbacks of SQLite (local file)                                                                                                                                                                                                                                                                                                                                                                      |
+| [SQLite][]                       | ✔️ (0.1 years)                   | Relational DB, stored as local file            | Quite a powerful tool and sidesteps running a DB server. I've used it through one-off scenarios like [GeoPackages](https://en.wikipedia.org/wiki/GeoPackage) but I'd be concerned about using it as the database long-term.<br/><br/>Due to no provider, there's no automated backups (so building your own) as well as potential distributed systems issues if introduce multiple servers                                                                           |
+| User files                       |                                  | Let user open and save files locally           | I've played with this for personal projects, but it's a partial solution (and frustrating one if browser closes) when most users expect the company to persist their data                                                                                                                                                                                                                                                                                            |
+| Other databases                  |                                  |                                                | There are many frameworks out there. This is simply a list from experience, top of mind, and light searching                                                                                                                                                                                                                                                                                                                                                         |
 
-
-TODO: Talk through Elasticsearch, Redis, Memcached, etc?
+[DynamoDB]: https://aws.amazon.com/dynamodb/t
+[Elasticsearch]: https://en.wikipedia.org/wiki/Elasticsearch
+[Firebase]: https://firebase.google.com/products/firestore
+[Google Sheets/Airtable]: https://www.google.com/sheets/about/
+[Memcached]: https://memcached.org/
+[MongoDB]: https://www.mongodb.com/
+[MySQL/MariaDB]: https://mariadb.org/
+[PostgreSQL]: https://www.postgresql.org/
+[Redis]: https://redis.io/
+[RocksDB]: https://rocksdb.org/
+[SQLite]: https://sqlite.org/index.html

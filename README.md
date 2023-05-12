@@ -103,13 +103,13 @@ TODO: Explain this
 
 
 TODO: Talk about Sentry and error monitoring
-TODO: Talk about server statsmonitoring
+TODO: Talk about server stats monitoring
 
 ----
 
 TODO:
 What a product example is
-Not covering mobile focused API
+Not covering mobile focused API (e.g. Firebase, Supabase)
 
 Firebase setups
 
