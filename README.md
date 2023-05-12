@@ -13,7 +13,7 @@ Unless stated or seen otherwise, this was all written in May 2023
 1. First, [Minimum Viable Product (MVP) without web app](README.md##stage-0-minimum-viable-product-mvp-without-web-app)
 2. Then:
     1. [Web framework: Django](docs/web-framework.md)
-    2. Database: PostgreSQL
+    2. [Database: PostgreSQL](docs/database.md)
     3. Development Environment: Local computer, no Docker
     - React, but not for HTTP
         - TODO: Talk through how if not using Django built-ins
@@ -84,6 +84,9 @@ UIs are hard to get right the first time, and any UI changes can cascade into la
 Assuming you've derisked though, let's get into tactical decisions:
 
 1. [Web Framework: Django](docs/web-framework.md)
+2. [Database: PostgreSQL](docs/database.md)
+
+<!-- TODO: Keep this up to date with list as top -->
 
 ## Low-level decisions
 ### Documentation
