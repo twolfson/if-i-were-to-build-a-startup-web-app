@@ -10,18 +10,17 @@ Unless stated or seen otherwise, this was all written in May 2023
 - TODO: Have this act as a table of contents
 - TODO: For each of these items, ensure we talk about things we're also sidestepping with our given choice (e.g. Django + batteries included)
 
-1. First, Minimum Viable Product (MVP) without web app
+1. First, [Minimum Viable Product (MVP) without web app](README.md##stage-0-minimum-viable-product-mvp-without-web-app)
 2. Then:
-    1. Web framework: Django
-        - TODO: Talk through languages
-        - TODO: Talk through serverless options
-    2. Docker: No
-    - PostgreSQL
+    1. [Web framework: Django](docs/web-framework.md)
+    2. Database: PostgreSQL
+    3. Development Environment: Local computer, no Docker
     - React, but not for HTTP
         - TODO: Talk through how if not using Django built-ins
     - Bootstrap?? Tailwind??
     - Runbook as documentation
     - Hosting provider selection
+    - Database provider selection
     - Documenting in-repo vs outside of repo
     - Monorepo vs not
     - Monolith vs not
