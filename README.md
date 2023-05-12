@@ -102,6 +102,27 @@ TODO: Explain this
 ### Why are comparisons tables vs lists or something else?
 TODO: Explain this
 
+----
+
+TODO:
+What a product example is
+Not covering mobile focused API
+
+Firebase setups
+
+Take everything with grain of salt
+Especially with age
+
+These are strictly starting points for discussions. No eng decision ever made in isolation. Impacts me and future team mates. Decisions rarely get revisited after implemented unless repeat work blocks. So friction cost present but never paid. Boiling the frog metaphorically
+
+TODO: Secret management (hardcode vs env variables vs .env vs SOPS vs more) + interplay with Docker
+
+TODO:
+Rails does have generate utility but can't recall last time I wanted that. Copy paste as convention is best pit of success
+
+Secondary to this would be a runbook as its an operational process. Link to article
+
+
 ## Context
 NCX and I have decided to part ways. This will likely finalize at the end of May 2023.
 
