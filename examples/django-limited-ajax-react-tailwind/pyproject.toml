@@ -13,6 +13,11 @@ python = "^3.8"
 Django = "^4.2"
 
 
+[tool.poetry.group.dev.dependencies]
+django-extensions = "^3.2.1"
+# Werkzeug required by runserver_plus in django-extensions
+werkzeug = "^2.3.4"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
