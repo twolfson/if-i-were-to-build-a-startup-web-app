@@ -77,3 +77,5 @@ xdg-open http://127.0.0.1:8000/
 
 - Following https://docs.djangoproject.com/en/4.2/intro/tutorial01/ quite closely to remind self of basic setup (so different when working on an existing repo)
 - We def need to reconsider things around `myapp` since the naming isn't great for URLs =/
+- Read through all of intro, never touches on root pages nor auth
+- Finding https://docs.djangoproject.com/en/4.2/topics/auth/
