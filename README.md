@@ -14,7 +14,8 @@ Unless stated or seen otherwise, this was all written in May 2023
 2. Then:
     1. [Web framework: Django](docs/web-framework.md)
     2. [Database: PostgreSQL](docs/database.md)
-    3. Development Environment: Local computer, no Docker
+    3. [Development Machine: Local computer](docs/development-machine.md)
+    4. [Development Containment: Language level, nothing else](docs/development-containment.md)
     - React, but not for HTTP
         - TODO: Talk through how if not using Django built-ins
     - Bootstrap?? Tailwind??
