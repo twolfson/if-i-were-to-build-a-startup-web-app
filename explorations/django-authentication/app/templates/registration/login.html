@@ -11,10 +11,11 @@
             </label>
             <input class="form-control"
                    id="{{ form.username.id_for_label }}"
+                   name="{{ form.username.html_name }}"
                    type="text"
                    {# TODO: Sanity check `default_if_none` is the right move, https://stackoverflow.com/a/8568367/1960509 -- Seems like we should read what Django does internally #}
                    value="{{ form.username.value | default_if_none:"" }}" />
-            {% if form.username.errors %}<div class="invalid-feedback d-block">{% for error in form.username.errors %}{{ error }}{%endfor%}</div>{% endif %}
+            {% if form.username.errors %}<div class="invalid-feedback d-block">{{ form.username.errors | join:" " }}</div>{% endif %}
         </div>
         <div class="mb-3">
             <label class="form-label" for="{{ form.password.id_for_label }}">
@@ -22,9 +23,10 @@
             </label>
             <input class="form-control"
                    id="{{ form.password.id_for_label }}"
+                   name="{{ form.password.html_name }}"
                    type="password"
                    value="{{ form.password.value | default_if_none:"" }}" />
-            {{ form.username.errors }}
+            {% if form.password.errors %}<div class="invalid-feedback d-block">{{ form.password.errors | join:" " }}</div>{% endif %}
         </div>
         <div class="d-grid">
             <button class="btn btn-primary btn-block" type="submit">Login</button>
