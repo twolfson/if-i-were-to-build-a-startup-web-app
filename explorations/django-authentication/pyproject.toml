@@ -15,9 +15,13 @@ Django = "^4.2"
 
 [tool.poetry.group.dev.dependencies]
 django-extensions = "^3.2.1"
+djlint = "^1.27.2"
 # Werkzeug required by runserver_plus in django-extensions
 werkzeug = "^2.3.4"
-djlint = "^1.27.2"
+
+[tool.djlint]
+# H021 discourages inline styles
+ignore = "H021"
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,3 +1,5 @@
+{# Ignore meta tag errors #}
+{# djlint:off H030,H031 #}
 {% comment %}
   HTML from https://getbootstrap.com/docs/5.2/getting-started/introduction/
   and https://docs.djangoproject.com/en/4.2/ref/templates/language/#template-inheritance
@@ -22,3 +24,5 @@
                 crossorigin="anonymous"></script>
     </body>
 </html>
+{# Required re-enable djlint:on, https://github.com/Riverside-Healthcare/djLint/issues/649 #}
+{# djlint:on #}
