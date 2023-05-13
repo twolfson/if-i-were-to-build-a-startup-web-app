@@ -9,13 +9,14 @@ readme = "README.md"
 packages = []
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.8.1"
 Django = "^4.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
 django-extensions = "^3.2.1"
 djlint = "^1.27.2"
+flake8 = "^6.0.0"
 # Werkzeug required by runserver_plus in django-extensions
 werkzeug = "^2.3.4"
 
