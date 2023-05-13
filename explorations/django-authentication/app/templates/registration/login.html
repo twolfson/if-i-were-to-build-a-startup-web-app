@@ -1,7 +1,7 @@
 {# Based on https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.views.LoginView #}
 {% extends "_layouts/auth.html" %}
 {% block form %}
-    <h1>Login</h1>
+    <h1 class="mb-3">Login</h1>
     {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
@@ -12,7 +12,9 @@
             <input class="form-control"
                    id="{{ form.username.id_for_label }}"
                    type="text"
-                   value="{{ form.username.vaue }}" />
+                   {# TODO: Sanity check `default_if_none` is the right move, https://stackoverflow.com/a/8568367/1960509 -- Seems like we should read what Django does internally #}
+                   value="{{ form.username.value | default_if_none:"" }}" />
+            {% if form.username.errors %}<div class="invalid-feedback d-block">{% for error in form.username.errors %}{{ error }}{%endfor%}</div>{% endif %}
         </div>
         <div class="mb-3">
             <label class="form-label" for="{{ form.password.id_for_label }}">
@@ -21,7 +23,8 @@
             <input class="form-control"
                    id="{{ form.password.id_for_label }}"
                    type="password"
-                   value="{{ form.password.vaue }}" />
+                   value="{{ form.password.value | default_if_none:"" }}" />
+            {{ form.username.errors }}
         </div>
         <div class="d-grid">
             <button class="btn btn-primary btn-block" type="submit">Login</button>
