@@ -13,11 +13,12 @@ def index(request):
 # https://docs.djangoproject.com/en/4.2/ref/class-based-views/generic-editing/#django.views.generic.edit.FormView
 class SignUpFormView(FormView):
     template_name = "registration/sign_up.html"
+    form_class = UserCreationForm
+    sucess_url = "/"
 
     def form_valid(self, form):
-        super().form_valid(form)
         username = form.cleaned_data.get('username')
         raw_password = form.cleaned_data.get('password1')
         user = authenticate(username=username, password=raw_password)
         login(request, user)
-        return redirect('index')
+        return super().form_valid(form)

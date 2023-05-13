@@ -47,6 +47,7 @@ TODO: Talk through innovation tokens?
 TODO: Talk through "cost savings" vs "time savings"
 TODO: Talk through "code maintenance as fact"
 TODO: LiveReload setup as part of server
+TODO: Talk through runserver_plus + Werkzeug? + --group dev install pieces?
 
 ## Introduction
 I'm a startup engineer. 3x first engineer, former Uber engineer, and have 12 years experience at these and more startups.
