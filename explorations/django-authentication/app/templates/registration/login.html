@@ -1,49 +1,32 @@
 {# Based on https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.views.LoginView #}
 {% extends "_layouts/auth.html" %}
-
 {% block form %}
-<h1>
-    Login
-</h1>
-{% if form.non_field_errors %}
-    {{ form.non_field_errors }}
-{% endif %}
-<form action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-    <div class="mb-3">
-        <label class="form-label" for="{{ form.username.id_for_label}}">
-            {{ form.username.label_tag }}
-        </label>
-        <input class="form-control" id="username" type="text">
+    <h1>Login</h1>
+    {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label" for="{{ form.username.id_for_label }}">{{ form.username.label_tag }}</label>
+            <input class="form-control" id="username" type="text">
             {{ form.username }}
         </input>
         {{ form.username.errors }}
     </div>
 </form>
 <tr>
-    <td>
-        {{ form.password.label_tag }}
-    </td>
-    <td>
-        {{ form.password }}
-    </td>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
 </tr>
 <div class="d-grid">
-    <button class="btn btn-primary btn-block" type="submit">
-        Login
-    </button>
+    <button class="btn btn-primary btn-block" type="submit">Login</button>
 </div>
 <input name="next" type="hidden" value="{{ next }}">
 </input>
 {# Assumes you set up the password_reset view in your URLconf #}
 <p>
-    <a href="{% url 'password_reset' %}">
-        Forgot password?
-    </a>
+    <a href="{% url 'password_reset' %}">Forgot password?</a>
 </p>
 <p>
-    <a href="{% url 'sign_up' %}">
-        Sign up
-    </a>
+    <a href="{% url 'sign_up' %}">Sign up</a>
 </p>
 {% endblock %}

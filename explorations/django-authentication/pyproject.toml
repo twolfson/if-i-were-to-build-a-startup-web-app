@@ -17,6 +17,7 @@ Django = "^4.2"
 django-extensions = "^3.2.1"
 # Werkzeug required by runserver_plus in django-extensions
 werkzeug = "^2.3.4"
+djlint = "^1.27.2"
 
 [build-system]
 requires = ["poetry-core"]
