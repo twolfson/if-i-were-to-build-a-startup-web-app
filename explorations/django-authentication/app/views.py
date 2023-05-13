@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
 
+
 @login_required
 def index(request):
     return render(request, "index.html")
