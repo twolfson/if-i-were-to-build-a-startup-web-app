@@ -1,4 +1,5 @@
 {# Based on https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.views.LoginView #}
+{% extends "base.html" %}
 
 {% block content %}
 
@@ -34,5 +35,7 @@
 
 {# Assumes you set up the password_reset view in your URLconf #}
 <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+<p><a href="{% url 'sign_up' %}">Sign up</a></p>
 
 {% endblock %}
