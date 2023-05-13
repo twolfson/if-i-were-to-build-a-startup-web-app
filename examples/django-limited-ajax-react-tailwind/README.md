@@ -27,6 +27,8 @@ poetry install
 
 # Run our server
 ./manage.py runserver
+
+# Open our
 ```
 
 ## Setup Log
@@ -52,4 +54,22 @@ rm -r mysite-tmp
 
 # Ignore our DB
 git ignore db.sqlite3  # Possibly via `git-extras`
+
+# Verify server running locally
+xdg-open http://127.0.0.1:8000/
+
+# Create a proper Django app for ourselves
+./manage.py startapp myapp
 ```
+
+- See multiple folders now, and realize we have knowledge gap around ideal setups
+- Research purpose of "mysite" normally
+    - https://dev.to/jackdlinke/modern-django-project-examples-58mm
+    - https://github.com/mozilla/kitsune
+        - Lots of folders in its `kitsune` folder but each of those is a Django app it seems
+        - settings.py is at top-level of folder and wsgi.py is its own thing
+        - Maybe all tied to being around for a long time?
+    - https://github.com/project-koku/koku
+        - Similar setup to kitsune but `settings.py` is in a `koku/koku` folder, along with `wsgi.py`
+        - More confident that's serving as Django and app core (e.g. users, worker queue)
+        - whereas other folders are extensions to that
