@@ -20,8 +20,14 @@ djlint = "^1.27.2"
 werkzeug = "^2.3.4"
 
 [tool.djlint]
+profile="django"
+
 # H021 discourages inline styles
 ignore = "H021"
+
+# Encourage line wrapping when appropriate
+# DEV: This is more aggressive than normal 120 because we're used to shorter `prettier` at the moment
+max_line_length = 80
 
 [build-system]
 requires = ["poetry-core"]

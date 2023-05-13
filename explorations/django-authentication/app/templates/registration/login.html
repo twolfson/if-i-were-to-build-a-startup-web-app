@@ -6,7 +6,9 @@
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <div class="mb-3">
-            <label class="form-label" for="{{ form.username.id_for_label }}">{{ form.username.label_tag }}</label>
+            <label class="form-label" for="{{ form.username.id_for_label }}">
+                {{ form.username.label_tag }}
+            </label>
             <input class="form-control" id="username" type="text">
             {{ form.username }}
         </input>
