@@ -9,20 +9,13 @@
             <label class="form-label" for="{{ form.username.id_for_label }}">
                 {{ form.username.label_tag }}
             </label>
-            <input class="form-control" id="username" type="text">
             {{ form.username }}
-        </input>
-        {{ form.username.errors }}
+        </div>
+    </form>
+    <div class="d-grid">
+        <button class="btn btn-primary btn-block" type="submit">Login</button>
     </div>
-</form>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-<div class="d-grid">
-    <button class="btn btn-primary btn-block" type="submit">Login</button>
-</div>
-<input name="next" type="hidden" value="{{ next }}">
+    <input name="next" type="hidden" value="{{ next }}">
 </input>
 {# Assumes you set up the password_reset view in your URLconf #}
 <p>

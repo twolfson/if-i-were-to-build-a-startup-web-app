@@ -64,6 +64,13 @@ TODO: Prob a restructure of efficiency of work is in order:
 - The modern web is a mess...
 - Going to go to sleep...
 
+- This seems promising for LiveReload headaches, https://builtwithdjango.com/blog/set-up-webpack-and-tailwind
+
+TODO: Talk through django-allauth, maybe even use it?
+https://django-allauth.readthedocs.io/en/latest/views.html
+
+TODO: AbstractBaseUser exploration, for things like PhoneNumber
+
 ## Introduction
 I'm a startup engineer. 3x first engineer, former Uber engineer, and have 12 years experience at these and more startups.
 

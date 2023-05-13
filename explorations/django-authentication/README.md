@@ -95,3 +95,11 @@ xdg-open http://127.0.0.1:8000/
 
 - Introducing Bootstrap to take this more seriously
 - TIL MDN also has their own Django tutorial, https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django
+
+- Learning about Django forms
+    - They seem to be quite opinionated and not friendly to custom designs/setups
+    - I have a feeling this is for the same reasons Django doesn't have full login pages outside of Django Admin. It was built for serving content outside of admin (newspaper sites), and less of a web app for users to interface with
+- Regarding handling widgets and styles
+    - A lot of articles say to add CSS to the widget, https://stackoverflow.com/a/5827669/1960509, which imo distributes the CSS around too much + doesn't handle scenarios like a little extra margin
+    - Better options are an `addclass` filter, https://stackoverflow.com/a/18962676/1960509
+    - But now I'm wondering if I can build some utility to render this common input pattern without copy/pasting the 3 lines for an input every time
