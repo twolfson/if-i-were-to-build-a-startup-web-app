@@ -17,7 +17,7 @@ then run the following:
 ```bash
 # Open Poetry shell
 poetry shell
-# Should see "(django-limited-ajax-react-tailwind-py3.8)" now
+# Should see "(django-authentication-py3.8)" now
 
 # Install our dependencies
 poetry install

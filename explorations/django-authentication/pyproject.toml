@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "django-limited-ajax-react-tailwind"
+name = "django-authentication"
 version = "1.0.0"
 description = ""
 authors = ["Todd Wolfson <todd@twolfson.com>"]
