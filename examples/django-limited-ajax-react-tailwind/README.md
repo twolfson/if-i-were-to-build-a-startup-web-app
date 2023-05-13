@@ -22,3 +22,18 @@ poetry shell
 # Install our dependencies
 poetry install
 ```
+
+## Setup Log
+```bash
+# Create basic files
+poetry init
+# Also specified Django dependency in here
+
+# Creating our Django project
+# https://docs.djangoproject.com/en/4.2/intro/tutorial01/#creating-a-project
+django-admin startproject mysite
+
+# Relocate mysite to top level, since nesting seems annoying/unnecessary
+mv mysite mysite-tmp # Renamed due to `mysite/mysite` to `mysite` conflict
+mv mysite-tmp/* .
+```
