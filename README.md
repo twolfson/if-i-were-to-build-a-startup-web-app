@@ -18,8 +18,11 @@ Unless stated or seen otherwise, this was all written in May 2023
     4. [Development Containment: Language level, nothing else](docs/development-containment.md)
     5. [UI <> Server Interface: HTML forms, limited AJAX](docs/ui-server-interface.md)
         - TODO: Show an example with notification dismissal on same page
-    - React, but not for HTTP
-        - TODO: Talk through how if not using Django built-ins
+        - TODO: Show an example with model opens and dismissals (Bootstrap strongsuit)
+        - TODO: Compute actual years for each
+    6. [Styling Framework/System: TBD](docs/styling-framework-system.md)
+        - TODO: Explain TBD
+        - TODO: CSS preprocessor or postcompiler
     - Bootstrap?? Tailwind??
     - ES5?? ES6?? Compilation??
     - Runbook as documentation
