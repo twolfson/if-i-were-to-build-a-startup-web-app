@@ -16,9 +16,12 @@ Unless stated or seen otherwise, this was all written in May 2023
     2. [Database: PostgreSQL](docs/database.md)
     3. [Development Machine: Local computer](docs/development-machine.md)
     4. [Development Containment: Language level, nothing else](docs/development-containment.md)
+    5. [UI <> Server Interface: HTML forms, limited AJAX](docs/ui-server-interface.md)
+        - TODO: Show an example with notification dismissal on same page
     - React, but not for HTTP
         - TODO: Talk through how if not using Django built-ins
     - Bootstrap?? Tailwind??
+    - ES5?? ES6?? Compilation??
     - Runbook as documentation
     - Hosting provider selection
     - Database provider selection
