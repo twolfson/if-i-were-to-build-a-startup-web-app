@@ -92,3 +92,6 @@ xdg-open http://127.0.0.1:8000/
     - `myapp` -> `app`
     - `git grep -i mysite`
     - `git grep -i myapp`
+
+- Introducing Bootstrap to take this more seriously
+- TIL MDN also has their own Django tutorial, https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django
