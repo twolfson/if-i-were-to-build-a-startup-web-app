@@ -11,7 +11,7 @@
                 {{ form.username.label_tag }}
             </label>
             {# Based on https://github.com/django/django/blob/4.2.1/django/forms/templates/django/forms/widgets/input.html #}
-            {% input %}
+            {% input form.username %}
             <input class="form-control"
                 type="{{ form.username.type }}"
                 name="{{ form.username.name }}"
