@@ -1,5 +1,6 @@
 {# Based on https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.views.LoginView #}
 {% extends "_layouts/auth.html" %}
+{% load forms %}
 {% block form %}
     <h1 class="mb-3">Login</h1>
     {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
@@ -10,6 +11,7 @@
                 {{ form.username.label_tag }}
             </label>
             {# Based on https://github.com/django/django/blob/4.2.1/django/forms/templates/django/forms/widgets/input.html #}
+            {% input %}
             <input class="form-control"
                 type="{{ form.username.type }}"
                 name="{{ form.username.name }}"
