@@ -23,8 +23,8 @@ class SignUpFormView(CreateView):
         #   https://github.com/django/django/blob/4.2.1/django/views/generic/edit.py#L63-L65
         form.save()
 
-        username = form.cleaned_data.get('username')
-        raw_password = form.cleaned_data.get('password1')
+        username = form.cleaned_data.get("username")
+        raw_password = form.cleaned_data.get("password1")
         user = authenticate(username=username, password=raw_password)
         login(self.request, user)
-        return redirect('index')
+        return redirect("index")

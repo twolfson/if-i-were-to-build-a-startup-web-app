@@ -47,6 +47,8 @@ TODO: Talk through innovation tokens?
 TODO: Talk through "cost savings" vs "time savings"
 TODO: Talk through "code maintenance as fact"
 TODO: LiveReload setup as part of server
+    This is inspiring around maybe building a custom build chain just for LiveReload CLI =o
+    https://stackoverflow.com/a/27785960
 TODO: Talk through runserver_plus + Werkzeug? + --group dev install pieces?
 
 --

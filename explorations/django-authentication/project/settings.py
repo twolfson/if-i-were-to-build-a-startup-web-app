@@ -68,6 +68,17 @@ TEMPLATES = [
         },
     },
 ]
+# In Django 4.2, cached template loading is enabled in all environments (frustrating)
+#   This works around that, https://stackoverflow.com/a/75342761
+if DEBUG:
+    assert len(TEMPLATES) == 1, "Encountered unexpected TEMPLATES change"
+    assert TEMPLATES[0]["APP_DIRS"], "Encountered unexpected `APP_DIRS` change"
+    assert not hasattr(TEMPLATES[0]["OPTIONS"], "loaders"), "Encountered unexpected `loaders` setting"
+    del TEMPLATES[0]["APP_DIRS"]
+    TEMPLATES[0]["OPTIONS"]["loaders"] = [
+      "django.template.loaders.filesystem.Loader",
+      "django.template.loaders.app_directories.Loader",
+    ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
