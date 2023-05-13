@@ -27,9 +27,9 @@ poetry install
 
 # Run our server
 ./manage.py runserver
-
-# Open our
 ```
+
+We can now see our server running locally at <http://127.0.0.1:8000/>
 
 ## Setup Log
 ```bash
@@ -73,3 +73,7 @@ xdg-open http://127.0.0.1:8000/
         - Similar setup to kitsune but `settings.py` is in a `koku/koku` folder, along with `wsgi.py`
         - More confident that's serving as Django and app core (e.g. users, worker queue)
         - whereas other folders are extensions to that
+- Was about to restart with renaming `mysite` to `myproject` but it's the same outcome. Leaving as-is
+
+- Following https://docs.djangoproject.com/en/4.2/intro/tutorial01/ quite closely to remind self of basic setup (so different when working on an existing repo)
+- We def need to reconsider things around `myapp` since the naming isn't great for URLs =/
