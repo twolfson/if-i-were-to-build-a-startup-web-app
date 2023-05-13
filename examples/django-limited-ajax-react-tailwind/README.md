@@ -21,6 +21,12 @@ poetry shell
 
 # Install our dependencies
 poetry install
+
+# Run our migrations (we're using SQLite for simplest setup)
+./manage.py migrate
+
+# Run our server
+./manage.py runserver
 ```
 
 ## Setup Log
@@ -36,4 +42,14 @@ django-admin startproject mysite
 # Relocate mysite to top level, since nesting seems annoying/unnecessary
 mv mysite mysite-tmp # Renamed due to `mysite/mysite` to `mysite` conflict
 mv mysite-tmp/* .
+rm -r mysite-tmp
+
+# Adjusted `settings.py` secret to not include any random data
+
+# Run our migratons and server
+./manage.py migrate
+./manage.py runserver
+
+# Ignore our DB
+git ignore db.sqlite3  # Possibly via `git-extras`
 ```
