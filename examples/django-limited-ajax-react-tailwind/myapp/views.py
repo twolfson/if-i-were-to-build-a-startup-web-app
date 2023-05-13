@@ -9,8 +9,12 @@ from django.views.generic.edit import CreateView
 def index(request):
     return render(request, "index.html")
 
+
+# Inspired by this guide: https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html
+# https://docs.djangoproject.com/en/4.2/ref/class-based-views/generic-editing/#django.views.generic.edit.FormView
 class SignUpFormView(CreateView):
     template_name = "registration/sign_up.html"
+    # DEV: UserCreationForm is used by Django Admin, hence no provided views, https://github.com/django/django/blob/4.2.1/django/contrib/auth/admin.py#L74
     form_class = UserCreationForm
 
     def form_valid(self, form):
@@ -23,5 +27,4 @@ class SignUpFormView(CreateView):
         raw_password = form.cleaned_data.get('password1')
         user = authenticate(username=username, password=raw_password)
         login(self.request, user)
-        # DEV: Don't call form_valid() as it'll want to use a success URL, https://github.com/django/django/blob/4.2.1/django/views/generic/edit.py#L63-L65
         return redirect('index')
