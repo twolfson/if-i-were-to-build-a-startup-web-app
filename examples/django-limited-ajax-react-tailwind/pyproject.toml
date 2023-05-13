@@ -4,7 +4,9 @@ version = "1.0.0"
 description = ""
 authors = ["Todd Wolfson <todd@twolfson.com>"]
 readme = "README.md"
-packages = [{include = "django_limited_ajax_react_tailwind"}]
+
+# Empty because we aren't publishing this repo to PyPI, https://python-poetry.org/docs/pyproject/#packages
+packages = []
 
 [tool.poetry.dependencies]
 python = "^3.8"

@@ -33,7 +33,7 @@ Unless stated or seen otherwise, this was all written in May 2023
     - Monorepo vs not
     - Monolith vs not
     - Virtual environments
-    - Scripting (deployments, commands)
+    - Scripting (deployments, commands) -- bash vs Python, when and where and why
 3. Areas of Growth
     - Continuous Integration
     - Continuous Deployment
