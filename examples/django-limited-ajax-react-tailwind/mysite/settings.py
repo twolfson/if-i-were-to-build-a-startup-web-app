@@ -128,3 +128,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #   https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.decorators.login_required
 #   https://docs.djangoproject.com/en/4.2/ref/settings/#login-url
 LOGIN_URL = "/login/"
+LOGOUT_REDIRECT_URL = "/"  # If we don't provide this, then logout confirmation page is in Django Admin

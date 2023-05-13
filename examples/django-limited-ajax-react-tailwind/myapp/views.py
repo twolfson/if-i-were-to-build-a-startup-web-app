@@ -3,23 +3,21 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.views.generic import FormView
 
 @login_required
 def index(request):
-    # TODO: Use a `render` template instead
-    return HttpResponse(f"Hello {request.user.username}")
+    return render(request, "index.html")
 
 # TODO: Class view for methods views instead of same one
-def sign_up(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('index')
-    else:
-        form = UserCreationForm()
-    return render(request, 'registration/sign_up.html', {'form': form})
+# https://docs.djangoproject.com/en/4.2/ref/class-based-views/generic-editing/#django.views.generic.edit.FormView
+class SignUpFormView(FormView):
+    template_name = "registration/sign_up.html"
+
+    def form_valid(self, form):
+        super().form_valid(form)
+        username = form.cleaned_data.get('username')
+        raw_password = form.cleaned_data.get('password1')
+        user = authenticate(username=username, password=raw_password)
+        login(request, user)
+        return redirect('index')

@@ -7,7 +7,7 @@ urlpatterns = [
     # DEV: Technically auth isn't required for demo purposes, but we think this highlights Django's strengths
     path("", include("django.contrib.auth.urls")),
     # Django doesn't have a sign up view despite a form, so use this guide: https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html
-    path("sign-up/", views.sign_up, name="sign_up"),
+    path("sign-up/", views.SignUpFormView.as_view(), name="sign_up"),
 
     path("", views.index, name="index"),
 ]
