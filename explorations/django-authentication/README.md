@@ -1,9 +1,9 @@
-# Django + Limited AJAX + React/Tailwind example
-This is an example implementation in [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
+# Django Authentication exploration
+This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
-At the time of writing, it's strictly a test to sanity check some setup elements for how the latest Tailwind framework interfaces with a Django setup, since it our existing interactions have required build step to filter unwanted content.
+Initially I planned on writing it as a full setup, but as I built basic authentication in Django, I realized I'd never fully done that end-to-end with their built-ins (previous setup had legacy).
 
-Additionally, it should serve as an explanation and example of the "limited AJAX" example we discussed in [UI <> Server Interface Analysis](../../docs/ui-server-interface.md).
+This is now just an exploration for all pages with basic authentication
 
 ## Getting Started
 To set up this repo, install the following dependencies:
@@ -84,3 +84,5 @@ xdg-open http://127.0.0.1:8000/
 
 - Realizing no sign up page is built in
 - Finding https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html
+
+- Stopped note taking, getting too much in the way. Commits and code comments should capture history well from here
