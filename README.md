@@ -49,6 +49,17 @@ TODO: Talk through "code maintenance as fact"
 TODO: LiveReload setup as part of server
 TODO: Talk through runserver_plus + Werkzeug? + --group dev install pieces?
 
+--
+
+TODO: Prob a restructure of efficiency of work is in order:
+- Django as base layer for loading page with CSRF
+- React still handling all routing...?
+- But Django being DRF? except for inital page load?
+- And React submit via a normal form? (but then React UX prob janky -- e.g. what happens on form error
+- This was cascaded because realizing react-create-app (great tooling) also has its own LiveReload
+- The modern web is a mess...
+- Going to go to sleep...
+
 ## Introduction
 I'm a startup engineer. 3x first engineer, former Uber engineer, and have 12 years experience at these and more startups.
 
