@@ -73,9 +73,7 @@ TEMPLATES = [
 if DEBUG:
     assert len(TEMPLATES) == 1, "Encountered unexpected TEMPLATES change"
     assert TEMPLATES[0]["APP_DIRS"], "Encountered unexpected `APP_DIRS` change"
-    assert not hasattr(
-        TEMPLATES[0]["OPTIONS"], "loaders"
-    ), "Encountered unexpected `loaders` setting"
+    assert not hasattr(TEMPLATES[0]["OPTIONS"], "loaders"), "Encountered unexpected `loaders` setting"
     del TEMPLATES[0]["APP_DIRS"]
     TEMPLATES[0]["OPTIONS"]["loaders"] = [
         "django.template.loaders.filesystem.Loader",
@@ -142,6 +140,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #   https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.decorators.login_required
 #   https://docs.djangoproject.com/en/4.2/ref/settings/#login-url
 LOGIN_URL = "/login/"
-LOGOUT_REDIRECT_URL = (
-    "/"  # If we don't provide this, then logout confirmation page is in Django Admin
-)
+# If we don't provide this, then logout confirmation page is in Django Admin
+LOGOUT_REDIRECT_URL = "/"

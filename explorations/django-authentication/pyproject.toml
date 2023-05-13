@@ -29,6 +29,10 @@ ignore = "H021"
 # DEV: This is more aggressive than normal 120 because we're used to shorter `prettier` at the moment
 max_line_length = 80
 
+[tool.black]
+# Normal line length tolerance
+line-length = 120
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
