@@ -25,7 +25,8 @@ Unless stated or seen otherwise, this was all written in May 2023
         - TODO: CSS preprocessor or postcompiler
     - Bootstrap?? Tailwind??
     - ES5?? ES6?? Compilation??
-    - Runbook as documentation
+        - Prob concat + minify at a... minimum ;D I wonder if Parcel works as a freebie
+    - Repeatability: Runbook as documentation
     - Hosting provider selection
     - Database provider selection
     - Documenting in-repo vs outside of repo

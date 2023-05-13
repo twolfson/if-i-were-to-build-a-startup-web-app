@@ -15,10 +15,10 @@ Before we can talk about that though, we should also talk about CSS compilation.
 |     Name     | Non-trivial previous experience? | Description | Notes |
 |--------------|----------------------------------|-------------|-------|
 | No framework | ✔️ (??% of career)               |             |       |
-| Sass | ✔️ (??% of career)               |             |       |
-| Stylus | ✔️ (??% of career)               |             |       |
-| LESS | ✔️ (??% of career)               |             |       |
-| PostCSS | ✔️ (??% of career)               |             |       |
+| Sass         | ✔️ (??% of career)               |             |       |
+| Stylus       | ✔️ (??% of career)               |             |       |
+| LESS         | ✔️ (??% of career)               |             |       |
+| PostCSS      | ✔️ (??% of career)               |             |       |
 
 TODO: SUIT CSS
 
@@ -27,7 +27,6 @@ TODO: Mentions about OOCSS, SMACSS, and BEM
 TODO: Mentions about selector precedence
 
 TODO: Web components, Backbone, Angular, Ember, Vue, etc
-
 
 ## Styling Only Framework Comparison
 |      Name     | Non-trivial previous experience? |              Description               | Notes |
