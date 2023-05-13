@@ -86,3 +86,9 @@ xdg-open http://127.0.0.1:8000/
 - Finding https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html
 
 - Stopped note taking, getting too much in the way. Commits and code comments should capture history well from here
+
+- Performed rename of project
+    - `mysite` -> `project`
+    - `myapp` -> `app`
+    - `git grep -i mysite`
+    - `git grep -i myapp`
