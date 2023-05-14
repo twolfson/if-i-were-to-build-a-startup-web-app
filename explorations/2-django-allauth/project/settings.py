@@ -153,22 +153,13 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_ADAPTER = "app.adapter.AccountAdapter"
 ACCOUNT_FORMS = {
     # Override all forms for easy extension in the future
-    "signup": "app.forms.auth.SignupForm",
-    "login": "app.forms.auth.LoginForm",
-    "add_email": "app.forms.auth.AddEmailForm",
-    "change_password": "app.forms.auth.ChangePasswordForm",
-    # "disconnect": "allauth.socialaccount.forms.DisconnectForm",
-    "login": "app.forms.auth.LoginForm",
-    "reset_password": "app.forms.auth.ResetPasswordForm",
-    "reset_password_from_key": "app.forms.auth.ResetPasswordKeyForm",
-    "set_password": "app.forms.auth.SetPasswordForm",
-    "signup": "app.forms.auth.SignupForm",
-    # It's unclear how "signup" override/key sharing works
-    # They are the same key though:
-    #   https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/views.py#L236-L237
-    #   https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/socialaccount/views.py#L32-L33
-    # Ahh, possibly SOCIALACCOUNT_FORMS, not ACCOUNT_FORMS, https://github.com/pennersr/django-allauth/blob/0.54.0/docs/forms.rst#socialaccount_forms  # noqa:E501
-    # "signup": "allauth.socialaccount.auth.SignupForm",
+    "add_email": "app.forms.auth.account.AddEmailForm",
+    "change_password": "app.forms.auth.account.ChangePasswordForm",
+    "login": "app.forms.auth.account.LoginForm",
+    "reset_password": "app.forms.auth.account.ResetPasswordForm",
+    "reset_password_from_key": "app.forms.auth.account.ResetPasswordKeyForm",
+    "set_password": "app.forms.auth.account.SetPasswordForm",
+    "signup": "app.forms.auth.account.SignupForm",
 }
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
@@ -180,6 +171,10 @@ ACCOUNT_USERNAME_REQUIRED = False  # Use email as username
 ACCOUNT_LOGOUT_ON_GET = True
 # Don't preserve casing as it uses `__iexact` which can be expensive,
 ACCOUNT_PRESERVE_USERNAME_CASING = False
+SOCIALACCOUNT_FORMS = {
+    "disconnect": "app.forms.auth.socialaccount.DisconnectForm",
+    "signup": "app.forms.auth.socialaccount.SignupForm",
+}
 
 # Email sending
 # DEV: Intentionally invalid email backend to encourage using WYSIWYG email systems instead
