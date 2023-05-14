@@ -1,27 +1,16 @@
 {# Based on https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.views.LoginView #}
 {% extends "_layouts/auth.html" %}
+{# TODO: Figure out autoload #}
+{% load forms %}
 {% block form %}
     <h1 class="mb-3">Login</h1>
     {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <div class="mb-3">
-            {# Based on https://github.com/django/django/blob/4.2.1/django/forms/templates/django/forms/widgets/input.html #}
             {# Form inputs via: https://github.com/django/django/blob/4.2.1/django/contrib/auth/forms.py#L199-L210 #}
             <div class="mb-3">
-                <label class="form-label" for="{{ form.username.id_for_label }}">
-                    {{ form.username.label_tag }}
-                </label>
-                <input class="form-control"
-                       id="{{ form.username.id_for_label }}"
-                       name="{{ form.username.html_name }}"
-                       type="username"
-                       value="{{ form.username.value | default_if_none:"" }}" />
-                {% if form.username.errors %}
-                    <div class="invalid-feedback d-block">
-                        {{ form.username.errors | join:" " }}
-                    </div>
-                {% endif %}
+                {% input form.username %}
             </div>
             <div class="mb-3">
                 <label class="form-label" for="{{ form.password.id_for_label }}">

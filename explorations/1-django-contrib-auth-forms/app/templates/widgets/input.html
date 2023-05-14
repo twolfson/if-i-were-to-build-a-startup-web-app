@@ -1,0 +1,14 @@
+{# Based on https://github.com/django/django/blob/4.2.1/django/forms/templates/django/forms/widgets/input.html #}
+<label class="form-label" for="{{ widget.id_for_label }}">
+    {{ widget.label_tag }}
+</label>
+<input class="form-control"
+       id="{{ widget.id_for_label }}"
+       name="{{ widget.html_name }}"
+       type="username"
+       value="{{ widget.value | default_if_none:"" }}" />
+{% if widget.errors %}
+    <div class="invalid-feedback d-block">
+        {{ widget.errors | join:" " }}
+    </div>
+{% endif %}
