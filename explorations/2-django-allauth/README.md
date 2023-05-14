@@ -45,6 +45,36 @@ Logout:
 ![Logout screenshot](docs/screenshots/logout.png)
 
 ## Development
+### Django Admin
+Django Admin can be set up via the following:
+
+```bash
+./manage.py createsuperuser
+# Username (leave blank to use '$USER'):
+# Email address: my@email.com
+# Password:
+# Password (again):
+# Superuser created successfully.
+```
+
+Alternatively, you can promote the user via `./manage.py shell_plus`
+
+```python
+# Inside ./manage.py shell_plus (auto-imports User)
+user = User.objects.first()
+user.is_superuser = True
+user.is_staff = True
+user.save()
+```
+
+You can now log in to Django Admin to view things like user and email verification:
+
+http://127.0.0.1:8000/admin/
+
+**We strongly recommend using a separate [browser profile](https://support.google.com/chrome/answer/2364824) (Chrome) or [container tab](https://support.mozilla.org/en-US/kb/containers) (Firefox). Otherwise, Django Admin shares the same session with the app, and this complicates debugging.**
+
+![Django Admin screenshot](docs/screenshots/django-admin.png)
+
 ### Linting
 We've configured development with the following:
 
@@ -70,6 +100,8 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 - `--print-sql` support to catch `n+1` errors (not an issue in this exploration)
 - Interactive debugging console in the middle of a request error, https://django-extensions.readthedocs.io/en/latest/runserver_plus.html
     - You'll be able to find the debugging PIN in your console
+
+Additionally, we get `shell_plus` which gives us the same `--print-sql` support and automatic imports in an IPython shell
 
 ## Setup Log
 - Copy from `1-django-contrib-auth-forms`
@@ -113,7 +145,7 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 <br /><br />
 
 - Using Firefox Container tabs to split out the different cookies =D :galaxy_brain:
-    - TODO: Record a note about this in guidance
+    - DONE: Record a note about this in guidance
 <br /><br />
 
 - Hmm, we reset the password in Django Admin, and it's still broken?
