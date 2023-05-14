@@ -1,10 +1,10 @@
 {# Based on: https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/templates/account/verified_email_required.html #}
 {% extends "_layouts/auth.html" %}
 {% load i18n %}
-{% block title %}
+{% block head_title %}
     {% trans "Verify Your E-mail Address" %}
 {% endblock %}
-{% block form %}
+{% block content %}
     <h1 class="mb-3">{% trans "Confirm Email Address" %}</h1>
     {% url 'account_email' as email_url %}
     <p>

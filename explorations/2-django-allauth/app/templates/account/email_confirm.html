@@ -1,10 +1,10 @@
 {% extends "_layouts/auth.html" %}
 {% load i18n %}
 {% load account %}
-{% block title %}
+{% block head_title %}
     {% trans "Confirm Email Address" %}
 {% endblock %}
-{% block form %}
+{% block content %}
     <h1>{% trans "Confirm Email Address" %}</h1>
     {% if confirmation %}
         {% user_display confirmation.email_address.user as user_display %}

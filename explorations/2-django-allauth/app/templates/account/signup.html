@@ -3,7 +3,11 @@
 {% extends "_layouts/auth.html" %}
 {# DEV: We should figure out an autoload solution, but are stopping this exploration here #}
 {% load forms %}
-{% block form %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
     <h1 class="mb-3">Sign Up</h1>
     {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
     {# Fields enumerated here: https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/forms.py#L267 #}

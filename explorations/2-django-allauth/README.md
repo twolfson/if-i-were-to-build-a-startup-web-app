@@ -84,8 +84,8 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 - After logging in, I quickly see the email is unverified and easily verify it
     - Sadly no button to resend an email verification =/
 
-- TODO: Extend messages to the rest of the application
-- TODO: Ensure the messages backend is session
+- DONE: Extend messages to the rest of the application
+- DONE: Ensure the messages backend is session
 
 - Ahh, it wasn't verification issues =/
 - I was auto-signed in as my superuser into the app, how confusing x_x
