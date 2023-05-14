@@ -158,7 +158,8 @@ https://stackoverflow.com/questions/64237/when-to-create-a-new-app-with-startapp
 Nice reassurance from DoorDash philosophy
 <br /><br />
 
-- TODO: Pull more notes from exploration recommendations
+- DONE: Pull more notes from exploration recommendations
+    - Did all except "template <> views or URL mappings". Clicking through files felt faster .\_.
 <br /><br />
 
 - `$ cp -r . ~/github/if-i-were-to-build-a-startup-web-app/explorations/2-django-allauth` + manual relocation

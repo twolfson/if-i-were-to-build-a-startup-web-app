@@ -19,6 +19,8 @@ black = "^23.3.0"
 django-extensions = "^3.2.1"
 djlint = "^1.27.2"
 flake8 = "^6.0.0"
+# Used for friendlier `./manage.py shell_plus`. 8.13.x required Python 3.9+
+ipython = "^8.12.2"
 # Werkzeug required by runserver_plus in django-extensions
 werkzeug = "^2.3.4"
 
