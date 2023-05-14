@@ -1,4 +1,4 @@
-from allauth.account import forms as allauth_forms
+from allauth.account import forms as allauth_account_forms
 from django import forms
 
 # Enumeration and extension all forms for easy extension in the future
@@ -16,7 +16,7 @@ def remove_field_placeholder(field):
     field.widget.attrs["placeholder"] = ""
 
 
-class LoginForm(allauth_forms.LoginForm):
+class LoginForm(allauth_account_forms.LoginForm):
     # Fields:
     # login # Might be email or username
     # password
@@ -30,7 +30,7 @@ class LoginForm(allauth_forms.LoginForm):
 
 
 # Initial guidance via https://dev.to/gajesh/the-complete-django-allauth-guide-la3
-class SignupForm(allauth_forms.SignupForm):
+class SignupForm(allauth_account_forms.SignupForm):
     # https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/forms.py#L267
     # BaseSignUpForm fields:
     # username  # Removed via `USERNAME_REQUIRED`
@@ -70,13 +70,13 @@ class SignupForm(allauth_forms.SignupForm):
         return super().clean()
 
 
-class AddEmailForm(allauth_forms.AddEmailForm):
+class AddEmailForm(allauth_account_forms.AddEmailForm):
     # Fields:
     # email
     pass
 
 
-class ChangePasswordForm(allauth_forms.ChangePasswordForm):
+class ChangePasswordForm(allauth_account_forms.ChangePasswordForm):
     # Fields:
     # oldpassword
     # password1
@@ -84,27 +84,27 @@ class ChangePasswordForm(allauth_forms.ChangePasswordForm):
     pass
 
 
-class SetPasswordForm(allauth_forms.SetPasswordForm):
+class SetPasswordForm(allauth_account_forms.SetPasswordForm):
     # Fields:
     # password1
     # password2
     pass
 
 
-class ResetPasswordForm(allauth_forms.ResetPasswordForm):
+class ResetPasswordForm(allauth_account_forms.ResetPasswordForm):
     # Fields:
     # email
     pass
 
 
-class ResetPasswordKeyForm(allauth_forms.ResetPasswordKeyForm):
+class ResetPasswordKeyForm(allauth_account_forms.ResetPasswordKeyForm):
     # Fields:
     # password1
     # password2
     pass
 
 
-class UserTokenForm(allauth_forms.UserTokenForm):
+class UserTokenForm(allauth_account_forms.UserTokenForm):
     # Fields:
     # uidb36
     # key
