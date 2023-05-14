@@ -1,12 +1,14 @@
 {# Based on https://github.com/django/django/blob/4.2.1/django/forms/templates/django/forms/widgets/input.html #}
+{# Annoyingly this doesn't carry through attrs properly, even with a `widgets/attrs.html` but see note in `login.html` #}
 <label class="form-label" for="{{ widget.id_for_label }}">
     {{ widget.label_tag }}
 </label>
 <input class="form-control"
-       type="{{ widget.type }}"
+       type="{{ widget.field.widget.type3.foo }}"
        name="{{ widget.html_name }}"
+       id="{{ widget.id_for_label }}"
        {% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}
-       {% include "widgets/attrs.html" %} />
+       {# This is empty but worth referencing: {% include "widgets/attrs.html" %} #} />
 {% if widget.errors %}
     <div class="invalid-feedback d-block">{{ widget.errors | join:" " }}</div>
 {% endif %}

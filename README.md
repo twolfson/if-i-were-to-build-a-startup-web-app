@@ -55,6 +55,12 @@ TODO: Prettier was nice for HTML formatting, does Django have some equivalent?
 
 TODO: Talk about JWT and difficulty revoking sessions
 
+TODO: Prob use Jinja instead of Django to avoid footguns, https://docs.djangoproject.com/en/4.2/ref/templates/api/#how-invalid-variables-are-handled
+https://stackoverflow.com/a/40506337/1960509
+https://docs.quantifiedcode.com/python-anti-patterns/django/1.8/migration/template_string_if_invalid_deprecated.html
+https://djangosnippets.org/snippets/646/
+https://stackoverflow.com/a/15312316/1960509
+
 --
 
 TODO: Prob a restructure of efficiency of work is in order:

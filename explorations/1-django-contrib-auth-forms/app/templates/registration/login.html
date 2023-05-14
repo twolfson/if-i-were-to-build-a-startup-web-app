@@ -8,25 +8,15 @@
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <div class="mb-3">
-            {# Form inputs via: https://github.com/django/django/blob/4.2.1/django/contrib/auth/forms.py#L199-L210 #}
             <div class="mb-3">
-                {# Expecting: <input type="text" name="username" value="test2" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username"> #}
+                {% comment %}
+                    DEV: This `input` setup is flawed because it doesn't carry through `required` and such,
+                    but HTML5 validation isn't great as-is, so would prob use a different library anyway ._.
+                {% endcomment %}
                 {% input form.username %}
             </div>
             <div class="mb-3">
-                <label class="form-label" for="{{ form.password.id_for_label }}">
-                    {{ form.password.label_tag }}
-                </label>
-                <input class="form-control"
-                       id="{{ form.password.id_for_label }}"
-                       name="{{ form.password.html_name }}"
-                       type="password"
-                       value="{{ form.password.value | default_if_none:"" }}" />
-                {% if form.password.errors %}
-                    <div class="invalid-feedback d-block">
-                        {{ form.password.errors | join:" " }}
-                    </div>
-                {% endif %}
+                {% input form.password %}
             </div>
             <div class="d-grid">
                 <button class="btn btn-primary btn-block" type="submit">Login</button>
