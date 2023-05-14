@@ -29,6 +29,7 @@ class SignupForm(allauth_forms.SignupForm):
     def signup(self, request, user):
         # Ensure email and username are both the same, as well as lowercase
         # `username` will be `first_name` if we don't override
+        # TODO: This override isn't working as expected, let's go TDD
         user.email = self.cleaned_data["email"].lower()
         user.username = self.cleaned_data["email"].lower()
         # TODO: How does login with with casing change
