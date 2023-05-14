@@ -61,9 +61,6 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
     - `git grep -i "django-contrib"`
     - `git grep -i "django contrib"`
 - `git grep -i "django.contrib"`
-    - TODO: Update `urls.py`
-    - TODO: Update `views.py`
-    - TODO: Update `templates/registration/*`
 - `rm -r .venv` (to reset `poetry shell` naming)
 - Removed `LOGIN_*` and `LOGOUT_*` from `settings.py` to explore defaults
 - Following https://django-allauth.readthedocs.io/en/latest/overview.html guidance
@@ -99,9 +96,9 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 - Hmm, we reset the password in Django Admin, and it's still broken?
 
 - Ohhh, the sign up utility was using the first name as the username -_-;;
-- TODO: Fix sign up form to use email as username
-- TODO: Add email == username enforcement/validation
-- TODO: Add email verification requirement test
+- DONE: Fix sign up form to use email as username
+- DONE: Add email == username enforcement/validation
+- DONE: Add email verification requirement test
 
 - TODO: Oh, if we have Site(1) in the DB always via migration, then update it via migration ;D
     - Confirmed via fresh `./manage.py migrate` + `./manage.py dbshell`
@@ -111,3 +108,7 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
     - `context["form"].errors` seems so awesome =o
 
 - TODO: Talk about low-level hook for ENV=test
+
+- TODO: @email_verified decorator
+
+- TOD: Any lingering TODOs in code?
