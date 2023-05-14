@@ -151,6 +151,11 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_USER_DISPLAY = lambda user: user.get_full_name()  # noqa:E731
 ACCOUNT_USERNAME_REQUIRED = False  # Use email as username
+assert DEBUG is True, (
+    "We've set up ACCOUNT_LOGOUT_ON_GET for easier development, "
+    "reconsider for your case https://django-allauth.readthedocs.io/en/latest/views.html#logout-account-logout"
+)
+ACCOUNT_LOGOUT_ON_GET = True
 
 # Email sending
 # DEV: Intentionally invalid email backend to encourage using WYSIWYG email systems instead
