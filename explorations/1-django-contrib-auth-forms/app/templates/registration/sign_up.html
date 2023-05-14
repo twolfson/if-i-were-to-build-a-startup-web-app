@@ -1,9 +1,21 @@
-{% extends "_layouts/base.html" %}
-{% block content %}
-    <h2>Sign up</h2>
-    <form method="post">
+{% extends "_layouts/auth.html" %}
+{# DEV: We should figure out an autoload solution, but are stopping this exploration here #}
+{% load forms %}
+{% block form %}
+    <h1 class="mb-3">Sign Up</h1>
+    {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
+    {# Fields enumerated here: https://github.com/django/django/blob/4.2.1/django/contrib/auth/forms.py#L84-L109 #}
+    <form action="{% url 'sign_up' %}" method="post" class="mb-4">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign up</button>
+        <div class="mb-3">{% input form.username %}</div>
+        <div class="mb-3">{% input form.password1 %}</div>
+        <div class="mb-3">{% input form.password2 %}</div>
+        <div class="d-grid">
+            <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+        </div>
     </form>
+    <p>
+        {# Nice touch would be linking this whole row, but keeping styling at end #}
+        Already have an account? <a href="{% url 'login' %}">Login</a>
+    </p>
 {% endblock %}

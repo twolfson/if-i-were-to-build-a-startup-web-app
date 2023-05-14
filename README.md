@@ -79,6 +79,11 @@ https://django-allauth.readthedocs.io/en/latest/views.html
 
 TODO: AbstractBaseUser exploration, for things like PhoneNumber
 
+TODO: Minus points for HTML pages for nice touches like carrying over email between pages
+TODO: Widget for email suggestion
+
+TODO: Bootstrap lacking space-y-* utilities, so handy
+
 ## Introduction
 I'm a startup engineer. 3x first engineer, former Uber engineer, and have 12 years experience at these and more startups.
 

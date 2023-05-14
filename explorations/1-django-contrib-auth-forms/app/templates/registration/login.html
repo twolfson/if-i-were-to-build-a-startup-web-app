@@ -1,35 +1,26 @@
 {# Based on https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.views.LoginView #}
 {% extends "_layouts/auth.html" %}
-
 {# DEV: We should figure out an autoload solution, but are stopping this exploration here #}
 {% load forms %}
-
 {% block form %}
     <h1 class="mb-3">Login</h1>
     {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
-    <form action="{% url 'login' %}" method="post">
+    {# Fields enumerated here: https://github.com/django/django/blob/4.2.1/django/contrib/auth/forms.py#L205-L210 #}
+    <form action="{% url 'login' %}" method="post" class="mb-4">
         {% csrf_token %}
-        <div class="mb-3">
-            <div class="mb-3">
-                {% comment %}
-                    DEV: This `input` setup is flawed because it doesn't carry through `required` and such,
-                    but HTML5 validation isn't great as-is, so would prob use a different library anyway ._.
-                {% endcomment %}
-                {% input form.username %}
-            </div>
-            <div class="mb-3">
-                {% input form.password %}
-            </div>
-            <div class="d-grid">
-                <button class="btn btn-primary btn-block" type="submit">Login</button>
-            </div>
-            <input name="next" type="hidden" value="{{ next }}">
-        </form>
-        {# Assumes you set up the password_reset view in your URLconf #}
-        <p class="mt-4">
-            <a href="{% url 'password_reset' %}">Forgot password?</a>
-        </p>
-        <p>
-            <a href="{% url 'sign_up' %}">Sign up</a>
-        </p>
-    {% endblock %}
+        <div class="mb-3">{% input form.username %}</div>
+        <div class="mb-3">{% input form.password %}</div>
+        <div class="d-grid">
+            <button class="btn btn-primary btn-block" type="submit">Login</button>
+        </div>
+        <input name="next" type="hidden" value="{{ next }}">
+    </form>
+    {# Assumes you set up the password_reset view in your URLconf #}
+    <p>
+        <a href="{% url 'password_reset' %}">Forgot password?</a>
+    </p>
+    <p>
+        {# Nice touch would be linking this whole row, but keeping styling at end #}
+        Don't have an account? <a href="{% url 'sign_up' %}">Sign up</a>
+    </p>
+{% endblock %}
