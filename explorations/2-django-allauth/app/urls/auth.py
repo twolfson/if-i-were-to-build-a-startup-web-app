@@ -1,6 +1,5 @@
 from django.urls import path, re_path
 
-from . import views
 from allauth.account import views as allauth_views
 
 urlpatterns = [
@@ -46,5 +45,4 @@ urlpatterns = [
     # ),
 
     # Add social via different means, https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/urls.py#L12-L25
-    path("", views.index, name="index"),
 ]
