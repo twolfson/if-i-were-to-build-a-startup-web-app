@@ -149,6 +149,7 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
+# Everything ACCOUNT_ is django-allauth, https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_ADAPTER = "app.adapter.AccountAdapter"
 ACCOUNT_FORMS = {
     "signup": "app.forms.SignupForm",
@@ -160,6 +161,8 @@ ACCOUNT_USER_DISPLAY = lambda user: user.get_full_name()  # noqa:E731
 ACCOUNT_USERNAME_REQUIRED = False  # Use email as username
 # Consider logout via a POST form to be YAGNI experience, esp for a small site
 ACCOUNT_LOGOUT_ON_GET = True
+# Don't preserve casing as it uses `__iexact` which can be expensive,
+ACCOUNT_PRESERVE_USERNAME_CASING = False
 
 # Email sending
 # DEV: Intentionally invalid email backend to encourage using WYSIWYG email systems instead

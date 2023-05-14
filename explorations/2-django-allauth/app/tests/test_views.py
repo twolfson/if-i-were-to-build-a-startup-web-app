@@ -57,7 +57,7 @@ class SignUpFormViewTestCase(TestCase):
 
     def test_email_username_casing(self):
         """Submitting sign up adjusts email and username casing"""
-        response = self.client.post(
+        self.client.post(
             "/signup/",
             {
                 "email": "HELLO@WORLD.COM",
@@ -68,5 +68,7 @@ class SignUpFormViewTestCase(TestCase):
             }
         )
 
-        # TODO: Test first and last name are required
+        user = User.objects.get()  # Get only user in DB (errors out if not 1)
+        self.assertEqual(user.username, "hello@world.com")
+        self.assertEqual(user.email, "hello@world.com")
         # TODO: Enforce casing from Django Admin as well?
