@@ -153,6 +153,7 @@ ACCOUNT_ADAPTER = "app.adapter.AccountAdapter"
 ACCOUNT_FORMS = {
     "signup": "app.forms.SignupForm",
 }
+ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_USER_DISPLAY = lambda user: user.get_full_name()  # noqa:E731
