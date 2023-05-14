@@ -1,0 +1,20 @@
+{% comment %}
+We have an `input.html` instead of using the vanilla widgets provided by Django for a few reasons:
+- It significantly shortens the lines from 3 to 1
+- Allows us to leverage Bootstrap consistently
+- Allows us to provide options to turn things on/off (e.g. hiding label)
+{% endcomment %}
+{% load widget_tweaks %}
+
+<label class="form-label" for="{{ widget.id_for_label }}">
+    {{ widget.label_tag }}
+</label>
+{% comment %}
+DEV: We tried so hard to extend the HTML from https://github.com/django/django/blob/4.2.1/django/forms/templates/django/forms/widgets/input.html
+and https://github.com/django/django/blob/4.2.1/django/forms/boundfield.py#L84-L106
+but the fields like `type` and `id` would not exist no matter how much we tried
+{% endcomment %}
+{% render_field widget class+="form-control" %}
+{% if widget.errors %}
+    <div class="invalid-feedback d-block">{{ widget.errors | join:" " }}</div>
+{% endif %}
