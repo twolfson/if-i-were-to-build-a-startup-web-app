@@ -153,6 +153,7 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_ADAPTER = "app.adapter.AccountAdapter"
 ACCOUNT_FORMS = {
     "signup": "app.forms.SignupForm",
+    "login": "app.forms.LoginForm",
 }
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True

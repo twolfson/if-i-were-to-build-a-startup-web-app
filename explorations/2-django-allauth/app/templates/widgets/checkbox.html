@@ -1,0 +1,12 @@
+{% load widget_tweaks %}
+{# https://getbootstrap.com/docs/5.2/forms/checks-radios/#checks #}
+<div class="form-check">
+    {% render_field widget class+="form-check-input" %}
+    <label class="form-label" for="{{ widget.id_for_label }}">
+        {{ widget.label }}
+    </label>
+</div>
+{# DEV: I'm not sure what errors we get for checkboxes, but including content #}
+{% if widget.errors %}
+    <div class="invalid-feedback d-block">{{ widget.errors | join:" " }}</div>
+{% endif %}

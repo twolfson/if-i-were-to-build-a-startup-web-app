@@ -2,6 +2,17 @@ from allauth.account import forms as allauth_forms
 from django import forms
 
 
+def monkeypatch_email_field(field):
+    # Override silly defaults (e.g. trailing colons, placeholder same as label)
+    field.label = "Email"
+    # Guidance on setup via https://stackoverflow.com/a/23983577/1960509
+    field.widget.attrs["placeholder"] = "your@email.com"
+
+
+def monkeypatch_password_field(field):
+    field.widget.attrs["placeholder"] = ""
+
+
 # Guidance via https://dev.to/gajesh/the-complete-django-allauth-guide-la3
 # Username hidden via `ACCOUNT_USERNAME_REQUIRED = False` in `settings.py`
 class SignupForm(allauth_forms.SignupForm):
@@ -13,13 +24,8 @@ class SignupForm(allauth_forms.SignupForm):
 
     def __init__(self, *args, **kwargs):
         ret_val = super().__init__(*args, **kwargs)
-
-        # Override silly defaults (e.g. trailing colons, placeholder same as label)
-        self.fields["email"].label = "Email"
-        # Guidance on setup via, https://stackoverflow.com/a/23983577/1960509
-        self.fields["email"].widget.attrs["placeholder"] = "your@email.com"
-
-        self.fields["password1"].widget.attrs["placeholder"] = ""
+        monkeypatch_email_field(self.fields["email"])
+        monkeypatch_password_field(self.fields["password1"])
 
         self.fields["password2"].label = "Confirm Password"
         self.fields["password2"].widget.attrs["placeholder"] = ""
@@ -39,3 +45,11 @@ class SignupForm(allauth_forms.SignupForm):
             del self.cleaned_data["username"]
 
         return super().clean()
+
+
+class LoginForm(allauth_forms.LoginForm):
+    def __init__(self, *args, **kwargs):
+        ret_val = super().__init__(*args, **kwargs)
+        monkeypatch_email_field(self.fields["login"])
+        monkeypatch_password_field(self.fields["password"])
+        return ret_val
