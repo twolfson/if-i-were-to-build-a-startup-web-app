@@ -7,7 +7,11 @@ register = template.Library()
 def input(bound_field):
     # https://github.com/django/django/blob/4.2.1/django/forms/boundfield.py#L84-L106
     self = bound_field
-    self.field.widget
+    widget = None
+    attrs = None
+    only_initial = False
+
+    widget = widget or self.field.widget
     if self.field.localize:
         widget.is_localized = True
     attrs = attrs or {}
@@ -24,5 +28,5 @@ def input(bound_field):
         )
     else:
         value = self.value()
-    print
-    return {"widget": {**widget.data, "wrap_label": True}}
+    print(self.form.renderer)
+    return {"widget": dict(name=self.html_initial_name if only_initial else self.html_name, value=value, attrs=attrs)}

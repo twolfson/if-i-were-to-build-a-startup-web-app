@@ -5,7 +5,7 @@
 <input class="form-control"
        id="{{ widget.id_for_label }}"
        name="{{ widget.html_name }}"
-       type="username"
+       type="text"
        value="{{ widget.value | default_if_none:"" }}" />
 {% if widget.errors %}
     <div class="invalid-feedback d-block">
