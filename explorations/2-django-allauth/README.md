@@ -176,7 +176,7 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
 - DONE: Add email verification requirement test
 <br /><br />
 
-- TODO: Oh, if we have Site(1) in the DB always via migration, then update it via migration ;D
+- DONE: Oh, if we have Site(1) in the DB always via migration, then update it via migration ;D
     - Confirmed via fresh `./manage.py migrate` + `./manage.py dbshell`
 <br /><br />
 
