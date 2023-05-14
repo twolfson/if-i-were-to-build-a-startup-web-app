@@ -14,7 +14,7 @@ DEV: We tried so hard to extend the HTML from https://github.com/django/django/b
 and https://github.com/django/django/blob/4.2.1/django/forms/boundfield.py#L84-L106
 but the fields like `type` and `id` would not exist no matter how much we tried
 {% endcomment %}
-{% render_field widget class+="form-control" %}
+{% render_field widget class+="form-control" **attrs %}
 {% if widget.errors %}
     <div class="invalid-feedback d-block">{{ widget.errors | join:" " }}</div>
 {% endif %}

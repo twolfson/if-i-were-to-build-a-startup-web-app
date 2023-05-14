@@ -141,6 +141,13 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
+ACCOUNT_FORMS = {
+    'signup': 'app.forms.SignupForm',
+}
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_USER_DISPLAY = lambda user: user.get_full_name()  # noqa:E731
+ACCOUNT_USERNAME_REQUIRED = False  # Use email as username
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -163,3 +170,10 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Auth settings
+#   https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.decorators.login_required
+#   https://docs.djangoproject.com/en/4.2/ref/settings/#login-url
+# django.contrib.auth and django-allauth standardize on /accounts/login/ but I like it being lower level
+LOGIN_URL = "/login/"
