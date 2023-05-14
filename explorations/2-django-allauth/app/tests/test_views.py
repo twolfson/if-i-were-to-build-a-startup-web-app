@@ -65,7 +65,7 @@ class SignUpFormViewTestCase(TestCase):
                 "last_name": "User",
                 "password1": "abcxyz123",
                 "password2": "abcxyz123",
-            }
+            },
         )
 
         user = User.objects.get()  # Get only user in DB (errors out if not 1)

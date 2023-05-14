@@ -1,6 +1,7 @@
 from django.urls import path, re_path
 
 from allauth.account import views as allauth_views
+from app.views import auth as views
 
 urlpatterns = [
     # Only expose URLs we want to at the beginning, https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/urls.py  # noqa:E501
@@ -18,7 +19,8 @@ urlpatterns = [
     # path("email/", allauth_views.email, name="account_email"),
     path(
         "confirm-email/",
-        allauth_views.email_verification_sent,
+        # Custom override so we have `user.email` provided
+        views.email_verification_sent,
         name="account_email_verification_sent",
     ),
     re_path(
@@ -43,6 +45,5 @@ urlpatterns = [
     #     allauth_views.password_reset_from_key_done,
     #     name="account_reset_password_from_key_done",
     # ),
-
     # Add social via different means, https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/urls.py#L12-L25
 ]
