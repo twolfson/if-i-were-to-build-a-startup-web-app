@@ -53,6 +53,8 @@ TODO: Talk through runserver_plus + Werkzeug? + --group dev install pieces?
 TODO: Prettier was nice for HTML formatting, does Django have some equivalent?
     djlint has been found =D
 
+TODO: Talk about JWT and difficulty revoking sessions
+
 --
 
 TODO: Prob a restructure of efficiency of work is in order:

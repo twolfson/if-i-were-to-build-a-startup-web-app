@@ -45,3 +45,5 @@ With a newsroom model, I'd wager the data model is oriented around internal user
 Maybe someone else has further clarity though.
 
 I did get sign up and login working though, so that was nice.
+
+There was also circuitous learning around Django forms themselves for me (majority of past work has been [Django REST Framework](https://www.django-rest-framework.org/)) but I still don't have full resolution on the good and bad (especially on a trivial app).

@@ -7,7 +7,22 @@
         {% csrf_token %}
         <div class="mb-3">
             {# Based on https://github.com/django/django/blob/4.2.1/django/forms/templates/django/forms/widgets/input.html #}
-            {{ form.username }}
+            {# Form inputs via: https://github.com/django/django/blob/4.2.1/django/contrib/auth/forms.py#L199-L210 #}
+            <div class="mb-3">
+                <label class="form-label" for="{{ form.username.id_for_label }}">
+                    {{ form.username.label_tag }}
+                </label>
+                <input class="form-control"
+                       id="{{ form.username.id_for_label }}"
+                       name="{{ form.username.html_name }}"
+                       type="username"
+                       value="{{ form.username.value | default_if_none:"" }}" />
+                {% if form.username.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.username.errors | join:" " }}
+                    </div>
+                {% endif %}
+            </div>
             <div class="mb-3">
                 <label class="form-label" for="{{ form.password.id_for_label }}">
                     {{ form.password.label_tag }}
