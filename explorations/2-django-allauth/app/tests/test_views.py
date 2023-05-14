@@ -3,12 +3,17 @@ from django.contrib.auth.models import User
 
 
 class SignUpFormViewTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def tearDown(self):
+        del self.client
+
     def test_submit_valid(self):
         """Submitting sign up with valid data, creates a user as expected"""
-        client = Client()
         # DEV: It's tempting to load the page + fill in fields, but if this were an API, we wouldn't have that luxury
         #   It's okay to hardcode the fields here
-        response = client.post(
+        response = self.client.post(
             "/signup/",
             {
                 "email": "hello@world.com",
@@ -16,7 +21,6 @@ class SignUpFormViewTestCase(TestCase):
                 "last_name": "User",
                 "password1": "abcxyz123",
                 "password2": "abcxyz123",
-                # TODO: Test first and last name are required
             },
         )
 
@@ -32,7 +36,37 @@ class SignUpFormViewTestCase(TestCase):
 
     def test_submit_invalid(self):
         """Submitting sign up with invalid data, shows errors"""
-        pass
+        response = self.client.post(
+            "/signup/",
+            {
+                "password1": "password",
+                "password2": "password",
+            },
+        )
+        self.assertIn("This password is too common.", str(response.content))
 
-    # TODO: Test case coercion
-    # TODO: Enforce casing from Django Admin as well?
+    def test_submit_missing(self):
+        """Submitting sign up with missing data, shows errors"""
+        response = self.client.post(
+            "/signup/",
+            {},
+        )
+
+        self.assertFormError(response.context["form"], "first_name", "This field is required.")
+        self.assertFormError(response.context["form"], "last_name", "This field is required.")
+
+    def test_email_username_casing(self):
+        """Submitting sign up adjusts email and username casing"""
+        response = self.client.post(
+            "/signup/",
+            {
+                "email": "HELLO@WORLD.COM",
+                "first_name": "Test",
+                "last_name": "User",
+                "password1": "abcxyz123",
+                "password2": "abcxyz123",
+            }
+        )
+
+        # TODO: Test first and last name are required
+        # TODO: Enforce casing from Django Admin as well?
