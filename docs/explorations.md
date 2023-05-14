@@ -77,3 +77,4 @@ Recommendations:
 - Enumerate all template <> views or URL mappings upfront (same reason as forms)
 - Enumerate all URLs and selectively disable to get startup running ASAP
     - i.e. Prob don't need change password or email at the start, but sign up + login + verify email seem good to have
+- Set up `Site` and `SocialApp` configurations via migrations, to easily cover all environments

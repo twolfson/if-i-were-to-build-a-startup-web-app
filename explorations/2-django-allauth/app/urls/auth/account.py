@@ -15,7 +15,7 @@ urlpatterns = [
     # path("password/set/", allauth_account_views.password_set, name="account_set_password"),
     # path("inactive/", allauth_account_views.account_inactive, name="account_inactive"),
     # # E-mail
-    path("email/", allauth_account_views.email, name="account_email"),
+    # path("email/", allauth_account_views.email, name="account_email"),
     # path(
     #     "confirm-email/",
     #     allauth_account_views.email_verification_sent,

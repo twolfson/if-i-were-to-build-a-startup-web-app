@@ -207,5 +207,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Auth settings
 #   https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.decorators.login_required
 #   https://docs.djangoproject.com/en/4.2/ref/settings/#login-url
+#   https://django-allauth.readthedocs.io/en/latest/configuration.html
 # django.contrib.auth and django-allauth standardize on /accounts/login/ but I like it being lower level
 LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/"  # Doubles as ACCOUNT_SIGNUP_REDIRECT_URL

@@ -12,11 +12,15 @@
         We have sent an email to <b>{{ user.email }}</b> for
         verification. Please click on the link inside that e-mail.
     </p>
-    <p>
+    <p class="mb-0">
         If you do not see the verification e-mail in your main inbox, check your spam folder. Otherwise
         contact us if you do not receive it within a few minutes.
     </p>
+    {% comment %}
+    Disabled due to one-more one-off if wanted for an initial launch
+    Resending verification email buttons are on that page though
     <p>
         {% blocktrans %}<strong>Note:</strong> You can still <a href="{{ email_url }}">change your e-mail address</a>.{% endblocktrans %}
     </p>
+    {% endcomment %}
 {% endblock %}
