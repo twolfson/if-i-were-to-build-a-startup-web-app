@@ -127,5 +127,3 @@ Nice reassurance from DoorDash philosophy
 - TODO: Pull more notes from exploration recommendations
 
 - `$ cp -r . ~/github/if-i-were-to-build-a-startup-web-app/explorations/2-django-allauth` + manual relocation
-
-- TODO: Jinja2 HTML safe sanity check
