@@ -5,6 +5,8 @@ Initially I planned on writing it as a full setup, but as I built basic authenti
 
 This is now just an exploration for setting up Django with its `django.contrib.auth` forms
 
+We halted exploration after just login and signup due to negative experiences. More notes in [docs/explorations.md](../docs/explorations.md#1-django-contrib-auth-forms).
+
 ## Getting Started
 To set up this repo, install the following dependencies:
 
@@ -30,6 +32,17 @@ poetry install
 ```
 
 We can now see our server running locally at <http://127.0.0.1:8000/>
+
+## Screenshots (after styling)
+Sign up:
+![Index page](docs/screenshots/sign-up.png)
+
+Login:
+![Index page](docs/screenshots/login.png)
+
+Index:
+![Index page](docs/screenshots/index.png)
+
 
 ## Development
 ### Linting
@@ -132,3 +145,5 @@ xdg-open http://127.0.0.1:8000/
     - But now I'm wondering if I can build some utility to render this common input pattern without copy/pasting the 3 lines for an input every time
 
 - Keep on spining circles around myself, going to document things in a top-level file
+
+- Polished up the fields content to be "good enough" but may revisit that with the `django-allauth` exploration
