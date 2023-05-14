@@ -93,6 +93,8 @@ TODO: Talk through a11y tooling from React (Django not nearly as strong)
 
 TODO: How does React hydration work? And what does a setup look like without that?
 
+TODO: Explanation and comparison vs `pip` as well as `venv` and `virtualenvwrapper` coming soon!
+
 ## Introduction
 I'm a startup engineer. 3x first engineer, former Uber engineer, and have 12 years experience at these and more startups.
 

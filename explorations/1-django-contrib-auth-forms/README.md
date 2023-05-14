@@ -12,7 +12,6 @@ To set up this repo, install the following dependencies:
 
 - Python 3, https://wiki.python.org/moin/BeginnersGuide/Download
 - Poetry, https://python-poetry.org/docs/#installation
-  - Explanation and comparison vs `pip` as well as `venv` and `virtualenvwrapper` coming soon! (TODO)
 
 then run the following:
 
