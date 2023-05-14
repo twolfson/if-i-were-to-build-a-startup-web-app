@@ -117,3 +117,5 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 - Stuck briefly on mandatory email verification meaning there is no identified user
 
 - TODO: Talk about {% debug %}
+
+- TODO: Prob pause efforts on additional pages? Allauth seems to be friendly with incremental, so that's good
