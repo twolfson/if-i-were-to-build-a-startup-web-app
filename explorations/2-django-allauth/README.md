@@ -72,8 +72,32 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 - "Site" instruction wasn't required it seemed (didn't run, no errors) https://django-allauth.readthedocs.io/en/latest/installation.html#post-installation
     - "Add a Site for your domain, matching settings.SITE_ID (django.contrib.sites app)".
     - My concern with it would be ensuring all new clones get that set up (which is kind of non-trivial from a shell)
+    - Note: The "Site" piece came up via "example.com" in the DB
 - Docs seem lacking around customization but https://dev.to/gajesh/the-complete-django-allauth-guide-la3 mentioned in FAQ looks solid =D
 - It was good for some info, but finding I just need to read between the lines a little on all pages
 
 - Seeing "ConnectionRefusedError: [Errno 111] Connection refused" for email sending (as expected)
     - Fix should be to log to console + surface message to user somehow (maybe flash message support now that we have it 🤩), https://django-allauth.readthedocs.io/en/latest/advanced.html#sending-email
+
+- Getting django-allauth setup rather quickly, a lot less fighting =D Though still relatively involved =/
+- I do still feel this is equal to or better than other solutions I've seen. Very robust solution including email verification
+
+- Having trouble signing in after doing a password reset
+- Time to use `./manage.py createsuperuser` and Django Admin finally ✨
+- After logging in, I quickly see the email is unverified and easily verify it
+    - Sadly no button to resend an email verification =/
+
+- TODO: Extend messages to the rest of the application
+- TODO: Ensure the messages backend is session
+
+- Ahh, it wasn't verification issues =/
+- I was auto-signed in as my superuser into the app, how confusing x_x
+
+- Using Firefox Container tabs to split out the different cookies =D :galaxy_brain:
+
+- Hmm, we reset the password in Django Admin, and it's still broken?
+
+- Ohhh, the sign up utility was using the first name as the username -_-;;
+- TODO: Fix sign up form to use email as username
+- TODO: Add email == username enforcement/validation
+- TODO: Add email verification requirement test
