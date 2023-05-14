@@ -109,3 +109,5 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 - TODO: Talk about `--keepdb` and `entr`
 - Seeing response in tests in a whole new light =D
     - `context["form"].errors` seems so awesome =o
+
+- TODO: Talk about low-level hook for ENV=test
