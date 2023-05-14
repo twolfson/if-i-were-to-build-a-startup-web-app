@@ -143,9 +143,9 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-ACCOUNT_ADAPTER = 'app.adapter.AccountAdapter'
+ACCOUNT_ADAPTER = "app.adapter.AccountAdapter"
 ACCOUNT_FORMS = {
-    'signup': 'app.forms.SignupForm',
+    "signup": "app.forms.SignupForm",
 }
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"

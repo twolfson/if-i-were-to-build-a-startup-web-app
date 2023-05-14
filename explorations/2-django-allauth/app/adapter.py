@@ -9,6 +9,6 @@ class AccountAdapter(DefaultAccountAdapter):
     # DEV: Technically we can log to console, but let's treat ourselves with messages in the UI
     def send_mail(self, template_prefix, email, context):
         assert DEBUG is True, "Conditional for production case not handled"
-        message = f"Email \"sent\": \"{template_prefix}\" to \"{email}\" with {context}"
+        message = f'Email "sent": "{template_prefix}" to "{email}" with {context}'
         print(message)
         messages.info(context["request"], message)

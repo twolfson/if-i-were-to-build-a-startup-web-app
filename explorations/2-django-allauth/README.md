@@ -94,6 +94,7 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 - I was auto-signed in as my superuser into the app, how confusing x_x
 
 - Using Firefox Container tabs to split out the different cookies =D :galaxy_brain:
+    - TODO: Record a note about this in guidance
 
 - Hmm, we reset the password in Django Admin, and it's still broken?
 
