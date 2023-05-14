@@ -45,6 +45,23 @@ Logout:
 ![Logout screenshot](docs/screenshots/logout.png)
 
 ## Development
+### File structure
+We break from the Django recommendations and store almost everything for our application in `app/`.
+
+Why: Django app fragrmentation are from a time when Python modules weren't as robust, [StackOverflow discussion](https://stackoverflow.com/a/64463620/1960509) and [good sides/perspectives](https://stackoverflow.com/a/53735156/1960509).
+
+We believe that abstraction without a use case is busy work, and our `auth` setup is strictly a customization of `django-allauth` (not worth abstracting). Thus, we lean into Python modules instead.
+
+- `.venv/` - Virtual environment for our Python dependencies
+- `app/` - Container for almost everything in our app
+    - Normal Django folders you expect (e.g. `forms`, `migrations`, `templates`)
+- `docs/` - Container for documentation (strictly screenshots for now)
+- `project/` - Settings for project and web server utilities
+- `manage.py` - Wonderful CLI utility for Django. `./manage.py` all the things!
+- `poetry.*`, `pyproject.toml`, `setup.cfg` - Poetry, `flake8`, and more tooling configuration
+- `README.md` - Documentation you're reading
+- `test.sh` - Test runner utility (`ENV=test` is setup via `manage.py` modifications)
+
 ### Django Admin
 Django Admin can be set up via the following:
 
@@ -102,6 +119,8 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
     - You'll be able to find the debugging PIN in your console
 
 Additionally, we get `shell_plus` which gives us the same `--print-sql` support and automatic imports in an IPython shell
+
+Additionally, inside templates, a handy utility is `{% debug %}` which dumps all available context variables
 
 ## Setup Log
 - Copy from `1-django-contrib-auth-forms`
@@ -161,31 +180,30 @@ Additionally, we get `shell_plus` which gives us the same `--print-sql` support 
     - Confirmed via fresh `./manage.py migrate` + `./manage.py dbshell`
 <br /><br />
 
-- TODO: Talk about `--keepdb` and `entr`
 - Seeing response in tests in a whole new light =D
     - `context["form"].errors` seems so awesome =o
 <br /><br />
 
-- TODO: Talk about low-level hook for ENV=test
+- SKIP: Talk about low-level hook for ENV=test
 <br /><br />
 
 - DONE: @email_verified decorator
 <br /><br />
 
-- TODO: Any lingering TODOs in code?
+- DONE: Any lingering TODOs in code?
 <br /><br />
 
 - Continued to carrythrough styles from previous pages
 - Stuck briefly on mandatory email verification meaning there is no identified user
 <br /><br />
 
-- TODO: Talk about {% debug %}
+- DONE: Talk about {% debug %}
 <br /><br />
 
-- TODO: Prob pause efforts on additional pages? Allauth seems to be friendly with incremental, so that's good
+- DONE: Prob pause efforts on additional pages? Allauth seems to be friendly with incremental, so that's good
 <br /><br />
 
-- TODO: Talk through using same app for everything
+- DONE: Talk through using same app for everything
 https://stackoverflow.com/questions/64237/when-to-create-a-new-app-with-startapp-in-django
 Nice reassurance from DoorDash philosophy
 <br /><br />
