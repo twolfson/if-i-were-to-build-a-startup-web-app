@@ -31,6 +31,33 @@ poetry install
 
 We can now see our server running locally at <http://127.0.0.1:8000/>
 
+## Development
+### Linting
+We've configured development with the following:
+
+- `flake8`
+- `black`
+
+They should automatically be installed via Poetry and able to be used in your IDE or CLI
+
+### LiveReload
+We're using https://github.com/lepture/python-livereload for now. It's not required but it helps with page autorefresh on edit
+
+## Testing
+We provide a convenience wrapper for all our test utilities via:
+
+```bash
+./manage.py test
+```
+
+## Debugging
+We install `django-extensions` to get access to `runserver_plus`. This has the following amazing features:
+
+- Better tracebacks (Django's default screen feels lacking/less easy to follow)
+- `--print-sql` support to catch `n+1` errors (not an issue in this exploration)
+- Interactive debugging console in the middle of a request error, https://django-extensions.readthedocs.io/en/latest/runserver_plus.html
+    - You'll be able to find the debugging PIN in your console
+
 ## Setup Log
 ```bash
 # Create basic files
