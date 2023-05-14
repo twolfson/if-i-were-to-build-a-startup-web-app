@@ -7,14 +7,14 @@ We have an `input.html` instead of using the vanilla widgets provided by Django 
 {% load widget_tweaks %}
 
 <label class="form-label" for="{{ widget.id_for_label }}">
-    {{ widget.label_tag }}
+    {{ widget.label }}
 </label>
 {% comment %}
 DEV: We tried so hard to extend the HTML from https://github.com/django/django/blob/4.2.1/django/forms/templates/django/forms/widgets/input.html
 and https://github.com/django/django/blob/4.2.1/django/forms/boundfield.py#L84-L106
 but the fields like `type` and `id` would not exist no matter how much we tried
 {% endcomment %}
-{% render_field widget class+="form-control" **attrs %}
+{% render_field widget class+="form-control" %}
 {% if widget.errors %}
     <div class="invalid-feedback d-block">{{ widget.errors | join:" " }}</div>
 {% endif %}

@@ -7,7 +7,7 @@ We have an `input.html` instead of using the vanilla widgets provided by Django 
 {% load widget_tweaks %}
 
 <label class="form-label" for="{{ widget.id_for_label }}">
-    {{ widget.label_tag }}
+    {{ widget.label }}
 </label>
 {% comment %}
 DEV: We tried so hard to extend the HTML from https://github.com/django/django/blob/4.2.1/django/forms/templates/django/forms/widgets/input.html
