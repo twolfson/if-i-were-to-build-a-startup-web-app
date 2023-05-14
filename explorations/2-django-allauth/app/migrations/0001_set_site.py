@@ -14,8 +14,8 @@ def _backfill(apps, schema_editor, dry_run=True):
     site = Site.objects.get()
     assert site.id == 1
     assert ENV != PRODUCTION, "domain_name not configured properly for production"
-    site.domain_name = "twolfson.com"
-    site.display_name = "twolfson.com"
+    site.domain = "twolfson.com"
+    site.name = "twolfson.com"
     site.save()
 
 
