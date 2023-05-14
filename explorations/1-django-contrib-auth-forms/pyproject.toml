@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "django-authentication"
+name = "1-django-contrib-auth-forms"
 version = "1.0.0"
 description = ""
 authors = ["Todd Wolfson <todd@twolfson.com>"]

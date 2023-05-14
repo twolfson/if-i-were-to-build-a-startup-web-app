@@ -17,7 +17,7 @@ then run the following:
 ```bash
 # Open Poetry shell
 poetry shell
-# Should see "(django-authentication-py3.8)" now
+# Should see "(1-django-contrib-auth-forms-py3.8)" now
 
 # Install our dependencies
 poetry install
