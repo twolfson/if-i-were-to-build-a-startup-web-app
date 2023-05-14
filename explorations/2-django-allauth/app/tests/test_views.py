@@ -29,7 +29,9 @@ class SignUpFormViewTestCase(TestCase):
 
         self.assertEqual(User.objects.count(), 1)
         user = User.objects.get()  # Get only user in DB (errors out if not 1)
-        self.assertEqual(user.username, "hello@world.com")
+        # We're trusting django-allauth to select the `username`
+        #   It's useful to allow it to be different from email for social purposes
+        self.assertEqual(user.username, "test")  # This doubles as lowercase check
         self.assertEqual(user.email, "hello@world.com")
         self.assertEqual(user.first_name, "Test")
         self.assertEqual(user.last_name, "User")
@@ -54,20 +56,3 @@ class SignUpFormViewTestCase(TestCase):
 
         self.assertFormError(response.context["form"], "first_name", "This field is required.")
         self.assertFormError(response.context["form"], "last_name", "This field is required.")
-
-    def test_email_username_casing(self):
-        """Submitting sign up adjusts email and username casing"""
-        self.client.post(
-            "/signup/",
-            {
-                "email": "HELLO@WORLD.COM",
-                "first_name": "Test",
-                "last_name": "User",
-                "password1": "abcxyz123",
-                "password2": "abcxyz123",
-            },
-        )
-
-        user = User.objects.get()  # Get only user in DB (errors out if not 1)
-        self.assertEqual(user.username, "hello@world.com")
-        self.assertEqual(user.email, "hello@world.com")

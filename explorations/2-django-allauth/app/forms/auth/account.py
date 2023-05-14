@@ -55,20 +55,6 @@ class SignupForm(allauth_account_forms.SignupForm):
 
         return ret_val
 
-    # DEV: `signup` method timing is too late for adjustments like username, email, and name (double saving at best)
-    #   https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/forms.py#L437-L449
-    def clean(self):
-        # Ensure email and username are both the same, as well as lowercase
-        # `username` will be `first_name` if we don't override
-        if "email" in self.cleaned_data:
-            self.cleaned_data["email"] = self.cleaned_data["email"].lower()
-            self.cleaned_data["username"] = self.cleaned_data["email"]
-        elif "username" in self.cleaned_data:
-            # Clean our `username` if it's somehow around when `email` isn't
-            del self.cleaned_data["username"]
-
-        return super().clean()
-
 
 class AddEmailForm(allauth_account_forms.AddEmailForm):
     # Fields:
