@@ -47,3 +47,30 @@ Maybe someone else has further clarity though.
 I did get sign up and login working though, so that was nice.
 
 There was also circuitous learning around Django forms themselves for me (majority of past work has been [Django REST Framework](https://www.django-rest-framework.org/)) but I still don't have full resolution on the good and bad (especially on a trivial app).
+
+# 2. django-allauth
+Folder: [explorations/2-django-allauth](../explorations/2-django-allauth)
+
+This went **a lot** smoother than the `django.contrib.auth` counterpart. It wasn't an instant setup still, but it had reasonable docs, discoverable code, and never felt like I was fighting it (though it did confuse me/feel unintuitive sometimes).
+
+The good:
+- Lots of functionality which I can opt-in to using for the most part (e.g. prob can do just sign up + login, then add email verification, then add more)
+- Intuitive and legible code
+
+The bad:
+- Opinions are just different from mine around UX for a web app at times
+    - `"mandatory"` email confirmation page does not identify user until auth is completed
+- `urls`, `views`, and `templates` naming not consistent, so a lot of reading to find what `template` you need to update
+
+Notable:
+- When using `email` as login identifier and allowing `first_name` auth, `username` defaults to `first_name`
+    - I've realized that this is a feature, not a bug though. On social platforms, people identify in URLs through `username`, which is distinct from `email`
+
+Recommendations:
+- Copy all templates into your folder to start
+    - Why: Overrides are inevitable for content changes, both in terms of styling as well as text (copy)
+- Enumerate all form fields upfront in your own `forms.py`
+    - Why: The docs don't state this, so it's a bit of digging to get them. I've found digging is a context switch though
+- Enumerate all template <> views or URL mappings upfront (same reason as forms)
+- Enumerate all URLs and selectively disable to get startup running ASAP
+    - i.e. Prob don't need change password or email at the start, but sign up + login + verify email seem good to have
