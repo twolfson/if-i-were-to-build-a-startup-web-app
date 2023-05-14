@@ -27,26 +27,40 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Required by django-allauth, https://django-allauth.readthedocs.io/en/latest/installation.html
+SITE_ID = 1
+
 
 # Application definition
-
+# fmt:off
 INSTALLED_APPS = [
     "app.apps.AppConfig",
 
     # Default apps from Django
     "django.contrib.admin",
+    # Also required by django-allauth, https://django-allauth.readthedocs.io/en/latest/installation.html
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
+    # Also required by django-allauth, https://django-allauth.readthedocs.io/en/latest/installation.html
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    # Non-default but required by django-allauth, https://django-allauth.readthedocs.io/en/latest/installation.html
+    "django.contrib.sites",
+
+    # django-allauth configuration (we're excluding many many many social options)
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+
     # Used for render_field
-    'widget_tweaks',
+    "widget_tweaks",
 
     # Used for shell_plus and runserver_plus
     "django_extensions",
 ]
+# fmt:on
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -68,6 +82,7 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
+                # Already a default, but explicit callout from django-allauth too, https://django-allauth.readthedocs.io/en/latest/installation.html  # noqa:E501
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
@@ -119,6 +134,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    # As stated by django-allauth, needed to login by username in Django Admin, https://django-allauth.readthedocs.io/en/latest/installation.html # noqa:E501
+    "django.contrib.auth.backends.ModelBackend",
+    # Support django-allauth mechanisms, https://django-allauth.readthedocs.io/en/latest/installation.html  # noqa:E501
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -141,14 +163,3 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-
-# Auth settings
-#   https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.decorators.login_required
-#   https://docs.djangoproject.com/en/4.2/ref/settings/#login-url
-# DEV: Django will respect `next` despite specifying this (redirects to `?next=***` after login)
-# If we don't provide this and there's no `next`, then login will redirect /accounts/profile/
-LOGIN_REDIRECT_URL = "/"
-LOGIN_URL = "/login/"
-# If we don't provide this, then logout confirmation page is in Django Admin
-LOGOUT_REDIRECT_URL = "/"

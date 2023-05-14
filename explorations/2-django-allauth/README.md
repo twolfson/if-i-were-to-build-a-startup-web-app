@@ -60,4 +60,9 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 - Clean up `1-django-contrib-auth-forms` mentions + screenshots + setup log
     - `git grep -i "django-contrib"`
     - `git grep -i "django contrib"`
-    - `git grep -i "django.contrib"`
+- `git grep -i "django.contrib"`
+    - TODO: Update `urls.py`
+    - TODO: Update `views.py`
+    - TODO: Update `templates/registration/*`
+- `rm -r .venv` (to reset `poetry shell` naming)
+- Removed `LOGIN_*` and `LOGOUT_*` from `settings.py` to explore defaults
