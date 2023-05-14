@@ -68,6 +68,7 @@ The bad:
 Notable:
 - When using `email` as login identifier and allowing `first_name` auth, `username` defaults to `first_name`
     - I've realized that this is a feature, not a bug though. On social platforms, people identify in URLs through `username`, which is distinct from `email`
+- `@verified_email_required` does not redirect people to a different page, instead the prompt is just served from the same page
 
 Recommendations:
 - Copy all templates into your folder to start
