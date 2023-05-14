@@ -11,6 +11,7 @@ packages = []
 [tool.poetry.dependencies]
 python = "^3.8.1"
 Django = "^4.2"
+django-widget-tweaks = "^1.4.12"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
