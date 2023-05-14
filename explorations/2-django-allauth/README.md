@@ -107,3 +107,5 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
     - Confirmed via fresh `./manage.py migrate` + `./manage.py dbshell`
 
 - TODO: Talk about `--keepdb` and `entr`
+- Seeing response in tests in a whole new light =D
+    - `context["form"].errors` seems so awesome =o
