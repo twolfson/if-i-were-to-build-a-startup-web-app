@@ -21,7 +21,6 @@ DEVELOPMENT = "development"
 TEST = "test"
 PRODUCTION = "production"
 assert ENV in (DEVELOPMENT, TEST, PRODUCTION)
-print(ENV, os.environ)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -100,8 +99,7 @@ TEMPLATES = [
 ]
 # In Django 4.2, cached template loading is enabled in all environments (frustrating)
 #   This works around that, https://stackoverflow.com/a/75342761
-assert DEBUG is True, "Conditional for production case not handled"
-if DEBUG:
+if ENV == DEVELOPMENT:
     assert len(TEMPLATES) == 1, "Encountered unexpected TEMPLATES change"
     assert TEMPLATES[0]["APP_DIRS"], "Encountered unexpected `APP_DIRS` change"
     assert not hasattr(TEMPLATES[0]["OPTIONS"], "loaders"), "Encountered unexpected `loaders` setting"
@@ -159,10 +157,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_USER_DISPLAY = lambda user: user.get_full_name()  # noqa:E731
 ACCOUNT_USERNAME_REQUIRED = False  # Use email as username
-assert DEBUG is True, (
-    "We've set up ACCOUNT_LOGOUT_ON_GET for easier development and testing, "
-    "reconsider for your case https://django-allauth.readthedocs.io/en/latest/views.html#logout-account-logout"
-)
+# Consider logout via a POST form to be YAGNI experience, esp for a small site
 ACCOUNT_LOGOUT_ON_GET = True
 
 # Email sending
