@@ -1,9 +1,9 @@
-# Django Authentication exploration
+# Django Contrib Auth Forms exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
 Initially I planned on writing it as a full setup, but as I built basic authentication in Django, I realized I'd never fully done that end-to-end with their built-ins (previous setup had legacy).
 
-This is now just an exploration for all pages with basic authentication
+This is now just an exploration for setting up Django with its `django.contrib.auth` forms
 
 ## Getting Started
 To set up this repo, install the following dependencies:
@@ -103,3 +103,5 @@ xdg-open http://127.0.0.1:8000/
     - A lot of articles say to add CSS to the widget, https://stackoverflow.com/a/5827669/1960509, which imo distributes the CSS around too much + doesn't handle scenarios like a little extra margin
     - Better options are an `addclass` filter, https://stackoverflow.com/a/18962676/1960509
     - But now I'm wondering if I can build some utility to render this common input pattern without copy/pasting the 3 lines for an input every time
+
+- Keep on spining circles around myself, going to document things in a top-level file
