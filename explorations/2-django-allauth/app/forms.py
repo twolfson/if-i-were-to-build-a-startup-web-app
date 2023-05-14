@@ -26,16 +26,11 @@ class SignupForm(allauth_forms.SignupForm):
 
         return ret_val
 
-    def signup(self, request, user):
+    # DEV: `signup` method timing is too late for adjustments like username, email, and name (double saving at best)
+    #   https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/forms.py#L437-L449
+    def clean(self):
         # Ensure email and username are both the same, as well as lowercase
         # `username` will be `first_name` if we don't override
-        # TODO: This override isn't working as expected, let's go TDD
-        user.email = self.cleaned_data["email"].lower()
-        user.username = self.cleaned_data["email"].lower()
-        # TODO: How does login with with casing change
-
-        # Add our other data
-        user.first_name = self.cleaned_data["first_name"]
-        user.last_name = self.cleaned_data["last_name"]
-        user.save()
-        return user
+        self.cleaned_data["email"] = self.cleaned_data["email"].lower()
+        self.cleaned_data["username"] = self.cleaned_data["email"]
+        return super().clean()
