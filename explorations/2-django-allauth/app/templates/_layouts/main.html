@@ -1,31 +1,14 @@
 {% extends "_layouts/base.html" %}
-{% load helpers %}
+{% load messages %}
 {% block outer_content %}
     <div class="container pt-2">
         {% if messages %}
             {# Test via /message-test/ endpoint #}
             {% for message in messages %}
                 <div class="row">
-                    <div class="card mb-3 col-6 {% map '{"foo":"bar"}' message.level %}">
+                    <div class="card mb-3 col-6 {% message_level_to_card_class message.level %}">
                         <div class="card-body">
-                        {% comment %}
-                            {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
-                                <div class="bg-info">{{ message }}</div>
-                            {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                                <div class="bg-success">{{ message }}</div>
-                            {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
-                                <div class="text-danger">{{ message }}</div>
-                            {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                                <div class="text-danger">{{ message }}</div>
-                            {% else %}
-                        {% endcomment %}
-                                {# DEBUG or anything else #}
-                                <div>
-                                    {{ message }}
-                                </div>
-                        {% comment %}
-                            {% endif %}
-                        {% endcomment %}
+                            {{ message }}
                         </div>
                     </div>
                 </div>

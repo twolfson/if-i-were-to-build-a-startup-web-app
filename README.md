@@ -109,6 +109,8 @@ TODO: Explanation and comparison vs `pip` as well as `venv` and `virtualenvwrapp
 
 TODO: Library comparison for allauth and other options I guess?
 
+TODO: Talk about JSX strengths at expressiveness (e.g. `classnames` with mappings and ternaries), though I think Pug has something similar?
+
 ## Introduction
 I'm a startup engineer. 3x first engineer, former Uber engineer, and have 12 years experience at these and more startups.
 
