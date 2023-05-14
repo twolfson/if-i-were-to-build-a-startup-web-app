@@ -92,6 +92,7 @@ TEMPLATES = [
 ]
 # In Django 4.2, cached template loading is enabled in all environments (frustrating)
 #   This works around that, https://stackoverflow.com/a/75342761
+assert DEBUG is True, "Conditional for production case not handled"
 if DEBUG:
     assert len(TEMPLATES) == 1, "Encountered unexpected TEMPLATES change"
     assert TEMPLATES[0]["APP_DIRS"], "Encountered unexpected `APP_DIRS` change"
@@ -134,6 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Authentication
 AUTHENTICATION_BACKENDS = [
     # As stated by django-allauth, needed to login by username in Django Admin, https://django-allauth.readthedocs.io/en/latest/installation.html # noqa:E501
     "django.contrib.auth.backends.ModelBackend",
@@ -141,6 +143,7 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
+ACCOUNT_ADAPTER = 'app.adapter.AccountAdapter'
 ACCOUNT_FORMS = {
     'signup': 'app.forms.SignupForm',
 }
@@ -148,6 +151,11 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_USER_DISPLAY = lambda user: user.get_full_name()  # noqa:E731
 ACCOUNT_USERNAME_REQUIRED = False  # Use email as username
+
+# Email sending
+# DEV: Intentionally invalid email backend to encourage using WYSIWYG email systems instead
+#   If you really want to send, see https://docs.djangoproject.com/en/4.2/topics/email/
+EMAIL_BACKEND = "invalid-email-backend"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
