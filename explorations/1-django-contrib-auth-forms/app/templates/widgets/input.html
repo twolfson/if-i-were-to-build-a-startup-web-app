@@ -3,12 +3,10 @@
     {{ widget.label_tag }}
 </label>
 <input class="form-control"
-       id="{{ widget.id_for_label }}"
+       type="{{ widget.type }}"
        name="{{ widget.html_name }}"
-       type="text"
-       value="{{ widget.value | default_if_none:"" }}" />
+       {% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}
+       {% include "widgets/attrs.html" %} />
 {% if widget.errors %}
-    <div class="invalid-feedback d-block">
-        {{ widget.errors | join:" " }}
-    </div>
+    <div class="invalid-feedback d-block">{{ widget.errors | join:" " }}</div>
 {% endif %}

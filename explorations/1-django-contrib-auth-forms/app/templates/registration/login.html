@@ -10,8 +10,8 @@
         <div class="mb-3">
             {# Form inputs via: https://github.com/django/django/blob/4.2.1/django/contrib/auth/forms.py#L199-L210 #}
             <div class="mb-3">
-                {# {% input form.username %} #}
-                {{ form.username.as_widget(TextArea) }}
+                {# Expecting: <input type="text" name="username" value="test2" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username"> #}
+                {% input form.username %}
             </div>
             <div class="mb-3">
                 <label class="form-label" for="{{ form.password.id_for_label }}">
