@@ -118,22 +118,28 @@ xdg-open http://127.0.0.1:8000/
 - We def need to reconsider things around `myapp` since the naming isn't great for URLs =/
 - Read through all of intro, never touches on root pages nor auth
 - Finding https://docs.djangoproject.com/en/4.2/topics/auth/
+<br /><br />
 
 - Setting up login page + redirects
+<br /><br />
 
 - Realizing no sign up page is built in
 - Finding https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html
+<br /><br />
 
 - Stopped note taking, getting too much in the way. Commits and code comments should capture history well from here
+<br /><br />
 
 - Performed rename of project
     - `mysite` -> `project`
     - `myapp` -> `app`
     - `git grep -i mysite`
     - `git grep -i myapp`
+<br /><br />
 
 - Introducing Bootstrap to take this more seriously
 - TIL MDN also has their own Django tutorial, https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django
+<br /><br />
 
 - Learning about Django forms
     - They seem to be quite opinionated and not friendly to custom designs/setups
@@ -142,7 +148,9 @@ xdg-open http://127.0.0.1:8000/
     - A lot of articles say to add CSS to the widget, https://stackoverflow.com/a/5827669/1960509, which imo distributes the CSS around too much + doesn't handle scenarios like a little extra margin
     - Better options are an `addclass` filter, https://stackoverflow.com/a/18962676/1960509
     - But now I'm wondering if I can build some utility to render this common input pattern without copy/pasting the 3 lines for an input every time
+<br /><br />
 
 - Keep on spining circles around myself, going to document things in a top-level file
+<br /><br />
 
 - Polished up the fields content to be "good enough" but may revisit that with the `django-allauth` exploration
