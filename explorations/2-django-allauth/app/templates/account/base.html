@@ -22,6 +22,8 @@
     </div>
     {% endif %}
 
+    {% comment %}
+    Disabled so we can skip auth errors if URL is disabled
     <div>
       <strong>{% trans "Menu:" %}</strong>
       <ul>
@@ -34,6 +36,7 @@
         {% endif %}
       </ul>
     </div>
+    {% endcomment %}
     {% block content %}
     {% endblock %}
     {% endblock %}

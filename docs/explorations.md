@@ -78,3 +78,5 @@ Recommendations:
 - Enumerate all URLs and selectively disable to get startup running ASAP
     - i.e. Prob don't need change password or email at the start, but sign up + login + verify email seem good to have
 - Set up `Site` and `SocialApp` configurations via migrations, to easily cover all environments
+- `ACCOUNT_EMAIL_VERIFICATION = "mandatory"` requires updating 5 pages (i.e. confirmation prompt + reset password flow)
+    - Consider using `"optional"` with convention around `@verified_email_required` instead
