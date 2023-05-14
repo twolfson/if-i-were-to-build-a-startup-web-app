@@ -74,3 +74,6 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
     - My concern with it would be ensuring all new clones get that set up (which is kind of non-trivial from a shell)
 - Docs seem lacking around customization but https://dev.to/gajesh/the-complete-django-allauth-guide-la3 mentioned in FAQ looks solid =D
 - It was good for some info, but finding I just need to read between the lines a little on all pages
+
+- Seeing "ConnectionRefusedError: [Errno 111] Connection refused" for email sending (as expected)
+    - Fix should be to log to console + surface message to user somehow (maybe flash message support now that we have it 🤩), https://django-allauth.readthedocs.io/en/latest/advanced.html#sending-email
