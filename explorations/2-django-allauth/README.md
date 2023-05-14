@@ -109,7 +109,7 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 
 - TODO: Talk about low-level hook for ENV=test
 
-- TODO: @email_verified decorator
+- DONE: @email_verified decorator
 
 - TOD: Any lingering TODOs in code?
 

@@ -165,6 +165,8 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 # DEV: ACCOUNT_EMAIL_VERIFICATION=mandatory does not identify to verify, so instead use convention to enforce
 #   Additionally, using "mandatory" opens a large cascade of pages to update - stick to "optional" if want to ship fast
+# DEV: If you switch back to "mandatory", reconsider re-enabling `messages/email_confirmed.txt`
+#   It was double sending + redundant to "Confirm Email Address" page
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 ACCOUNT_USER_DISPLAY = lambda user: user.get_full_name()  # noqa:E731
 ACCOUNT_USERNAME_REQUIRED = False  # Use email as username
