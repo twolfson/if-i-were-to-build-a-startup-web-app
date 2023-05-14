@@ -11,4 +11,5 @@ def index(request):
 @verified_email_required
 def message_test(request):
     messages.info(request, "Hello World!")
+    messages.success(request, "Hello Again!")
     return render(request, "index.html")

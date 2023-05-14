@@ -3,28 +3,32 @@
     <div class="container pt-2">
         {% if messages %}
             {# Test via /message-test/ endpoint #}
-            <div class="row">
-                <div class="card mb-3 col-6">
-                    <div class="card-body">
-                        {% for message in messages %}
+            {% for message in messages %}
+                <div class="row">
+                    <div class="card mb-3 col-6">
+                        <div class="card-body">
+                        {% comment %}
                             {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
-                                <div>{{ message }}</div>
+                                <div class="bg-info">{{ message }}</div>
                             {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                                <div class="text-success">{{ message }}</div>
+                                <div class="bg-success">{{ message }}</div>
                             {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
                                 <div class="text-danger">{{ message }}</div>
                             {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
                                 <div class="text-danger">{{ message }}</div>
                             {% else %}
+                        {% endcomment %}
                                 {# DEBUG or anything else #}
                                 <div>
                                     {{ message }}
-                                </p>
+                                </div>
+                        {% comment %}
                             {% endif %}
-                        {% endfor %}
+                        {% endcomment %}
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         {% endif %}
         {% block content %}{% endblock %}
     </div>
