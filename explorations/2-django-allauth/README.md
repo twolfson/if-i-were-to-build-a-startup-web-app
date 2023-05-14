@@ -112,3 +112,6 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 - TODO: @email_verified decorator
 
 - TOD: Any lingering TODOs in code?
+
+- Continued to carrythrough styles from previous pages
+- Stuck briefly on mandatory email verification meaning there is no identified user
