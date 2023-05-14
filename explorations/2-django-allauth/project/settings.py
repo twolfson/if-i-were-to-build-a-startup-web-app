@@ -152,8 +152,23 @@ AUTHENTICATION_BACKENDS = [
 # Everything ACCOUNT_ is django-allauth, https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_ADAPTER = "app.adapter.AccountAdapter"
 ACCOUNT_FORMS = {
-    "signup": "app.forms.SignupForm",
-    "login": "app.forms.LoginForm",
+    # Override all forms for easy extension in the future
+    "signup": "app.forms.auth.SignupForm",
+    "login": "app.forms.auth.LoginForm",
+    "add_email": "app.forms.auth.AddEmailForm",
+    "change_password": "app.forms.auth.ChangePasswordForm",
+    # "disconnect": "allauth.socialaccount.forms.DisconnectForm",
+    "login": "app.forms.auth.LoginForm",
+    "reset_password": "app.forms.auth.ResetPasswordForm",
+    "reset_password_from_key": "app.forms.auth.ResetPasswordKeyForm",
+    "set_password": "app.forms.auth.SetPasswordForm",
+    "signup": "app.forms.auth.SignupForm",
+    # It's unclear how "signup" override/key sharing works
+    # They are the same key though:
+    #   https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/views.py#L236-L237
+    #   https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/socialaccount/views.py#L32-L33
+    # Ahh, possibly SOCIALACCOUNT_FORMS, not ACCOUNT_FORMS, https://github.com/pennersr/django-allauth/blob/0.54.0/docs/forms.rst#socialaccount_forms  # noqa:E501
+    # "signup": "allauth.socialaccount.auth.SignupForm",
 }
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True

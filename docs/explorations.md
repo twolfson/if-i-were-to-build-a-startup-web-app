@@ -54,12 +54,15 @@ Folder: [explorations/2-django-allauth](../explorations/2-django-allauth)
 This went **a lot** smoother than the `django.contrib.auth` counterpart. It wasn't an instant setup still, but it had reasonable docs, discoverable code, and never felt like I was fighting it (though it did confuse me/feel unintuitive sometimes).
 
 The good:
-- Lots of functionality which I can opt-in to using for the most part (e.g. prob can do just sign up + login, then add email verification, then add more)
+- Lots of functionality which I can opt-in to using for the most part
+    - e.g. Can do just sign up + login, then add email verification, then add more
 - Intuitive and legible code
 
 The bad:
 - Opinions are just different from mine around UX for a web app at times
-    - `"mandatory"` email confirmation page does not identify user until auth is completed
+    - `"mandatory"` email confirmation page does not identify user until verification is completed (so can't tell user the email to go check)
+        - This is prob easily updated through a `views.py` override
+    - The confirm email page doesn't show `messages` from what I can tell
 - `urls`, `views`, and `templates` naming not consistent, so a lot of reading to find what `template` you need to update
 
 Notable:
