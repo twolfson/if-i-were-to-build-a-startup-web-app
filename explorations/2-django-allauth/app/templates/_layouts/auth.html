@@ -2,7 +2,6 @@
 
 {% load i18n %}
 
-{% block messages %}
 {% if messages %}
     <div>
       <strong>{% trans "Messages:" %}</strong>
@@ -13,7 +12,6 @@
       </ul>
     </div>
 {% endif %}
-{% endblock %}
 
 {% block content %}
     <div class="bg-light vh-100">

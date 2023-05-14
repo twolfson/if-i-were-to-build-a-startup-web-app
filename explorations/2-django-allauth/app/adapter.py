@@ -1,5 +1,4 @@
 from allauth.account.adapter import DefaultAccountAdapter
-from django.contrib import messages
 from django.contrib.sites.shortcuts import get_current_site
 
 from project.settings import ENV, DEVELOPMENT, TEST
@@ -29,9 +28,9 @@ class AccountAdapter(DefaultAccountAdapter):
     # DEV: Technically we can log to console, but let's treat ourselves with messages in the UI
     def send_mail(self, template_prefix, email, context):
         if ENV == DEVELOPMENT:
-            message = f'Email "sent": "{template_prefix}" to "{email}" with {context}'
-            print(message)
-            messages.info(context["request"], message)
+            # DEV: We had a `messages.info` setup as well, but those don't render for verified_email_required
+            #   Next best idea would be global context with ENV, but also not easily done
+            print(f'Email "sent": "{template_prefix}" to "{email}" with {context}')
         elif ENV == TEST:
             pass
         else:

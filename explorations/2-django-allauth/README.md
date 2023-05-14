@@ -115,3 +115,5 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 
 - Continued to carrythrough styles from previous pages
 - Stuck briefly on mandatory email verification meaning there is no identified user
+
+- TODO: Talk about {% debug %}

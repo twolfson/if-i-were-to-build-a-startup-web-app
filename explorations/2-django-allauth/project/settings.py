@@ -157,7 +157,8 @@ ACCOUNT_FORMS = {
 }
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+# DEV: ACCOUNT_EMAIL_VERIFICATION=mandatory does not identify to verify, so instead use convention to enforce
+ACCOUNT_EMAIL_VERIFICATION = "optional"
 ACCOUNT_USER_DISPLAY = lambda user: user.get_full_name()  # noqa:E731
 ACCOUNT_USERNAME_REQUIRED = False  # Use email as username
 # Consider logout via a POST form to be YAGNI experience, esp for a small site
