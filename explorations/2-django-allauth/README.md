@@ -102,3 +102,6 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 - TODO: Fix sign up form to use email as username
 - TODO: Add email == username enforcement/validation
 - TODO: Add email verification requirement test
+
+- TODO: Oh, if we have Site(1) in the DB always via migration, then update it via migration ;D
+    - Confirmed via fresh `./manage.py migrate` + `./manage.py dbshell`
