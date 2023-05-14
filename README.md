@@ -84,6 +84,15 @@ TODO: Widget for email suggestion
 
 TODO: Bootstrap lacking space-y-* utilities, so handy
 
+TODO: Exploration for Tailwind
+TODO: Exploration for React + AJAX
+
+TODO: Real world model example: Create a welcome notification, where user presses X to dismiss (i.e. should have loading state or eager dismiss + restore on fail)
+
+TODO: Talk through a11y tooling from React (Django not nearly as strong)
+
+TODO: How does React hydration work? And what does a setup look like without that?
+
 ## Introduction
 I'm a startup engineer. 3x first engineer, former Uber engineer, and have 12 years experience at these and more startups.
 
@@ -126,7 +135,7 @@ Between [Stage 0] and building, I recommend continuing to do [User Research][] a
 
 UIs are hard to get right the first time, and any UI changes can cascade into larger userflow and multi-page code + schema changes.
 
-Assuming you've derisked though, let's get into tactical decisions:
+Assuming I've derisked, and confirmed a web app is the right thing to build (vs a mobile app or no app at all), here are the tactical decisions I'd make:
 
 1. [Web Framework: Django](docs/web-framework.md)
 2. [Database: PostgreSQL](docs/database.md)
