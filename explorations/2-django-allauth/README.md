@@ -119,3 +119,7 @@ We install `django-extensions` to get access to `runserver_plus`. This has the f
 - TODO: Talk about {% debug %}
 
 - TODO: Prob pause efforts on additional pages? Allauth seems to be friendly with incremental, so that's good
+
+- TODO: Talk through using same app for everything
+https://stackoverflow.com/questions/64237/when-to-create-a-new-app-with-startapp-in-django
+Nice reassurance from DoorDash philosophy

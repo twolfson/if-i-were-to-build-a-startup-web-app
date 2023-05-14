@@ -4,7 +4,7 @@ Through the process of writing out this repository, we had times where we wanted
 This is a high level summary of what we explored and what we learned
 
 ## 1. django-contrib-auth-forms
-Folder: [explorations/django-contrib-auth-forms](../explorations/django-contrib-auth-forms)
+Folder: [explorations/1-django-contrib-auth-forms](../explorations/1-django-contrib-auth-forms)
 
 As mentioned in [Web Framework Analysis](web-framework.md), I believed that Django had strong out of the box auth support. I'm learning that's technically true, with a big asterisk.
 

@@ -1,5 +1,9 @@
 # If I Were to Build a Startup Web App
 - TODO: Snazzy graphic
+    - Maybe some kind of scaffolding or blueprint styling on 2D "Web App" text?
+    - Push this further through Graphic Design. Communicate concept: "construction" ("architecture" is close, but too managerial/removed) with totality of programming
+        - Start with a mind-map, so many possibilities
+        - More ideas that are less good: 3D carved out of stone, 3D built out of wood - both have too much realism, pour concrete in 2D black & white style (not relatable to programming where modifiable after set/built)
 - TODO: See TODOs
 
 Choices, explanations, and documentation around if I were to build a startup web app
@@ -60,6 +64,14 @@ https://stackoverflow.com/a/40506337/1960509
 https://docs.quantifiedcode.com/python-anti-patterns/django/1.8/migration/template_string_if_invalid_deprecated.html
 https://djangosnippets.org/snippets/646/
 https://stackoverflow.com/a/15312316/1960509
+
+TODO: Django forms comparison notes
+Crispy forms just an HTML DSL
+Not saving any time using it
+https://django-crispy-forms.readthedocs.io/en/latest/layouts.html
+
+https://www.reddit.com/r/django/comments/20dwgr/do_people_use_django_forms/
+Guidance is more or less as expected
 
 --
 
