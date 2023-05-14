@@ -32,7 +32,6 @@ class SignupForm(allauth_forms.SignupForm):
         # Ensure email and username are both the same, as well as lowercase
         # `username` will be `first_name` if we don't override
         if "email" in self.cleaned_data:
-            # TODO: Add this back with .lower()
             self.cleaned_data["email"] = self.cleaned_data["email"].lower()
             self.cleaned_data["username"] = self.cleaned_data["email"]
         elif "username" in self.cleaned_data:

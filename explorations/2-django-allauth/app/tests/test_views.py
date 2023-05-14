@@ -71,4 +71,3 @@ class SignUpFormViewTestCase(TestCase):
         user = User.objects.get()  # Get only user in DB (errors out if not 1)
         self.assertEqual(user.username, "hello@world.com")
         self.assertEqual(user.email, "hello@world.com")
-        # TODO: Enforce casing from Django Admin as well?
