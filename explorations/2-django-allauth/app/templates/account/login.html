@@ -8,7 +8,7 @@
 
 {% block content %}
     <h1 class="mb-3">Login</h1>
-    {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
+    {% if form.non_field_errors %}<p class="text-danger">{{ form.non_field_errors | join:" " }}</p>{% endif %}
     {# Fields enumerated here: https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/forms.py#L90 #}
     <form action="{% url 'account_login' %}" method="post" class="mb-4">
         {% csrf_token %}

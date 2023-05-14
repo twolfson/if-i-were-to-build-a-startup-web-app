@@ -2,22 +2,19 @@
 
 {% load i18n %}
 
-{% if messages %}
-    <div>
-      <strong>{% trans "Messages:" %}</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-{% endif %}
 
 {% block outer_content %}
     <div class="bg-light vh-100">
         <div class="container pt-5">
             <div class="p-3 w-100 mx-auto card" style="max-width: 480px">
                 <div class="card-body p-0">
+                    {% if messages %}
+                        <div>
+                            {% for message in messages %}
+                                {% debug %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                     {% block content %}{% endblock %}
                 </div>
             </div>
