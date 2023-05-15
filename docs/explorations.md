@@ -210,3 +210,4 @@ Okay, so stepping back, I think this uncovers some pretty core truths:
     - For CRUDL, use a utility to manage eager adds and what not
     - On **any** modification, invalidate dashboards
     - Set data with response from API (or invalidate it immediately)
+    - Do not deal with JWT and tokens if you can, lean into sessions already handled from initial page load. These will also get free `Set-Cookie` header responses to always stay fresh
