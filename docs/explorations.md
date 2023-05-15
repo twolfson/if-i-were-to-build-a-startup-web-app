@@ -81,3 +81,38 @@ Recommendations:
 - Set up `Site` and `SocialApp` configurations via migrations, to easily cover all environments
 - `ACCOUNT_EMAIL_VERIFICATION = "mandatory"` requires updating 5 pages (i.e. confirmation prompt + reset password flow)
     - Consider using `"optional"` with convention around `@verified_email_required` instead
+
+# 2.1. What to Explore Next
+We've spent **a lot** of time learning with these past 2 explorations, and am nervous about spinning my wheels further on explorations that don't necessarily provide large insights.
+
+Though technically, the last 2 were quite invaluable -- just it took a lot of polish in the end to feel like I understood them more/less.
+
+And I'd be somewhat nervous to push a less experienced person in that direction since the path to success feels somewhat narrow =/ (e.g. must be comfortable reading library source code to know how to extend it).
+
+Still, I think a large goal of this repo is to derisk what a good architecture can be, while I still have Django + React experience in my working context.
+
+So let's enumerate:
+
+**Things to explore:**
+
+- Using Django forms in a robust manner (e.g. onboarding flow, so it's close to CRUD but not quite)
+    - Why: Helps us understand approachability of Django forms for myself and implied future eng
+
+**Things to not explore:**
+
+- Django with sessions only, with full page render + routing handled by React
+    - Using django-allauth for auth backends
+    - Using API endpoints or DRF for everything else
+    - Why not explore: We've worked with a comparable setup so are not too concerned about unknowns
+    - Pros:
+        - Full expression through React
+        - Using same session as Django Admin, allowing tooling like "Login As"
+    - Cons:
+        - React is rebuilding UI for anything we were "batteries included" on (e.g. auth -- we did rewrite template but that's better than building request handling + routing)
+        - Writing out API serializers + React queries + React query state handling for every data model
+            - i.e. Every new model would require:
+            - Django Model + Django View + **DRF Serializer + React Query (incl caching logic) + React Query State handling** + React UI
+                - Bold is what I consider excess
+            - vs
+            - Django Model + Django View + Django Form + Django Template + Interactive UI
+                - Technically Django Form is 1:1 to DRF Serializer here, but if we're just rendering content, then it wouldn't be done
