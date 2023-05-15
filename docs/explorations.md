@@ -93,19 +93,18 @@ Still, I think a large goal of this repo is to derisk what a good architecture c
 
 So let's enumerate:
 
-**Things to explore:**
-
 - Using Django forms in a robust manner (e.g. onboarding flow, so it's close to CRUD but not quite)
+    - Decision: Should explore
     - Why: Helps us understand approachability of Django forms for myself and implied future eng
-
-**Things to not explore:**
-
 - Django with sessions only, with full page render + routing handled by React
     - Using django-allauth for auth backends
     - Using API endpoints or DRF for everything else
-    - Why not explore: We've worked with a comparable setup so are not too concerned about unknowns
+    - Decision: Should not explore
+    - Why: We've worked with a comparable setup so are not too concerned about unknowns
     - Pros:
         - Full expression through React
+        - No context switching once in UI (e.g. HTML + CSS building vs CSS + JS building)
+        - Declarative UI so no UI management (albeit widgets are simple)
         - Using same session as Django Admin, allowing tooling like "Login As"
     - Cons:
         - React is rebuilding UI for anything we were "batteries included" on (e.g. auth -- we did rewrite template but that's better than building request handling + routing)
@@ -116,3 +115,48 @@ So let's enumerate:
             - vs
             - Django Model + Django View + Django Form + Django Template + Interactive UI
                 - Technically Django Form is 1:1 to DRF Serializer here, but if we're just rendering content, then it wouldn't be done
+- React hydration with Django
+    - We anticipate this being kind of gnarly but are curious what it looks like
+    - Decision: On the fence
+    - Why: It could be really clean and simple, but we doubt it
+    - Mini-exploration:
+        - Yea, no -- this seems to be exclusively for SSR where content should be 1:1
+        - https://react.dev/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html (https://archive.ph/lhmMm)
+- Django somehow with React SSR
+    - Mini-exploration:
+        - This artcile captures an idea well, https://divyanshsingh2098.medium.com/server-side-rendering-with-react-node-js-and-django-944bafdf7e80 (https://archive.ph/WGHnH)
+    - Unfortunately it sounds awful on paper
+    - i.e. It has the same exact drawbacks as React doing full-page render
+    - React would still need to make DB queries (either directly 🤮 or through Django), or Django needs to guess what React needs
+    - Decision: No
+
+Okay, so stepping back, I think this uncovers some pretty core truths:
+
+- The development experience on batteries included pages is quite different from it on freely built ones
+    - i.e. If I'm building an onboarding flow, I'm working from scratch and need to content with Django Forms and Django Templates
+    - whereas with the batteries included ones, I did too -- but it wasn't writing it from scratch
+- In our experience, Bootstrap and imperatively built widgets do work well for their purpose, but it's kind of an architecture exercise every time you built one
+    - whereas with React, it was always sane due to its declarative nature
+    - Scenario: If I want to build a map selection page with a dynamically updating acreage count and a confirmation modal that changes based on DB state,
+    - then I'd be writing a lot of imperative logic in jQuery (a la Bootstrap) or an imperative JS system
+    - whereas React is quite intuitive and sane due to its declarative nature
+- The only big pain point with React would be managing DB query state
+    - i.e. Loading + handling submission errors is fine, and prob even better in React due to having context for things like modals
+- So maybe there's a solution here where:
+    - Use a common CSS framework for both UIs
+    - If the page is "batteries included", use Django's functionality as needed
+    - Otherwise, load it as a React page - including 404s
+    - Con: We still need to figure out how to avoid DB cache handling because models to interact given a large enough app size
+- OR:
+    - Keep the UI simple from an interactivity piece (difficult to predict)
+    - and build in Django templates + widget oriented UI
+
+- Reading some articles to see if cache handling is avoidable
+- Could disable caching through `cacheTime: 0`, https://github.com/TanStack/query/issues/99 (https://archive.ph/vYAWH)
+- I'm not sure they're making the point well, but it does seem like we could just use no key for queries and sidestep caching, https://christopherkade.com/posts/react-query (https://archive.ph/Uzglm)
+- Interesting insight in some places using a `setState` to track queries, which is prob just React Query with no key and more work, https://alto.com/blog/post/react-query-for-managing-server-state (https://archive.ph/KzQ6p)
+
+- So maybe that's an exercise worth exploring (though these things tend to break only when app is at large scale and you're developing against it regularly)
+
+- That being said, I'm also recalling a large painpoint of building out lots of serializer nesting, just for serving an API response
+- Whereas in theory a Django view and Django template would be accessing exactly what they need (and no concerns of leaking too much data)
