@@ -160,3 +160,47 @@ Okay, so stepping back, I think this uncovers some pretty core truths:
 
 - That being said, I'm also recalling a large painpoint of building out lots of serializer nesting, just for serving an API response
 - Whereas in theory a Django view and Django template would be accessing exactly what they need (and no concerns of leaking too much data)
+
+- Ah, for serializers, after applying some thought:
+- If it's a read only page like a dashboard, we can either just serialize without a serializer (duh)
+- or build a separate file to track the serializers just for that piece with all its nesting
+
+- Okay, so something to explore:
+- Site setup with auth on Django + remaining content using React
+    - Pages to include:
+        - Auth (Django): Login + sign up + confirm email
+        - Post-Auth (React): Dashboard of outer content (e.g. organizations) + CRUDL inside each (e.g. tasks (classic))
+            - Dashboard should show task count, and thus invalidate on task modification
+        - Find a common UI system to build against (prob Bootstrap or Tailwind due to experience with them)
+
+- Generally curious exploration: Is there some way to use React where it uses HTML form submission?
+    - Decision: No
+    - Why: Not worth it, not a realistic scenario - since we lose error handling
+
+- This is all kind of a time sink at a point, and we do have other obligations, so prob not going to work on this actively until later
+
+- TODO: Distill all this content down somewhat? Or put into a different file? It's quite rambly
+
+- To reframe the dilemma:
+- There are 2 ways to build a UI for an application:
+- Either limit the designs upfront, and say "no" a lot more to functionality, but have a widget oriented implementation
+- or
+- Use a declarative system like React, but deal with all the consequences of that (e.g. large JS bundles, maintaining a serializers system + its headaches)
+    - Serializers can either be page-centric or model-centric
+    - Model-centric is way more reuseable
+    - buuut... hmmmm... maybe there is something to reconsider with page-centric serializers?
+        - TODO: Page-centric or maybe action-centric serializers exploration? Sidesteps caching concerns entirely (not even a common thing really)
+            - TODO: This is prob along the spectrum of RPC vs REST, https://nordicapis.com/whats-the-difference-between-rpc-and-rest/
+            - Looking at https://stackoverflow.com/a/55718066/1960509 - Realizing RPC would still have same headaches as REST with reuse across serializers -- prob exacerbated even due to keys being less clear =/
+                - e.g. If an onboarding form + settings form use same model, then we're talking to that endpoint twice
+                - buuut maybe this is find in practice and saner to develop against (e.g. handling one-offs)
+                - I dunno, needs more time/thought
+
+- What I don't recommend is something in-between:
+- AJAX forms have little value add (e.g. there might be a loading spinner, but then need to handle error state -- ideal in-form since that's better UX)
+- [Turbolinks](https://github.com/turbolinks/turbolinks) also offer little value (i.e. click a page/submit a form, and content swaps instead of
+
+- React is unavoidable to either deal with hydration (and thus code split if Django is backend -- as well as querying Django anyway)
+- or just make a lot of requests on page load
+- I do not recommend trying to be clever and stating a bunch of data to be parsed at load time
+- We can do this with some nice things like who is the user so content like nav might instantly render, but it's neat + extra content to maintain rather than critical
