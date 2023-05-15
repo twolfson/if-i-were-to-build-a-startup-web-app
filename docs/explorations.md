@@ -204,3 +204,9 @@ Okay, so stepping back, I think this uncovers some pretty core truths:
 - or just make a lot of requests on page load
 - I do not recommend trying to be clever and stating a bunch of data to be parsed at load time
 - We can do this with some nice things like who is the user so content like nav might instantly render, but it's neat + extra content to maintain rather than critical
+
+- Looking at React Query code we've worked with, there are def only a few key painpoints that are now obvious how to resolve:
+    - For models, avoid nesting them in each other unless explicit opt-in from client, so client can then know what/how to track things
+    - For CRUDL, use a utility to manage eager adds and what not
+    - On **any** modification, invalidate dashboards
+    - Set data with response from API (or invalidate it immediately)
