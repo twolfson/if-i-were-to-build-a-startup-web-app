@@ -111,3 +111,4 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
 - First priority: Shedding Django Template UI mostly + integrating React
     - Prob will keep Bootstrap styling for development velocity
     - with none of its JS (to avoid React <> jQuery headaches)
+- `npx create-react-app my-app`, https://create-react-app.dev/docs/getting-started
