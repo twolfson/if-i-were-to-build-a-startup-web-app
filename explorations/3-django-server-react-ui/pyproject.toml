@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "2-django-allauth"
+name = "3-django-server-react-ui"
 version = "1.0.0"
 description = ""
 authors = ["Todd Wolfson <todd@twolfson.com>"]

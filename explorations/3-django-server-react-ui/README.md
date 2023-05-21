@@ -104,15 +104,5 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
     - `git grep -i "django allauth"`
 - `git grep -i "django.allauth"`
 - `rm -r .venv` (to reset `poetry shell` naming)
-- Removed `LOGIN_*` and `LOGOUT_*` from `settings.py` to explore defaults
-- Following https://django-allauth.readthedocs.io/en/latest/overview.html guidance
-- Installed great and nudged around `urls.py` to my comfort
-    - Added back `LOGIN_URL`
-- "Site" instruction wasn't required it seemed (didn't run, no errors) https://django-allauth.readthedocs.io/en/latest/installation.html#post-installation
-    - "Add a Site for your domain, matching settings.SITE_ID (django.contrib.sites app)".
-    - My concern with it would be ensuring all new clones get that set up (which is kind of non-trivial from a shell)
-    - Note: The "Site" piece came up via "example.com" in the DB
-- Docs seem lacking around customization but https://dev.to/gajesh/the-complete-django-allauth-guide-la3 mentioned in FAQ looks solid =D
-- It was good for some info, but finding I just need to read between the lines a little on all pages
 <br /><br />
 
