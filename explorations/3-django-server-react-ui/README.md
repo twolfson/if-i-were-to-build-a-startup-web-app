@@ -102,7 +102,7 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
 - Clean up `2-django-allauth` mentions + screenshots + setup log
     - `git grep -i "django-allauth"`
     - `git grep -i "django allauth"`
-- `git grep -i "django.allauth"`
+    - `git grep -i "django\.allauth"`
 - `rm -r .venv` (to reset `poetry shell` naming)
 <br /><br />
 
