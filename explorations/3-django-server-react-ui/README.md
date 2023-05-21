@@ -106,3 +106,8 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
 - `rm -r .venv` (to reset `poetry shell` naming)
 <br /><br />
 
+- `poetry shell` to enter new virtual env
+- `poetry install` to refresh dependencies
+- First priority: Shedding Django Template UI mostly + integrating React
+    - Prob will keep Bootstrap styling for development velocity
+    - with none of its JS (to avoid React <> jQuery headaches)
