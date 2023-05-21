@@ -211,3 +211,18 @@ Okay, so stepping back, I think this uncovers some pretty core truths:
     - On **any** modification, invalidate dashboards
     - Set data with response from API (or invalidate it immediately)
     - Do not deal with JWT and tokens if you can, lean into sessions already handled from initial page load. These will also get free `Set-Cookie` header responses to always stay fresh
+
+# 3. django-server-react-ui
+After taking some time away from the content above, I'm curious to explore a variation where:
+
+- Django serves minimal HTML, including auth, but keeps HTTP endpoints
+    - This is because sometimes we want interactivity even on auth (e.g. suggesting email corrections)
+    - and it'd be silly to need to rebuild the same widget/component twice in different parts of the system (e.g. a broader Django auth <> React non-auth pages split)
+- Django handles sessions, and serves relevant content as part of HTML
+- React handles loading states, interactivity, and oh-so-much more
+    - TODO: Talk about LiveReload in the docs
+- Django serves RESTful endpoints (easier than page-specific cache mangement)
+    - As opposed to being specific GET/POST pairs for each page rendered (better for a React-less world, widgets only)
+- Push the limits of React cache querying and serializers, remind self of how painful (or not painful) those can be to write
+
+Once this is all done, it'd be interesting to build a contrasting app strictly with the GET/POST pairs mentioned (TODO)

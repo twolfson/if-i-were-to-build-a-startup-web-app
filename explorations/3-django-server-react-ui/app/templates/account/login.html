@@ -1,0 +1,36 @@
+{# Based on: https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/templates/account/login.html #}
+{% extends "_layouts/auth.html" %}
+{# DEV: We should figure out an autoload solution, but are stopping this exploration here #}
+{% load forms %}
+
+{% load i18n %}
+{% block head_title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+    <h1 class="mb-3">Login</h1>
+    {% if form.non_field_errors %}<p class="text-danger">{{ form.non_field_errors | join:" " }}</p>{% endif %}
+    {# Fields enumerated here: https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/forms.py#L90 #}
+    <form action="{% url 'account_login' %}" method="post" class="mb-4">
+        {% csrf_token %}
+        <div class="mb-3">{% input form.login %}</div>
+        <div class="mb-3">{% input form.password %}</div>
+        <div class="mb-3">{% checkbox form.remember %}</div>
+        <div class="d-grid">
+            <button class="btn btn-primary btn-block" type="submit">Login</button>
+        </div>
+        {% if redirect_field_value %}
+            <input type="hidden"
+                   name="{{ redirect_field_name }}"
+                   value="{{ redirect_field_value }}" />
+        {% endif %}
+    </form>
+    {# Assumes you set up the password_reset view in your URLconf #}
+    <p>
+        {# <a href="{% url 'account_reset_password' %}">Forgot password?</a> #}
+        <a href="javascript:alert('Disabled for now')">Forgot password?</a>
+    </p>
+    <p>
+        {# Nice touch would be linking this whole row, but keeping styling at end #}
+        Don't have an account? <a href="{{ signup_url }}">Sign up</a>
+    </p>
+{% endblock %}

@@ -107,7 +107,7 @@ We're using https://github.com/lepture/python-livereload for now. It's not requi
 We provide a convenience wrapper for all our test utilities via:
 
 ```bash
-./manage.py test
+./test.sh
 ```
 
 ## Debugging
