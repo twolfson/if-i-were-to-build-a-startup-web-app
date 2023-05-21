@@ -111,6 +111,8 @@ TODO: Library comparison for allauth and other options I guess?
 
 TODO: Talk about JSX strengths at expressiveness (e.g. `classnames` with mappings and ternaries), though I think Pug has something similar?
 
+TODO: HTMX author discusses when to not use it - def agree with points from experience -- interactivity is not a fit, https://htmx.org/essays/when-to-use-hypermedia/
+
 ## Introduction
 I'm a startup engineer. 3x first engineer, former Uber engineer, and have 12 years experience at these and more startups.
 
@@ -180,6 +182,30 @@ TODO: Explain this
 TODO: Talk about Sentry and error monitoring
 TODO: Talk about server stats monitoring
 
+TODO: Pull into other content
+"""
+2023-05-14:
+Architecture where JSX is renderer in Django
+And page load hydration is select regions
+
+Benefit would be no serializer busy work
+
+But unclear how that'd side step deeper lookups
+But maybe it's just like a really fancy form
+
+Also definitely an innovation token
+
+This also isn't much different from rendering HTML with context as JSON
+
+Main concern of react in a per page setup
+Is seeing a loading spinner so damn often
+(prob need to use throttling as a demo)
+--
+Django auth pages drawback
+Can't do email suggest
+Can't use common validation styles
+"""
+
 ----
 
 TODO:
@@ -199,6 +225,8 @@ TODO:
 Rails does have generate utility but can't recall last time I wanted that. Copy paste as convention is best pit of success
 
 Secondary to this would be a runbook as its an operational process. Link to article
+
+TODO: Auth validation is bad idea with react because scrubbing out of hand. HTTP referrer too late
 
 
 ## Context
