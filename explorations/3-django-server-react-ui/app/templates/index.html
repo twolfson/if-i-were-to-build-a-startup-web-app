@@ -48,6 +48,10 @@
             {# TODO: Delete many many unused pages #}
         </div>
         {% if 1 %}
+            {% comment %}
+            DEV: This has a livereload piece to it, which tries to look for `/main.*.hot-update.json`,
+              and normally that's a thing on the :3000 server, but we 404 here, and that works too
+            {% endcomment %}
             <script src="http://127.0.0.1:3000/static/js/bundle.js"></script>
         {% else %}
             <script src="{% manifest "main.js" %}" />

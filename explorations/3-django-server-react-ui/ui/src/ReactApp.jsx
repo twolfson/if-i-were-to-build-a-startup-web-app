@@ -7,7 +7,7 @@ const ReactApp = () => {
     {isLoggedIn ?
       `Hello ${user.full_name}`
     :
-      "Show login pageeee"
+      "Show login page"
     }
     </>
   )
