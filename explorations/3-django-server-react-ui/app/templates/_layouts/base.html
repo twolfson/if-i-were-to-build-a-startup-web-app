@@ -30,12 +30,12 @@
         {% endif %}
     </head>
     <body>
-        <div id="content">
-            {# TODO: Add back content if applicable #}
-            {# {% block outer_content %}{% endblock %} #}
+        <div id="ui">
+            {# TODO: Add a loading spinner while everything loads #}
+            {# TODO: Delete many many unused pages #}
         </div>
         {% if 1 %}
-            <script src="http://127.0.0.1:3000/static/js/bundle.js" />
+            <script src="http://127.0.0.1:3000/static/js/bundle.js"></script>
         {% else %}
             <script src="{% manifest "main.js" %}" />
             <script>alert(
