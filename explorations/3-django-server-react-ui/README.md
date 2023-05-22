@@ -111,4 +111,16 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
 - First priority: Shedding Django Template UI mostly + integrating React
     - Prob will keep Bootstrap styling for development velocity
     - with none of its JS (to avoid React <> jQuery headaches)
-- `npx create-react-app my-app`, https://create-react-app.dev/docs/getting-started
+- `npx create-react-app ui`, https://create-react-app.dev/docs/getting-started
+    - TODO: Show logged in state or not
+    - TODO: Handle auth or not, including logout
+    - TODO: Handle dashboard page (to push limits of React Query)
+        - Counts + recent tasks + notifications
+    - TODO: Handle notifications dismissable (loading state UI)
+- Looking for docs around hosting running server vs built JS
+    - Red herring: CORS (multi-domain) focused setup, https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react
+    - This seems to do it well, following this: https://www.saaspegasus.com/guides/modern-javascript-for-django-developers/integrating-django-react/
+        - All good except for the webpack build piece, but I think we can work around that with dev/production toggling
+- Realizing we should start with the build version first
+- Learning that `create-react-app` has sane defaults with hashed filenames, https://github.com/facebook/create-react-app/issues/821
+    - https://github.com/rykener/django-manifest-loader seems like a promising solution
