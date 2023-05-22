@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
+from manifest_loader.loaders import LoaderABC
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -206,6 +208,14 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "ui/build"
 ]
+class AssetManifestLoader(LoaderABC):
+    @staticmethod
+    def get_single_match(manifest, key):
+        return manifest["files"][key]
+MANIFEST_LOADER = {
+    'manifest_file': 'asset-manifest.json',
+    'loader': AssetManifestLoader,
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
