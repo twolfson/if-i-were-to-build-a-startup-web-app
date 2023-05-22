@@ -1,4 +1,4 @@
-from django.urls import include, path
+from django.urls import include, path, re_path
 
 from app import views
 
@@ -10,9 +10,10 @@ urlpatterns = [
     # Social login disabled currently
     # path("socialaccount/", include("app.urls.auth.socialaccount")),
 
-    # Dashboard pages
-    path("", views.index, name="index"),
-
     # Test pages
     path("message-test/", views.message_test, name="message_test"),
+
+    # Any remaining pages are handled by React
+    # DEV: We could get clever and use a common router JSON config between apps, but YAGNI for now
+    re_path(r".*", views.index, name="index"),
 ]
