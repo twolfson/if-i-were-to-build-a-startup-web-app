@@ -1,9 +1,10 @@
+// Import our dependencies
+import { Login } from "./pages/Login";
+
 // Define our component
-const ReactApp = () => {
+export const ReactApp = () => {
   const user = window.user;
   const isLoggedIn = !user.is_anonymous;
 
-  return <>{isLoggedIn ? `Hello ${user.full_name}` : "Show login page"}</>;
+  return <>{isLoggedIn ? `Hello ${user.full_name}` : <Login />}</>;
 };
-
-export { ReactApp };
