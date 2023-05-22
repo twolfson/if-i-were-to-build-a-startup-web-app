@@ -5,9 +5,9 @@ const ReactApp = () => {
   return (
     <>
     {isLoggedIn ?
-      "Show login pagee"
-    :
       `Hello ${user.full_name}`
+    :
+      "Show login pageeeaaae"
     }
     </>
   )
