@@ -141,3 +141,9 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
 
 - Got up to HTML form submission working =D
 - And then we realized that the UX of submitting an HTML form to have a React loading screen afterwards, is even more janky, than a minor one-off text field being overridden for better suggestion support .\_.
+
+- TODO: If we resume this, here's some notes from earlier:
+    - Validation errors. Don't need per field. Top of form good enough start
+    - Email suggest. Nothing robust needed. Just "email suggestion goes here" if not matching current ones (e.g. todd@twolfson.com)
+    - Large drawback of split is rework pain
+        - If underlying API changes but page doesn't. Lots of work for serializer
