@@ -17,17 +17,27 @@
               rel="stylesheet"
               integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
               crossorigin="anonymous">
-        <link href="{% manifest "main.css" %}"
-              rel="stylesheet">
+        {# TODO: Enable a global ENV variable for `ENV == "dev"` checking #}
+        {% if 1 %}
+            {# No CSS served from react-scripts that we can see #}
+        {% else %}
+            <link href="{% manifest "main.css" %}"
+                  rel="stylesheet">
+            <script>alert(
+                "TODO: We have not yet set up/tested the `build` + `static` pipeline." +
+                "It should just be `npm run build` and using `\{% static` for the output JS, but it's not verified"
+            )</script>
+        {% endif %}
     </head>
     <body>
         <div id="content">
             {# TODO: Add back content if applicable #}
             {# {% block outer_content %}{% endblock %} #}
         </div>
-        <script src="{% manifest "main.js" %}" />
-        {% if ENV == "dev" %}
+        {% if 1 %}
+            <script src="http://127.0.0.1:3000/static/js/bundle.js" />
         {% else %}
+            <script src="{% manifest "main.js" %}" />
             <script>alert(
                 "TODO: We have not yet set up/tested the `build` + `static` pipeline." +
                 "It should just be `npm run build` and using `\{% static` for the output JS, but it's not verified"
