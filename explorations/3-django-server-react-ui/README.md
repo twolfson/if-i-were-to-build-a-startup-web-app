@@ -1,3 +1,5 @@
+TODO: See TODOs
+
 # Django Server / React UI exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
@@ -33,7 +35,7 @@ TODO: Add screenshots
 
 ## Development
 ### File structure
-TODO:
+TODO: Write me out
 
 ### Django Admin
 Django Admin can be set up via the following:

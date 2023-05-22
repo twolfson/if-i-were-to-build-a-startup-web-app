@@ -18,6 +18,18 @@
               integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
               crossorigin="anonymous">
         {# TODO: Enable a global ENV variable for `ENV == "dev"` checking #}
+        {# Alternatively we could use `json_script` if we build a serializer for User #}
+        <script>
+            window.user = {
+                logged_in: {{ user.is_anonymous | stringformat:"s" | lower | escapejs }},
+                username: "{{ user.username | escapejs }}",
+                email: "{{ user.email | escapejs }}",
+                first_name: "{{ user.first_name | escapejs }}",
+                last_name: "{{ user.last_name | escapejs }}",
+                full_name: "{{ user.get_full_name | escapejs }}",
+            };
+            window.csrf_token = "{{csrf_token}}"
+        </script>
         {% if 1 %}
             {# No CSS served from react-scripts that we can see #}
         {% else %}
