@@ -15,5 +15,5 @@ urlpatterns = [
 
     # Any remaining pages are handled by React
     # DEV: We could get clever and use a common router JSON config between apps, but YAGNI for now
-    re_path(r".*", views.index, name="index"),
+    re_path(r"^[^.]*$", views.index, name="index"),
 ]

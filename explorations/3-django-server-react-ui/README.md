@@ -135,3 +135,5 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
 
 - Slowly trying to get Django serving React content, but struggling hard to get LiveReload working
 - https://stackoverflow.com/a/58040422/1960509 might be promising for proxying??
+- Ah, I found the issue -- the `main.*.hot-update.json` is loading at `/`, not specifying host, so it's confused when on :8000, not :3000 as expected
+- Fixing our `urls.py` to not be so aggressive fixed the issue =D
