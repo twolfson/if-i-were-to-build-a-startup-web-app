@@ -4,6 +4,7 @@
   HTML from https://getbootstrap.com/docs/5.2/getting-started/introduction/
   and https://docs.djangoproject.com/en/4.2/ref/templates/language/#template-inheritance
 {% endcomment %}
+{% load manifest %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,6 +17,14 @@
               rel="stylesheet"
               integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
               crossorigin="anonymous">
+        <link href="{% manifest "main.css" %}"
+              rel="stylesheet">
+    </head>
+    <body>
+        <div id="content">
+            {% block outer_content %}{% endblock %}
+        </div>
+        <script src="{% manifest "main.js" %}" />
         {% if ENV == "dev" %}
         {% else %}
             <script>alert(
@@ -23,11 +32,6 @@
                 "It should just be `npm run build` and using `\{% static` for the output JS, but it's not verified"
             )</script>
         {% endif %}
-    </head>
-    <body>
-        <div id="content">
-            {% block outer_content %}{% endblock %}
-        </div>
     </body>
 </html>
 {# Required re-enable djlint:on, https://github.com/Riverside-Healthcare/djLint/issues/649 #}

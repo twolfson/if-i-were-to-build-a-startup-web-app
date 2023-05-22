@@ -475,6 +475,21 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-manifest-loader"
+version = "1.0.0"
+description = "A Django app to load webpack assets."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-manifest-loader-1.0.0.tar.gz", hash = "sha256:cd7a5585d17b07cf7d672c201ecb3476121f65c9b522e29f25c2ee4e9f87ab34"},
+    {file = "django_manifest_loader-1.0.0-py3-none-any.whl", hash = "sha256:17a6e5b47ff6999ca530e754d874c1e4b0c7f16e72c761e3e05bc529cee34145"},
+]
+
+[package.dependencies]
+django = "*"
+
+[[package]]
 name = "django-widget-tweaks"
 version = "1.4.12"
 description = "Tweak the form field rendering in templates, not in python-level form definitions."
@@ -1393,4 +1408,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1"
-content-hash = "dbb0d52588840a2a56d8eceeac3d715b48ebec08d578442d3d3f74d9d97976ac"
+content-hash = "c1b67cbcdc030f771c79174f41be867ef7f90da88b04b84dc55e9320f08ba245"

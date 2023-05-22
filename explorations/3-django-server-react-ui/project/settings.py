@@ -42,6 +42,8 @@ SITE_ID = 1
 # fmt:off
 INSTALLED_APPS = [
     "app.apps.AppConfig",
+    # Used for create-react-app loading
+    "manifest_loader",
 
     # Default apps from Django
     "django.contrib.admin",
@@ -200,6 +202,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+# Used for create-react-app loading
+STATICFILES_DIRS = [
+    BASE_DIR / "ui/build"
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
