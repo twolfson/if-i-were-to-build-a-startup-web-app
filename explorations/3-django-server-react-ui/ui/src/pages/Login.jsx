@@ -12,6 +12,7 @@ export const Login = () => {
     <AuthLayout>
       <h1 className="mb-3">Login</h1>
       {/* Fields enumerated here: https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/forms.py#L90 */}
+      {/* TODO: Note about this being an HTML form, not an HTTP submission */}
       <form action="/login" method="post" className="mb-4">
         <CsrfToken />
         <div className="mb-3">
