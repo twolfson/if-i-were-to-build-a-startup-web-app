@@ -131,3 +131,7 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
 - Finagled and finagled some more, but finally got everything loading as desired
 - Saw an SVG non-inline loading issue, but honestly I think that's part of growth for an app (e.g. inlining SVGs should be a thing)
     - All other images normally would just be served from a Django folder (like HTML)
+<br /><br />
+
+- Slowly trying to get Django serving React content, but struggling hard to get LiveReload working
+- https://stackoverflow.com/a/58040422/1960509 might be promising for proxying??
