@@ -124,3 +124,6 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
 - Realizing we should start with the build version first
 - Learning that `create-react-app` has sane defaults with hashed filenames, https://github.com/facebook/create-react-app/issues/821
     - https://github.com/rykener/django-manifest-loader seems like a promising solution
+<br /><br />
+
+- Finagled and finagled some more, but finally got everything loading as desired
