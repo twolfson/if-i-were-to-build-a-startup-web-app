@@ -147,3 +147,6 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
     - Email suggest. Nothing robust needed. Just "email suggestion goes here" if not matching current ones (e.g. todd@twolfson.com)
     - Large drawback of split is rework pain
         - If underlying API changes but page doesn't. Lots of work for serializer
+- TODO: The infighting with setups like this is also part of a reason to not adopt such an architecture. It's quite finnicky at setup, and prob similar to maintain
+    - Full React also has similar drawbacks though =/ (e.g. juggling JWT is a pain)
+        - but maybe that's where split Django auth + split React post-auth shines
