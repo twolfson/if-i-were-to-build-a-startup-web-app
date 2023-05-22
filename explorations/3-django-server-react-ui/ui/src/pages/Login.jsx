@@ -3,6 +3,7 @@
 // TODO: It'd be nice to use `head_title: Login`
 // TODO: Handle form errors
 import { AuthLayout } from "./_layouts/AuthLayout";
+import { Checkbox } from "../components/Checkbox";
 import { Input } from "../components/Input";
 
 export const Login = () => {
@@ -12,21 +13,19 @@ export const Login = () => {
       {/* Fields enumerated here: https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/forms.py#L90 */}
       <form action="/login" method="post" className="mb-4">
         {/* TODO: Do we need CSRF token? */}
-        {/* TODO: Stylize inputs */}
         <div className="mb-3">
           <Input name="login" label="Email" />
         </div>
-        {/* TODO: More inputs */}
-        {/*
-        <div className="mb-3">{% input form.password %}</div>
-        <div className="mb-3">{% checkbox form.remember %}</div>
-        */}
+        <div className="mb-3">
+          <Input name="password" label="Password" type="password" />
+        </div>
+        <div className="mb-3"><Checkbox name="remember" label="Remember me" /></div>
         <div className="d-grid">
           <button className="btn btn-primary btn-block" type="submit">
             Login
           </button>
         </div>
-        {/* TODO: Form redirects? */}
+        {/* TODO: Handle form redirect */}
       </form>
       <p>
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,no-script-url */}
