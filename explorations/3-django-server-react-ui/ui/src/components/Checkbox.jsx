@@ -7,12 +7,15 @@ export const Checkbox = ({ className, label, name, ...props }) => {
     assert(label, "No `label` prop provided");
     return (
         // https://getbootstrap.com/docs/5.2/forms/checks-radios/#checks
-        <div class="form-check">
+        <div className="form-check">
             <input
+                id={name}
+                name={name}
                 type="checkbox"
                 className={cx("form-check-input", className)}
+                {...props}
             />
-            <label class="form-label" for={name}>
+            <label className="form-label" htmlFor={name}>
                 {label}
             </label>
         </div>

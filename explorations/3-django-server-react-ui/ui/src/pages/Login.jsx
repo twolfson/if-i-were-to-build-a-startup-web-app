@@ -4,6 +4,7 @@
 // TODO: Handle form errors
 import { AuthLayout } from "./_layouts/AuthLayout";
 import { Checkbox } from "../components/Checkbox";
+import { CsrfToken } from "../components/CsrfToken";
 import { Input } from "../components/Input";
 
 export const Login = () => {
@@ -12,14 +13,16 @@ export const Login = () => {
       <h1 className="mb-3">Login</h1>
       {/* Fields enumerated here: https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/forms.py#L90 */}
       <form action="/login" method="post" className="mb-4">
-        {/* TODO: Do we need CSRF token? */}
+        <CsrfToken />
         <div className="mb-3">
           <Input name="login" label="Email" />
         </div>
         <div className="mb-3">
           <Input name="password" label="Password" type="password" />
         </div>
-        <div className="mb-3"><Checkbox name="remember" label="Remember me" /></div>
+        <div className="mb-3">
+          <Checkbox name="remember" label="Remember me" />
+        </div>
         <div className="d-grid">
           <button className="btn btn-primary btn-block" type="submit">
             Login
@@ -29,7 +32,9 @@ export const Login = () => {
       </form>
       <p>
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,no-script-url */}
-        <a href="javascript:alert('Disabled for now')">Forgot password?</a>
+        <a href="#" onClick={() => window.alert("Disabled for now")}>
+          Forgot password?
+        </a>
       </p>
       <p>
         {/* Nice touch would be linking this whole row, but keeping styling at end */}

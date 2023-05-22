@@ -7,7 +7,7 @@ export const Input = ({ className, label, name, type="text", ...props }) => {
     assert(label, "No `label` prop provided");
     return (
         <>
-            <label className="form-label" for={name}>
+            <label className="form-label" htmlFor={name}>
                 {label}
             </label>
             <input
