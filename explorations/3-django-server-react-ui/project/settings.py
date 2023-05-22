@@ -206,9 +206,10 @@ USE_TZ = True
 # fmt:off
 STATIC_URL = "static/"
 # Used for create-react-app loading
-STATICFILES_DIRS = [
-    BASE_DIR / "ui/build"
-]
+STATICFILES_DIRS = []
+if ENV != "dev":
+    # In testing and production, load static builds
+    STATICFILES_DIRS += [BASE_DIR / "ui/build"]
 class AssetManifestLoader(LoaderABC):  # noqa:E302
     @staticmethod
     def get_single_match(manifest, key):
