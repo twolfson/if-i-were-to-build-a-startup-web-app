@@ -203,19 +203,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# fmt:off
 STATIC_URL = "static/"
 # Used for create-react-app loading
 STATICFILES_DIRS = [
     BASE_DIR / "ui/build"
 ]
-class AssetManifestLoader(LoaderABC):
+class AssetManifestLoader(LoaderABC):  # noqa:E302
     @staticmethod
     def get_single_match(manifest, key):
         return manifest["files"][key]
-MANIFEST_LOADER = {
-    'manifest_file': 'asset-manifest.json',
-    'loader': AssetManifestLoader,
+MANIFEST_LOADER = {  # noqa:E305
+    "manifest_file": "asset-manifest.json",
+    # DefaultLoader uses the exact key, no nesting - whereas we need nesting support,
+    "loader": AssetManifestLoader,
 }
+# fmt:on
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
