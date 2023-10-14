@@ -13,7 +13,7 @@ export const Login = () => {
       <h1 className="mb-3">Login</h1>
       {/* Fields enumerated here: https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/forms.py#L90 */}
       {/* DEV: `form` submits as an HTML form, not an XHR submission */}
-      <form action="/login" method="post" className="mb-4">
+      <form action="/login/" method="post" className="mb-4">
         <CsrfToken />
         <div className="mb-3">
           <Input name="login" label="Email" />

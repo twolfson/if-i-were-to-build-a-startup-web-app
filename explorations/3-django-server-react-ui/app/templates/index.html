@@ -29,6 +29,10 @@
                 full_name: "{{ user.get_full_name | escapejs }}",
             };
             window.csrf_token = "{{csrf_token}}"
+            window.form = {
+                errors: {{ form.errors | escapejs }},
+                non_field_errors: {{ form.non_field_errors | escapejs }},
+            };
         </script>
         {# Using "1" as a hardcoded fix due to development/production pending exploration #}
         {% if 1 %}
@@ -59,7 +63,13 @@
             };
             window.csrf_token = "{{csrf_token}}"
 
-            Errors: {{ errors }}
+            <!-- Form: {{ form }} -->
+            window.form = {
+                is_valid: {{ form.is_valid | escapejs }},
+                cleaned_data: {{ form.cleaned_data | escapejs }},
+                errors: {{ form.errors | escapejs }},
+                non_field_errors: {{ form.non_field_errors | escapejs }},
+            };
             </pre>
         <div id="ui">
             Loading...
