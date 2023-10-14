@@ -12,36 +12,121 @@ Ruby on Rails is also quite strong, but I'm less of a fan due to Ruby feeling li
 A web framework is a foundational layer and system for building a web application within. It provides many features and functionality to get a product built as rapidly as possible. Full enumeration of such features is at the bottom of this file.
 
 ## Comparison
-|                        Name                        | Non-trivial previous experience? |                  Description                   |                                                                                                                                                                       Notes                                                                                                                                                                       |
-|----------------------------------------------------|----------------------------------|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [AWS Lambda][] with no framework (Python, Node.js) | ✔️ (1 year)                      | Write a function which acts as an endpoint     | It's a great infrastructure for trigger-based runs (e.g. S3 upload) with dynamic scale, but dependency management has a long way to go.<br/><br/>Additionally, it lacks significant ecosystem support so not a good web framework choice at the moment                                                                                            |
-| [CodeIgniter][] (PHP)                              | ✔️ (0.5 years)                   | Lightweight framework                          | Only mentioning due to experience. PHP has a lot of baggage with it that's nice to sidestep if possible (e.g. [every page starting with `<?`][PHP tags])                                                                                                                                                                                          |
-| **[Django][] (Python) (winner)**                   | ✔️ (2 years)                     | Full-fledged framework with batteries included | Significant amount support provided to hit the ground running productively (e.g. ORM, migrations, admin UI, users, thorough ecosystem)                                                                                                                                                                                                            |
-| [Express][] (Node.js)                              | ✔️ (2.5 years)                   | Lightweight framework                          | Only does routing and template integration, and basic request handling. There is a [generator utility][Express generator] but it's only for initial setup.<br/><br/>There are no built-ins for ORM, no migration tools, no admin UI, and multipart forms [requires adding a parser][Express parser]. Just not a good idea (elaboration at bottom) |
-| [Flask][] (Python)                                 | ✔️ (3 years)                     | Lightweight framework                          | Similar to [Express][] but a little more robust. Provides routing, templates, sessions, and multipart form support.<br/><br/>Lacks ORM, though [Flask-SQLAlchemy][] is popular, but that lacks migrations ([alembic][] is popular), and you keep running into little nags like that                                                               |
-| No framework (PHP)                                 | ✔️ (0.5 years)                   | Try to get by with no framework at all         | I did this 2008-2011 when I was in college. The web was still quite young, but it was a terrible experience. I don't recommend it                                                                                                                                                                                                                 |
-| [Ruby on Rails][] (Ruby)                           | ✔️ (1 year)                      | Full-fledged framework with batteries included | Provies wonderful built-ins like ORM and migrations, with some admin options through its ecosystem (e.g. [Rails Admin][]).<br/>It was great to use, except for the parentheses confusion that Ruby encourages and the testing felt clunky to interface with at times (both minor)                                                                 |
-| [Sails][] (Node.js)                                |                                  | Full-fledged framework, named after Rails      | Generally provides a lot of features (e.g. ORM, templates, sessions) but [falls short on migrations][Sails migrations]) (manual preferred for live data) and nothing for admin UI.<br/>They've made a lot of progress over the years, but I'd be hesitant to [use an innovation token here][Innovation token]                                                     |
-| [Sinatra][] (Ruby)                                 | ✔️ (0.5 years)                   | Lightweight framework                          | Provides routing, templates, and sessions support but on your own for ORM, migrations, and admin UI. It was a comparable experience to Flask iirc                                                                                                                                                                                                 |
-| Other frameworks                                   |                                  |                                                | There are many frameworks out there. This is simply a list from experience, top of mind, and light searching                                                                                                                                                                                                                                      |
-
-[AWS Lambda]:https://aws.amazon.com/lambda/
-[CodeIgniter]: https://codeigniter.com/
-[Django]: https://www.djangoproject.com/
-[Express]: https://expressjs.com/
-[Flask]: https://flask.palletsprojects.com/
-[Ruby on Rails]: https://rubyonrails.org/
-[Sails]: https://sailsjs.com/
-[Sinatra]: https://sinatrarb.com/
-
-[PHP tags]: https://www.php.net/manual/en/language.basic-syntax.phptags.php
-[Express generator]: https://expressjs.com/en/starter/generator.html
-[Express parser]: https://expressjs.com/en/5x/api.html#req.properties
-[Flask-SQLAlchemy]: https://flask-sqlalchemy.palletsprojects.com/
-[alembic]: https://alembic.sqlalchemy.org/
-[Rails Admin]: https://rails.devcamp.com/trails/ruby-gem-walkthroughs/campsites/admin-dashboard-gems/guides/rails-admin-gem-tutorial
-[Sails migrations]: https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#database-migrations
-[Innovation token]: https://mcfunley.com/choose-boring-technology
+<table>
+    <tr>
+        <th>Name</th> <th>Non-trivial previous experience?</th> <th>Description</th>
+        <th>Notes</th>
+    </tr>
+    <tr>
+        <td><a href="https://aws.amazon.com/lambda/">AWS Lambda</a> with no framework (Python, Node.js)</td>
+        <td>✔️ (1 year)</td><td>Write a function which acts as an endpoint</td>
+        <td>
+            It's a great infrastructure for trigger-based runs (e.g. S3 upload) with dynamic scale,
+            but dependency management has a long way to go.
+            <br/>
+            <br/>
+            Additionally, it lacks significant ecosystem support so not a good web framework choice at the moment
+        </td>
+    </tr>
+    <tr>
+        <td><a href="https://codeigniter.com/">CodeIgniter</a> (PHP)</td>
+        <td>✔️ (0.5 years)</td><td>Lightweight framework</td>
+        <td>
+            Only mentioning due to experience.
+            PHP has a lot of baggage with it that's nice to sidestep if possible
+            (e.g. <a href="https://www.php.net/manual/en/language.basic-syntax.phptags.php">
+                every page starting with `<?`>PHP tags
+            </a>)
+        </td>
+    </tr>
+    <tr>
+        <td><strong><a href="https://www.djangoproject.com/">Django</a> (Python) (winner)</strong></td>
+        <td>✔️ (2 years)</td><td>Full-fledged framework with batteries included</td>
+        <td>
+            Significant amount support provided to hit the ground running productively
+            (e.g. ORM, migrations, admin UI, users, thorough ecosystem)
+        </td>
+    </tr>
+    <tr>
+        <td><a href="https://expressjs.com/">Express</a> (Node.js)</td>
+        <td>✔️ (2.5 years)</td><td>Lightweight framework</td>
+        <td>
+            Only does routing and template integration, and basic request handling.
+            There is a <a href="https://expressjs.com/en/starter/generator.html">generator utility</a>
+            but it's only for initial setup.
+            <br/>
+            <br/>
+            There are no built-ins for ORM, no migration tools, no admin UI, and multipart forms
+            <a href="https://expressjs.com/en/5x/api.html#req.properties">requires adding a parser</a>.
+            Just not a good idea (elaboration at bottom)
+        </td>
+    </tr>
+    <tr>
+        <td><a href="https://flask.palletsprojects.com/">Flask</a> (Python)</td>
+        <td>✔️ (3 years)</td><td>Lightweight framework</td>
+        <td>
+            Similar to Express but a little more robust. Provides routing, templates, sessions, and multipart form support.
+            <br/>
+            <br/>
+            Lacks ORM, though <a href="https://flask-sqlalchemy.palletsprojects.com/">Flask-SQLAlchemy</a> is popular,
+            but that lacks migrations (<a href="https://alembic.sqlalchemy.org/">alembic</a> is popular),
+            and you keep running into little nags like that
+        </td>
+    </tr>
+    <tr>
+        <td>No framework (PHP)</td>
+        <td>✔️ (0.5 years)</td><td>Try to get by with no framework at all</td>
+        <td>
+            I did this 2008-2011 when I was in college.
+            The web was still quite young, but it was a terrible experience.
+            I don't recommend it
+        </td>
+    </tr>
+    <tr>
+        <td><a href="https://rubyonrails.org/">Ruby on Rails</a> (Ruby)</td>
+        <td>✔️ (1 year)</td><td>Full-fledged framework with batteries included</td>
+        <td>
+            Provies wonderful built-ins like ORM and migrations,
+            with some admin options through its ecosystem
+            (e.g. <a href="https://rails.devcamp.com/trails/ruby-gem-walkthroughs/campsites/admin-dashboard-gems/guides/rails-admin-gem-tutorial">
+                Rails Admin
+            </a>).
+            <br/>
+            It was great to use, except for the parentheses confusion that Ruby encourages
+            and the testing felt clunky to interface with at times (both minor)
+        </td>
+    </tr>
+    <tr>
+        <td><a href="https://sailsjs.com/">Sails</a> (Node.js)</td>
+        <td></td><td>Full-fledged framework, named after Rails</td>
+        <td>
+            Generally provides a lot of features (e.g. ORM, templates, sessions)
+            but <a href="https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#database-migrations">
+                falls short on migrations
+            </a>) (manual preferred for live data) and nothing for admin UI.
+            <br/>
+            They've made a lot of progress over the years,
+            but I'd be hesitant to <a href="https://mcfunley.com/choose-boring-technology">use an innovation token here</a>
+    </td>
+    </tr>
+    <tr>
+        <td><a href="https://sinatrarb.com/">Sinatra</a> (Ruby)</td>
+        <td>✔️ (0.5 years)</td><td>Lightweight framework</td>
+        <td>
+            Provides routing, templates, and sessions support
+            but on your own for ORM, migrations, and admin UI.
+            It was a comparable experience to Flask iirc
+        </td>
+    </tr>
+    <tr>
+        <td>Other frameworks</td>
+        <td></td><td></td>
+        <td>
+            There are many frameworks out there.
+            This is simply a list from experience, top of mind, and light searching
+        </td>
+    </tr>
+</table>
 
 All years stated above are as full-time equivalents, even from part-time roles pre-2011
 
