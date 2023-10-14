@@ -2,16 +2,11 @@
 
 # THIS IS A WORK IN PROGRESS, PLEASE IGNORE THE MESS
 
-- TODO: Snazzy graphic
-    - Maybe some kind of scaffolding or blueprint styling on 2D "Web App" text?
-    - Push this further through Graphic Design. Communicate concept: "construction" ("architecture" is close, but too managerial/removed) with totality of programming
-        - Start with a mind-map, so many possibilities
-        - More ideas that are less good: 3D carved out of stone, 3D built out of wood - both have too much realism, pour concrete in 2D black & white style (not relatable to programming where modifiable after set/built)
 - TODO: See TODOs
 
 Choices, explanations, and documentation around if I were to build a startup web app
 
-Unless stated or seen otherwise, this was all written in May 2023 (TODO: no longer accurate)
+This was mostly written in May and October 2023. For exceptions, there will be a note.
 
 - TODO: Fill in tl;dr with more info as we decide on things
 - TODO: Have this act as a table of contents
@@ -238,9 +233,9 @@ TODO: Auth validation is bad idea with react because scrubbing out of hand. HTTP
 
 
 ## Context
-I've decided to leave NCX at the end of May 2023.
+I decided to leave NCX at the end of May 2023.
 
-I've had some lingering architectural questions (outside of NCX, but full-time focused) that I feel would best be solved through exploration.
+I had some lingering architectural questions (outside of NCX, but full-time focused) that I feel would best be solved through exploration.
 
 The last time I publicly documented my architectural preferences was through open sourcing Find Work in December 2019.
 
@@ -248,6 +243,8 @@ And as expected in hindsight, these have aged in a mixed manner (not bad but not
 
 - https://github.com/findworkco/app
 - https://github.com/findworkco/scripts
+
+I've also found this repo useful in discussion with various startups, hence the "good enough" completion in October 2023.
 
 ## Unlicense
 As of May 11 2023, Todd Wolfson has released this repository and its contents to the public domain.
