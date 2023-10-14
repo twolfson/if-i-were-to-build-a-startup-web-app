@@ -38,7 +38,7 @@ For the sake of this discussion, I'll be interchanging **relational** with **SQL
         <td></td><td>Key-value store (NoSQL)</td>
         <td>
             I've only heard the name but it seems to mostly be a key-value store like Memcached and Redis. See Redis' notes
-        /<td>
+        </td>
     <tr>
         <td><a href="https://en.wikipedia.org/wiki/Elasticsearch">Elasticsearch</a></td>
         <td>✔️ (1.5 years)</td><td>JSON document search engine (NoSQL)</td>
