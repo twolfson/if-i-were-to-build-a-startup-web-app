@@ -119,6 +119,8 @@ TODO: HTMX author discusses when to not use it - def agree with points from expe
 TODO: React proxy on Django
 TODO: And that boilerplate react-django
 
+TODO: Update the "half of" and "lightly" with quantifiable dates/times
+
 ## Introduction
 I'm a startup engineer. 3x first engineer, former Uber engineer, and have 12 years experience at these and more startups.
 

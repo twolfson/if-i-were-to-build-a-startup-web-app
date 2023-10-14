@@ -3,13 +3,16 @@ TODO: See TODOs
 # Django Server / React UI exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
-After building plenty in our [Django Allauth exploration](../2-django-allauth), we realized that .
+After building plenty in our [Django Allauth exploration](../2-django-allauth), we wanted to explore having a UI fully built on React with Django handling endpoints only.
+
+After setting this roughly up, I can say that it is possible, but it was quite painful and I'd be concerned around long-term maintenance.
 
 ## Getting Started
 To set up this repo, install the following dependencies:
 
 - Python 3, https://wiki.python.org/moin/BeginnersGuide/Download
 - Poetry, https://python-poetry.org/docs/#installation
+- Node.js, https://nodejs.org/en/download
 
 then run the following:
 
@@ -24,8 +27,17 @@ poetry install
 # Run our migrations (we're using SQLite for simplest setup)
 ./manage.py migrate
 
-# Run our server
+# Run our Django server
 ./manage.py runserver
+
+# In a separate tab, navigate to our UI folder
+cd ui/
+
+# Install our Node.js dependencies
+npm install
+
+# Run our React server
+npm start
 ```
 
 We can now see our server running locally at <http://127.0.0.1:8000/>
