@@ -1,14 +1,17 @@
-<!-- This document is in reStructuredText unlike Markdown the rest of the repo due to needing multi-line support in tables. -->
+.. This document is in reStructuredText unlike Markdown the rest of the repo due to needing multi-line support in tables. -->
 
-<h1>Development Containment Analysis</h1>
+Development Containment Analysis
+================================
 **Winner: Language level, nothing else**
 
 **Runner-up: OS level, with or without language level**
 
-<h2>Description</h2>
+Description
+-----------
 In addition to the [Development Machine](./development-machine.md), the application environment/dependencies can be contained and isolated
 
-<h2>Comparison</h2>
+Comparison
+----------
 The choices aren't mutually exclusive, they can be combined as needed/wanted -- and some may be redundant with machine choice (e.g. virtual environments on a cloud machine)
 
 |-----------------------------------------------------------------------------+----------------------------------+---------------------------------------------------------+-------|
