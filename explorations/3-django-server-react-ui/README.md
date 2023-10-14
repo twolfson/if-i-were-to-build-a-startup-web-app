@@ -7,6 +7,8 @@ After building plenty in our [Django Allauth exploration](../2-django-allauth), 
 
 After setting this roughly up, I can say that it is possible, but it was quite painful and I'd be concerned around long-term maintenance.
 
+TODO: Why is this painful maintenance?
+
 ## Getting Started
 To set up this repo, install the following dependencies:
 

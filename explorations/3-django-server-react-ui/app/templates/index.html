@@ -17,9 +17,7 @@
               rel="stylesheet"
               integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
               crossorigin="anonymous">
-        {# TODO: Enable a global ENV variable for `ENV == "dev"` checking #}
         {# Alternatively we could use `json_script` if we build a serializer for User #}
-        {# TODO: Build out safety tests for user info (prob a reason to use json_script in itself) #}
         <script>
             window.user = {
                 is_anonymous: {{ user.is_anonymous | stringformat:"s" | lower | escapejs }},
@@ -31,32 +29,33 @@
             };
             window.csrf_token = "{{csrf_token}}"
         </script>
+        {# Using "1" as a hardcoded fix due to development/production pending exploration #}
         {% if 1 %}
             {# No CSS served from react-scripts that we can see #}
         {% else %}
             <link href="{% manifest "main.css" %}"
                   rel="stylesheet">
             <script>alert(
-                "TODO: We have not yet set up/tested the `build` + `static` pipeline." +
+                "We have not yet set up/tested the `build` + `static` pipeline." +
                 "It should just be `npm run build` and using `\{% static` for the output JS, but it's not verified"
             )</script>
         {% endif %}
     </head>
     <body>
         <div id="ui">
-            {# TODO: Add a loading spinner while everything loads #}
-            {# TODO: Delete many many unused pages #}
+            Loading...
         </div>
+        {# Using "1" as a hardcoded fix due to development/production pending exploration #}
         {% if 1 %}
             {% comment %}
             DEV: This has a livereload piece to it, which tries to look for `/main.*.hot-update.json`,
-              and normally that's a thing on the :3000 server, but we 404 here, and that works too
+            and normally that's a thing on the :3000 server, but we 404 here, and that works too
             {% endcomment %}
             <script src="http://127.0.0.1:3000/static/js/bundle.js"></script>
         {% else %}
             <script src="{% manifest "main.js" %}" />
             <script>alert(
-                "TODO: We have not yet set up/tested the `build` + `static` pipeline." +
+                "We have not yet set up/tested the `build` + `static` pipeline." +
                 "It should just be `npm run build` and using `\{% static` for the output JS, but it's not verified"
             )</script>
         {% endif %}
