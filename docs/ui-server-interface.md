@@ -1,4 +1,7 @@
 # UI <> Server Interface Analysis
+
+# SANITY CHECKING WORK HERE, PLEASE DON'T TAKE AT FACE VALUE YET (TODO)
+
 **Winner: HTML forms, limited AJAX**
 
 **Runner-up: Even split between "HTML forms, no AJAX" and "No HTML forms, AJAX only"**

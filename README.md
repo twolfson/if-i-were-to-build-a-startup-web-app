@@ -11,7 +11,7 @@
 
 Choices, explanations, and documentation around if I were to build a startup web app
 
-Unless stated or seen otherwise, this was all written in May 2023
+Unless stated or seen otherwise, this was all written in May 2023 (TODO: no longer accurate)
 
 - TODO: Fill in tl;dr with more info as we decide on things
 - TODO: Have this act as a table of contents
@@ -23,7 +23,7 @@ Unless stated or seen otherwise, this was all written in May 2023
     2. [Database: PostgreSQL](docs/database.md)
     3. [Development Machine: Local computer](docs/development-machine.md)
     4. [Development Containment: Language level, nothing else](docs/development-containment.md)
-    5. [UI <> Server Interface: HTML forms, limited AJAX](docs/ui-server-interface.md)
+    5. [UI <> Server Interface: Sanity checking work](docs/ui-server-interface.md)
         - TODO: Show an example with notification dismissal on same page
         - TODO: Show an example with model opens and dismissals (Bootstrap strongsuit)
         - TODO: Compute actual years for each
