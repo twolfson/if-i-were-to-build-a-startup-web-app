@@ -8,6 +8,8 @@ TODO: One plus is not needing to run LiveReload as its own process, but that's a
 
 TODO: Remove unused code like we removed before, incl tests
 
+TODO: Almost there with getting React to a sane state, let's use `json_script` to dump out errors, then 1:1 paste into an error field in React, so we can sanely see when a login fails/not during a test run
+
 # Django Server / React UI exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
