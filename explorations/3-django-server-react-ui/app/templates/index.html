@@ -64,6 +64,7 @@
             window.csrf_token = "{{csrf_token}}"
 
             <!-- Form: {{ form }} -->
+            {{ form.is_valid | json_script:"form.is_valid" | force_escape }}
             window.form = {
                 is_valid: {{ form.is_valid | escapejs }},
                 cleaned_data: {{ form.cleaned_data | escapejs }},
