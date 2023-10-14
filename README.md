@@ -1,4 +1,7 @@
 # If I Were to Build a Startup Web App
+TODO: React proxy on Django
+TODO: And that boilerplate react-django
+
 - TODO: Snazzy graphic
     - Maybe some kind of scaffolding or blueprint styling on 2D "Web App" text?
     - Push this further through Graphic Design. Communicate concept: "construction" ("architecture" is close, but too managerial/removed) with totality of programming
