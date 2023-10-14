@@ -34,9 +34,9 @@ A web framework is a foundational layer and system for building a web applicatio
         <td>
             Only mentioning due to experience.
             PHP has a lot of baggage with it that's nice to sidestep if possible
-            (e.g. <a href="https://www.php.net/manual/en/language.basic-syntax.phptags.php">
-                every page starting with `<?`>PHP tags
-            </a>)
+            (e.g. <a
+                href="https://www.php.net/manual/en/language.basic-syntax.phptags.php">
+            every page starting with `<?`>PHP tags</a>)
         </td>
     </tr>
     <tr>
@@ -88,9 +88,9 @@ A web framework is a foundational layer and system for building a web applicatio
         <td>
             Provies wonderful built-ins like ORM and migrations,
             with some admin options through its ecosystem
-            (e.g. <a href="https://rails.devcamp.com/trails/ruby-gem-walkthroughs/campsites/admin-dashboard-gems/guides/rails-admin-gem-tutorial">
-                Rails Admin
-            </a>).
+            (e.g. <a
+                href="https://rails.devcamp.com/trails/ruby-gem-walkthroughs/campsites/admin-dashboard-gems/guides/rails-admin-gem-tutorial"
+            >Rails Admin</a>).
             <br/>
             It was great to use, except for the parentheses confusion that Ruby encourages
             and the testing felt clunky to interface with at times (both minor)
@@ -101,9 +101,10 @@ A web framework is a foundational layer and system for building a web applicatio
         <td></td><td>Full-fledged framework, named after Rails</td>
         <td>
             Generally provides a lot of features (e.g. ORM, templates, sessions)
-            but <a href="https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#database-migrations">
-                falls short on migrations
-            </a>) (manual preferred for live data) and nothing for admin UI.
+            but <a
+                href="https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#database-migrations"
+            >falls short on migrations</a>)
+            (manual preferred for live data) and nothing for admin UI.
             <br/>
             They've made a lot of progress over the years,
             but I'd be hesitant to <a href="https://mcfunley.com/choose-boring-technology">use an innovation token here</a>
