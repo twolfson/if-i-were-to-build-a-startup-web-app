@@ -18,7 +18,7 @@
               integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
               crossorigin="anonymous">
         {# Alternatively we could use `json_script` if we build a serializer for User #}
-        {# TODO: Build out XSS tests vs malicious user info (prob a reason to use json_script in itself) #}
+        {# DEV: We're using `escapejs` and `json_script` to ensure we don't allow XSS vulnerabilities from user-input data #}
         <script>
             window.user = {
                 is_anonymous: {{ user.is_anonymous | stringformat:"s" | lower | escapejs }},
@@ -29,11 +29,9 @@
                 full_name: "{{ user.get_full_name | escapejs }}",
             };
             window.csrf_token = "{{csrf_token}}"
-            window.form = {
-                errors: {{ form.errors | escapejs }},
-                non_field_errors: {{ form.non_field_errors | escapejs }},
-            };
         </script>
+        {{ form.errors | json_script:"form__errors" }}
+        {{ form.non_field_errors | json_script:"form__non_field_errors" }}
         {# Using "1" as a hardcoded fix due to development/production pending exploration #}
         {% if 1 %}
             {# No CSS served from react-scripts that we can see #}
@@ -47,9 +45,7 @@
         {% endif %}
     </head>
     <body>
-        {# TODO: Put back comment tags #}
         {% comment %}
-        {% endcomment %}
             <pre>
             Optional debug content:
 
@@ -64,7 +60,6 @@
             window.csrf_token = "{{csrf_token}}"
 
             <!-- Form: {{ form }} -->
-            {{ form.is_valid | json_script:"form.is_valid" | force_escape }}
             window.form = {
                 is_valid: {{ form.is_valid | escapejs }},
                 cleaned_data: {{ form.cleaned_data | escapejs }},
@@ -72,6 +67,8 @@
                 non_field_errors: {{ form.non_field_errors | escapejs }},
             };
             </pre>
+        {% endcomment %}
+
         <div id="ui">
             Loading...
         </div>
