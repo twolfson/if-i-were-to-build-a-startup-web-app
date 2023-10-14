@@ -246,6 +246,17 @@ And as expected in hindsight, these have aged in a mixed manner (not bad but not
 
 I've also found this repo useful in discussion with various startups, hence the "good enough" completion in October 2023.
 
+## Documentation format
+You may have noticed the HTML tables in some of our Markdown `docs/` files.
+
+This is due to needing multi-line support in tables, but Markdown not supporting that.
+
+We tried reStructuredText but that fell short as well (e.g. no [easy support for hyperlinks in bold text](https://docutils.sourceforge.io/FAQ.html#is-nested-inline-markup-possible), also annoyingly brittle when writing))
+
+As a result, HTML tables felt like the best compromise for readability in Markdown content.
+
+In an ideal world, we'd prob be using a WYSIWYG for such content.
+
 ## Unlicense
 As of May 11 2023, Todd Wolfson has released this repository and its contents to the public domain.
 
