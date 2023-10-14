@@ -1,5 +1,9 @@
 TODO: See TODOs
 
+TODO: It seems that login was actually working in the last version, just we didn't have validation errors showing so we missed it in our testing. So let's restore it + add some *basic* validation
+
+TODO: Add React to test suite
+
 # Django Server / React UI exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
@@ -10,11 +14,14 @@ After setting this roughly up, I can say that it is possible, but it was quite p
 It's painful because:
 
 - React is performing an HTML `<form>` submission to Django Allauth (by design)
-- Django would render with tokens/objects in the `<head>` for React to pick up (e.g. CSRF token, validation errors)
+- Django would render with tokens/objects in the `<head>` for React to pick up (e.g. CSRF token, validation errors, field values to refill for inputs)
 - Then React would need to properly handle these on a case by case basis
 - It's a lot of work and rebuilding for something we prefer to cheap or batteries included!
 
-TODO: Django Allauth does seem to support many XHR responses, so maybe that greatly simplifies things? https://github.com/pennersr/django-allauth/blob/0.57.0/allauth/account/views.py#L61-L73
+- Django Allauth does seem to support many XHR responses, https://github.com/pennersr/django-allauth/blob/0.57.0/allauth/account/views.py#L61-L73
+- but that doesn't discount the additional wiring/handling work for every new form being built
+
+- It's prob unwise to start with the model, but maybe can be something to work towards (e.g. land on consistent UI eventually)
 
 ## Getting Started
 To set up this repo, install the following dependencies:
@@ -52,7 +59,8 @@ npm start
 We can now see our server running locally at <http://127.0.0.1:8000/>
 
 ## Screenshots
-TODO: Add screenshots
+Log in: (no validation or redirect support)
+![Log in screenshot](docs/screenshots/login.png)
 
 ## Development
 ### File structure
