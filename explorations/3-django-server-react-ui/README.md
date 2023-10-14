@@ -7,7 +7,14 @@ After building plenty in our [Django Allauth exploration](../2-django-allauth), 
 
 After setting this roughly up, I can say that it is possible, but it was quite painful and I'd be concerned around long-term maintenance.
 
-TODO: Why is this painful maintenance?
+It's painful because:
+
+- React is performing an HTML `<form>` submission to Django Allauth (by design)
+- Django would render with tokens/objects in the `<head>` for React to pick up (e.g. CSRF token, validation errors)
+- Then React would need to properly handle these on a case by case basis
+- It's a lot of work and rebuilding for something we prefer to cheap or batteries included!
+
+TODO: Django Allauth does seem to support many XHR responses, so maybe that greatly simplifies things? https://github.com/pennersr/django-allauth/blob/0.57.0/allauth/account/views.py#L61-L73
 
 ## Getting Started
 To set up this repo, install the following dependencies:

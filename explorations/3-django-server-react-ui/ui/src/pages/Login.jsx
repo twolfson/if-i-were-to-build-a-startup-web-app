@@ -12,7 +12,7 @@ export const Login = () => {
     <AuthLayout>
       <h1 className="mb-3">Login</h1>
       {/* Fields enumerated here: https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/forms.py#L90 */}
-      {/* TODO: Note about this being an HTML form, not an HTTP submission */}
+      {/* DEV: `form` submits as an HTML form, not an XHR submission */}
       <form action="/login" method="post" className="mb-4">
         <CsrfToken />
         <div className="mb-3">
@@ -29,7 +29,7 @@ export const Login = () => {
             Login
           </button>
         </div>
-        {/* TODO: Handle form redirect */}
+        {/* DEV: django-allauth supports form redirect but we didn't implement it yet */}
       </form>
       <p>
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,no-script-url */}
@@ -39,7 +39,6 @@ export const Login = () => {
       </p>
       <p>
         {/* Nice touch would be linking this whole row, but keeping styling at end */}
-        {/* TODO: Actually link to different URLs Don't have an account? */}
         Don't have an account? <a href="/sign-up">Sign up</a>
       </p>
     </AuthLayout>
