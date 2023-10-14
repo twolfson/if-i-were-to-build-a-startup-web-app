@@ -9,16 +9,14 @@ Explanations in comparison table
 ## Description
 A database in the context of a web app is service/system that stores data for users interact with.
 
-For the sake of this discussion, I'll be interchanging **relational** with **SQL** and **non-relational** with **NoSQL** freely. I don't believe there's any distinction really, but I could be wrong here.
+For the sake of this discussion, I'll be interchanging **relational** with **SQL** and **non-relational** with **NoSQL** freely. I don't believe there's distinctions respectively, but I could be wrong here.
 
-NoSQL is more prevalent to describe its type of systems, whereas relational and SQL are seen equally as much.
-
-[NoSQL](https://en.wikipedia.org/wiki/NoSQL) encompasses many database types with different data structures:
+[Non-relational/NoSQL](https://en.wikipedia.org/wiki/NoSQL) encompasses many database types with different data structures:
 - Key-value, like Redis and Memcached
 - Document, like MongoDB
 - and pretty much anything else that's not tabular with relationships between them
 
-[Relational](https://en.wikipedia.org/wiki/Relational_database) is strictly tables and relationships between them (e.g. MySQL, PostgreSQL).
+[Relational/SQL](https://en.wikipedia.org/wiki/Relational_database) is strictly tables and relationships between them (e.g. MySQL, PostgreSQL).
 
 ## Comparison
 |               Name               | Non-trivial previous experience? |                  Description                   |                                                                                                                                                                                                                                                                                                                               Notes                                                                                                                                                                                                                                                                                                                                |
