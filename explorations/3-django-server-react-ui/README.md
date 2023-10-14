@@ -4,6 +4,10 @@ TODO: It seems that login was actually working in the last version, just we didn
 
 TODO: Add React to test suite
 
+TODO: One plus is not needing to run LiveReload as its own process, but that's a small piece I guess =/
+
+TODO: Remove unused code like we removed before, incl tests
+
 # Django Server / React UI exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 

@@ -17,9 +17,8 @@
               rel="stylesheet"
               integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
               crossorigin="anonymous">
-        {# TODO: Enable a global ENV variable for `ENV == "dev"` checking #}
         {# Alternatively we could use `json_script` if we build a serializer for User #}
-        {# TODO: Build out safety tests for user info (prob a reason to use json_script in itself) #}
+        {# TODO: Build out XSS tests vs malicious user info (prob a reason to use json_script in itself) #}
         <script>
             window.user = {
                 is_anonymous: {{ user.is_anonymous | stringformat:"s" | lower | escapejs }},
