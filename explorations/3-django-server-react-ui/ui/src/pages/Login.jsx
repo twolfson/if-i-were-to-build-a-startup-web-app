@@ -12,6 +12,7 @@ export const Login = () => {
   // Process our form errors into a common array for top of form
   // DEV: We always render a `json_script` for each of these in this exploration, even on page load
   // DEV: We're using `_` to avoid confusing with `combinedFormErrors`
+  // DEV: In hindsight, we can load from `useContext` in <Checkbox+Input />, looking for their corresponding name
   const _formErrors = JSON.parse(
     document.querySelector("head > #form__errors").innerText
   );

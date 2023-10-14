@@ -48,7 +48,7 @@ Logout:
 ### File structure
 We break from the Django recommendations and store almost everything for our application in `app/`.
 
-Why: Django app fragrmentation are from a time when Python modules weren't as robust, [StackOverflow discussion](https://stackoverflow.com/a/64463620/1960509) and [good sides/perspectives](https://stackoverflow.com/a/53735156/1960509).
+Why: Django app fragmentation are from a time when Python modules weren't as robust, [StackOverflow discussion](https://stackoverflow.com/a/64463620/1960509) and [good sides/perspectives](https://stackoverflow.com/a/53735156/1960509).
 
 We believe that abstraction without a use case is busy work, and our `auth` setup is strictly a customization of `django-allauth` (not worth abstracting). Thus, we lean into Python modules instead.
 

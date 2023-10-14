@@ -1,15 +1,5 @@
 TODO: See TODOs
 
-TODO: It seems that login was actually working in the last version, just we didn't have validation errors showing so we missed it in our testing. So let's restore it + add some *basic* validation
-
-TODO: Add React to test suite
-
-TODO: One plus is not needing to run LiveReload as its own process, but that's a small piece I guess =/
-
-TODO: Remove unused code like we removed before, incl tests
-
-TODO: Almost there with getting React to a sane state, let's use `json_script` to dump out errors, then 1:1 paste into an error field in React, so we can sanely see when a login fails/not during a test run
-
 # Django Server / React UI exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
@@ -84,7 +74,8 @@ Content that's missing:
 
 ## Development
 ### File structure
-TODO: Write me out
+- Roughly same as `2-django-allauth` exploration
+- New addition: `ui/`, container for all React files
 
 ### Django Admin
 Django Admin can be set up via the following:

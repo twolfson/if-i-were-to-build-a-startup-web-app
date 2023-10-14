@@ -1,4 +1,3 @@
-# TODO: Demonstrate requirement via some other page
 # from allauth.account.decorators import verified_email_required
 from django.contrib import messages
 from django.shortcuts import render
