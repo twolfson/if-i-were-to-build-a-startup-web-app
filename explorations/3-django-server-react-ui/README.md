@@ -1,5 +1,3 @@
-TODO: See TODOs
-
 # Django Server / React UI exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
@@ -66,7 +64,7 @@ Content that's missing:
 - Per-field error/validation (currently all at top of field)
 - Exploring using XHR instead of `<form>` submission (prob stronger UX, and less tricky but even more worK)
 - Refilling user inputs with submitted values on form error (or just going with XHR route)
-- Handling notification dismissal
+- Handling notification/message dismissal
 - Handling redirect upon login
 - Test suite for React not fully setup for `window` and `document` from Django
 - Production build for content never fully setup/tested

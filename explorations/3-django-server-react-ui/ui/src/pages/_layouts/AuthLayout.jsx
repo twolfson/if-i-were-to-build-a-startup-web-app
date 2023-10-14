@@ -1,7 +1,6 @@
 import { BaseLayout } from "./BaseLayout";
 
 // Based on: explorations/2-django-allauth/app/templates/_layouts/auth.html
-// TODO: Handle `messages` like https://github.com/twolfson/if-i-were-to-build-a-startup-web-app/blob/acf34e2f52204084300383ba029b68b0c838af99/explorations/2-django-allauth/app/templates/_layouts/auth.html#L11-L19
 export const AuthLayout = ({ children }) => {
   return (
     <BaseLayout>
