@@ -1,6 +1,6 @@
 # If I Were to Build a Startup Web App
-TODO: React proxy on Django
-TODO: And that boilerplate react-django
+
+# THIS IS A WORK IN PROGRESS, PLEASE IGNORE THE MESS
 
 - TODO: Snazzy graphic
     - Maybe some kind of scaffolding or blueprint styling on 2D "Web App" text?
@@ -115,6 +115,9 @@ TODO: Library comparison for allauth and other options I guess?
 TODO: Talk about JSX strengths at expressiveness (e.g. `classnames` with mappings and ternaries), though I think Pug has something similar?
 
 TODO: HTMX author discusses when to not use it - def agree with points from experience -- interactivity is not a fit, https://htmx.org/essays/when-to-use-hypermedia/
+
+TODO: React proxy on Django
+TODO: And that boilerplate react-django
 
 ## Introduction
 I'm a startup engineer. 3x first engineer, former Uber engineer, and have 12 years experience at these and more startups.
