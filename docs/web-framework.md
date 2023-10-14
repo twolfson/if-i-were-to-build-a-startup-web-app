@@ -96,12 +96,12 @@ Time spent rebuilding solved problems is time that could be creating value inste
     - What: Endpoints for users to sign up, login, perform "reset password", and change password
     - Why: A web app typically operate around interacting with person. User models will faciliate tracking this data, and authentication will associate a session with the user
     - How:
-        - For built-in support, this requires an ORM and sessions inthe framework. I've only seen this built-in on Django
+        - For built-in support, this requires an ORM and sessions in the framework. I've only seen this built-in on Django
         - If you need to set this up, always use an off the shelf library. It's near impossible to get right the first time without introducing security issues
 - Admin UI (e.g. Django Admin, Rails Admin)
     - What: Internal tool to allow non-programmers (and programmers) to inspect and take actions (more than direct edits) on models
     - Why:
-        - Engineers should never be the bottleneck for inspecting data or taking. It's inefficient time and cost-wise for a business
+        - Engineers should never be the bottleneck for inspecting data or taking actions. It's inefficient time and cost-wise for a business
         - Instead, self-serve approaches are better because they remove the need for communication entirely
         - Additional reading: https://twolfson.com/2022-07-30-startup-time-investing-operational-processes
     - How: For systems without built-in admin tools, there are a few options:
@@ -115,9 +115,9 @@ Time spent rebuilding solved problems is time that could be creating value inste
         - Testing can be tedious to set up right at first, and then it can run into performance issues (e.g. setting up fixtures for every test function)
         - Instead, it's easier to get this from the start from the framework
     - How:
-        - For some frameworks, this is so bad in that you might run a server and generate requests against it (rather than talking to the view directly)
+        - For some frameworks, this is so bad in that you might run a server and generate requests against it (rather than talking to the controller directly)
         - I've found this is viable yet costs a lot of time, which could have been avoided
-        - Try to interface directly with views and get good performance by leveraging database rollbacks across groups of tests
+        - Try to interface directly with controllers and get good performance by leveraging database rollbacks across groups of tests
 
 ## Great to Have
 - Authorization (AuthZ)
