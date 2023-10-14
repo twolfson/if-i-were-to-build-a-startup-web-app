@@ -68,6 +68,18 @@ We can now see our server running locally at <http://127.0.0.1:8000/>
 Log in: (no validation or redirect support)
 ![Log in screenshot](docs/screenshots/login.png)
 
+## Incomplete implementation notes
+This exploration was stopped without building a full app because it felt counterproductive to keep going, since this setup doesn't hit the ground running.
+
+Content that's missing:
+
+- Per-field error/validation (currently all at top of field)
+- Exploring using XHR instead of `<form>` submission (prob stronger UX, and less tricky but even more worK)
+- Refilling user inputs with submitted values on form error (or just going with XHR route)
+- Handling notification dismissal
+- Handling redirect upon login
+- Probably a lot more
+
 ## Development
 ### File structure
 TODO: Write me out
@@ -107,13 +119,13 @@ We've configured development with the following:
 
 - `flake8`
 - `black`
-- TODO: Add new ones?
+- `eslint`
+- `prettier`
 
 They should automatically be installed via Poetry and able to be used in your IDE or CLI
 
 ### LiveReload
-- TODO: Updates for this?
-We're using https://github.com/lepture/python-livereload for now. It's not required but it helps with page autorefresh on edit
+https://github.com/lepture/python-livereload can be used for refreshing pages on Django HTML edit.
 
 ## Testing
 We provide a convenience wrapper for all our test utilities via:
@@ -149,11 +161,11 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
     - Prob will keep Bootstrap styling for development velocity
     - with none of its JS (to avoid React <> jQuery headaches)
 - `npx create-react-app ui`, https://create-react-app.dev/docs/getting-started
-    - TODO: Show logged in state or not
-    - TODO: Handle auth or not, including logout
-    - TODO: Handle dashboard page (to push limits of React Query)
+    - DONE: Show logged in state or not
+    - PARTIAL: Handle auth or not, including logout
+    - SKIP: Handle dashboard page (to push limits of React Query)
         - Counts + recent tasks + notifications
-    - TODO: Handle notifications dismissable (loading state UI)
+    - SKIP: Handle notifications dismissable (loading state UI)
 - Looking for docs around hosting running server vs built JS
     - Red herring: CORS (multi-domain) focused setup, https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react
     - This seems to do it well, following this: https://www.saaspegasus.com/guides/modern-javascript-for-django-developers/integrating-django-react/
@@ -177,11 +189,8 @@ Additionally, inside templates, a handy utility is `{% debug %}` which dumps all
 - Got up to HTML form submission working =D
 - And then we realized that the UX of submitting an HTML form to have a React loading screen afterwards, is even more janky, than a minor one-off text field being overridden for better suggestion support .\_.
 
-- TODO: If we resume this, here's some notes from earlier:
-    - Validation errors. Don't need per field. Top of form good enough start
-    - Email suggest. Nothing robust needed. Just "email suggestion goes here" if not matching current ones (e.g. todd@twolfson.com)
-    - Large drawback of split is rework pain
-        - If underlying API changes but page doesn't. Lots of work for serializer
-- TODO: The infighting with setups like this is also part of a reason to not adopt such an architecture. It's quite finnicky at setup, and prob similar to maintain
-    - Full React also has similar drawbacks though =/ (e.g. juggling JWT is a pain)
-        - but maybe that's where split Django auth + split React post-auth shines
+- Loooooong break from this project (late May 2023 -> mid Oct 2023)
+
+- Catch up on context
+- Implement basic validation errors
+- Put a bow on exploration because it's not ideal for hitting ground running as a startup
