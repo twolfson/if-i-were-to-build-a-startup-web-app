@@ -17,7 +17,7 @@ Unless stated or seen otherwise, this was all written in May 2023 (TODO: no long
 - TODO: Have this act as a table of contents
 - TODO: For each of these items, ensure we talk about things we're also sidestepping with our given choice (e.g. Django + batteries included)
 
-1. First, [Minimum Viable Product (MVP) without web app](README.md##stage-0-minimum-viable-product-mvp-without-web-app)
+1. First, [Minimum Viable Product (MVP) without web app](README.md#stage-0-minimum-viable-product-mvp-without-web-app)
 2. Then:
     1. [Web framework: Django](docs/web-framework.md)
     2. [Database: PostgreSQL](docs/database.md)
@@ -146,11 +146,11 @@ Instead, use [Product][] techniques to derisk this upfront:
 [Figma]: https://www.figma.com/
 [Underdog.io example]: https://twolfson.com/2021-06-24-lessons-of-a-startup-engineer#every-decision-is-a-business-decision
 
-> This is not my strong suit as with [Find Work][], I'd already convinced myself I was providing value to myself.
+> This is not my strong suit. I've only founded once ([Find Work][]) and I'd already convinced myself I was providing value to myself.
 >
-> And I haven't had a chance to test this thoroughly on a product from scratch since then.
+> I haven't had a chance to test this thoroughly on a product from scratch since then.
 >
-> However, in retrospect, I should have taken a broader approach.
+> In retrospect, I should have taken a broader approach.
 
 If you'd like to learn more, I recommend [Startup School](https://www.startupschool.org/).
 
