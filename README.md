@@ -13,7 +13,12 @@ This was mostly written in May and October 2023. For exceptions, there will be a
 - TODO: For each of these items, ensure we talk about things we're also sidestepping with our given choice (e.g. Django + batteries included)
 
 1. First, [Minimum Viable Product (MVP) without web app](README.md#stage-0-minimum-viable-product-mvp-without-web-app)
-2. Then:
+2. Then, decide if your app is going to be highly interactive or not
+    - i.e.
+    - If you can avoid being highly interactive, you'll be able to ship much faster (e.g. no
+        - TODO: Talk through years of experience and how many apps *had* to be highly interactive
+    - Additionally, if you're not technical, then I strongly recommend not going the interactive route
+3. Then:
     1. [Web framework: Django](docs/web-framework.md)
     2. [Database: PostgreSQL](docs/database.md)
     3. [Development Machine: Local computer](docs/development-machine.md)
