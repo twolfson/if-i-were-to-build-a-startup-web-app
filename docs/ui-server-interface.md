@@ -2,6 +2,10 @@
 
 # SANITY CHECKING WORK HERE, PLEASE DON'T TAKE AT FACE VALUE YET (TODO)
 
+TODO: Pull in better explanation from root README
+
+TODO: Compute actual years for each
+
 **Winner: HTML forms, limited AJAX**
 
 **Runner-up: Even split between "HTML forms, no AJAX" and "No HTML forms, AJAX only"**

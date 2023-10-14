@@ -18,13 +18,29 @@ This was mostly written in May and October 2023. For exceptions, there will be a
     2. [Database: PostgreSQL](docs/database.md)
     3. [Development Machine: Local computer](docs/development-machine.md)
     4. [Development Containment: Language level, nothing else](docs/development-containment.md)
-    5. [UI <> Server Interface: Sanity checking work](docs/ui-server-interface.md)
-        - TODO: Show an example with notification dismissal on same page
-        - TODO: Show an example with model opens and dismissals (Bootstrap strongsuit)
-        - TODO: Compute actual years for each
-    6. [Styling Framework/System: TBD](docs/styling-framework-system.md)
+    5. UI <> Server Interface: Incomplete
+        - Rough recommendation:
+            - If you're not technical at all, then I recommend HTML forms with limited AJAX (e.g. Django with Bootstrap + limited custom JS)
+                - Removing fully learning JS from the equation will significantly reduce overhead
+            - If your app is not that interactive (most apps are [CRUDL][]), then I recommend HTML forms with limited AJAX (e.g. Django with Bootstrap + limited custom JS)
+                - This will leave you with the least amount of work per feature (i.e. no building fetch/cache interface layer)
+                - as well as with lots of components prebuilt and installed (e.g. modals, accordions, tooltips)
+            - If your app is very interactive (e.g. animations between pages, interdependent forms/content, previews), then I recommend HTML forms pre-authentication and single page application (SPA) post-authentication
+                - This requires a lot more work (e.g. fetch/cache interface,
+                - but it
+                - Eventually you can migrate the HTML forms to leverage SPA content, but it may take time to implement
+        - What's pending exploration:
+            - I've used plenty of frameworks with just GET/POST responses and limited JS
+            - However, I've never used Django with it
+            - so I'd like to do a sanity check exploration with that final sign-off
+            - TODO: Show an example with notification dismissal on same page
+            - TODO: Show an example with model opens and dismissals (Bootstrap strongsuit)
+            - TODO: Broader Python templating evaluation/comparison?
+                - Mako seems like a winner due to having bare Python escape hatch
+    6. Styling Framework/System:
         - TODO: Explain TBD
         - TODO: CSS preprocessor or postcompiler
+        - [Work in progress document](docs/styling-framework-system.md)
     - Bootstrap?? Tailwind??
     - ES5?? ES6?? Compilation??
         - Prob concat + minify at a... minimum ;D I wonder if Parcel works as a freebie
@@ -44,6 +60,8 @@ This was mostly written in May and October 2023. For exceptions, there will be a
     - Development Tools (e.g. Stellar)
     - History and auditing
     - Admin tooling
+
+[CRUDL]: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
 
 TODO: Talk through innovation tokens?
 TODO: Talk through "cost savings" vs "time savings"
