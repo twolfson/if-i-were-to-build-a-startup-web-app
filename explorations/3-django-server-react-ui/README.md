@@ -78,6 +78,8 @@ Content that's missing:
 - Refilling user inputs with submitted values on form error (or just going with XHR route)
 - Handling notification dismissal
 - Handling redirect upon login
+- Test suite for React not fully setup for `window` and `document` from Django
+- Production build for content never fully setup/tested
 - Probably a lot more
 
 ## Development
