@@ -4,9 +4,11 @@
 
 - TODO: See TODOs
 
-Choices, explanations, and documentation around if I were to build a startup web app
+Choices, explanations, and documentation around if I were to build a startup web app.
 
-The goal is to build a product as quickly and efficiently as possible.
+For context, I have 12 years experience at startups (mostly early stage), have been 3x first engineer (including 1x founder), and am a former Uber.
+
+Our goal with these choices is towards building a product as quickly and efficiently as possible.
 
 This was mostly written in May and October 2023. For exceptions, there will be a note.
 
@@ -19,6 +21,8 @@ This was mostly written in May and October 2023. For exceptions, there will be a
         - Django with django-allauth
         - Bootstrap
         - Limited custom JS
+        - [Additional documents like PostgreSQL and no Docker covered below](#architectural-decisions)
+        - TODO: Consider expanding fully?
     - Why this is a rough recommendation:
         - I've used plenty of frameworks with just GET/POST responses and limited JS
         - However, I've never used Django as an HTML form app (was REST API + admin tools) nor django-allauth in a non-trivial manner
@@ -27,45 +31,15 @@ This was mostly written in May and October 2023. For exceptions, there will be a
         - TODO: Broader Python templating evaluation/comparison?
             - Mako seems like a winner due to having bare Python escape hatch
     - For a very interactive app:
-        - Django with django-allauth pre-authentication
+        - Django with `django-allauth` pre-authentication (valauble due to admin tools, user standard, and authentication)
         - Single page application (SPA) post-authentication (e.g. React)
         - django-allauth should support building SPA around authentication pages as well, but that has way more implementation time
-    - Decision documents:
-        1. [Web framework: Django](docs/web-framework.md)
-            - For a highly interactive setup, Django is still invaluable due to its admin tooling, user standard, and authentication
-4. Then, detail oriented decisions
-    1. [Database: PostgreSQL](docs/database.md)
-    2. [Development Machine: Local computer](docs/development-machine.md)
-    3. [Development Containment: Language level, nothing else](docs/development-containment.md)
-    5. UI <> Server Interface: Incomplete
-    6. Styling Framework/System:
-        - TODO: Explain TBD
-        - TODO: CSS preprocessor or postcompiler
-    - Bootstrap?? Tailwind??
-    - ES5?? ES6?? Compilation??
-        - Prob concat + minify at a... minimum ;D I wonder if Parcel works as a freebie
-    - Repeatability: Runbook as documentation
-    - Hosting provider selection
-    - Database provider selection
-    - Documenting in-repo vs outside of repo
-    - Monorepo vs not
-    - Monolith vs not
-    - Virtual environments
-    - Scripting (deployments, commands) -- bash vs Python, when and where and why
-3. Areas of Growth
-    - Continuous Integration
-    - Continuous Deployment
-    - Testing (integration, unit, visual)
-    - Linting and programming style
-    - Development Tools (e.g. Stellar)
-    - History and auditing
-    - Admin tooling
 
 [explorations-django-allauth]: docs/explorations.md#2-django-allauth
 
-TODO: Talk through innovation tokens?
-TODO: Talk through "cost savings" vs "time savings"
-TODO: Talk through "code maintenance as fact"
+
+----
+
 TODO: LiveReload setup as part of server
     This is inspiring around maybe building a custom build chain just for LiveReload CLI =o
     https://stackoverflow.com/a/27785960
@@ -133,13 +107,6 @@ TODO: React proxy on Django
 TODO: And that boilerplate react-django
 
 TODO: Update the "half of" and "lightly" with quantifiable dates/times
-
-## Introduction
-I'm a startup engineer. 3x first engineer, former Uber engineer, and have 12 years experience at these and more startups.
-
-I've provided [more context at the bottom](README.md#context) of this README, but that's not why you're here.
-
-Let's dig in.
 
 ## Stage 0: Minimum Viable Product (MVP) without web app
 The goal of a startup is to provide value to others (e.g. time, money, intangibles).
@@ -211,6 +178,8 @@ For the sake of the rest of our discussion, we'll assume an app with basic forms
 
 If you'd like a version of this repo talking through high interactivity, please [reach out](mailto:todd@twolfson.com) =)
 
+TODO: Provide eval table of different experiences
+
 ### Deciding aesthetics
 Aesthetics can lead to a significant increase in development time when compounded with other technical decisions.
 
@@ -232,8 +201,58 @@ With interactivity (contained) and aesthetics (Bootstrap) decided, we can now st
 
 1. [Web Framework: Django](docs/web-framework.md)
 2. [Database: PostgreSQL](docs/database.md)
+3. [Development Machine: Local computer](docs/development-machine.md)
+4. [Development Containment: Language level, nothing else](docs/development-containment.md)
 
-<!-- TODO: Keep this up to date with list as top -->
+TODO: UI <> Server Interface: Incomplete -- this document needs some rework, doesn't it?
+
+TODO: Authentication (e.g. django-allauth, third party, REST auth, something else)
+
+## Content not covered
+There are many many decision I'd like to talk through, but my motivation around this repo has waned (large time sink with uncertain value for others).
+
+As a result, there's a lightning round of content I didn't cover:
+
+- CSS frameworks/UI toolkits (e.g. Bootstrap vs Tailwind vs Inuit.css)
+    - Have used these 3 mentioned, as well as no framework
+    - Inuit.css was great but not maintained any more =(
+    - Bootstrap is best for moving quickly
+    - Tailwind is fantastic base layer for designs to create expression on + teams to build on top of
+        - Though do need to be careful to contain common patterns and document groups of classes, since maintenance can be tricky otherwise
+- CSS preprocessors
+    - These are less of a choice one the framework is selected
+    - but I do strongly prefer Sass (SCSS flavor) over PostCSS
+        - Stylus and LESS are way less prevalent
+    - PostCSS always makes me a little nervous that it'll silently stop computing a `calc()` and sending that out, thus breaking a legacy browser
+    - It also requires finding/installing every extension rather than giving sane batteries from the start =/
+- ES5, ES6, TypeScript, and JavaScript compilation
+    - I strongly like when I can copy/paste content from my editor into Dev Tools (i.e. quickly iterate/debug why something isn't working)
+    - so I dislike anyhting that's too far from browser-native JS as a result
+    - Admittedly, this never happens with JSX (prob since I can TDD around it), only things like logic errors
+- Hosting provider selection
+    - Landscape and pricing changes too often, do an evaluation table comparison
+- Database provider selcetion
+    - Landscape and pricing changes too often, do an evaluation table comparison
+- Documenting in-repo vs outside of repo
+    - I'd been team "in-repo" for years,
+    - but recently switched to "outside of repo" since it allows for easier multi-repo onboarding
+    - and historical docs for historical code isn't necessary when always running `latest`
+- Monorepo vs not
+    - I've never worked on a true monorepo, but would be on the fence since it requires additional tooling
+- Monolith vs not
+    - Monolith is easier because all the code is colocated
+    - and it simplifies pull requests
+    - as well as deployments
+
+Additionally, there's pieces I wanted go cover around how the product and business continues to grow, and the setup is primed for that:
+
+- Continuous Integration
+- Continuous Deployment
+- Testing (integration, unit, visual)
+- Linting and programming style
+- Development Tools (e.g. Stellar)
+- History and auditing
+- Admin tooling
 
 ## Low-level decisions
 ### Documentation
