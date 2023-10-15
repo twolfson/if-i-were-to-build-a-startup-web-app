@@ -15,8 +15,6 @@ The drawback is the Django auth content is largely configured for internal only 
 [Devise]: https://www.digitalocean.com/community/tutorials/how-to-set-up-user-authentication-with-devise-in-a-rails-7-application#step-4-creating-the-user-model-with-devise
 [Passport (JS)]: https://www.passportjs.org/howtos/password/
 
-<!-- TODO: Update web-framework to give more points to other repos due to best option prob being a third party library in all cases -->
-
 To elaborate further:
 
 - User creation is only done through CLI or Django Admin, no forms/views/URLs to extend for your app
@@ -156,6 +154,8 @@ Okay, so stepping back, I think this uncovers some pretty core truths:
 - I'm not sure they're making the point well, but it does seem like we could just use no key for queries and sidestep caching, https://christopherkade.com/posts/react-query (https://archive.ph/Uzglm)
 - Interesting insight in some places using a `setState` to track queries, which is prob just React Query with no key and more work, https://alto.com/blog/post/react-query-for-managing-server-state (https://archive.ph/KzQ6p)
 
+**Rambling goes off the rails here, losing sight of initial "rapid development" goals**
+
 - So maybe that's an exercise worth exploring (though these things tend to break only when app is at large scale and you're developing against it regularly)
 
 - That being said, I'm also recalling a large painpoint of building out lots of serializer nesting, just for serving an API response
@@ -179,8 +179,6 @@ Okay, so stepping back, I think this uncovers some pretty core truths:
 
 - This is all kind of a time sink at a point, and we do have other obligations, so prob not going to work on this actively until later
 
-- TODO: Distill all this content down somewhat? Or put into a different file? It's quite rambly
-
 - To reframe the dilemma:
 - There are 2 ways to build a UI for an application:
 - Either limit the designs upfront, and say "no" a lot more to functionality, but have a widget oriented implementation
@@ -189,8 +187,8 @@ Okay, so stepping back, I think this uncovers some pretty core truths:
     - Serializers can either be page-centric or model-centric
     - Model-centric is way more reuseable
     - buuut... hmmmm... maybe there is something to reconsider with page-centric serializers?
-        - TODO: Page-centric or maybe action-centric serializers exploration? Sidesteps caching concerns entirely (not even a common thing really)
-            - TODO: This is prob along the spectrum of RPC vs REST, https://nordicapis.com/whats-the-difference-between-rpc-and-rest/
+        - SKIP: Page-centric or maybe action-centric serializers exploration? Sidesteps caching concerns entirely (not even a common thing really)
+            - SKIP: This is prob along the spectrum of RPC vs REST, https://nordicapis.com/whats-the-difference-between-rpc-and-rest/
             - Looking at https://stackoverflow.com/a/55718066/1960509 - Realizing RPC would still have same headaches as REST with reuse across serializers -- prob exacerbated even due to keys being less clear =/
                 - e.g. If an onboarding form + settings form use same model, then we're talking to that endpoint twice
                 - buuut maybe this is find in practice and saner to develop against (e.g. handling one-offs)
@@ -220,9 +218,16 @@ After taking some time away from the content above, I'm curious to explore a var
     - and it'd be silly to need to rebuild the same widget/component twice in different parts of the system (e.g. a broader Django auth <> React non-auth pages split)
 - Django handles sessions, and serves relevant content as part of HTML
 - React handles loading states, interactivity, and oh-so-much more
-    - TODO: Talk about LiveReload in the docs
 - Django serves RESTful endpoints (easier than page-specific cache mangement)
     - As opposed to being specific GET/POST pairs for each page rendered (better for a React-less world, widgets only)
 - Push the limits of React cache querying and serializers, remind self of how painful (or not painful) those can be to write
 
-Once this is all done, it'd be interesting to build a contrasting app strictly with the GET/POST pairs mentioned (TODO)
+Once this is all done, it'd be interesting to build a contrasting app strictly with the GET/POST pairs mentioned
+
+**Months pass**
+
+- It's now October, we last wrote this in May
+- The Django + React exploration got a lot more sticky than expected
+    - e.g. Tricky to fill in React fields if doing HTML based submission
+- We realized the ideal compromise is prob `django-allauth` with HTML forms pre-authentication, then React post-authentication
+- We've updated and documented this in the README (both exploration and main)
