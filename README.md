@@ -237,43 +237,62 @@ As a result, there's a lightning round of content I didn't cover:
     - I'd been team "in-repo" for years,
     - but recently switched to "outside of repo" since it allows for easier multi-repo onboarding
     - and historical docs for historical code isn't necessary when always running `latest`
+    - Caveat: In-repo + monorepo is preferred if this is an open source product (for easy documentation versioning)
+    - If you **need** in-repo, then Markdown is preferred
+        - reStructuredText is finnicky around headings
+        - Plain text lacks hierarchy when being served
+        - Not sure about others
+    - If this is an open source product though, then
 - Monorepo vs not
     - I've never worked on a true monorepo, but would be on the fence since it requires additional tooling
 - Monolith vs not
     - Monolith is easier because all the code is colocated
     - and it simplifies pull requests
     - as well as deployments
+- Releases + versioning
+    - Release on every PR is preferred
+    - Versioning was something I used to do, but have since realized there's little value despite a decent amount of effort (e.g. `git tag` + `git push` in deploys)
+    - Caveat: Definitely do if the product is open source
+- Squashed commits vs not
+    - I strongly prefer squashed commits from every PR
+        - (despite evidence otherwise on my open source repos)
+    - It allows for sane reverting if a firefighting scenario happens
+- Version Control System and hosting
+    - I've used SVN a long time ago, and Git otherwise
+    - Git isn't the most intuitive but if you learn the fundamentals (e.g. <https://git-scm.com/book/en/v2>)
+    - then it becomes much easier to keep track of what's going on
+    - GitHub is my preference for hosting
+    - I have no experience with Gitlab, Bitbucket, or Sourcehut
+    - There was a brief period where I used Phabricator, but the setup seemed very involved
 
 Additionally, there's pieces I wanted go cover around how the product and business continues to grow, and the setup is primed for that:
 
 - Continuous Integration
+    - Strongly preferred since it adds velocity. Testing and linting ftw
 - Continuous Deployment
+    - A bit tedious to set up, and I find little extra value vs having a one-click deploy after landing a PR
 - Testing (integration, unit, visual)
+    - Unit testing definitely
+    - Visual is only good for one-shot large scale CSS rework, otherwise it's a PITA to keep up to date
+    - Integration can be good but it's also quite brittle + adds little value
+        - Manual testing (which should always be done on release as-is) takes care of this generally
 - Linting and programming style
+    - ESLint and prettier do a fantastic job of ensuring common formatting and no accidental errors being introduced, definitely use these if you can
 - Development Tools (e.g. Stellar)
+    - Stellar is wonderful for snapshotting the DB to iterate on for a feature, then going back to `main` without hiccups
 - History and auditing
+    - django-simple-history is fantastic for getting auditable history (e.g. who/what) without getting too much in the way =D
+    - There is some elbow grease needed to enforce the convention, but it pays dividends in its investment
 - Admin tooling
+    - Django Admin provides amazing infrastructure, don't leave home without it =D
+- Sentry and error monitoring
+    - Another piece of infrastructure that pays amazing dividends
+    - Get notified of bugs that your server and users are encountering, what a great concept! =D
+- Server stats monitoring
+    - It's good to have but not critical
+    - Prob can defer until you start to notice large scaling
 
 ## Low-level decisions
-### Documentation
-TODO: Markdown vs reStructured Text vs plain text vs external (Slab, Notion, etc) something else
-
-### Releases
-TODO: Releases + versioning
-
-### Squashed commits vs not
-TODO: Explain this
-
-### Version Control System and hosting
-TODO: Explain this
-
-### Why are comparisons tables vs lists or something else?
-TODO: Explain this
-
-
-TODO: Talk about Sentry and error monitoring
-TODO: Talk about server stats monitoring
-
 TODO: Pull into other content
 """
 2023-05-14:
