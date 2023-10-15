@@ -6,6 +6,8 @@
 
 Choices, explanations, and documentation around if I were to build a startup web app
 
+The goal is to build a product as quickly and efficiently as possible.
+
 This was mostly written in May and October 2023. For exceptions, there will be a note.
 
 - TODO: Fill in tl;dr with more info as we decide on things
@@ -13,7 +15,7 @@ This was mostly written in May and October 2023. For exceptions, there will be a
 - TODO: For each of these items, ensure we talk about things we're also sidestepping with our given choice (e.g. Django + batteries included)
 
 1. First, [Minimum Viable Product (MVP) without web app](README.md#stage-0-minimum-viable-product-mvp-without-web-app)
-2. Then, [Betting on product interactivity, deciding aesthetics (TOD), and assuming isolated high interactivity for discussion](README.md#stage-1-initial-build)
+2. Then, [Betting on product interactivity, deciding aesthetics (TODO), and assuming isolated high interactivity for discussion](README.md#stage-1-initial-build)
 3. Then, making architectural decisions:
     1. [Web framework: Django](docs/web-framework.md)
         - For a highly interactive setup, Django is still invaluable due to its admin tooling, user standard, and authentication
