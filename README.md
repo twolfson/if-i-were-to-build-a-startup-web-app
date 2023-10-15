@@ -28,20 +28,7 @@ The information here will go out of date, so take it a grain of salt and as a sn
         - However, I've never used Django as an HTML form app (was REST API + admin tools) nor django-allauth in a non-trivial manner
             - In our [Explorations document][explorations-django-allauth], we found Django without django-allauth was quite infuriating for self-serve signups
         - so take this advice with a grain of salt
-        - TODO: Broader Python templating evaluation/comparison? Maybe with an example repo?
-            - Mako seems like a winner due to having bare Python escape hatch
-            - TODO: Prob use Jinja instead of Django to avoid footguns
-                - https://docs.djangoproject.com/en/4.2/ref/templates/api/#how-invalid-variables-are-handled
-                - https://stackoverflow.com/a/40506337/1960509
-                - https://docs.quantifiedcode.com/python-anti-patterns/django/1.8/migration/template_string_if_invalid_deprecated.html
-                - https://djangosnippets.org/snippets/646/
-                - https://stackoverflow.com/a/15312316/1960509
-                - TODO: Talk about JSX strengths at expressiveness (e.g. `classnames` with mappings and ternaries), though I think Pug has something similar?
-            - TODO: Demo repo
-                - TODO: AbstractBaseUser exploration, for things like PhoneNumber
-                - TODO: Minus points for HTML pages for nice touches like carrying over email between pages
-                - TODO: Widget for email suggestion
-                - TODO: Real world model example: Create a welcome notification, where user presses X to dismiss (i.e. should have loading state or eager dismiss + restore on fail)
+        - There's [addititional notes for building a fuller example at the bottom](#if-we-were-to-build-a-fuller-example)
     - For a very interactive app:
         - Django with `django-allauth` pre-authentication (valauble due to admin tools, user standard, and authentication)
         - Single page application (SPA) post-authentication (e.g. React)
@@ -120,9 +107,6 @@ For the sake of the rest of our discussion, we'll assume an app with basic forms
 
 If you'd like a version of this repo talking through high interactivity, please [reach out](mailto:todd@twolfson.com) =)
 
-TODO: Provide eval table of different experiences
-TODO: Update the "half of" and "lightly" with quantifiable dates/times
-
 ### Deciding aesthetics
 Aesthetics can lead to a significant increase in development time when compounded with other technical decisions.
 
@@ -136,8 +120,6 @@ It doesn't play well with systems like [React][], but with the "basic forms with
 
 [Reakit]: https://reakit.io/
 [React]: https://react.dev/
-
-TODO: Prob could talk through experiences with all different aesthetics setups
 
 ### Architectural decisions
 With interactivity (contained) and aesthetics (Bootstrap) decided, we can now start digging into further architectural decisions:
@@ -256,10 +238,28 @@ Weird thoughts and tangents:
 
 [LiveReload CLI]: https://github.com/lepture/python-livereload
 
-Things I wanted to dig into/explore more:
+One-off time consuming info like:
+- Clarifying what "half of my career" and "lightly" mean in terms of years
+- Providing eval table with years for newer content like product interactivity and aesthetics systems
+
+### Things I wanted to dig into/explore more
 
 - Alternative CSS frameworks like Bourbon or SuitCSS
     - Bootstrap is generally good but lacks the full breadth of Tailwind (e.g. `space-y-*`)
+
+### If we were to build a fuller example
+- Explore Mako as templating language
+    - Django had footguns which we strongly disliked
+        - https://docs.djangoproject.com/en/4.2/ref/templates/api/#how-invalid-variables-are-handled
+        - https://stackoverflow.com/a/40506337/1960509
+        - https://docs.quantifiedcode.com/python-anti-patterns/django/1.8/migration/template_string_if_invalid_deprecated.html
+        - https://djangosnippets.org/snippets/646/
+        - https://stackoverflow.com/a/15312316/1960509
+    - Mako has a Python escape (which Django doesn't, leading to development frustration)
+    - Jinja2 might also resolve these concerns
+- Explore using AbstractBaseUser more (e.g. PhoneNumber) since we lacked experience on that
+- Building custom JS widget for something like email suggestion
+- Real world model example: Create a welcome banner, where user presses "&times;" to dismiss (i.e. should have loading state or eager dismiss + restore on fail)
 
 ## Context
 I decided to leave NCX at the end of May 2023.
