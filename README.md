@@ -14,19 +14,6 @@ This was mostly written in May and October 2023. For exceptions, there will be a
 
 1. First, [Minimum Viable Product (MVP) without web app](README.md#stage-0-minimum-viable-product-mvp-without-web-app)
 2. Then, [Betting on product interactivity](README.md#betting-on-product-interactivity) and assuming low interactivity for discussion
-    - Apps can range in interactivity from being basic [CRUDL][] forms
-    - to every page relating to the core product (e.g. music player, maps)
-    - In my experience, the majority of an app's surface area (and thus development time) comes from basic forms, with 1-2 isolated pages with something that's interactive (e.g. CAD, land selection)
-    - If you're working with a designer, communicate this to avoid accidentally requiring high interactivity
-        - Interactivity which requires more work:
-        - Forms within dialogues/modals
-    - TODO: This should be a document for this?
-    - TODO: Need to rework "Stage ##" content at bottom around this
-    decide if your app is going to be highly interactive or not
-    - i.e.
-    - If you can avoid being highly interactive, you'll be able to ship much faster (e.g. no
-        - TODO: Talk through years of experience and how many apps *had* to be highly interactive
-    - Additionally, if you're not technical, then I strongly recommend not going the interactive route
 3. Then:
     1. [Web framework: Django](docs/web-framework.md)
     2. [Database: PostgreSQL](docs/database.md)
@@ -186,11 +173,41 @@ If you'd like to learn more, I recommend [Startup School](https://www.startupsch
 [Find Work]: https://github.com/findworkco/app
 
 ## Stage 1: Initial build
+### Betting on product interactivity
 Between [Stage 0] and building, I recommend continuing to do [User Research][] and leverage mockups/prototypes ([Product Design][]) to derisk the data model.
 
 UIs are hard to get right the first time, and any UI changes can cascade into larger userflow and multi-page code + schema changes.
 
-Assuming I've derisked, and confirmed a web app is the right thing to build (vs a mobile app or no app at all), here are the tactical decisions I'd make:
+Assuming I've derisked, and confirmed a web app is the right thing to build (vs a mobile app or no app at all), I'd next consider how interactive this app is going to be.
+
+Apps can range in interactivity from being basic [CRUDL][] forms to every page relating to the core product (e.g. music player, maps).
+
+In my experience, the majority of an app's surface area (and thus development time) comes from basic forms, with 1-2 isolated pages with something that's interactive (e.g. CAD, land selection).
+
+The development time difference is stark. i.e. A highly interactive app requires building 2 API layers between the server and UI (1 from server for formatting the exposing explicit content values, 1 from UI to read + cache + manage said values).
+
+I estimate this adds 10% development time to every feature. So over a 2-5 year period, that's an additional 2-5 months!
+
+If you're working with a designer, communicate this to avoid accidentally requiring high interactivity. For example:
+
+- Forms within dialogues/modals
+- Animations between pages
+- Progress bars for forms
+- Fields auto-saving after changing
+
+[CRUDL]: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
+
+To avoid fearmongering app complexity, there's plenty of interactivity which is well-contained in their own components/state:
+
+- Tooltips
+- Validation errors
+- Progress bars in multi-stage process (e.g. onboarding)
+
+
+**For the sake of the rest of our discussion, we'll assume an app with basic forms and 1-2 isolated pages of high interactivity.**
+
+### Architectural decisions
+With interactivity decided, we can now start digging into architectural decisions:
 
 1. [Web Framework: Django](docs/web-framework.md)
 2. [Database: PostgreSQL](docs/database.md)
