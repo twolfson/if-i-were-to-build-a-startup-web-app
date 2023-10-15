@@ -4,13 +4,13 @@
 
 - TODO: See TODOs
 
-Choices, explanations, and documentation around if I were to build a startup web app.
+Choices, explanations, and documentation around if I were to build a startup web app in 2023.
 
 For context, I have 12 years experience at startups (mostly early stage), have been 3x first engineer (including 1x founder), and am a former Uber.
 
 Our goal with these choices is towards building a product as quickly and efficiently as possible.
 
-This was mostly written in May and October 2023. For exceptions, there will be a note.
+The information here will go out of date, so take it a grain of salt and as a snapshot in time.
 
 1. First, [Minimum Viable Product (MVP) without web app](README.md#stage-0-minimum-viable-product-mvp-without-web-app)
 2. Then, [Betting on product interactivity and deciding aesthetics](README.md#stage-1-initial-build)
