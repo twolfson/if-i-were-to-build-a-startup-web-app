@@ -34,6 +34,7 @@ The information here will go out of date, so take it a grain of salt and as a sn
         - Django with `django-allauth` pre-authentication (valauble due to admin tools, user standard, and authentication)
         - Single page application (SPA) post-authentication (e.g. React)
         - django-allauth should support building SPA around authentication pages as well, but that has way more implementation time
+            - Be careful to still allow tokens to be handle by django-allauth on the server though, otherwise third party scripts will see referrer (security issue)
 
 [explorations-django-allauth]: docs/explorations.md#2-django-allauth
 
@@ -264,6 +265,12 @@ As a result, there's a lightning round of content I didn't cover:
     - GitHub is my preference for hosting
     - I have no experience with Gitlab, Bitbucket, or Sourcehut
     - There was a brief period where I used Phabricator, but the setup seemed very involved
+- Secret management (e.g. hardcode vs env variables vs .env vs SOPS vs others)
+    - Either hardcode or environment variables with `.env` for local development
+    - Hardcode is surprisingly prevalent in early stage industry
+    - and there's not a whole lot extra security compromise to be concerned about
+    - but the more "defense in depth" version is definitely environment variables
+    - SOPS is excessive (and tricky with a small team) since versioning doesn't matter when always shipping `latest`
 
 Additionally, there's pieces I wanted go cover around how the product and business continues to grow, and the setup is primed for that:
 
@@ -292,53 +299,11 @@ Additionally, there's pieces I wanted go cover around how the product and busine
     - It's good to have but not critical
     - Prob can defer until you start to notice large scaling
 
-## Low-level decisions
-TODO: Pull into other content
-"""
-2023-05-14:
-Architecture where JSX is renderer in Django
-And page load hydration is select regions
-
-Benefit would be no serializer busy work
-
-But unclear how that'd side step deeper lookups
-But maybe it's just like a really fancy form
-
-Also definitely an innovation token
-
-This also isn't much different from rendering HTML with context as JSON
-
-Main concern of react in a per page setup
-Is seeing a loading spinner so damn often
-(prob need to use throttling as a demo)
---
-Django auth pages drawback
-Can't do email suggest
-Can't use common validation styles
-"""
-
-----
-
-TODO:
-What a product example is
-Not covering mobile focused API (e.g. Firebase, Supabase)
-
-Firebase setups
-
-Take everything with grain of salt
-Especially with age
-
-These are strictly starting points for discussions. No eng decision ever made in isolation. Impacts me and future team mates. Decisions rarely get revisited after implemented unless repeat work blocks. So friction cost present but never paid. Boiling the frog metaphorically
-
-TODO: Secret management (hardcode vs env variables vs .env vs SOPS vs more) + interplay with Docker
-
-TODO:
-Rails does have generate utility but can't recall last time I wanted that. Copy paste as convention is best pit of success
-
-Secondary to this would be a runbook as its an operational process. Link to article
-
-TODO: Auth validation is bad idea with react because scrubbing out of hand. HTTP referrer too late
-
+Weird thoughts and tangents:
+- React hydrating Django rendered content
+    - Just say no, you're doubling up on the generated code (requiring React to stay consisting with Django)
+    - and there's been chatter around hydration not being great
+    - and definitely costs an innovation token
 
 ## Context
 I decided to leave NCX at the end of May 2023.
