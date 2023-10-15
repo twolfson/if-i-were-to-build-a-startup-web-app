@@ -142,15 +142,13 @@ TODO: Prob could talk through experiences with all different aesthetics setups
 ### Architectural decisions
 With interactivity (contained) and aesthetics (Bootstrap) decided, we can now start digging into further architectural decisions:
 
-1. [Web Framework: Django](docs/web-framework.md)
-2. [Database: PostgreSQL](docs/database.md)
-3. [Development Machine: Local computer](docs/development-machine.md)
-4. [Development Containment: Language level, nothing else](docs/development-containment.md)
-
-TODO: UI <> Server Interface: Incomplete -- this document needs some rework, doesn't it?
+- [Web Framework: Django](docs/web-framework.md)
+- [Database: PostgreSQL](docs/database.md)
+- [Development Machine: Local computer](docs/development-machine.md)
+- [Development Containment: Language level, nothing else](docs/development-containment.md)
+- [UI <> Server Interface](docs/ui-server-interface.md)
 
 TODO: Authentication (e.g. django-allauth, third party, REST auth, something else)
-TODO: Talk about JWT and difficulty revoking sessions
 
 ## Content not covered
 There are many many decision I'd like to talk through, but my motivation around this repo has waned (large time sink with uncertain value for others).
