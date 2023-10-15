@@ -28,8 +28,20 @@ The information here will go out of date, so take it a grain of salt and as a sn
         - However, I've never used Django as an HTML form app (was REST API + admin tools) nor django-allauth in a non-trivial manner
             - In our [Explorations document][explorations-django-allauth], we found Django without django-allauth was quite infuriating for self-serve signups
         - so take this advice with a grain of salt
-        - TODO: Broader Python templating evaluation/comparison?
+        - TODO: Broader Python templating evaluation/comparison? Maybe with an example repo?
             - Mako seems like a winner due to having bare Python escape hatch
+            - TODO: Prob use Jinja instead of Django to avoid footguns
+                - https://docs.djangoproject.com/en/4.2/ref/templates/api/#how-invalid-variables-are-handled
+                - https://stackoverflow.com/a/40506337/1960509
+                - https://docs.quantifiedcode.com/python-anti-patterns/django/1.8/migration/template_string_if_invalid_deprecated.html
+                - https://djangosnippets.org/snippets/646/
+                - https://stackoverflow.com/a/15312316/1960509
+                - TODO: Talk about JSX strengths at expressiveness (e.g. `classnames` with mappings and ternaries), though I think Pug has something similar?
+            - TODO: Demo repo
+                - TODO: AbstractBaseUser exploration, for things like PhoneNumber
+                - TODO: Minus points for HTML pages for nice touches like carrying over email between pages
+                - TODO: Widget for email suggestion
+                - TODO: Real world model example: Create a welcome notification, where user presses X to dismiss (i.e. should have loading state or eager dismiss + restore on fail)
     - For a very interactive app:
         - Django with `django-allauth` pre-authentication (valauble due to admin tools, user standard, and authentication)
         - Single page application (SPA) post-authentication (e.g. React)
@@ -37,77 +49,6 @@ The information here will go out of date, so take it a grain of salt and as a sn
             - Be careful to still allow tokens to be handle by django-allauth on the server though, otherwise third party scripts will see referrer (security issue)
 
 [explorations-django-allauth]: docs/explorations.md#2-django-allauth
-
-
-----
-
-TODO: LiveReload setup as part of server
-    This is inspiring around maybe building a custom build chain just for LiveReload CLI =o
-    https://stackoverflow.com/a/27785960
-TODO: Talk through runserver_plus + Werkzeug? + --group dev install pieces?
-TODO: Prettier was nice for HTML formatting, does Django have some equivalent?
-    djlint has been found =D
-
-TODO: Talk about JWT and difficulty revoking sessions
-
-TODO: Prob use Jinja instead of Django to avoid footguns, https://docs.djangoproject.com/en/4.2/ref/templates/api/#how-invalid-variables-are-handled
-https://stackoverflow.com/a/40506337/1960509
-https://docs.quantifiedcode.com/python-anti-patterns/django/1.8/migration/template_string_if_invalid_deprecated.html
-https://djangosnippets.org/snippets/646/
-https://stackoverflow.com/a/15312316/1960509
-
-TODO: Django forms comparison notes
-Crispy forms just an HTML DSL
-Not saving any time using it
-https://django-crispy-forms.readthedocs.io/en/latest/layouts.html
-
-https://www.reddit.com/r/django/comments/20dwgr/do_people_use_django_forms/
-Guidance is more or less as expected
-
---
-
-TODO: Prob a restructure of efficiency of work is in order:
-- Django as base layer for loading page with CSRF
-- React still handling all routing...?
-- But Django being DRF? except for inital page load?
-- And React submit via a normal form? (but then React UX prob janky -- e.g. what happens on form error
-- This was cascaded because realizing react-create-app (great tooling) also has its own LiveReload
-- The modern web is a mess...
-- Going to go to sleep...
-
-- This seems promising for LiveReload headaches, https://builtwithdjango.com/blog/set-up-webpack-and-tailwind
-
-TODO: Talk through django-allauth, maybe even use it?
-https://django-allauth.readthedocs.io/en/latest/views.html
-
-TODO: AbstractBaseUser exploration, for things like PhoneNumber
-
-TODO: Minus points for HTML pages for nice touches like carrying over email between pages
-TODO: Widget for email suggestion
-
-TODO: Bootstrap lacking space-y-* utilities, so handy
-
-TODO: Exploration for Tailwind
-TODO: Exploration for React + AJAX
-
-TODO: Real world model example: Create a welcome notification, where user presses X to dismiss (i.e. should have loading state or eager dismiss + restore on fail)
-
-TODO: Talk through a11y tooling from React (Django not nearly as strong)
-
-TODO: How does React hydration work? And what does a setup look like without that?
-
-TODO: Explanation and comparison vs `pip` as well as `venv` and `virtualenvwrapper` coming soon!
-
-TODO: Library comparison for allauth and other options I guess?
-
-TODO: Talk about JSX strengths at expressiveness (e.g. `classnames` with mappings and ternaries), though I think Pug has something similar?
-
-TODO: HTMX author discusses when to not use it - def agree with points from experience -- interactivity is not a fit, https://htmx.org/essays/when-to-use-hypermedia/
-
-TODO: React proxy on Django
-TODO: And that boilerplate react-django
-
-TODO: Update the "half of" and "lightly" with quantifiable dates/times
 
 ## Stage 0: Minimum Viable Product (MVP) without web app
 The goal of a startup is to provide value to others (e.g. time, money, intangibles).
@@ -180,6 +121,7 @@ For the sake of the rest of our discussion, we'll assume an app with basic forms
 If you'd like a version of this repo talking through high interactivity, please [reach out](mailto:todd@twolfson.com) =)
 
 TODO: Provide eval table of different experiences
+TODO: Update the "half of" and "lightly" with quantifiable dates/times
 
 ### Deciding aesthetics
 Aesthetics can lead to a significant increase in development time when compounded with other technical decisions.
@@ -208,6 +150,7 @@ With interactivity (contained) and aesthetics (Bootstrap) decided, we can now st
 TODO: UI <> Server Interface: Incomplete -- this document needs some rework, doesn't it?
 
 TODO: Authentication (e.g. django-allauth, third party, REST auth, something else)
+TODO: Talk about JWT and difficulty revoking sessions
 
 ## Content not covered
 There are many many decision I'd like to talk through, but my motivation around this repo has waned (large time sink with uncertain value for others).
@@ -271,6 +214,10 @@ As a result, there's a lightning round of content I didn't cover:
     - and there's not a whole lot extra security compromise to be concerned about
     - but the more "defense in depth" version is definitely environment variables
     - SOPS is excessive (and tricky with a small team) since versioning doesn't matter when always shipping `latest`
+- accessibility (a11y) of normal templates vs React
+    - React has super powerful a11y tooling, which other templating systems lack
+    - I don't think it's a reason to prioritize shifting your whole world view around it
+    - but it's a major detail, esp if you plan on having juniors who aren't used to a11y
 
 Additionally, there's pieces I wanted go cover around how the product and business continues to grow, and the setup is primed for that:
 
@@ -287,7 +234,11 @@ Additionally, there's pieces I wanted go cover around how the product and busine
     - ESLint and prettier do a fantastic job of ensuring common formatting and no accidental errors being introduced, definitely use these if you can
 - Development Tools (e.g. Stellar)
     - Stellar is wonderful for snapshotting the DB to iterate on for a feature, then going back to `main` without hiccups
+    - [LiveReload CLI][] is very powerful for updating HTML and CSS after you modify it, without that pesky mouse move + click (adds up a lot)
+    - `runserver_plus` in Django extensions is very handy for `--print-sql` and such
+    - Poetry is wonderful for tracking dependency versions
 - History and auditing
+        - I could also talk about virtualenvwrapper being great, but Poetry removes the need for that =)
     - django-simple-history is fantastic for getting auditable history (e.g. who/what) without getting too much in the way =D
     - There is some elbow grease needed to enforce the convention, but it pays dividends in its investment
 - Admin tooling
@@ -304,6 +255,13 @@ Weird thoughts and tangents:
     - Just say no, you're doubling up on the generated code (requiring React to stay consisting with Django)
     - and there's been chatter around hydration not being great
     - and definitely costs an innovation token
+
+[LiveReload CLI]: https://github.com/lepture/python-livereload
+
+Things I wanted to dig into/explore more:
+
+- Alternative CSS frameworks like Bourbon or SuitCSS
+    - Bootstrap is generally good but lacks the full breadth of Tailwind (e.g. `space-y-*`)
 
 ## Context
 I decided to leave NCX at the end of May 2023.
