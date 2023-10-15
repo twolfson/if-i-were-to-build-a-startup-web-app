@@ -13,29 +13,22 @@ This was mostly written in May and October 2023. For exceptions, there will be a
 - TODO: For each of these items, ensure we talk about things we're also sidestepping with our given choice (e.g. Django + batteries included)
 
 1. First, [Minimum Viable Product (MVP) without web app](README.md#stage-0-minimum-viable-product-mvp-without-web-app)
-2. Then, [Betting on product interactivity and assuming low interactivity for discussion](README.md#stage-1-initial-build)
-3. Then:
+2. Then, [Betting on product interactivity, deciding aesthetics (TOD), and assuming isolated high interactivity for discussion](README.md#stage-1-initial-build)
+3. Then, making architectural decisions:
     1. [Web framework: Django](docs/web-framework.md)
+        - For a highly interactive setup, Django is still invaluable due to its admin tooling, user standard, and authentication
     2. [Database: PostgreSQL](docs/database.md)
     3. [Development Machine: Local computer](docs/development-machine.md)
     4. [Development Containment: Language level, nothing else](docs/development-containment.md)
     5. UI <> Server Interface: Incomplete
-        - Rough recommendation:
-            - If you're not technical at all, then I recommend HTML forms with limited AJAX (e.g. Django with Bootstrap + limited custom JS)
-                - Removing fully learning JS from the equation will significantly reduce overhead
-            - If your app is not that interactive (most apps are [CRUDL][]), then I recommend HTML forms with limited AJAX (e.g. Django with Bootstrap + limited custom JS)
-                - This will leave you with the least amount of work per feature (i.e. no building fetch/cache interface layer)
-                - as well as with lots of components prebuilt and installed (e.g. modals, accordions, tooltips)
-            - If your app is very interactive (e.g. animations between pages, interdependent forms/content, previews), then I recommend HTML forms pre-authentication and single page application (SPA) post-authentication
-                - This requires a lot more work (e.g. fetch/cache interface,
-                - but it
-                - Eventually you can migrate the HTML forms to leverage SPA content, but it may take time to implement
-        - What's pending exploration:
+        - Rough recommendation: Django with Bootstrap + limited custom JS
+            - For a very interactive app, then I recommend django-allauth HTML forms pre-authentication and single page application (SPA) post-authentication
+            - django-allauth should support building SPA around authentication pages as well, but we're prioritizing building a product
+            - TODO: Talk about how we're prioritizing minimizing shipping time at start of content
+        - Why this is a rough recommendation:
             - I've used plenty of frameworks with just GET/POST responses and limited JS
             - However, I've never used Django with it
             - so I'd like to do a sanity check exploration with that final sign-off
-            - TODO: Show an example with notification dismissal on same page
-            - TODO: Show an example with model opens and dismissals (Bootstrap strongsuit)
             - TODO: Broader Python templating evaluation/comparison?
                 - Mako seems like a winner due to having bare Python escape hatch
     6. Styling Framework/System:
@@ -61,8 +54,6 @@ This was mostly written in May and October 2023. For exceptions, there will be a
     - Development Tools (e.g. Stellar)
     - History and auditing
     - Admin tooling
-
-[CRUDL]: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
 
 TODO: Talk through innovation tokens?
 TODO: Talk through "cost savings" vs "time savings"
@@ -186,7 +177,7 @@ Apps can range in interactivity from being basic [CRUDL][] forms to every page r
 In my experience, the majority of an app's surface area (and thus development time) comes from basic forms, with 1-2 isolated pages with something that's interactive (e.g. CAD, land selection).
 
 This is important because the development time difference is stark. i.e. A highly interactive app requires building 2 API layers between the server and UI (1 from server for formatting the exposing explicit content values, 1 from UI to read + cache + manage said values).
-<br />
+
 I estimate this adds 10% development time to every feature. So over a 2-5 year period, that's an additional 2-5 months!
 
 If you're working with a designer, communicate this to avoid accidentally requiring high interactivity. For example:
@@ -203,9 +194,14 @@ To avoid fearmongering app complexity, there's plenty of interactivity which is 
 - Tooltips
 - Validation errors
 - Progress bars in multi-stage process (e.g. onboarding)
+- Dimissable banners
+- Toast messages
+- Dialogues/modals without forms
 
 
 For the sake of the rest of our discussion, we'll assume an app with basic forms and 1-2 isolated pages of high interactivity.
+
+If you'd like a version of this repo talking through high interactivity, please [reach out](mailto:todd@twolfson.com) =)
 
 ### Architectural decisions
 With interactivity decided, we can now start digging into architectural decisions:
