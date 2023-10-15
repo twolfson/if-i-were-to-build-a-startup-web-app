@@ -13,7 +13,7 @@ This was mostly written in May and October 2023. For exceptions, there will be a
 - TODO: For each of these items, ensure we talk about things we're also sidestepping with our given choice (e.g. Django + batteries included)
 
 1. First, [Minimum Viable Product (MVP) without web app](README.md#stage-0-minimum-viable-product-mvp-without-web-app)
-2. Then, [Betting on product interactivity](README.md#betting-on-product-interactivity) and assuming low interactivity for discussion
+2. Then, [Betting on product interactivity and assuming low interactivity for discussion](README.md#stage-1-initial-build)
 3. Then:
     1. [Web framework: Django](docs/web-framework.md)
     2. [Database: PostgreSQL](docs/database.md)
@@ -173,13 +173,14 @@ If you'd like to learn more, I recommend [Startup School](https://www.startupsch
 [Find Work]: https://github.com/findworkco/app
 
 ## Stage 1: Initial build
-### Betting on product interactivity
-Between [Stage 0] and building, I recommend continuing to do [User Research][] and leverage mockups/prototypes ([Product Design][]) to derisk the data model.
+### Keep on researching
+Between [Stage 0](README.md#stage-0-minimum-viable-product-mvp-without-web-app) and building, I recommend continuing to do [User Research][] and leverage mockups/prototypes ([Product Design][]) to derisk the data model.
 
 UIs are hard to get right the first time, and any UI changes can cascade into larger userflow and multi-page code + schema changes.
 
 Assuming I've derisked, and confirmed a web app is the right thing to build (vs a mobile app or no app at all), I'd next consider how interactive this app is going to be.
 
+### Betting on product interactivity
 Apps can range in interactivity from being basic [CRUDL][] forms to every page relating to the core product (e.g. music player, maps).
 
 In my experience, the majority of an app's surface area (and thus development time) comes from basic forms, with 1-2 isolated pages with something that's interactive (e.g. CAD, land selection).
