@@ -1,0 +1,25 @@
+{% extends "_layouts/base.html" %}
+
+{% load i18n %}
+{% load messages %}
+
+{% block outer_content %}
+    <div class="bg-light vh-100">
+        <div class="container pt-5">
+            <div class="p-3 w-100 mx-auto card" style="max-width: 480px">
+                <div class="card-body p-0">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="card mb-3 {% message_level_to_card_class message.level %}">
+                                <div class="card-body">
+                                    {{ message }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

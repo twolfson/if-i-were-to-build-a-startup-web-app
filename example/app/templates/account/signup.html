@@ -1,0 +1,34 @@
+{# Based on: https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/templates/account/signup.html #}
+
+{% extends "_layouts/auth.html" %}
+{# DEV: We should figure out an autoload solution, but are stopping this exploration here #}
+{% load forms %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+    <h1 class="mb-3">Sign Up</h1>
+    {% if form.non_field_errors %}<p class="text-danger">{{ form.non_field_errors | join:" " }}</p>{% endif %}
+    {# Fields enumerated here: https://github.com/pennersr/django-allauth/blob/0.54.0/allauth/account/forms.py#L267 #}
+    <form action="{% url 'account_signup' %}" method="post" class="mb-4">
+        {% csrf_token %}
+        <div class="row mb-3">
+            <div class="col">{% input form.first_name %}</div>
+            <div class="col">{% input form.last_name %}</div>
+        </div>
+        <div class="mb-3">{% input form.email %}</div>
+        <div class="mb-3">{% input form.password1 %}</div>
+        <div class="mb-3">{% input form.password2 %}</div>
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <div class="d-grid">
+            <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+        </div>
+    </form>
+    <p>
+        {# Nice touch would be linking this whole row, but keeping styling at end #}
+        Already have an account? <a href="{{ login_url }}">Login</a>
+    </p>
+{% endblock %}

@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "2-django-allauth"
+version = "1.0.0"
+description = ""
+authors = ["Todd Wolfson <todd@twolfson.com>"]
+readme = "README.md"
+
+# Empty because we aren't publishing this repo to PyPI, https://python-poetry.org/docs/pyproject/#packages
+packages = []
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+Django = "^4.2"
+django-allauth = "^0.54.0"
+django-widget-tweaks = "^1.4.12"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+django-extensions = "^3.2.1"
+djlint = "^1.27.2"
+flake8 = "^6.0.0"
+# Used for friendlier `./manage.py shell_plus`. 8.13.x required Python 3.9+
+ipython = "^8.12.2"
+# Werkzeug required by runserver_plus in django-extensions
+werkzeug = "^2.3.4"
+
+[tool.poetry.group.test.dependencies]
+# Lock setuptools version to avoid "DeprecationWarning: pkg_resources is deprecated as an API", https://stackoverflow.com/a/76044568/1960509
+setuptools = "65.6.3"
+
+[tool.djlint]
+profile="django"
+
+# H021 discourages inline styles
+ignore = "H021"
+
+# Encourage line wrapping when appropriate
+# DEV: This is more aggressive than normal 120 because we're used to shorter `prettier` at the moment
+max_line_length = 80
+
+[tool.black]
+# Normal line length tolerance
+line-length = 120
+target-version = ['py38']
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
