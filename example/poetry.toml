@@ -1,3 +1,0 @@
-[virtualenvs]
-# Renaming or relocating folders causes `poetry shell` reset. Use local `.venv` instead
-in-project = true

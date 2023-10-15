@@ -1,9 +1,0 @@
-{% extends "_layouts/main.html" %}
-{% block head_title %}Index{% endblock %}
-{% block content %}
-    <h1>Hello {{ user.get_full_name }}</h1>
-    <p>Welcome to Exploration App!</p>
-    <p>
-        <a href="{% url 'account_logout' %}">Logout</a>
-    </p>
-{% endblock %}
