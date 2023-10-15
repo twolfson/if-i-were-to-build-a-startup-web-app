@@ -10,33 +10,37 @@ The goal is to build a product as quickly and efficiently as possible.
 
 This was mostly written in May and October 2023. For exceptions, there will be a note.
 
-- TODO: Fill in tl;dr with more info as we decide on things
-- TODO: Have this act as a table of contents
-- TODO: For each of these items, ensure we talk about things we're also sidestepping with our given choice (e.g. Django + batteries included)
-
 1. First, [Minimum Viable Product (MVP) without web app](README.md#stage-0-minimum-viable-product-mvp-without-web-app)
-2. Then, [Betting on product interactivity, deciding aesthetics (TODO), and assuming isolated high interactivity for discussion](README.md#stage-1-initial-build)
-3. Then, making architectural decisions:
-    1. [Web framework: Django](docs/web-framework.md)
-        - For a highly interactive setup, Django is still invaluable due to its admin tooling, user standard, and authentication
-    2. [Database: PostgreSQL](docs/database.md)
-    3. [Development Machine: Local computer](docs/development-machine.md)
-    4. [Development Containment: Language level, nothing else](docs/development-containment.md)
+2. Then, [Betting on product interactivity and deciding aesthetics](README.md#stage-1-initial-build)
+    - Assuming basic [CRUDL][] forms with 1-2 isolated pages of high interactivity (e.g. maps, graphs)
+    - Bootstrap for off the shelf aesthetics + prebuilt components
+3. Then, making further architectural decisions:
+    - Rough recommendation:
+        - Django with django-allauth
+        - Bootstrap
+        - Limited custom JS
+    - Why this is a rough recommendation:
+        - I've used plenty of frameworks with just GET/POST responses and limited JS
+        - However, I've never used Django as an HTML form app (was REST API + admin tools) nor django-allauth in a non-trivial manner
+            - In our [Explorations document][explorations-django-allauth], we found Django without django-allauth was quite infuriating for self-serve signups
+        - so take this advice with a grain of salt
+        - TODO: Broader Python templating evaluation/comparison?
+            - Mako seems like a winner due to having bare Python escape hatch
+    - For a very interactive app:
+        - Django with django-allauth pre-authentication
+        - Single page application (SPA) post-authentication (e.g. React)
+        - django-allauth should support building SPA around authentication pages as well, but that has way more implementation time
+    - Decision documents:
+        1. [Web framework: Django](docs/web-framework.md)
+            - For a highly interactive setup, Django is still invaluable due to its admin tooling, user standard, and authentication
+4. Then, detail oriented decisions
+    1. [Database: PostgreSQL](docs/database.md)
+    2. [Development Machine: Local computer](docs/development-machine.md)
+    3. [Development Containment: Language level, nothing else](docs/development-containment.md)
     5. UI <> Server Interface: Incomplete
-        - Rough recommendation: Django with Bootstrap + limited custom JS
-            - For a very interactive app, then I recommend django-allauth HTML forms pre-authentication and single page application (SPA) post-authentication
-            - django-allauth should support building SPA around authentication pages as well, but we're prioritizing building a product
-            - TODO: Talk about how we're prioritizing minimizing shipping time at start of content
-        - Why this is a rough recommendation:
-            - I've used plenty of frameworks with just GET/POST responses and limited JS
-            - However, I've never used Django with it
-            - so I'd like to do a sanity check exploration with that final sign-off
-            - TODO: Broader Python templating evaluation/comparison?
-                - Mako seems like a winner due to having bare Python escape hatch
     6. Styling Framework/System:
         - TODO: Explain TBD
         - TODO: CSS preprocessor or postcompiler
-        - [Work in progress document](docs/styling-framework-system.md)
     - Bootstrap?? Tailwind??
     - ES5?? ES6?? Compilation??
         - Prob concat + minify at a... minimum ;D I wonder if Parcel works as a freebie
@@ -56,6 +60,8 @@ This was mostly written in May and October 2023. For exceptions, there will be a
     - Development Tools (e.g. Stellar)
     - History and auditing
     - Admin tooling
+
+[explorations-django-allauth]: docs/explorations.md#2-django-allauth
 
 TODO: Talk through innovation tokens?
 TODO: Talk through "cost savings" vs "time savings"
@@ -205,8 +211,24 @@ For the sake of the rest of our discussion, we'll assume an app with basic forms
 
 If you'd like a version of this repo talking through high interactivity, please [reach out](mailto:todd@twolfson.com) =)
 
+### Deciding aesthetics
+Aesthetics can lead to a significant increase in development time when compounded with other technical decisions.
+
+i.e. If the architectural decision becomes majority HTML forms but with a custom aesthetic, then it's a lot of work because there's no good library to my knowledge with lots of off the shelf components and easy style customizations.
+
+If you're using the architecture is SPA and you use React, then it's less of a drag because there's libraries like [Reakit][] to build around.
+
+My preference for maximizing velocity though is Bootstrap since it provides a design system from the get-go and lots of components.
+
+It doesn't play well with systems like [React][], but with the "basic forms with 1-2 isolated pages of high interactivity", it should work great =)
+
+[Reakit]: https://reakit.io/
+[React]: https://react.dev/
+
+TODO: Prob could talk through experiences with all different aesthetics setups
+
 ### Architectural decisions
-With interactivity decided, we can now start digging into architectural decisions:
+With interactivity (contained) and aesthetics (Bootstrap) decided, we can now start digging into further architectural decisions:
 
 1. [Web Framework: Django](docs/web-framework.md)
 2. [Database: PostgreSQL](docs/database.md)

@@ -183,6 +183,7 @@ Time spent rebuilding solved problems is time that could be creating value inste
     - Why: A web app typically operate around interacting with person. User models will faciliate tracking this data, and authentication will associate a session with the user
     - How:
         - For built-in support, this requires an ORM and sessions in the framework. I've only seen this built-in on Django
+            - Though even Django is annoying without using `django-allauth`
         - If you need to set this up, always use an off the shelf library. It's near impossible to get right the first time without introducing security issues
 - Admin UI (e.g. Django Admin, Rails Admin)
     - What: Internal tool to allow non-programmers (and programmers) to inspect and take actions (more than direct edits) on models
