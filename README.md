@@ -13,7 +13,16 @@ This was mostly written in May and October 2023. For exceptions, there will be a
 - TODO: For each of these items, ensure we talk about things we're also sidestepping with our given choice (e.g. Django + batteries included)
 
 1. First, [Minimum Viable Product (MVP) without web app](README.md#stage-0-minimum-viable-product-mvp-without-web-app)
-2. Then, decide if your app is going to be highly interactive or not
+2. Then, [Betting on product interactivity](README.md#betting-on-product-interactivity) and assuming low interactivity for discussion
+    - Apps can range in interactivity from being basic [CRUDL][] forms
+    - to every page relating to the core product (e.g. music player, maps)
+    - In my experience, the majority of an app's surface area (and thus development time) comes from basic forms, with 1-2 isolated pages with something that's interactive (e.g. CAD, land selection)
+    - If you're working with a designer, communicate this to avoid accidentally requiring high interactivity
+        - Interactivity which requires more work:
+        - Forms within dialogues/modals
+    - TODO: This should be a document for this?
+    - TODO: Need to rework "Stage ##" content at bottom around this
+    decide if your app is going to be highly interactive or not
     - i.e.
     - If you can avoid being highly interactive, you'll be able to ship much faster (e.g. no
         - TODO: Talk through years of experience and how many apps *had* to be highly interactive
