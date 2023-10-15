@@ -1,9 +1,5 @@
 # If I Were to Build a Startup Web App
 
-# THIS IS A WORK IN PROGRESS, PLEASE IGNORE THE MESS
-
-- TODO: See TODOs
-
 Choices, explanations, and documentation around if I were to build a startup web app in 2023.
 
 For context, I have 12 years experience at startups (mostly early stage), have been 3x first engineer (including 1x founder), and am a former Uber.
@@ -22,7 +18,6 @@ The information here will go out of date, so take it a grain of salt and as a sn
         - Bootstrap
         - Limited custom JS
         - [Additional documents like PostgreSQL and no Docker covered below](#architectural-decisions)
-        - TODO: Consider expanding fully?
     - Why this is a rough recommendation:
         - I've used plenty of frameworks with just GET/POST responses and limited JS
         - However, I've never used Django as an HTML form app (was REST API + admin tools) nor django-allauth in a non-trivial manner
@@ -130,8 +125,6 @@ With interactivity (contained) and aesthetics (Bootstrap) decided, we can now st
 - [Development Containment: Language level, nothing else](docs/development-containment.md)
 - [UI <> Server Interface](docs/ui-server-interface.md)
 
-TODO: Authentication (e.g. django-allauth, third party, REST auth, something else)
-
 ## Content not covered
 There are many many decision I'd like to talk through, but my motivation around this repo has waned (large time sink with uncertain value for others).
 
@@ -198,6 +191,12 @@ As a result, there's a lightning round of content I didn't cover:
     - React has super powerful a11y tooling, which other templating systems lack
     - I don't think it's a reason to prioritize shifting your whole world view around it
     - but it's a major detail, esp if you plan on having juniors who aren't used to a11y
+- Authentication (e.g. django-allauth, third party (e.g. Auth0, AWS Cognito), REST auth, something else)
+    - django-allauth is ideal because it keeps users in the DB (vs third party)
+    - and it sticks to cookie sessions (vs REST auth) and is one less library
+    - and it has so many login providers to integrate easily =D
+    - Keeping users in DB is ideal for admin tools and business intelligence
+        - i.e. Separate systems adds tax on people supporting customers to jump between systems
 
 Additionally, there's pieces I wanted go cover around how the product and business continues to grow, and the setup is primed for that:
 
