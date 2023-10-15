@@ -181,12 +181,12 @@ UIs are hard to get right the first time, and any UI changes can cascade into la
 Assuming I've derisked, and confirmed a web app is the right thing to build (vs a mobile app or no app at all), I'd next consider how interactive this app is going to be.
 
 ### Betting on product interactivity
-Apps can range in interactivity from being basic [CRUDL][] forms to every page relating to the core product (e.g. music player, maps).
+Apps can range in interactivity from being basic [CRUDL][] forms to every page relating to the core product (e.g. music player, maps, photo management).
 
 In my experience, the majority of an app's surface area (and thus development time) comes from basic forms, with 1-2 isolated pages with something that's interactive (e.g. CAD, land selection).
 
-The development time difference is stark. i.e. A highly interactive app requires building 2 API layers between the server and UI (1 from server for formatting the exposing explicit content values, 1 from UI to read + cache + manage said values).
-
+This is important because the development time difference is stark. i.e. A highly interactive app requires building 2 API layers between the server and UI (1 from server for formatting the exposing explicit content values, 1 from UI to read + cache + manage said values).
+<br />
 I estimate this adds 10% development time to every feature. So over a 2-5 year period, that's an additional 2-5 months!
 
 If you're working with a designer, communicate this to avoid accidentally requiring high interactivity. For example:
@@ -205,7 +205,7 @@ To avoid fearmongering app complexity, there's plenty of interactivity which is 
 - Progress bars in multi-stage process (e.g. onboarding)
 
 
-**For the sake of the rest of our discussion, we'll assume an app with basic forms and 1-2 isolated pages of high interactivity.**
+For the sake of the rest of our discussion, we'll assume an app with basic forms and 1-2 isolated pages of high interactivity.
 
 ### Architectural decisions
 With interactivity decided, we can now start digging into architectural decisions:
