@@ -92,7 +92,6 @@ Comparison
 |                                |                      |                          | This is simply a list from experience, top of mind,                  |
 |                                |                      |                          | and light searching                                                  |
 +--------------------------------+----------------------+--------------------------+----------------------------------------------------------------------+
-|                                |                      |                          |                                                                      |
 
 .. _`AWS Lambda`: https://aws.amazon.com/lambda/
 .. _`CodeIgniter`: https://codeigniter.com/
