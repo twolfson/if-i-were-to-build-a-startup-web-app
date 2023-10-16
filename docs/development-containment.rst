@@ -27,6 +27,7 @@ The choices aren't mutually exclusive, they can be combined as needed/wanted -- 
 | Name                     | Non-trivial             | Description                    | Notes                                                                                                     |
 |                          | previous experience?    |                                |                                                                                                           |
 +==========================+=========================+================================+===========================================================================================================+
+|                          |                         |                                |                                                                                                           |
 | No containment           | ✔️ (half of career-ish) | Nothing isolating dependencies | This only happens with languages which use                                                                |
 |                          |                         | on the machine                 | system-wide dependencies by default (e.g. Python and ``pip``).                                            |
 |                          |                         |                                |                                                                                                           |
@@ -34,7 +35,9 @@ The choices aren't mutually exclusive, they can be combined as needed/wanted -- 
 |                          |                         |                                | It's risky if it's your local computer,                                                                   |
 |                          |                         |                                | because dependencies for unrelated things (e.g. your music player)                                        |
 |                          |                         |                                | may conflict with your application's ones                                                                 |
+|                          |                         |                                |                                                                                                           |
 +--------------------------+-------------------------+--------------------------------+-----------------------------------------------------------------------------------------------------------+
+|                          |                         |                                |                                                                                                           |
 | :raw-html:`<strong>`     | ✔️ (majority)           | Isolate dependencies           | Provides sane isolation without concerns of something unrelated unexpectedly leading to conflict,         |
 | Language level (e.g.     |                         | through folders                | :raw-html:`<br/>`                                                                                         |
 | `Virtual Environments`_, |                         |                                | as well as ability to easily inspect and adjust dependencies if needed (rare)                             |
@@ -42,7 +45,9 @@ The choices aren't mutually exclusive, they can be combined as needed/wanted -- 
 | (winner)                 |                         |                                |                                                                                                           |
 | :raw-html:`</strong>`    |                         |                                | For non-built-in (e.g. Virtual Environments), there's an extra lift of always invoking the shell wrapper  |
 |                          |                         |                                | (e.g. ``bin/activate``) (unless shell auto-invokes) but OS level has similar drawbacks                    |
+|                          |                         |                                |                                                                                                           |
 +--------------------------+-------------------------+--------------------------------+-----------------------------------------------------------------------------------------------------------+
+|                          |                         |                                |                                                                                                           |
 | OS level (e.g.           | ✔️ (half of career-ish) | Isolate entire OS through      | As close as possible to production environment,                                                           |
 | `Docker`_,               |                         | either a container or full VM  | if not 1:1 due to using same solution in production.                                                      |
 | `Vagrant`_)              |                         |                                |                                                                                                           |
@@ -52,6 +57,7 @@ The choices aren't mutually exclusive, they can be combined as needed/wanted -- 
 |                          |                         |                                |                                                                                                           |
 |                          |                         |                                |                                                                                                           |
 |                          |                         |                                | Drawbacks include needing to enter the container shell every time and deal with folder mounting/isolation |
+|                          |                         |                                |                                                                                                           |
 +--------------------------+-------------------------+--------------------------------+-----------------------------------------------------------------------------------------------------------+
 
 .. _`Virtual Environments`: https://docs.python.org/3/library/venv.html#venv-def
