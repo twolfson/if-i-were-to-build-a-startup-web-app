@@ -119,11 +119,11 @@ It doesn't play well with systems like [React][], but with the "basic forms with
 ### Architectural decisions
 With interactivity (contained) and aesthetics (Bootstrap) decided, we can now start digging into further architectural decisions:
 
-- [Web Framework: Django](docs/web-framework.md)
+- [Web Framework: Django](docs/web-framework.rst)
 - [Database: PostgreSQL](docs/database.rst)
-- [Development Machine: Local computer](docs/development-machine.md)
-- [Development Containment: Language level, nothing else](docs/development-containment.md)
-- [UI <> Server Interface](docs/ui-server-interface.md)
+- [Development Machine: Local computer](docs/development-machine.rst)
+- [Development Containment: Language level, nothing else](docs/development-containment.rst)
+- [UI <> Server Interface](docs/ui-server-interface.rst)
 
 ## Content not covered
 There are many many decision I'd like to talk through, but my motivation around this repo has waned (large time sink with uncertain value for others).
