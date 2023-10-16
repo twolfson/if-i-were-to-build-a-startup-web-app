@@ -26,47 +26,37 @@ For the sake of this discussion, I'll be interchanging **relational** with **SQL
 Comparison
 ----------
 
-+----------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
-| Name           | Non-trivial          | Description               | Notes                                                                          |
-|                | previous experience? |                           |                                                                                |
-+================+======================+===========================+================================================================================+
-| DIY text files | ✔️ (0.5 years)       | Make your own DB solution | I did this 2008-2011 when I was in college.                                    |
-|                |                      | through ``.txt`` files    | I was trying to save costs from running a server,                              |
-|                |                      |                           | but it was a terrible experience due to custom formats and concurrency issues. |
-|                |                      |                           | Thankfully the sites were barely used                                          |
-+----------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
-| `DynamoDB`_    |                      | Key-value store (NoSQL)   | I've only heard the name but it seems to                                       |
-|                |                      |                           | mostly be a key-value store like Memcached and Redis. See Redis' notes         |
-+----------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
++------------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
+| Name             | Non-trivial          | Description               | Notes                                                                          |
+|                  | previous experience? |                           |                                                                                |
++==================+======================+===========================+================================================================================+
+| DIY text files   | ✔️ (0.5 years)       | Make your own DB solution | I did this 2008-2011 when I was in college.                                    |
+|                  |                      | through ``.txt`` files    | I was trying to save costs from running a server,                              |
+|                  |                      |                           | but it was a terrible experience due to custom formats and concurrency issues. |
+|                  |                      |                           | Thankfully the sites were barely used                                          |
++------------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
+| `DynamoDB`_      |                      | Key-value store (NoSQL)   | I've only heard the name but it seems to                                       |
+|                  |                      |                           | mostly be a key-value store like Memcached and Redis. See Redis' notes         |
++------------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
+| `Elasticsearch`_ | ✔️ (1.5 years)       | JSON document search      | Elasticsearch is built as a search engine, not as a DB store.                  |
+|                  |                      | engine (NoSQL)            | It's included because it's NoSQL,                                              |
+|                  |                      |                           | but it's not a fit as the primary store of a web app                           |
++------------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
+| `Firebase`_      |                      | Document store (NoSQL)    | Technically 2 products, `Firestore`_ and Realtime Database                     |
+|                  |                      |                           | but I believe the underlying systems are both document stores.                 |
+|                  |                      |                           |                                                                                |
+|                  |                      |                           | As a result, they're prone to the same issues as MongoDB as well as            |
+|                  |                      |                           | not having a dedicated server for business logic,                              |
+|                  |                      |                           | meaning additional work with their functions                                   |
++------------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
 
 .. _`DynamoDB`: https://aws.amazon.com/dynamodb/t
-        <td>
+.. _`Elasticsearch`: https://en.wikipedia.org/wiki/Elasticsearch
+.. _`Firebase`: https://firebase.google.com/products/firestore
 
-        </td>
-    <tr>
-        <td><a href="https://en.wikipedia.org/wiki/Elasticsearch">Elasticsearch</a></td>
-        <td>✔️ (1.5 years)</td><td>JSON document search engine (NoSQL)</td>
-        <td>
-            Elasticsearch is built as a search engine, not as a DB store.
-            It's included because it's NoSQL, but it's not a fit as the primary store of a web app
-        </td>
-    </tr>
-    <tr>
-        <td><a href="https://firebase.google.com/products/firestore">Firebase</a></td>
-        <td></td><td>Document store (NoSQL)</td>
-        <td>
-            Technically 2 products,
-            <a href="https://firebase.google.com/products/firestore">Firestore</a>
-            and
-            <a href="https://firebase.google.com/products/realtime-database">Realtime Database</a>
-            but I believe the underlying systems are both document stores.
-            <br/>
-            <br/>
-            As a result, they're prone to the same issues as MongoDB as well as
-            not having a dedicated server for business logic, meaning additional work with their functions
-        </td>
-    </tr>
-    <tr>
+.. _`Firestore`: https://firebase.google.com/products/firestore
+.. _`Realtime Database`: https://firebase.google.com/products/realtime-database
+
         <td><a href="https://www.google.com/sheets/about/">Google Sheets/Airtable</a> as DB</td>
         <td>✔️ (0.25 years)</td><td>"Relational" DB</td>
         <td>
