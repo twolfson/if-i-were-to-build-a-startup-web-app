@@ -120,7 +120,7 @@ It doesn't play well with systems like [React][], but with the "basic forms with
 With interactivity (contained) and aesthetics (Bootstrap) decided, we can now start digging into further architectural decisions:
 
 - [Web Framework: Django](docs/web-framework.md)
-- [Database: PostgreSQL](docs/database.md)
+- [Database: PostgreSQL](docs/database.rst)
 - [Development Machine: Local computer](docs/development-machine.md)
 - [Development Containment: Language level, nothing else](docs/development-containment.md)
 - [UI <> Server Interface](docs/ui-server-interface.md)
