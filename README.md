@@ -256,6 +256,7 @@ One-off time consuming info like:
         - https://stackoverflow.com/a/15312316/1960509
     - Mako has a Python escape (which Django doesn't, leading to development frustration)
     - Jinja2 might also resolve these concerns
+    - Template language comparison: https://gist.github.com/twolfson/b861c182107cefcef086266c3b4b83a6
 - Explore using AbstractBaseUser more (e.g. PhoneNumber) since we lacked experience on that
 - Building custom JS widget for something like email suggestion
 - Real world model example: Create a welcome banner, where user presses "&times;" to dismiss (i.e. should have loading state or eager dismiss + restore on fail)
