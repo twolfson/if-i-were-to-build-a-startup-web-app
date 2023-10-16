@@ -26,29 +26,39 @@ For the sake of this discussion, I'll be interchanging **relational** with **SQL
 Comparison
 ----------
 
-+------------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
-| Name             | Non-trivial          | Description               | Notes                                                                          |
-|                  | previous experience? |                           |                                                                                |
-+==================+======================+===========================+================================================================================+
-| DIY text files   | ✔️ (0.5 years)       | Make your own DB solution | I did this 2008-2011 when I was in college.                                    |
-|                  |                      | through ``.txt`` files    | I was trying to save costs from running a server,                              |
-|                  |                      |                           | but it was a terrible experience due to custom formats and concurrency issues. |
-|                  |                      |                           | Thankfully the sites were barely used                                          |
-+------------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
-| `DynamoDB`_      |                      | Key-value store (NoSQL)   | I've only heard the name but it seems to                                       |
-|                  |                      |                           | mostly be a key-value store like Memcached and Redis. See Redis' notes         |
-+------------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
-| `Elasticsearch`_ | ✔️ (1.5 years)       | JSON document search      | Elasticsearch is built as a search engine, not as a DB store.                  |
-|                  |                      | engine (NoSQL)            | It's included because it's NoSQL,                                              |
-|                  |                      |                           | but it's not a fit as the primary store of a web app                           |
-+------------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
-| `Firebase`_      |                      | Document store (NoSQL)    | Technically 2 products, `Firestore`_ and Realtime Database                     |
-|                  |                      |                           | but I believe the underlying systems are both document stores.                 |
-|                  |                      |                           |                                                                                |
-|                  |                      |                           | As a result, they're prone to the same issues as MongoDB as well as            |
-|                  |                      |                           | not having a dedicated server for business logic,                              |
-|                  |                      |                           | meaning additional work with their functions                                   |
-+------------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
++---------------------------+----------------------+---------------------------+-------------------------------------------------------------------------------------+
+| Name                      | Non-trivial          | Description               | Notes                                                                               |
+|                           | previous experience? |                           |                                                                                     |
++===========================+======================+===========================+=====================================================================================+
+| DIY text files            | ✔️ (0.5 years)       | Make your own DB solution | I did this 2008-2011 when I was in college.                                         |
+|                           |                      | through ``.txt`` files    | I was trying to save costs from running a server,                                   |
+|                           |                      |                           | but it was a terrible experience due to custom formats and concurrency issues.      |
+|                           |                      |                           | Thankfully the sites were barely used                                               |
++---------------------------+----------------------+---------------------------+-------------------------------------------------------------------------------------+
+| `DynamoDB`_               |                      | Key-value store (NoSQL)   | I've only heard the name but it seems to                                            |
+|                           |                      |                           | mostly be a key-value store like Memcached and Redis. See Redis' notes              |
++---------------------------+----------------------+---------------------------+-------------------------------------------------------------------------------------+
+| `Elasticsearch`_          | ✔️ (1.5 years)       | JSON document search      | Elasticsearch is built as a search engine, not as a DB store.                       |
+|                           |                      | engine (NoSQL)            | It's included because it's NoSQL,                                                   |
+|                           |                      |                           | but it's not a fit as the primary store of a web app                                |
++---------------------------+----------------------+---------------------------+-------------------------------------------------------------------------------------+
+| `Firebase`_               |                      | Document store (NoSQL)    | Technically 2 products, `Firestore`_ and Realtime Database                          |
+|                           |                      |                           | but I believe the underlying systems are both document stores.                      |
+|                           |                      |                           |                                                                                     |
+|                           |                      |                           | As a result, they're prone to the same issues as MongoDB as well as                 |
+|                           |                      |                           | not having a dedicated server for business logic,                                   |
+|                           |                      |                           | meaning additional work with their functions                                        |
++---------------------------+----------------------+---------------------------+-------------------------------------------------------------------------------------+
+| `Google Sheets/Airtable`_ | ✔️ (0.25 years)      | "Relational" DB           | Technically anything stored in a relational database                                |
+| as DB                     |                      |                           | can also be stored in a spreadsheet.                                                |
+|                           |                      |                           | This has the benefit of being transparent/modifiable immediately.                   |
+|                           |                      |                           | |br|                                                                                |
+|                           |                      |                           | However, since we chose Django, we get Django Admin so we have easy exposure as-is  |
+|                           |                      |                           |                                                                                     |
+|                           |                      |                           | These are still solid for MVP explorations (e.g. form submission) but not long-term |
+|                           |                      |                           | (e.g. no constraints, no foreign keys, bad at concurrency)                          |
+|                           |                      |                           |                                                                                     |
++---------------------------+----------------------+---------------------------+-------------------------------------------------------------------------------------+
 
 .. _`DynamoDB`: https://aws.amazon.com/dynamodb/t
 .. _`Elasticsearch`: https://en.wikipedia.org/wiki/Elasticsearch
@@ -57,17 +67,15 @@ Comparison
 .. _`Firestore`: https://firebase.google.com/products/firestore
 .. _`Realtime Database`: https://firebase.google.com/products/realtime-database
 
-        <td><a href="https://www.google.com/sheets/about/">Google Sheets/Airtable</a> as DB</td>
-        <td>✔️ (0.25 years)</td><td>"Relational" DB</td>
-        <td>
-            Technically anything stored in a relational database can also be stored in a spreadsheet.
-            This has the benefit of being transparent/modifiable immediately.
-            <br/>
-            However, since we chose Django, we get Django Admin so we have easy exposure as-is
-            <br/>
-            <br/>
-            These are still solid for MVP explorations (e.g. form submission) but not long-term
-            (e.g. no constraints, no foreign keys, bad at concurrency)
+.. _`Google Sheets/Airtable`: https://www.google.com/sheets/about/
+
+
+
+
+
+
+
+
         </td>
     </tr>
     <tr>
@@ -176,3 +184,7 @@ Comparison
 .. |/strong| raw:: html
 
     </strong>
+
+.. |br| raw:: html
+
+    <br />
