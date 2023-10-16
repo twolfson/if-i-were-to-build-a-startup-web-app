@@ -3,18 +3,10 @@ Database Analysis
 
 Decision
 --------
-.. Using raw HTML to handle inline links
-.. raw:: html
 
-    <strong>
+|strong| Winner: PostgreSQL, https://www.postgresql.org/ |/strong|
 
-Winner: PostgreSQL, https://www.postgresql.org/
-
-.. raw:: html
-
-    </strong>
-
-**Runner-up: MySQL/MariaDB, https://mariadb.org/**
+|strong| Runner-up: MySQL/MariaDB, https://mariadb.org/ |/strong|
 
 Explanations in comparison table
 
@@ -183,3 +175,14 @@ For the sake of this discussion, I'll be interchanging **relational** with **SQL
         </td>
     </tr>
 </table>
+
+
+.. HTML replacements due to rST not supporting inline formatting + links, https://docutils.sourceforge.io/FAQ.html#is-nested-inline-markup-possible
+
+.. |strong| raw:: html
+
+    <strong>
+
+.. |/strong| raw:: html
+
+    </strong>
