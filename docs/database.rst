@@ -10,38 +10,37 @@ Decision
 
 Explanations in comparison table
 
-## Description
+Description
+-----------
 A database in the context of a web app is service/system that stores data for users interact with.
 
 For the sake of this discussion, I'll be interchanging **relational** with **SQL** and **non-relational** with **NoSQL** freely. I don't believe there's distinctions respectively, but I could be wrong here.
 
-[Non-relational/NoSQL](https://en.wikipedia.org/wiki/NoSQL) encompasses many database types with different data structures:
+`Non-relational/NoSQL <https://en.wikipedia.org/wiki/NoSQL>`_ encompasses many database types with different data structures:
 - Key-value, like Redis and Memcached
 - Document, like MongoDB
 - and pretty much anything else that's not tabular with relationships between them
 
-[Relational/SQL](https://en.wikipedia.org/wiki/Relational_database) is strictly tables and relationships between them (e.g. MySQL, PostgreSQL).
+`Relational/SQL <https://en.wikipedia.org/wiki/Relational_database>`_ is strictly tables and relationships between them (e.g. MySQL, PostgreSQL).
 
-## Comparison
+Comparison
+----------
 
-<table>
-    <tr>
-        <th>Name</th> <th>Non-trivial previous experience?</th> <th>Description</th>
-        <th>Notes</th>
-    </tr>
-    <tr>
-        <td>DIY text files</td><td>✔️ (0.5 years)</td><td>Make your own DB solution through `.txt` files</td>
++----------------+----------------------------------+---------------------------+--------------------------------------------------------------------------------+
+|      Name      | Non-trivial previous experience? |        Description        |                                     Notes                                      |
++================+==================================+===========================+================================================================================+
+| DIY text files | ✔️ (0.5 years)                   | Make your own DB solution | I did this 2008-2011 when I was in college.                                    |
+|                |                                  | through `.txt` files      | I was trying to save costs from running a server,                              |
+|                |                                  |                           | but it was a terrible experience due to custom formats and concurrency issues. |
+|                |                                  |                           | Thankfully the sites were barely used                                          |
++----------------+----------------------------------+---------------------------+--------------------------------------------------------------------------------+
+| `DynamoDB`_    |                                  | Key-value store (NoSQL)   | I've only heard the name but it seems to                                       |
+|                |                                  |                           | mostly be a key-value store like Memcached and Redis. See Redis' notes         |
++----------------+----------------------------------+---------------------------+--------------------------------------------------------------------------------+
+
+.. _`DynamoDB`: https://aws.amazon.com/dynamodb/t
         <td>
-            I did this 2008-2011 when I was in college. I was trying to save costs from running a server,
-            but it was a terrible experience due to custom formats and concurrency issues.
-            Thankfully the sites were barely used
-        </td>
-    </tr>
-    <tr>
-        <td><a href="https://aws.amazon.com/dynamodb/t">DynamoDB</a></td>
-        <td></td><td>Key-value store (NoSQL)</td>
-        <td>
-            I've only heard the name but it seems to mostly be a key-value store like Memcached and Redis. See Redis' notes
+
         </td>
     <tr>
         <td><a href="https://en.wikipedia.org/wiki/Elasticsearch">Elasticsearch</a></td>
