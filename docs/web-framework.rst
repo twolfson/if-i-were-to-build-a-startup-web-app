@@ -24,122 +24,90 @@ A web framework is a foundational layer and system for building a web applicatio
 
 Comparison
 ----------
-<table>
-    <tr>
-        <th>Name</th> <th>Non-trivial previous experience?</th> <th>Description</th>
-        <th>Notes</th>
-    </tr>
-    <tr>
-        <td><a href="https://aws.amazon.com/lambda/">AWS Lambda</a> with no framework (Python, Node.js)</td>
-        <td>✔️ (1 year)</td><td>Write a function which acts as an endpoint</td>
-        <td>
-            It's a great infrastructure for trigger-based runs (e.g. S3 upload) with dynamic scale,
-            but dependency management has a long way to go.
-            :raw-html:`<br/>`
-            :raw-html:`<br/>`
-            Additionally, it lacks significant ecosystem support so not a good web framework choice at the moment
-        </td>
-    </tr>
-    <tr>
-        <td><a href="https://codeigniter.com/">CodeIgniter</a> (PHP)</td>
-        <td>✔️ (0.5 years)</td><td>Lightweight framework</td>
-        <td>
-            Only mentioning due to experience.
-            PHP has a lot of baggage with it that's nice to sidestep if possible
-            (e.g. <a
-                href="https://www.php.net/manual/en/language.basic-syntax.phptags.php">
-            every page starting with ``<?``>PHP tags</a>)
-        </td>
-    </tr>
-    <tr>
-        <td><strong><a href="https://www.djangoproject.com/">Django</a> (Python) (winner)</strong></td>
-        <td>✔️ (2 years)</td><td>Full-fledged framework with batteries included</td>
-        <td>
-            Significant amount support provided to hit the ground running productively
-            (e.g. ORM, migrations, admin UI, users, thorough ecosystem)
-        </td>
-    </tr>
-    <tr>
-        <td><a href="https://expressjs.com/">Express</a> (Node.js)</td>
-        <td>✔️ (2.5 years)</td><td>Lightweight framework</td>
-        <td>
-            Only does routing and template integration, and basic request handling.
-            There is a <a href="https://expressjs.com/en/starter/generator.html">generator utility</a>
-            but it's only for initial setup.
-            :raw-html:`<br/>`
-            :raw-html:`<br/>`
-            There are no built-ins for ORM, no migration tools, no admin UI, and multipart forms
-            <a href="https://expressjs.com/en/5x/api.html#req.properties">requires adding a parser</a>.
-            Just not a good idea (elaboration at bottom)
-        </td>
-    </tr>
-    <tr>
-        <td><a href="https://flask.palletsprojects.com/">Flask</a> (Python)</td>
-        <td>✔️ (3 years)</td><td>Lightweight framework</td>
-        <td>
-            Similar to Express but a little more robust. Provides routing, templates, sessions, and multipart form support.
-            :raw-html:`<br/>`
-            :raw-html:`<br/>`
-            Lacks ORM, though <a href="https://flask-sqlalchemy.palletsprojects.com/">Flask-SQLAlchemy</a> is popular,
-            but that lacks migrations (<a href="https://alembic.sqlalchemy.org/">alembic</a> is popular),
-            and you keep running into little nags like that
-        </td>
-    </tr>
-    <tr>
-        <td>No framework (PHP)</td>
-        <td>✔️ (0.5 years)</td><td>Try to get by with no framework at all</td>
-        <td>
-            I did this 2008-2011 when I was in college.
-            The web was still quite young, but it was a terrible experience.
-            I don't recommend it
-        </td>
-    </tr>
-    <tr>
-        <td><a href="https://rubyonrails.org/">Ruby on Rails</a> (Ruby)</td>
-        <td>✔️ (1 year)</td><td>Full-fledged framework with batteries included</td>
-        <td>
-            Provies wonderful built-ins like ORM and migrations,
-            with some admin options through its ecosystem
-            (e.g. <a
-                href="https://rails.devcamp.com/trails/ruby-gem-walkthroughs/campsites/admin-dashboard-gems/guides/rails-admin-gem-tutorial"
-            >Rails Admin</a>).
-            :raw-html:`<br/>`
-            It was great to use, except for the parentheses confusion that Ruby encourages
-            and the testing felt clunky to interface with at times (both minor)
-        </td>
-    </tr>
-    <tr>
-        <td><a href="https://sailsjs.com/">Sails</a> (Node.js)</td>
-        <td></td><td>Full-fledged framework, named after Rails</td>
-        <td>
-            Generally provides a lot of features (e.g. ORM, templates, sessions)
-            but <a
-                href="https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#database-migrations"
-            >falls short on migrations</a>)
-            (manual preferred for live data) and nothing for admin UI.
-            :raw-html:`<br/>`
-            They've made a lot of progress over the years,
-            but I'd be hesitant to <a href="https://mcfunley.com/choose-boring-technology">use an innovation token here</a>
-    </td>
-    </tr>
-    <tr>
-        <td><a href="https://sinatrarb.com/">Sinatra</a> (Ruby)</td>
-        <td>✔️ (0.5 years)</td><td>Lightweight framework</td>
-        <td>
-            Provides routing, templates, and sessions support
-            but on your own for ORM, migrations, and admin UI.
-            It was a comparable experience to Flask iirc
-        </td>
-    </tr>
-    <tr>
-        <td>Other frameworks</td>
-        <td></td><td></td>
-        <td>
-            There are many frameworks out there.
-            This is simply a list from experience, top of mind, and light searching
-        </td>
-    </tr>
-</table>
++--------------------------------+----------------------+--------------------------+----------------------------------------------------------------------------+
+| Name                           | Non-trivial          | Description              | Notes                                                                      |
+|                                | previous experience? |                          |                                                                            |
++================================+======================+==========================+============================================================================+
+| `AWS Lambda`_ with             | ✔️ (1 year)          | Write a function which   | It's a great infrastructure for trigger-based runs                         |
+| no framework (Python, Node.js) |                      | acts as an endpoint      | (e.g. S3 upload) with dynamic scale,                                       |
+|                                |                      |                          | but dependency management has a long way to go.                            |
+|                                |                      |                          |                                                                            |
+|                                |                      |                          |                                                                            |
+|                                |                      |                          | Additionally, it lacks significant ecosystem support                       |
+|                                |                      |                          | so not a good web framework choice at the moment                           |
++--------------------------------+----------------------+--------------------------+----------------------------------------------------------------------------+
+| `CodeIgniter`_ (PHP)           | ✔️ (0.5 years)       | Lightweight framework    | Only mentioning due to experience.                                         |
+|                                |                      |                          | PHP has a lot of baggage with it                                           |
+|                                |                      |                          | that's nice to sidestep if possible                                        |
+|                                |                      |                          | (e.g. `every page starting with \<? PHP tags <PHP tags_>`_)                |
++--------------------------------+----------------------+--------------------------+----------------------------------------------------------------------------+
+| :raw-html:`<strong>`           | ✔️ (2 years)         | Full-fledged framework   | Significant amount support provided to                                     |
+| `Django`_ (Python) (winner)    |                      | with batteries included  | hit the ground running productively                                        |
+| :raw-html:`</strong>`          |                      |                          | (e.g. ORM, migrations, admin UI, users, thorough ecosystem)                |
++--------------------------------+----------------------+--------------------------+----------------------------------------------------------------------------+
+| `Express`_ (Node.js)           | ✔️ (2.5 years)       | Lightweight framework    | Only does routing and template integration,                                |
+|                                |                      |                          | and basic request handling.                                                |
+|                                |                      |                          | There is a `generator utility <Express generator_>`_                       |
+|                                |                      |                          | but it's only for initial setup.                                           |
+|                                |                      |                          |                                                                            |
+|                                |                      |                          |                                                                            |
+|                                |                      |                          | There are no built-ins for ORM, no migration tools,                        |
+|                                |                      |                          | no admin UI, and multipart forms                                           |
+|                                |                      |                          | `requires adding a parser <Express parser_>`_.                             |
+|                                |                      |                          | Just not a good idea (elaboration at bottom)                               |
++--------------------------------+----------------------+--------------------------+----------------------------------------------------------------------------+
+| `Flask`_ (Python)              | ✔️ (3 years)         | Lightweight framework    | Similar to Express but a little more robust.                               |
+|                                |                      |                          | Provides routing, templates, sessions, and multipart form support.         |
+|                                |                      |                          |                                                                            |
+|                                |                      |                          |                                                                            |
+|                                |                      |                          | Lacks ORM, though `Flask-SQLAlchemy`_ is popular,                          |
+|                                |                      |                          | but that lacks migrations (`alembic`_ is popular),                         |
+|                                |                      |                          | and you keep running into little nags like that                            |
++--------------------------------+----------------------+--------------------------+----------------------------------------------------------------------------+
+| No framework (PHP)             | ✔️ (0.5 years)       | Try to get by            | I did this 2008-2011 when I was in college.                                |
+|                                |                      | with no framework at all | The web was still quite young, but it was a terrible experience.           |
+|                                |                      |                          | I don't recommend it                                                       |
++--------------------------------+----------------------+--------------------------+----------------------------------------------------------------------------+
+| `Ruby on Rails`_ (Ruby)        | ✔️ (1 year)          | Full-fledged framework   | Provies wonderful built-ins like ORM and migrations,                       |
+|                                |                      | with batteries included  | with some admin options through its ecosystem (e.g. `Rails Admin`_).       |
+|                                |                      |                          | :raw-html:`<br/>`                                                          |
+|                                |                      |                          | It was great to use, except for                                            |
+|                                |                      |                          | the parentheses confusion that Ruby encourages                             |
+|                                |                      |                          | and the testing felt clunky to interface with at times                     |
+|                                |                      |                          | (both minor)                                                               |
++--------------------------------+----------------------+--------------------------+----------------------------------------------------------------------------+
+| `Sails`_ (Node.js)             |                      | Full-fledged framework,  | Generally provides a lot of features (e.g. ORM, templates, sessions)       |
+|                                |                      | named after Rails        | but `falls short on migrations <Sails migrations_>`_)                      |
+|                                |                      |                          | (manual preferred for live data) and nothing for admin UI.                 |
+|                                |                      |                          | :raw-html:`<br/>`                                                          |
+|                                |                      |                          | They've made a lot of progress over the years,                             |
+|                                |                      |                          | but I'd be hesitant to `use an innovation token here <Innovation token_>`_ |
++--------------------------------+----------------------+--------------------------+----------------------------------------------------------------------------+
+| `Sinatra`_ (Ruby)              | ✔️ (0.5 years)       | Lightweight framework    | Provides routing, templates, and sessions support                          |
+|                                |                      |                          | but on your own for ORM, migrations, and admin UI.                         |
+|                                |                      |                          | It was a comparable experience to Flask iirc                               |
++--------------------------------+----------------------+--------------------------+----------------------------------------------------------------------------+
+| Other frameworks               |                      |                          | There are many frameworks out there.                                       |
+|                                |                      |                          | This is simply a list from experience, top of mind, and light searching    |
++--------------------------------+----------------------+--------------------------+----------------------------------------------------------------------------+
+
+.. _`AWS Lambda`: https://aws.amazon.com/lambda/
+.. _`CodeIgniter`: https://codeigniter.com/
+.. _`Django`: https://www.djangoproject.com/
+.. _`Express`: https://expressjs.com/
+.. _`Flask`: https://flask.palletsprojects.com/
+.. _`Ruby on Rails`: https://rubyonrails.org/
+.. _`Sails`: https://sailsjs.com/
+.. _`Sinatra`: https://sinatrarb.com/
+
+.. _`PHP tags`: https://www.php.net/manual/en/language.basic-syntax.phptags.php
+.. _`Express generator`: https://expressjs.com/en/starter/generator.html
+.. _`Express parser`: https://expressjs.com/en/5x/api.html#req.properties
+.. _`Flask-SQLAlchemy`: https://flask-sqlalchemy.palletsprojects.com/
+.. _`alembic`: https://alembic.sqlalchemy.org/
+.. _`Rails Admin`: https://rails.devcamp.com/trails/ruby-gem-walkthroughs/campsites/admin-dashboard-gems/guides/rails-admin-gem-tutorial
+.. _`Sails migrations`: https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#database-migrations
+.. _`Innovation token`: https://mcfunley.com/choose-boring-technology
 
 All years stated above are as full-time equivalents, even from part-time roles pre-2011
 

@@ -281,6 +281,7 @@ This is due to needing multi-line support in tables, but Markdown not supporting
 
 For editing tables sanely, we use Sublime Text with the [Table Editor][] plugin:
 
+- Set "Table Editor: Enable for current view"
 - Set "Table Editor: Set Table Syntax for reStructuredText"
 - Set "Table Editor: Disable detect_header for current view"
 - Set "Table Editor: Disable keep_space_left for current view"
@@ -296,6 +297,12 @@ For previewing output as you build (since reStructuredText is brittle) and reStr
 - Opening our `tmp.html` file in our browser and letting it refresh as we write
 
 [Table Editor]: https://packagecontrol.io/packages/Table%20Editor
+
+Some Markdown &lt;&gt; reStructuredText footguns:
+
+- Bullets require 2 spaces only and line break after each one
+- Headings don't correlate to h1, h2, etc but instead decrease in intensity from the highest one present
+- Double ticks (\`\`) are required to make a &lt;code&gt; element
 
 ## Unlicense
 As of May 11 2023, Todd Wolfson has released this repository and its contents to the public domain.
