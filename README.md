@@ -275,15 +275,27 @@ And as expected in hindsight, these have aged in a mixed manner (not bad but not
 I've also found this repo useful in discussion with various startups, hence the "good enough" completion in October 2023.
 
 ## Documentation format
-You may have noticed the HTML tables in some of our Markdown `docs/` files.
+You may have noticed the some of the files in `docs/` are reStructuredText, instead of Markdown.
 
 This is due to needing multi-line support in tables, but Markdown not supporting that.
 
-We tried reStructuredText but that fell short as well (e.g. no [easy support for hyperlinks in bold text](https://docutils.sourceforge.io/FAQ.html#is-nested-inline-markup-possible), also annoyingly brittle when writing))
+For editing tables sanely, we use Sublime Text with the [Table Editor][] plugin:
 
-As a result, HTML tables felt like the best compromise for readability in Markdown content.
+- Set "Table Editor: Set Table Syntax for reStructuredText"
+- Set "Table Editor: Disable detect_header for current view"
+- Set "Table Editor: Disable keep_space_left for current view"
 
-In an ideal world, we'd prob be using a WYSIWYG for such content.
+For previewing output as you build (since reStructuredText is brittle) and reStructuredText preview support isn't great, I suggest:
+
+- Using a file watcher (e.g. `listen-spawn`, `entr`). For example:
+    - `bash -c rst2html.py docs/database.rst > tmp.html`
+- Starting an HTTP server. For example:
+    - `serve .`
+- Enabling LiveReload CLI with a delay:
+    - `livereload --wait 0.3`
+- Opening our `tmp.html` file in our browser and letting it refresh as we write
+
+[Table Editor]: https://packagecontrol.io/packages/Table%20Editor
 
 ## Unlicense
 As of May 11 2023, Todd Wolfson has released this repository and its contents to the public domain.

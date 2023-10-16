@@ -26,17 +26,18 @@ For the sake of this discussion, I'll be interchanging **relational** with **SQL
 Comparison
 ----------
 
-+----------------+----------------------------------+---------------------------+--------------------------------------------------------------------------------+
-|      Name      | Non-trivial previous experience? |        Description        |                                     Notes                                      |
-+================+==================================+===========================+================================================================================+
-| DIY text files | ✔️ (0.5 years)                   | Make your own DB solution | I did this 2008-2011 when I was in college.                                    |
-|                |                                  | through `.txt` files      | I was trying to save costs from running a server,                              |
-|                |                                  |                           | but it was a terrible experience due to custom formats and concurrency issues. |
-|                |                                  |                           | Thankfully the sites were barely used                                          |
-+----------------+----------------------------------+---------------------------+--------------------------------------------------------------------------------+
-| `DynamoDB`_    |                                  | Key-value store (NoSQL)   | I've only heard the name but it seems to                                       |
-|                |                                  |                           | mostly be a key-value store like Memcached and Redis. See Redis' notes         |
-+----------------+----------------------------------+---------------------------+--------------------------------------------------------------------------------+
++----------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
+| Name           | Non-trivial          | Description               | Notes                                                                          |
+|                | previous experience? |                           |                                                                                |
++================+======================+===========================+================================================================================+
+| DIY text files | ✔️ (0.5 years)       | Make your own DB solution | I did this 2008-2011 when I was in college.                                    |
+|                |                      | through ``.txt`` files    | I was trying to save costs from running a server,                              |
+|                |                      |                           | but it was a terrible experience due to custom formats and concurrency issues. |
+|                |                      |                           | Thankfully the sites were barely used                                          |
++----------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
+| `DynamoDB`_    |                      | Key-value store (NoSQL)   | I've only heard the name but it seems to                                       |
+|                |                      |                           | mostly be a key-value store like Memcached and Redis. See Redis' notes         |
++----------------+----------------------+---------------------------+--------------------------------------------------------------------------------+
 
 .. _`DynamoDB`: https://aws.amazon.com/dynamodb/t
         <td>
