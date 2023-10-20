@@ -233,10 +233,14 @@ Once this is all done, it'd be interesting to build a contrasting app strictly w
 - We've updated and documented this in the README (both exploration and main)
 
 # 4. django-allauth-react-split
-I'm now coming back to this, because it's becoming critical in a current project.
+I'm now coming back to this, because having a functional rapid Django <> React setup is becoming critical in a current project.
 
-There are a few pathways I see forward with this architecture, each with their own tradeoffs:
+In the past, it was not rapid due to rolling our own solutions, and the rapid path I've explored so far is not 100% without risks.
 
+There are a few pathways I see forward as a result, each with their own tradeoffs:
+
+- React dev server content loaded as `<script />` on Django page
+    - Error prone in its current form/exploration in `explorations/3-django-server-react-ui`, not worth pushing further
 - Pre-auth `django-allauth` on HTML templates + post-auth React SPA with a proxy setup
     - Requires Django + React proxy to be seamless
         - We had something working with `create-react-app` in `explorations/3-django-server-react-ui`, but not 100% (e.g. LiveReload `.js` queries 404'd but worked)
@@ -245,11 +249,11 @@ There are a few pathways I see forward with this architecture, each with their o
     - Encourage CSS to be reused across scenarios
         - e.g. If we wind up using something like Tailwind, 1 more thing to worry about (e.g. purging CSS)
         - TODO: Address this in a successive exploration?
-- `django-allauth` as XHR backend only + React rendering pages
-    - Requires Django + React proxy to be seamless
+- Proxy setup with `django-allauth` as XHR backend only + React rendering all pages
+    - Still requires Django + React proxy to be seamless
     - Possible issues on server + UI pages like reset password (prob would want to derisk first)
-    - Still lots of busy work to just get this out the door + any future pages
-- Split app JWT (2 different servers) as we've done before but hate
+    - Still lots of busy work to just get this out the door + any future pages, so not considering it rapid
+- 2 separate servers interacting over JWT and CORS, as we've done before but hate
     - Why we hate it: Entire app functionality can require 2 serial requests at every load depending on user configuration
         - i.e. (1) Retrieve user JWT + login + configuration -> (2) Set up UI based on user configuration -> (3) Make additional requests we didn't know we needed before
     - We also hate that there's no off the shelf library in Django for this
@@ -271,8 +275,8 @@ There are a few pathways I see forward with this architecture, each with their o
     - Fwiw, we don't want to use these third party providers, since the lock-in cost is a big headache to get away from
         - i.e. Each user would need to transfer account
 
-So, I'm going to break my own preferences somewhat and explore this split app setup, because it's the past of least resistance for current norms.
+So, I'm going to break my own preferences somewhat and explore this 2 server + proxy setup, because it's the past of least resistance for current norms.
 
-i.e. React as main server, Django as auth + API with JWT handoff -- though now I'm also wondering if JWT is even needed if we're just doing this rearrangement...
+i.e. React as main server, proxying Django for auth + API with JWT handoff -- though now I'm also wondering if JWT is even needed if we're just doing this rearrangement...
 
 But yea, I want -- React as main server, Django as `/auth` + `/api` routes with no shared CSS (pages are minimal as-is) (though I do understand not preferred, but that's something that can be addressed with time)

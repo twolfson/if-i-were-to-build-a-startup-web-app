@@ -12,6 +12,8 @@ NGINX would be another alternative but it's abnormal to have that run in develop
 
 We could do a Node.js proxy server as well, but instead of 2 separate Node.js servers (proxy + React development server), we can just repurpose the React development one as well =)
 
+In production, the setup would be an NGINX server with the same proxy routing pointing towards Django
+
 ## Getting Started
 To set up this repo, install the following dependencies:
 
