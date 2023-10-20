@@ -232,7 +232,7 @@ Once this is all done, it'd be interesting to build a contrasting app strictly w
 - We realized the ideal compromise is prob `django-allauth` with HTML forms pre-authentication, then React post-authentication
 - We've updated and documented this in the README (both exploration and main)
 
-# 4. TBD
+# 4. django-allauth-react-split
 I'm now coming back to this, because it's becoming critical in a current project.
 
 There are a few pathways I see forward with this architecture, each with their own tradeoffs:
