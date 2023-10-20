@@ -2,6 +2,8 @@
 
 TODO: Walk through django-allauth more thoroughly, https://docs.allauth.org/en/latest/account/configuration.html
 
+TODO: Provide a safeguard that checks `Host` header in development to deter :8000 access
+
 # django-allauth / React proxy exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
@@ -174,3 +176,12 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
     - https://stackoverflow.com/a/77013205/1960509
 - It was caused by copying the old `pyproject.toml`
 - Going to just upgrade to 0.57.0 =) https://pypi.org/project/django-allauth/#history
+
+- Got the `:8000` (Django version) working
+- but then `:3000` has some CSRF origin complaints (as it should)
+- `    Origin checking failed - http://localhost:3000 does not match any trusted origins.`
+- Fixing that... (notes in commits)
+- But out of time for now
+- Generally seem to be in the right spot though
+- Also seeing a path forward with just building right tools for disconnected apps + setup (tradeoffs for each)
+    - e.g. Should be able to get `django-loginas` working properly in both if we build the right handoff chain for JWT callbacks

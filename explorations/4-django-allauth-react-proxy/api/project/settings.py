@@ -117,6 +117,17 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
+# Set up CSRF overrides due to Django/React proxy
+# https://github.com/django/django/blob/4.2.6/django/conf/global_settings.py#L582
+# ALLOWED_HOSTS is also valid (more properly for CORS though), https://github.com/django/django/blob/4.2.6/django/middleware/csrf.py#L332-L338  # noqa:E501
+# TODO: Instead of this complex proxy setup, maybe JWT is fine after all
+#   -- and we just need to more closely model the Auth0 and such models? (which people usually miss at setup)
+#   -- It's hard to tell... maybe both are fine/good
+# TODO: Set up production servers (or raise error in that case)
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+]
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
