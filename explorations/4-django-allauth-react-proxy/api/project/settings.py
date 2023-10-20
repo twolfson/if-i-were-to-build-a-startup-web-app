@@ -41,9 +41,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    # Used for render_field
-    'widget_tweaks',
-
     # Used for shell_plus and runserver_plus
     "django_extensions",
 ]
