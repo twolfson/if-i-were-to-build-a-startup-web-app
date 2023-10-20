@@ -141,12 +141,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # TODO: Edit these?
-# Auth settings
-#   https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.decorators.login_required
-#   https://docs.djangoproject.com/en/4.2/ref/settings/#login-url
-# DEV: Django will respect `next` despite specifying this (redirects to `?next=***` after login)
-# If we don't provide this and there's no `next`, then login will redirect /accounts/profile/
-LOGIN_REDIRECT_URL = "/"
-LOGIN_URL = "/login/"
-# If we don't provide this, then logout confirmation page is in Django Admin
-LOGOUT_REDIRECT_URL = "/"
+# # Auth settings
+# #   https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.decorators.login_required
+# #   https://docs.djangoproject.com/en/4.2/ref/settings/#login-url
+# # DEV: Django will respect `next` despite specifying this (redirects to `?next=***` after login)
+# # If we don't provide this and there's no `next`, then login will redirect /accounts/profile/
+# LOGIN_REDIRECT_URL = "/"
+# LOGIN_URL = "/login/"
+# # If we don't provide this, then logout confirmation page is in Django Admin
+# LOGOUT_REDIRECT_URL = "/"
