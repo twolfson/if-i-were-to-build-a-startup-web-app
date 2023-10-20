@@ -157,3 +157,7 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
     - TODO: Delete `AuthLayout.jsx` if unused
 - Finding ourselves missing UI + styles
 - Using part of `index.html` from exploration 3
+
+- Finally ready to dig into proxy exploration, https://create-react-app.dev/docs/proxying-api-requests-in-development/
+- No luck so far =/
+- I think I see the problem: "The development server will only attempt to send requests without text/html in its Accept header to the proxy."
