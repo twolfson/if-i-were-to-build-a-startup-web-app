@@ -172,4 +172,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # django-allauth configuration, https://docs.allauth.org/en/latest/installation/quickstart.html
 SOCIALACCOUNT_PROVIDERS = {
+    # When adding a new provider, follow post-installation tasks: https://docs.allauth.org/en/latest/installation/quickstart.html#post-installation  # noqa:E501
 }
