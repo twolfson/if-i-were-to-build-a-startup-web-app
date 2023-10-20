@@ -168,3 +168,7 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 ### django-allauth setup
 - Going to now explore `django-allauth` (again...?)
 - https://docs.allauth.org/en/latest/installation/quickstart.html
+- Generally smooth, then a `ModuleNotFoundError: No module named 'allauth.account.middleware'` hiccup due to docs being in front of released version
+    - https://stackoverflow.com/a/77013205/1960509
+- It was caused by copying the old `pyproject.toml`
+- Going to just upgrade to 0.57.0 =) https://pypi.org/project/django-allauth/#history
