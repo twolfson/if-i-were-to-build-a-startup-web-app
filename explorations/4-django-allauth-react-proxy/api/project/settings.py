@@ -32,17 +32,22 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "app.apps.AppConfig",
-
     # Default apps from Django
     "django.contrib.admin",
+    # Already present by default, but also required by django-allauth, https://docs.allauth.org/en/latest/installation/quickstart.html  # noqa:E501
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
+    # Already present by default, but also required by django-allauth, https://docs.allauth.org/en/latest/installation/quickstart.html  # noqa:E501
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     # Used for shell_plus and runserver_plus
     "django_extensions",
+    # https://docs.allauth.org/en/latest/installation/quickstart.html  # noqa:E501
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    # Social providers (e.g. GitHub, Google) can be found here: https://docs.allauth.org/en/latest/installation/quickstart.html  # noqa:E501
 ]
 
 MIDDLEWARE = [
@@ -53,6 +58,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # https://docs.allauth.org/en/latest/installation/quickstart.html
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "project.urls"
@@ -68,10 +75,13 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                # Required by `allauth`, https://docs.allauth.org/en/latest/installation/quickstart.html
+                "django.template.context_processors.request",
             ],
         },
     },
 ]
+
 # In Django 4.2, cached template loading is enabled in all environments (frustrating)
 #   This works around that, https://stackoverflow.com/a/75342761
 if DEBUG:
@@ -97,6 +107,15 @@ DATABASES = {
     }
 }
 
+
+# Authentication
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    #   From https://docs.allauth.org/en/latest/installation/quickstart.html
+    "django.contrib.auth.backends.ModelBackend",
+    # https://docs.allauth.org/en/latest/installation/quickstart.html
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -150,3 +169,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # LOGIN_URL = "/login/"
 # # If we don't provide this, then logout confirmation page is in Django Admin
 # LOGOUT_REDIRECT_URL = "/"
+
+# django-allauth configuration, https://docs.allauth.org/en/latest/installation/quickstart.html
+SOCIALACCOUNT_PROVIDERS = {
+}
