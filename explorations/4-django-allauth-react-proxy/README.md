@@ -143,3 +143,10 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 ```
 
 - Continued to copy files, this time from `1-django-contrib-auth-forms` + deleting unneeded content
+
+- All good and page loading =)
+
+- Now moving on to React as proxy work
+- Looking at `3-django-server-react-ui` setup log
+- Easiest path is prob `npx create-react-app ui`, https://create-react-app.dev/docs/getting-started
+- so doing that
