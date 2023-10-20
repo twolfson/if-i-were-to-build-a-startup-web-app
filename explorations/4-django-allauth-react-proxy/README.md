@@ -1,3 +1,5 @@
+# TODO: See TODOs
+
 # django-allauth / React proxy exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
@@ -137,4 +139,7 @@ $ cp ../../3-django-server-react-ui/poetry.toml
 $ cp ../../3-django-server-react-ui/poetry.toml .
 $ cp ../../3-django-server-react-ui/test.sh .
 $ cp ../../3-django-server-react-ui/.gitignore .
+$ cp ../../3-django-server-react-ui/setup.cfg .
 ```
+
+- Continued to copy files, this time from `1-django-contrib-auth-forms` + deleting unneeded content
