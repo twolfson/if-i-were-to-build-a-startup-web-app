@@ -243,10 +243,34 @@ There are a few pathways I see forward with this architecture, each with their o
     - Encourage CSS to be reused across scenarios
         - e.g. If we wind up using something like Tailwind, 1 more thing to worry about (e.g. purging CSS)
         - TODO: Address this in a successive exploration?
-- `django-allauth` as XHR backend only +
+- `django-allauth` as XHR backend only + React rendering pages
+    - Requires Django + React proxy to be seamless
+    - Possible issues on server + UI pages like reset password (prob would want to derisk first)
+    - Still lots of busy work to just get this out the door + any future pages
 - Split app JWT (2 different servers) as we've done before but hate
     - Why we hate it: Entire app functionality can require 2 serial requests at every load depending on user configuration
         - i.e. (1) Retrieve user JWT + login + configuration -> (2) Set up UI based on user configuration -> (3) Make additional requests we didn't know we needed before
     - We also hate that there's no off the shelf library in Django for this
         - There's `django-simplejwt` but that's login + tokens only -- doesn't handle sign up, email verification, password reset, etc
     - Upon reflection of other auth provider setups, there might be a sane path forward with this:
+        - i.e. They're typically on domains like <https://auth.example.com/>
+        - and people rarely care about the visuals behind that (though would be nice if we get right)
+        - Login happens normally + sanely with a `<Provider />` wrapper, https://auth0.com/docs/quickstart/spa/react/01-login#configure-the-auth0provider-component
+        - After their login, they get sent back to a `/callback` URL (pushing hard for this, https://developer.auth0.com/resources/guides/spa/react/basic-authentication)
+            - I kept getting confused how this works without leaking the query params in password reset
+            - They use some galaxy brain logic by storing the access token in the hash, not the query params!
+            - https://community.auth0.com/t/how-to-get-an-access-token-in-jwt-format/6185
+    - How these providers work around serial requests problem:
+        - Either they just don't bump into the issue
+        - or maybe they're
+    - I think this sadly might be the fastest path forward for a current project I'm staring at
+        - but I like it because it leaves the door open for cookie based auth
+        - and possibly works well with `django-loginas` since the auth originates from Django
+    - Fwiw, we don't want to use these third party providers, since the lock-in cost is a big headache to get away from
+        - i.e. Each user would need to transfer account
+
+So, I'm going to break my own preferences somewhat and explore this split app setup, because it's the past of least resistance for current norms.
+
+i.e. React as main server, Django as auth + API with JWT handoff -- though now I'm also wondering if JWT is even needed if we're just doing this rearrangement...
+
+But yea, I want -- React as main server, Django as `/auth` + `/api` routes with no shared CSS (pages are minimal as-is) (though I do understand not preferred, but that's something that can be addressed with time)
