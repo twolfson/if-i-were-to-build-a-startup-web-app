@@ -1,5 +1,7 @@
 # TODO: See TODOs
 
+TODO: Walk through django-allauth more thoroughly, https://docs.allauth.org/en/latest/account/configuration.html
+
 # django-allauth / React proxy exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
