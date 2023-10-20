@@ -125,6 +125,7 @@ Additionally, we get `shell_plus` which gives us the same `--print-sql` support 
 Additionally, inside templates, a handy utility is `{% debug %}` which dumps all available context variables
 
 ## Setup Log
+### Django setup
 - Starting fresh without other explorations (though will copy/paste)
 
 ```bash
@@ -146,6 +147,7 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 
 - All good and page loading =)
 
+### React setup
 - Now moving on to React as proxy work
 - Looking at `3-django-server-react-ui` setup log
 - Easiest path is prob `npx create-react-app ui`, https://create-react-app.dev/docs/getting-started
@@ -158,6 +160,11 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - Finding ourselves missing UI + styles
 - Using part of `index.html` from exploration 3
 
+### Proxy setup
 - Finally ready to dig into proxy exploration, https://create-react-app.dev/docs/proxying-api-requests-in-development/
 - No luck so far =/
 - I think I see the problem: "The development server will only attempt to send requests without text/html in its Accept header to the proxy."
+
+### django-allauth setup
+- Going to now explore `django-allauth` (again...?)
+- https://docs.allauth.org/en/latest/installation/quickstart.html
