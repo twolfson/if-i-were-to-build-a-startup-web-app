@@ -231,3 +231,22 @@ Once this is all done, it'd be interesting to build a contrasting app strictly w
     - e.g. Tricky to fill in React fields if doing HTML based submission
 - We realized the ideal compromise is prob `django-allauth` with HTML forms pre-authentication, then React post-authentication
 - We've updated and documented this in the README (both exploration and main)
+
+# 4. TBD
+I'm now coming back to this, because it's becoming critical in a current project.
+
+There are a few pathways I see forward with this architecture, each with their own tradeoffs:
+
+- Pre-auth `django-allauth` on HTML templates + post-auth React SPA with a proxy setup
+    - Requires Django + React proxy to be seamless
+        - We had something working with `create-react-app` in `explorations/3-django-server-react-ui`, but not 100% (e.g. LiveReload `.js` queries 404'd but worked)
+    - Encourage CSS to be reused across scenarios
+        - e.g. If we wind up using something like Tailwind, 1 more thing to worry about (e.g. purging CSS)
+        - TODO: Address this in a successive exploration?
+- `django-allauth` as XHR backend only +
+- Split app JWT (2 different servers) as we've done before but hate
+    - Why we hate it: Entire app functionality can require 2 serial requests at every load depending on user configuration
+        - i.e. (1) Retrieve user JWT + login + configuration -> (2) Set up UI based on user configuration -> (3) Make additional requests we didn't know we needed before
+    - We also hate that there's no off the shelf library in Django for this
+        - There's `django-simplejwt` but that's login + tokens only -- doesn't handle sign up, email verification, password reset, etc
+    - Upon reflection of other auth provider setups, there might be a sane path forward with this:
