@@ -150,3 +150,6 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - Looking at `3-django-server-react-ui` setup log
 - Easiest path is prob `npx create-react-app ui`, https://create-react-app.dev/docs/getting-started
 - so doing that
+
+- Transferred `package.json`
+- And realizing all of `3-django-server-react-ui/ui` was prob good off the shelf
