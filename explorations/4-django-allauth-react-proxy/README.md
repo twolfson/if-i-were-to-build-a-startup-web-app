@@ -24,6 +24,9 @@ To set up this repo, install the following dependencies:
 then run the following:
 
 ```bash
+# Navigate to our API folder
+cd api/
+
 # Open Poetry shell
 poetry shell
 # Should see "(2-django-allauth-py3.8)" now
@@ -50,22 +53,7 @@ npm start
 We can now see our server running locally at <http://127.0.0.1:8000/>
 
 ## Screenshots
-Log in: (no validation or redirect support)
-![Log in screenshot](docs/screenshots/login.png)
-
-## Incomplete implementation notes
-This exploration was stopped without building a full app because it felt counterproductive to keep going, since this setup doesn't hit the ground running.
-
-Content that's missing:
-
-- Per-field error/validation (currently all at top of field)
-- Exploring using XHR instead of `<form>` submission (prob stronger UX, and less tricky but even more worK)
-- Refilling user inputs with submitted values on form error (or just going with XHR route)
-- Handling notification/message dismissal
-- Handling redirect upon login
-- Test suite for React not fully setup for `window` and `document` from Django
-- Production build for content never fully setup/tested
-- Probably a lot more
+TODO: Add screenshots
 
 ## Development
 ### File structure
@@ -135,50 +123,18 @@ Additionally, we get `shell_plus` which gives us the same `--print-sql` support 
 Additionally, inside templates, a handy utility is `{% debug %}` which dumps all available context variables
 
 ## Setup Log
-- Copy from `2-django-allauth`
-- Clean up `2-django-allauth` mentions + screenshots + setup log
-    - `git grep -i "django-allauth"`
-    - `git grep -i "django allauth"`
-    - `git grep -i "django\.allauth"`
-- `rm -r .venv` (to reset `poetry shell` naming)
-<br /><br />
+- Starting fresh without other explorations (though will copy/paste)
 
-- `poetry shell` to enter new virtual env
-- `poetry install` to refresh dependencies
-- First priority: Shedding Django Template UI mostly + integrating React
-    - Prob will keep Bootstrap styling for development velocity
-    - with none of its JS (to avoid React <> jQuery headaches)
-- `npx create-react-app ui`, https://create-react-app.dev/docs/getting-started
-    - DONE: Show logged in state or not
-    - PARTIAL: Handle auth or not, including logout
-    - SKIP: Handle dashboard page (to push limits of React Query)
-        - Counts + recent tasks + notifications
-    - SKIP: Handle notifications dismissable (loading state UI)
-- Looking for docs around hosting running server vs built JS
-    - Red herring: CORS (multi-domain) focused setup, https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react
-    - This seems to do it well, following this: https://www.saaspegasus.com/guides/modern-javascript-for-django-developers/integrating-django-react/
-        - All good except for the webpack build piece, but I think we can work around that with dev/production toggling
-- Realizing we should start with the build version first
-- Learning that `create-react-app` has sane defaults with hashed filenames, https://github.com/facebook/create-react-app/issues/821
-    - https://github.com/rykener/django-manifest-loader seems like a promising solution
-<br /><br />
-
-- Finagled and finagled some more, but finally got everything loading as desired
-- Saw an SVG non-inline loading issue, but honestly I think that's part of growth for an app (e.g. inlining SVGs should be a thing)
-    - All other images normally would just be served from a Django folder (like HTML)
-<br /><br />
-
-- Slowly trying to get Django serving React content, but struggling hard to get LiveReload working
-- https://stackoverflow.com/a/58040422/1960509 might be promising for proxying??
-- Ah, I found the issue -- the `main.*.hot-update.json` is loading at `/`, not specifying host, so it's confused when on :8000, not :3000 as expected
-- Fixing our `urls.py` to not be so aggressive fixed the issue =D
-<br /><br />
-
-- Got up to HTML form submission working =D
-- And then we realized that the UX of submitting an HTML form to have a React loading screen afterwards, is even more janky, than a minor one-off text field being overridden for better suggestion support .\_.
-
-- Loooooong break from this project (late May 2023 -> mid Oct 2023)
-
-- Catch up on context
-- Implement basic validation errors
-- Put a bow on exploration because it's not ideal for hitting ground running as a startup
+```bash
+mkdir api/
+poetry shell
+# No pyproject.toml yet
+# Copy over relevant files poetry.lock, poetry.toml, pyproject.toml
+# With some motifications
+$ cp ../../3-django-server-react-ui/pyproject.toml .
+$ cp ../../3-django-server-react-ui/poetry.lock .
+$ cp ../../3-django-server-react-ui/poetry.toml
+$ cp ../../3-django-server-react-ui/poetry.toml .
+$ cp ../../3-django-server-react-ui/test.sh .
+$ cp ../../3-django-server-react-ui/.gitignore .
+```
