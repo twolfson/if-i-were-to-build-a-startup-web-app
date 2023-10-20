@@ -240,6 +240,8 @@ There are a few pathways I see forward with this architecture, each with their o
 - Pre-auth `django-allauth` on HTML templates + post-auth React SPA with a proxy setup
     - Requires Django + React proxy to be seamless
         - We had something working with `create-react-app` in `explorations/3-django-server-react-ui`, but not 100% (e.g. LiveReload `.js` queries 404'd but worked)
+        - It's possible to work through this with an NGINX container, but that limits our development environment
+        - It's also possible to create a simple Node.js server to manage this, but at that point -- why not do the React dev server as the base proxy (which is what's concluded in the "Split app JWT" rambling)
     - Encourage CSS to be reused across scenarios
         - e.g. If we wind up using something like Tailwind, 1 more thing to worry about (e.g. purging CSS)
         - TODO: Address this in a successive exploration?
