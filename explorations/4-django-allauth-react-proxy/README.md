@@ -153,3 +153,7 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 
 - Transferred `package.json`
 - And realizing all of `3-django-server-react-ui/ui` was prob good off the shelf
+- Grabbed that + modified/reduced down pages
+    - TODO: Delete `AuthLayout.jsx` if unused
+- Finding ourselves missing UI + styles
+- Using part of `index.html` from exploration 3
