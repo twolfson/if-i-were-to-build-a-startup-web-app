@@ -198,3 +198,8 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - Informed/confirms that proxy + cookie is the simplest and easiest choice to move forward
 - Switched to `django-allauth-ui` for some prestyled pages =D
 - Tweaking and processing settings
+
+- Rename folders due to realizing we want to break up `api` from `auth` routes and `api/auth` + `api/api` feels weird
+    - Renamed from `api` -> `django` + `ui` -> `react` -- more fitting anyway =)
+    - If we ever change stack, changing folders would be a likely outcome as-is
+- Removed `.venv` + reinstalled Poetry packages
