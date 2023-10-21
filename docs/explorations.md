@@ -333,6 +333,8 @@ For simplicity, we can manage a `localStorage.loggedIn` to assume whether the co
 
 TODO: Talk through React full control (no proxy) version, including things like `#` vs `?` for HTTP Referer
 
+The following is describing how an implementation *should* go (i.e. specification). We've yet to do this in practice.
+
 ##### Initial auth
 - User visits https://app.example.com/foo/bar
     - React SPA loads and looks for `localStorage.loggedIn`
@@ -349,6 +351,9 @@ TODO: Talk through React full control (no proxy) version, including things like 
 - Browser loads https://app.example.com/auth-success?redirect_uri=/foo/bar
     - React SPA loads and sets `localStorage.loggedIn = true`
         - We use `true` instead of an expiration because cookies typically self-refresh expiration upon usage
+        - Without this `/auth-success` page, React would still think the user is logged out
+        - We could use a query parameter as well, but that means handling it on every page and a possible flash of content while it's sorted (this is why Auth0 pushes for it)
+        - This page also gives us a common location to capture any relevant events
     - React SPA pushes browser to https://app.example.com/foo/bar
 
 ##### API usage
@@ -379,5 +384,12 @@ TODO: Always want Django handling some of the auth pages, because the flow for t
     - (Double check implementation) Django loads, unsets the cookie, and removes the session from the DB
         - Session removal from DB is to prevent session fixation
 
-##### Admin "Login As"
--
+##### Impersonating users
+- `django-loginas` is a Django extension which allows logging in as a user via Django Admin
+- This is very useful for supporting your team internally
+- Intended implementation for us: When the button is pressed
+    - It will update the session and cookie to the relevant user
+    - Navigate to the redirect URL, which we'll set to our `/auth-success` one
+        - TODO: In the JWT case, it's different -- we need a secondary page to kick off the callback properly
+    - `/auth-success` interacts as per usual, treating user as logged in and such
+
