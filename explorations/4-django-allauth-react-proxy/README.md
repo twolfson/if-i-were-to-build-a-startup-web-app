@@ -1,5 +1,7 @@
 # TODO: See TODOs
 
+TODO: Update references in README regarding `api` + `ui` -> `django` + `react`
+
 TODO: Walk through django-allauth more thoroughly, https://docs.allauth.org/en/latest/account/configuration.html
 
 TODO: Provide a safeguard that checks `Host` header in development to deter :8000 access
