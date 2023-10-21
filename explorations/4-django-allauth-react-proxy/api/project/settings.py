@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Used for shell_plus and runserver_plus
     "django_extensions",
+    # allauth-ui + widget tweaks (custom default template), required before `allauth`, https://github.com/danihodovic/django-allauth-ui/tree/05cfec03ba9560f5fbec4c6cdd10ce80fdcc5dae#installation  # noqa:E501
+    # TODO: Note for production that it requires `collectstatic`, https://github.com/danihodovic/django-allauth-ui/tree/05cfec03ba9560f5fbec4c6cdd10ce80fdcc5dae#installation  # noqa:E501
+    "allauth_ui",
+    "widget_tweaks",
     # https://docs.allauth.org/en/latest/installation/quickstart.html  # noqa:E501
     "allauth",
     "allauth.account",
@@ -117,6 +121,11 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
+# Output emails to console for development
+# TODO: In production, error out
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
 # Set up CSRF overrides due to Django/React proxy
 # https://github.com/django/django/blob/4.2.6/django/conf/global_settings.py#L582
 # ALLOWED_HOSTS is also valid (more properly for CORS though), https://github.com/django/django/blob/4.2.6/django/middleware/csrf.py#L332-L338  # noqa:E501
@@ -170,16 +179,19 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# TODO: Edit these?
-# # Auth settings
-# #   https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.decorators.login_required
-# #   https://docs.djangoproject.com/en/4.2/ref/settings/#login-url
-# # DEV: Django will respect `next` despite specifying this (redirects to `?next=***` after login)
-# # If we don't provide this and there's no `next`, then login will redirect /accounts/profile/
-# LOGIN_REDIRECT_URL = "/"
-# LOGIN_URL = "/login/"
-# # If we don't provide this, then logout confirmation page is in Django Admin
-# LOGOUT_REDIRECT_URL = "/"
+# Auth settings
+#   https://docs.djangoproject.com/en/4.2/topics/auth/default/#django.contrib.auth.decorators.login_required
+#   https://docs.djangoproject.com/en/4.2/ref/settings/#login-url
+# DEV: Django will respect `next` despite specifying this (redirects to `?next=***` after login)
+# If we don't provide this and there's no `next`, then login will redirect /accounts/profile/
+# Consider logout via a POST form to be YAGNI experience, esp for a small site
+ACCOUNT_LOGOUT_ON_GET = True
+# Don't preserve casing as it uses `__iexact` which can be expensive,
+ACCOUNT_PRESERVE_USERNAME_CASING = False
+LOGIN_REDIRECT_URL = "/"
+LOGIN_URL = "/auth/login/"
+# If we don't provide this, then logout confirmation page is in Django Admin
+LOGOUT_REDIRECT_URL = "/"
 
 # django-allauth configuration, https://docs.allauth.org/en/latest/installation/quickstart.html
 SOCIALACCOUNT_PROVIDERS = {

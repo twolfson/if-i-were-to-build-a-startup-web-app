@@ -12,6 +12,7 @@ packages = []
 python = "^3.8.1"
 Django = "^4.2"
 django-allauth = "^0.57.0"
+django-allauth-ui = "^0.1.4"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"

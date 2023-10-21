@@ -190,3 +190,7 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 
 ### Security detour
 - After some time away from the repo, we realized there were security considerations we needed to cover, so moving those into `docs/explorations.md` in the main repo
+
+### Continuing setup
+- Back from security detour
+- Informed/confirms that proxy + cookie is the simplest and easiest choice to move forward
