@@ -441,3 +441,5 @@ There's 2 scenarios here:
     - This is also a normal behavior on many implementations (e.g. common SSO service, or third party ones like Auth0)
 - Cookies similarly are the sanest path, vs JWT -- especially since that's stored in a cookie as well
 - Same or separate domains with cookies are comparable, though same domain is nicer due to no CORS frustrations + stricter `SameSite` policy
+
+TODO: Move security discussion to its own file (maybe even its own release)
