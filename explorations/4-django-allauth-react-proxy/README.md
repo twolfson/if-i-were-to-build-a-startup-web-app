@@ -194,3 +194,5 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 ### Continuing setup
 - Back from security detour
 - Informed/confirms that proxy + cookie is the simplest and easiest choice to move forward
+- Switched to `django-allauth-ui` for some prestyled pages =D
+- Tweaking and processing settings
