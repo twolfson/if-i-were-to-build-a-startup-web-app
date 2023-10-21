@@ -203,3 +203,5 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
     - Renamed from `api` -> `django` + `ui` -> `react` -- more fitting anyway =)
     - If we ever change stack, changing folders would be a likely outcome as-is
 - Removed `.venv` + reinstalled Poetry packages
+- Relocated `django/app` to `django/auth`
+- Created `django/api` via `./manage.py startapp api`

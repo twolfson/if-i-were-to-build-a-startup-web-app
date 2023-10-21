@@ -1,14 +1,10 @@
 from django.urls import include, path
 
-# from . import views
-
 urlpatterns = [
     # Auth pages
     # Technically everything is configured to serve at `/accounts/` (e.g. `/accounts/login`))
     #   but UX-wise, stating `/accounts/` in URL just feels confusing =/ (esp if we introduce a model named Account)
-    path("auth/", include("app.urls.account")),
+    path("", include("auth.urls.account")),
     # Social login disabled currently
-    # path("socialaccount/", include("app.urls.socialaccount")),
-
-    # path("/", views.index, name="index"),
+    # path("social/", include("auth.urls.socialaccount")),
 ]
