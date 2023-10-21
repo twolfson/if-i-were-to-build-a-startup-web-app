@@ -433,3 +433,10 @@ There's 2 scenarios here:
     - In these scenarios, the flow should work as above (e.g. cookie setting and all)
     - Though there's complexity for things like handling password reset tokens
         - In this case, be sure to use `#token=foo` instead of `?token=foo` to avoid leaking to HTTP referrer with 3rd party scripts
+
+### Recap
+- Django hosting `django-allauth` + styling similarly is the sanest path to develop on
+    - There might be some code reimplementation, but this is the cost of 2 separate web apps talking to each other
+    - and saves a lot compared to reimplementing all of the server side logic + blocking in UI + possible headaches around email verification + etc
+- Cookies similarly are the sanest path, vs JWT -- especially since that's stored in a cookie as well
+- Same or separate domains with cookies are comparable, though same domain is nicer due to no CORS frustrations + stricter `SameSite` policy
