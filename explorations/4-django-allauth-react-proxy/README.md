@@ -7,6 +7,8 @@ TODO: Provide a safeguard that checks `Host` header in development to deter :800
 # django-allauth / React proxy exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
+TODO: Update after security exploration
+
 A common setup in the wild is a JWT-based API and a React development server (e.g. `create-react-app`) as 2 separate servers talking over CORS.
 
 I'd like to explore consolidating these 2 on the same server with a proxy, and seeing the benefits that fall out (potentially cookies, no annoying JWT tracking/handoffs, no CORS + preflight `OPTIONS` requests, immediate standup of `django-allauth` with ability for full customization, and ability to fully integrate UI in the future).
@@ -185,3 +187,6 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - Generally seem to be in the right spot though
 - Also seeing a path forward with just building right tools for disconnected apps + setup (tradeoffs for each)
     - e.g. Should be able to get `django-loginas` working properly in both if we build the right handoff chain for JWT callbacks
+
+### Security detour
+- After some time away from the repo, we realized there were security considerations we needed to cover, so moving those into `docs/explorations.md` in the main repo
