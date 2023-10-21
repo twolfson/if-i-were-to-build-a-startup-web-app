@@ -6,9 +6,9 @@ urlpatterns = [
     # Auth pages
     # Technically everything is configured to serve at `/accounts/` (e.g. `/accounts/login`))
     #   but UX-wise, stating `/accounts/` in URL just feels confusing =/ (esp if we introduce a model named Account)
-    path("auth/", include("app.urls.auth.account")),
+    path("auth/", include("app.urls.account")),
     # Social login disabled currently
-    # path("socialaccount/", include("app.urls.auth.socialaccount")),
+    # path("socialaccount/", include("app.urls.socialaccount")),
 
     # path("/", views.index, name="index"),
 ]
