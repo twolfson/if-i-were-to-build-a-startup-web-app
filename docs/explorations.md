@@ -305,7 +305,7 @@ When a proxy is added to the mix... we'll get to that shortly.
 
 JWT has some more headaches associated with it, and is much easier to implement incorrectly. That is:
 
-- They should be stored via `HttpOnly` cookies, not `localStorage` or `sessionStorage` (since 3rd party scripts can get compromised + steal these resources)
+- They should be stored via `HttpOnly` cookies, not `localStorage` or `sessionStorage` (since third party scripts can get compromised + steal these resources)
 - Refresh tokens are intended as long-lived but access tokens are short-lived + need regular regeneration, leading to app complexity
 - JWT cannot be easily invalidated
 - If any metadata is stored in the JWT, then it can also go out of date (since not invalidated)
@@ -338,7 +338,7 @@ The following is describing how an implementation *should* go (i.e. specificatio
     - It doesn't see it so it redirect to https://app.example.com/auth/login?redirect_uri=/foo/bar
 - Browser loads https://app.example.com/auth/login?redirect_uri=/foo/bar
     - Django establishes cookie-based session, with `HttpOnly` and `SameSite=strict` set (should double check on implementation)
-        - `HttpOnly` is required to prevent 3rd party scripts from stealing `document.cookie`
+        - `HttpOnly` is required to prevent third party scripts from stealing `document.cookie`
         - `SameSite` is required for API piece, will explain there
     - Django presents HTML form with CSRF field
 - User logs in
@@ -432,11 +432,12 @@ There's 2 scenarios here:
 - Alternatively, you make Django host React for these pages + React picks up the CSRF token from the rendered page
     - In these scenarios, the flow should work as above (e.g. cookie setting and all)
     - Though there's complexity for things like handling password reset tokens
-        - In this case, be sure to use `#token=foo` instead of `?token=foo` to avoid leaking to HTTP referrer with 3rd party scripts
+        - In this case, be sure to use `#token=foo` instead of `?token=foo` to avoid leaking to HTTP referrer with third party scripts
 
 ### Recap
 - Django hosting `django-allauth` + styling similarly is the sanest path to develop on
     - There might be some code reimplementation, but this is the cost of 2 separate web apps talking to each other
     - and saves a lot compared to reimplementing all of the server side logic + blocking in UI + possible headaches around email verification + etc
+    - This is also a normal behavior on many implementations (e.g. common SSO service, or third party ones like Auth0)
 - Cookies similarly are the sanest path, vs JWT -- especially since that's stored in a cookie as well
 - Same or separate domains with cookies are comparable, though same domain is nicer due to no CORS frustrations + stricter `SameSite` policy
