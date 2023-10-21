@@ -319,6 +319,7 @@ The CSRF vulernability comes about even with APIs:
     - https://www.directdefense.com/csrf-in-the-age-of-json/
         - Here's an [example I made to verify](https://codepen.io/twolfson/pen/oNmNLxm)
         - The junk `foo` parameter would typically be discarded by an API, but not reject the entire request. This is because client <> server can often get out of sync/date and it'd compromise user experience
+        - Admittedly, this requires the API treats `text/plain` is treated as JSON, but defense in depth is important
 - APIs that are for full web applications will inevitably will need to accept non-JSON content (e.g. change profile photo, upload document)
     - In this scenario, we'd use a [`multipart/form-data`](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data#the_enctype_attribute) `Content-Type` to avoid excess encoding/decoding work + file size compications
     - Unfortunately, that opens the door for a CSRF HTML form submitting the same =/
@@ -327,11 +328,56 @@ The CSRF vulernability comes about even with APIs:
 
 With this background established, let's talk through what our plan is + how secure it is
 
-#### Cookie baed auth
+#### Cookie based auth
 For simplicity, we can manage a `localStorage.loggedIn` to assume whether the cookie is still present or not. We won't know until we request the API due to `HttpOnly` setting + React page being static.
 
-- User visits https://app.example.com/
+TODO: Talk through React full control (no proxy) version, including things like `#` vs `?` for HTTP Referer
+
+##### Initial auth
+- User visits https://app.example.com/foo/bar
     - React SPA loads and looks for `localStorage.loggedIn`
-    - It doesn't see it so it redirect to https://app.example.com/auth/login
+    - It doesn't see it so it redirect to https://app.example.com/auth/login?redirect_uri=/foo/bar
 - Browser loads https://app.example.com/auth/login
-    -
+    - Django establishes cookie-based session, with `HttpOnly` and `SameSite=strict` set (should double check on implementation)
+        - `HttpOnly` is required to prevent 3rd party scripts from stealing `document.cookie`
+        - `SameSite` is required for API piece, will explain there (TODO)
+    - Django presents HTML form with CSRF field
+- User logs in
+    - Django rotates session id (to prevent session fixation attack)
+    - Django saves user ID to session in DB
+    - Django redirects user to https://app.example.com/auth-success?redirect_uri=/foo/bar (Auth0 calls this [`/callback`](https://developer.auth0.com/resources/guides/spa/react/basic-authentication), but I like these semantics more)
+- Browser loads https://app.example.com/auth-success?redirect_uri=/foo/bar
+    - React SPA loads and sets `localStorage.loggedIn = true`
+        - We use `true` instead of an expiration because cookies typically self-refresh expiration upon usage
+    - React SPA pushes browser to https://app.example.com/foo/bar
+
+##### API usage
+- React SPA makes XHR to https://app.example.com/foo/bar
+    - Browser uses current cookie, including our session one
+    - Django DRF sees the cookie and uses that
+    - To mitigate CSRF risk, we need to use `SameSite=strict` when setting the cookie
+        - Otherwise, someone could manufacture an HTML form to submit to our API as elaborated above
+
+TODO: Always want Django handling some of the auth pages, because the flow for things like email validation would just be large headaches otherwise
+    - Requires to determine if email verified or not
+    - Then blocking UI somehow
+
+##### Session expiration
+- If the user hasn't interfaced with the app in a while, then their cookie will expire but they'll have `localStorage.loggedIn` still
+- User visits https://app.example.com/foo/bar
+    - React SPA loads and makes request to Django DRF (our API)
+    - (Double check implementation) Django DRF responds with "401 Unauthorized" (we'd use "403 Forbidden" for permission issues)
+    - React SPA identifies 401 and unset `localStorage.loggedIn`
+    - React SPA continues by redirecting to https://app.example.com/auth/login
+
+##### Logout
+- When a user navigates to https://app.example.com/logout
+    - React SPA loads and routes to logout page
+    - React SPA unsets `localStorage.loggedIn`
+    - React SPA redirects to https://app.example.com/auth/logout
+- Browser navigates to https://app.example.com/auth/logout
+    - (Double check implementation) Django loads, unsets the cookie, and removes the session from the DB
+        - Session removal from DB is to prevent session fixation
+
+##### Admin "Login As"
+-
