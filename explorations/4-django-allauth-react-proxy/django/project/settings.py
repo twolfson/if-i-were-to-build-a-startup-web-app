@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "app.apps.AppConfig",
+    "api.apps.ApiConfig",
+    "auth.apps.AuthConfig",
     # Default apps from Django
     "django.contrib.admin",
     # Already present by default, but also required by django-allauth, https://docs.allauth.org/en/latest/installation/quickstart.html  # noqa:E501
@@ -52,6 +53,9 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     # Social providers (e.g. GitHub, Google) can be found here: https://docs.allauth.org/en/latest/installation/quickstart.html  # noqa:E501
+    # Nothing set up yet
+    # https://www.django-rest-framework.org/
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -154,6 +158,9 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+# Configure Django REST Framework, https://www.django-rest-framework.org/tutorial/quickstart/#pagination
+REST_FRAMEWORK = {"DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination", "PAGE_SIZE": 10}
 
 
 # Internationalization
