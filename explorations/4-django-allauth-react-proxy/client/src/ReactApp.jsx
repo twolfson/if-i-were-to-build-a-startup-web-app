@@ -1,14 +1,13 @@
 // Import our dependencies
-import { useEffect } from "react";
-import { useQuery, QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useCookie } from "react-use";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { AuthSuccessLoader } from "./loaders/AuthSuccessLoader";
 import { Index } from "./pages/Index";
 import { LOGGED_IN_COOKIE_NAME } from "./utils/constants";
+import { NotificationContainer } from "./containers/NotificationContainer";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -31,28 +30,6 @@ const InnerApp = () => {
   const [loggedInStr] = useCookie(LOGGED_IN_COOKIE_NAME);
   const isLoggedIn = !!loggedInStr;
 
-  // TODO: Should be in a `useMessages` format?
-  const { error: messagesError, data: messagesData } = useQuery(
-    "messages",
-    () =>
-      // TODO: Fetch isn't handling errors like 404
-      fetch("/auth/messages/").then((res) => res.json()),
-    {
-      enabled: isLoggedIn,
-    },
-  );
-
-  useEffect(() => {
-    if (messagesError) {
-      throw messagesError;
-    }
-    if (messagesData) {
-      messagesData.messages.forEach((message) => {
-        toast(message.message, { type: message.level_tag });
-      })
-    }
-  }, [messagesError, messagesData])
-
   // If we're not logged in, navigate to Django's auth pages
   if (!isLoggedIn) {
     // TODO: Note in README about missing URL redirect support on login
@@ -64,7 +41,7 @@ const InnerApp = () => {
   // Otherwise, perform routing as per normal
   return (
     <>
-      <ToastContainer position="top-center" />
+      <NotificationContainer />
       <RouterProvider router={router} />
     </>
   );
