@@ -1,6 +1,9 @@
 // Import our dependencies
+import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useCookie } from "react-use";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { AuthSuccessLoader } from "./loaders/AuthSuccessLoader";
 import { Index } from "./pages/Index";
@@ -26,6 +29,11 @@ export const ReactApp = () => {
   const [isLoggedIn] = useCookie(LOGGED_IN_COOKIE_NAME);
 
   // TODO: Load up messages with `isLoggedIn` as request conditional
+  useEffect(() => {
+    if (isLoggedIn) {
+      toast("test", { type: "info" });
+    }
+  }, [isLoggedIn]);
 
   // If we're not logged in, navigate to Django's auth pages
   if (!isLoggedIn) {
@@ -36,5 +44,10 @@ export const ReactApp = () => {
   }
 
   // Otherwise, perform routing as per normal
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <ToastContainer position="top-center" />
+      <RouterProvider router={router} />
+    </>
+  );
 };
