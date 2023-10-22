@@ -493,6 +493,18 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-loginas"
+version = "0.3.11"
+description = "An app to add a \"Log in as user\" button in the Django user admin page."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-loginas-0.3.11.tar.gz", hash = "sha256:37aec6fcd1cdb72378b69d2468d2ae39b12cd013f838a9bf9b9b5132e8341735"},
+    {file = "django_loginas-0.3.11-py2.py3-none-any.whl", hash = "sha256:5492eb5b4eb86c05e86cd84fb1f89c9796498643dc23d19e9c9bf83f5768ba86"},
+]
+
+[[package]]
 name = "django-widget-tweaks"
 version = "1.5.0"
 description = "Tweak the form field rendering in templates, not in python-level form definitions."
@@ -1178,4 +1190,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1"
-content-hash = "204f88de5150de8b684d9de19dd5fd6b20573d8ea74a854cfdb05e70026d0b2d"
+content-hash = "3d13a582b94544d196c8adc67cab464a301b7f45607290bd3082193ab4631e3b"

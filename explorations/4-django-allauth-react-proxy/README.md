@@ -10,38 +10,12 @@ TODO: Resolve messages + clear via DRF
 TODO: Django doesn't have a session set up yet... so unsure session fixation/rotation applies -- prob review/update plan once done
 
 """
-##### Initial auth
-- Browser loads https://app.example.com/auth-success?redirect_uri=/foo/bar
-    - React SPA loads and sets `localStorage.loggedIn = true`
-        - We use `true` instead of an expiration because cookies typically self-refresh expiration upon usage
-        - Without this `/auth-success` page, React would still think the user is logged out
-        - We could use a query parameter as well, but that means handling it on every page and a possible flash of content while it's sorted (this is why Auth0 pushes for it)
-        - This page also gives us a common location to capture any relevant events
-    - React SPA pushes browser to https://app.example.com/foo/bar
-
 ##### API usage
 - React SPA makes XHR to https://app.example.com/api/baz
     - Browser uses current cookie, including our session one
     - Django DRF sees the cookie and uses that
     - To mitigate CSRF risk, we need to use `SameSite=strict` when setting the cookie
         - Otherwise, someone could manufacture an HTML form to submit to our API as elaborated above
-
-##### Session expiration
-- If the user hasn't interfaced with the app in a while, then their cookie will expire but they'll have `localStorage.loggedIn` still
-- User visits https://app.example.com/foo/bar
-    - React SPA loads and makes request to Django DRF (our API)
-    - (Double check implementation) Django DRF responds with "401 Unauthorized" (we'd use "403 Forbidden" for permission issues)
-    - React SPA identifies 401 and unset `localStorage.loggedIn`
-    - React SPA continues by redirecting to https://app.example.com/auth/login
-
-##### Logout
-- When a user navigates to https://app.example.com/logout
-    - React SPA loads and routes to logout page
-    - React SPA unsets `localStorage.loggedIn`
-    - React SPA redirects to https://app.example.com/auth/logout
-- Browser navigates to https://app.example.com/auth/logout
-    - (Double check implementation) Django loads, unsets the cookie, and removes the session from the DB
-        - Session removal from DB is to prevent session fixation
 
 ##### Admin "Login as"
 - `django-loginas` is a Django extension which allows logging in as a user via Django Admin

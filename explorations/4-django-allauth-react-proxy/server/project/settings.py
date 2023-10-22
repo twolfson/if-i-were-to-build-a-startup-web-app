@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    # https://github.com/skorokithakis/django-loginas/tree/v0.3.11#installing-django-loginas
+    "loginas",
     # Social providers (e.g. GitHub, Google) can be found here: https://docs.allauth.org/en/latest/installation/quickstart.html  # noqa:E501
     # Nothing set up yet
     # https://www.django-rest-framework.org/

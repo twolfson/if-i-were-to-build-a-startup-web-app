@@ -20,5 +20,7 @@ from django.urls import include, path
 urlpatterns = [
     path("api/", include("api.urls")),
     path("auth/", include("authn.urls")),
+    # https://github.com/skorokithakis/django-loginas/tree/v0.3.11#installing-django-loginas
+    path("admin/", include("loginas.urls")),
     path("admin/", admin.site.urls),
 ]
