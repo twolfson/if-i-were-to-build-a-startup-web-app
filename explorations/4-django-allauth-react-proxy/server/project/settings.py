@@ -29,20 +29,14 @@ assert ENV in (DEVELOPMENT, TEST, PRODUCTION)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-secret-key"
-assert ENV != PRODUCTION, "Secret key not configured for production"
+assert ENV != PRODUCTION, "SECRET_KEY not configured for production"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = ENV == DEVELOPMENT
 
 
-if ENV == "development":
-    ALLOWED_HOSTS = [
-        "localhost"
-    ]
-elif ENV == "test":
-    ALLOWED_HOSTS = []
-elif ENV == "production":
-    raise RuntimeError("ALLOWED_HOSTS not configured for production")
+ALLOWED_HOSTS = []
+assert ENV != PRODUCTION, "ALLOWED_HOSTS not configured for production"
 
 
 # Application definition
@@ -62,7 +56,6 @@ INSTALLED_APPS = [
     # Used for shell_plus and runserver_plus
     "django_extensions",
     # allauth-ui + widget tweaks (custom default template), required before `allauth`, https://github.com/danihodovic/django-allauth-ui/tree/05cfec03ba9560f5fbec4c6cdd10ce80fdcc5dae#installation  # noqa:E501
-    # TODO: Note for production that it requires `collectstatic`, https://github.com/danihodovic/django-allauth-ui/tree/05cfec03ba9560f5fbec4c6cdd10ce80fdcc5dae#installation  # noqa:E501
     "allauth_ui",
     "widget_tweaks",
     # https://docs.allauth.org/en/latest/installation/quickstart.html  # noqa:E501
@@ -76,6 +69,8 @@ INSTALLED_APPS = [
     # https://www.django-rest-framework.org/
     "rest_framework",
 ]
+# https://github.com/danihodovic/django-allauth-ui/tree/05cfec03ba9560f5fbec4c6cdd10ce80fdcc5dae#installation
+assert ENV != PRODUCTION, "allauth_ui requires `collectstatic` for production, please verify that's been added"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -147,31 +142,25 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # Output emails to console for development
-# TODO: In production, error out
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+assert ENV != PRODUCTION, "EMAIL_BACKEND not configured for production"
 
 
 # Set up CSRF overrides due to Django/React proxy
 # https://github.com/django/django/blob/4.2.6/django/conf/global_settings.py#L582
 # ALLOWED_HOSTS is also valid (more properly for CORS though), https://github.com/django/django/blob/4.2.6/django/middleware/csrf.py#L332-L338  # noqa:E501
-# TODO: Instead of this complex proxy setup, maybe JWT is fine after all
-#   -- and we just need to more closely model the Auth0 and such models? (which people usually miss at setup)
-#   -- It's hard to tell... maybe both are fine/good
-# TODO: Set up production servers (or raise error in that case)
 CSRF_TRUSTED_ORIGINS = [
-    "http://127.0.0.1:3000",
     "http://localhost:3000",
 ]
-# TODO: Set as secure in production
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
+assert ENV != PRODUCTION, "CSRF_TRUSTED_ORIGINS not configured for production"
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+assert ENV != PRODUCTION, "CSRF_COOKIE_SECURE and SESSION_COOKIE_SECURE not configured for production"
 CSRF_COOKIE_SAMESITE = "Strict"
 SESSION_COOKIE_SAMESITE = "Strict"
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -199,7 +188,6 @@ REST_FRAMEWORK = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
-
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
@@ -211,7 +199,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = "static/"
 
 # Default primary key field type
