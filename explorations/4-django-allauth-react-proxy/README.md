@@ -207,3 +207,4 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - Created `django/api` via `./manage.py startapp api`
 - Started Django REST Framework setup
 - Performed another rename due to fearing `django` import possibly getting messed up by top level folder
+- Renamed `AppConfig` for `auth` to `server-auth` due to conflict with Django's `auth` package

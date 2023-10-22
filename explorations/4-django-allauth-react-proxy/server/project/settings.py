@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "api.apps.ApiConfig",
-    "auth.apps.AuthConfig",
+    "authn.apps.AuthNConfig",
     # Default apps from Django
     "django.contrib.admin",
     # Already present by default, but also required by django-allauth, https://docs.allauth.org/en/latest/installation/quickstart.html  # noqa:E501

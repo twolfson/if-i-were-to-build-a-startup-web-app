@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from rest_framework import permissions
-from tutorial.quickstart.serializers import UserSerializer, GroupSerializer
+from rest_framework import permissions, viewsets
+
+from api.serializers import UserSerializer, GroupSerializer
 
 
 # TODO: Prob want to only allow users within same group, or even just self
