@@ -10,11 +10,13 @@ export const DashboardLayout = ({ statusArr = [], children }) => {
   } else {
     assert(
       statusArr
-      // Filter out `null` statuses
+        // Filter out `null` statuses
         .filter((status) => !!status)
+        // Sanity check the rest
         .every((status) => ["success", "idle"].includes(status)),
       `Unexpected status found in ${JSON.stringify(statusArr)}`,
     );
+    content = children;
   }
   return <div id="content">{content}</div>;
 };
