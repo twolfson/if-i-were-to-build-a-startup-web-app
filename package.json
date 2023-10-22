@@ -1,9 +1,12 @@
 {
   "private": true,
   "devDependencies": {
-    "foundry": "~4.7.0"
+    "foundry": "~4.7.0",
+    "foundry-release-git": "~2.1.2"
   },
   "foundry": {
-    "releaseCommands": []
+    "releaseCommands": [
+      "foundry-release-git"
+    ]
   }
 }
