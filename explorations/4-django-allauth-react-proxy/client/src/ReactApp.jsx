@@ -1,4 +1,5 @@
 // Import our dependencies
+import { useEffect } from "react";
 import { useQuery, QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useCookie } from "react-use";
@@ -41,13 +42,17 @@ const InnerApp = () => {
     },
   );
 
-  if (messagesError) {
-    throw messagesError;
-  }
-  if (messagesData) {
-    // TODO: Parse + iterate + do proper types
-    toast(JSON.stringify(messagesData), { type: "info" });
-  }
+  useEffect(() => {
+    if (messagesError) {
+      throw messagesError;
+    }
+    if (messagesData) {
+      messagesData.messages.forEach((message) => {
+        toast(message.message, { type: message.level_tag });
+      })
+    }
+  }, [messagesError, messagesData])
+
   // If we're not logged in, navigate to Django's auth pages
   if (!isLoggedIn) {
     // TODO: Note in README about missing URL redirect support on login

@@ -10,10 +10,10 @@ def messages(request):
     message_list = [
         {
             "message": message.message,
-            "level": message.level,
-            "tags": message.tags,
+            "level_tag": message.level_tag,
+            "extra_tags": message.extra_tags,
         }
         for message in get_messages(request)
     ]
 
-    return JsonResponse(message_list)
+    return JsonResponse({"messages": message_list})
