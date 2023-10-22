@@ -7,17 +7,10 @@ TODO: Resolve messages + clear via DRF
 - [ ] Finish implementing spec we discussed in the explorations file
 - [ ] Polish django-allauth (e.g. `messages` handling)
 
+TODO: Django doesn't have a session set up yet... so unsure session fixation/rotation applies -- prob review/update plan once done
+
 """
 ##### Initial auth
-- Browser loads https://app.example.com/auth/login?redirect_uri=/foo/bar
-    - Django establishes cookie-based session, with `HttpOnly` and `SameSite=strict` set (should double check on implementation)
-        - `HttpOnly` is required to prevent third party scripts from stealing `document.cookie`
-        - `SameSite` is required for API piece, will explain there
-    - Django presents HTML form with CSRF field
-- User logs in
-    - Django rotates session id (to prevent session fixation attack)
-    - Django saves user ID to session in DB
-    - Django redirects user to https://app.example.com/auth-success?redirect_uri=/foo/bar (Auth0 calls this [`/callback`](https://developer.auth0.com/resources/guides/spa/react/basic-authentication), but I like these semantics more)
 - Browser loads https://app.example.com/auth-success?redirect_uri=/foo/bar
     - React SPA loads and sets `localStorage.loggedIn = true`
         - We use `true` instead of an expiration because cookies typically self-refresh expiration upon usage

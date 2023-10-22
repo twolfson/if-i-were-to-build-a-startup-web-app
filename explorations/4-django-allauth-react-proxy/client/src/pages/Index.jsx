@@ -4,7 +4,7 @@ export const Index = () => {
   return (
     <BaseLayout>
       <h1>Hello World!</h1>
-      <a href="/logout">Logout</a>
+      <a href="/auth/logout">Logout</a>
     </BaseLayout>
   );
 };
