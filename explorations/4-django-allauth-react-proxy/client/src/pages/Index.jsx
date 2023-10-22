@@ -1,9 +1,9 @@
-import { AuthLayout } from "./_layouts/AuthLayout";
+import { BaseLayout } from "./_layouts/BaseLayout";
 
 export const Index = () => {
   return (
-    <AuthLayout>
+    <BaseLayout>
       <h1>Hello World!</h1>
-    </AuthLayout>
+    </BaseLayout>
   );
 };
