@@ -1,9 +1,5 @@
 // Import our dependencies
 import { useQuery, QueryClient, QueryClientProvider } from "react-query";
-
-// Create a client
-
-import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useCookie } from "react-use";
 import { ToastContainer, toast } from "react-toastify";
