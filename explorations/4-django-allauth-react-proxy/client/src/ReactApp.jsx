@@ -38,8 +38,7 @@ const InnerApp = () => {
   const { error: messagesError, data: messagesData } = useQuery(
     "messages",
     () =>
-      // TODO: Use our own API
-      fetch("/api/users/me").then((res) => res.json()),
+      fetch("/api/messages/").then((res) => res.json()),
     {
       enabled: isLoggedIn,
     },
