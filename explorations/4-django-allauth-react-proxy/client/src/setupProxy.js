@@ -12,7 +12,8 @@ module.exports = function (app) {
     ],
     createProxyMiddleware({
       target: "http://localhost:8000",
-      changeOrigin: true,
+      // DEV: We keep the host the same as the original, such that DRF documentation still works
+      changeOrigin: false,
     }),
   );
 };
