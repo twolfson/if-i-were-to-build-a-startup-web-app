@@ -8,7 +8,8 @@ from api.serializers import UserSerializer
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
-    For now, limited to user themself
+    For now, limited to user themself.
+    Also supposed `/users/me` syntax
     """
     def get_queryset(self):
         user = self.request.user
