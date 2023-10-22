@@ -138,6 +138,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 #   -- It's hard to tell... maybe both are fine/good
 # TODO: Set up production servers (or raise error in that case)
 CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:3000",
     "http://localhost:3000",
 ]
 
@@ -195,7 +196,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 ACCOUNT_LOGOUT_ON_GET = True
 # Don't preserve casing as it uses `__iexact` which can be expensive,
 ACCOUNT_PRESERVE_USERNAME_CASING = False
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/auth-success"
 LOGIN_URL = "/auth/login/"
 # If we don't provide this, then logout confirmation page is in Django Admin
 LOGOUT_REDIRECT_URL = "/auth/login"
