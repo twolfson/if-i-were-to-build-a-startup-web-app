@@ -310,17 +310,18 @@ JWT has some more headaches associated with it, and is much easier to implement 
 - JWT cannot be easily invalidated
 - If any metadata is stored in the JWT, then it can also go out of date (since not invalidated)
 
-I'd like to note that in **both these cases, they're vulnerable to CSRF unless we use SameSite**, and SameSite is tricky due to being a modern browser feature (admittedly [95% adoption][caniuse-SameSite]) being 95% supported.
+I'd like to note that in **both these cases, they're vulnerable to CSRF unless we use SameSite**, and SameSite is tricky due to being a modern browser feature, though admittedly [95% adoption][caniuse-SameSite].
 
 The CSRF vulernability comes about even with APIs:
 
-- An example CSRF attack with JSON can be crafted like this:
-    - https://www.directdefense.com/csrf-in-the-age-of-json/
-        - Here's an [example I made to verify](https://codepen.io/twolfson/pen/oNmNLxm)
-        - The junk `foo` parameter would typically be discarded by an API, but not reject the entire request. This is because client <> server can often get out of sync/date and it'd compromise user experience
-        - Admittedly, this requires the API treats `text/plain` is treated as JSON, but defense in depth is important
+- ~An example CSRF attack with JSON can be crafted like this:~
+    - ~https://www.directdefense.com/csrf-in-the-age-of-json/~
+        - ~Here's an [example I made to verify](https://codepen.io/twolfson/pen/oNmNLxm)~
+        - ~The junk `foo` parameter would typically be discarded by an API, but not reject the entire request. This is because client <> server can often get out of sync/date and it'd compromise user experience~
+        - This is quite low risk due to requiring `text/plain` content type
 - APIs that are for full web applications will inevitably will need to accept non-JSON content (e.g. change profile photo, upload document)
     - In this scenario, we'd use a [`multipart/form-data`](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data#the_enctype_attribute) `Content-Type` to avoid excess encoding/decoding work + file size compications
+        - We could have workarounds like exposing upload URLs for S3/similar directly, but that leaves the server out of the loop for logic
     - Unfortunately, that opens the door for a CSRF HTML form submitting the same =/
 
 [caniuse-SameSite]: https://caniuse.com/same-site-cookie-attribute
@@ -328,13 +329,19 @@ The CSRF vulernability comes about even with APIs:
 With this background established, let's talk through what our plan is + how secure it is
 
 #### Cookie based auth
-For simplicity, we can manage a `localStorage.loggedIn` to assume whether the cookie is still present or not. We won't know until we request the API due to `HttpOnly` setting + React page being static.
+For simplicity, we're going to manage a `logged_in` cookie to establish whether the user is still logged in or not.
+
+This is a non-`HttpOnly` cookie so we avoid exposing our session cookie to third party scripts.
+
+> Initial plan was a `localStorage` setting, but a cookie is way cleaner/more consistent (i.e. no mismatched expirations).
 
 The following is describing how an implementation *should* go (i.e. specification). We've yet to do this in practice.
 
+TODO: Come back to CSRF in other sections where we thought we needed the HTML page version, when cookie was fine all along
+
 ##### Initial auth
 - User visits https://app.example.com/foo/bar
-    - React SPA loads and looks for `localStorage.loggedIn`
+    - React SPA loads and looks for `loggedd_in`
     - It doesn't see it so it redirect to https://app.example.com/auth/login?redirect_uri=/foo/bar
 - Browser loads https://app.example.com/auth/login?redirect_uri=/foo/bar
     - Django presents HTML form with CSRF field
@@ -344,13 +351,12 @@ The following is describing how an implementation *should* go (i.e. specificatio
         - `SameSite` is required for API piece, will explain there
         - On some applications, sessions can be established first. In that case, I'd still expect session id rotation here (to prevent session fixation attack)
     - Django saves user ID to session in DB
+    - Django middleware (built by us) also adds identical cookie for `logged_in` except value is "1" and `HttpOnly` is `false`
+        - This is a double win for auth handled by Django Admin
     - Django redirects user to https://app.example.com/auth-success?redirect_uri=/foo/bar (Auth0 calls this [`/callback`](https://developer.auth0.com/resources/guides/spa/react/basic-authentication), but I like these semantics more)
 - Browser loads https://app.example.com/auth-success?redirect_uri=/foo/bar
-    - React SPA loads and sets `localStorage.loggedIn = true`
-        - We use `true` instead of an expiration because cookies typically self-refresh expiration upon usage
-        - Without this `/auth-success` page, React would still think the user is logged out
-        - We could use a query parameter as well, but that means handling it on every page and a possible flash of content while it's sorted (this is why Auth0 pushes for it)
-        - This page also gives us a common location to capture any relevant events
+    - We parse the query parameter on all pages, but that complicates logic/setup, and there's a possible flash of content while it's handled (this is why Auth0 pushes for this)
+    - This page also gives us a common location to capture any relevant events
     - React SPA pushes browser to https://app.example.com/foo/bar
 
 ##### API usage
@@ -361,17 +367,13 @@ The following is describing how an implementation *should* go (i.e. specificatio
         - Otherwise, someone could manufacture an HTML form to submit to our API as elaborated above
 
 ##### Session expiration
-- If the user hasn't interfaced with the app in a while, then their cookie will expire but they'll have `localStorage.loggedIn` still
+- If the user hasn't interfaced with the app in a while, then their cookie will expire
 - User visits https://app.example.com/foo/bar
-    - React SPA loads and makes request to Django DRF (our API)
-    - (Double check implementation) Django DRF responds with "401 Unauthorized" (we'd use "403 Forbidden" for permission issues)
-    - React SPA identifies 401 and unset `localStorage.loggedIn`
-    - React SPA continues by redirecting to https://app.example.com/auth/login
+    - React SPA loads, doesn't see a `logged_in` cookie, and redirects to https://app.example.com/auth/login?redirect_uri=/foo/bar
 
 ##### Logout
 - When a user navigates to https://app.example.com/logout
-    - React SPA loads and routes to logout page
-    - React SPA unsets `localStorage.loggedIn`
+    - TODO: Implement me
     - React SPA redirects to https://app.example.com/auth/logout
 - Browser navigates to https://app.example.com/auth/logout
     - (Double check implementation) Django loads, unsets the cookie, and removes the session from the DB
@@ -386,7 +388,7 @@ The following is describing how an implementation *should* go (i.e. specificatio
     - `/auth-success` interacts as per usual, treating user as logged in and such
 
 #### JWT based auth
-The structure required here is roughly the same as cookie based auth, except we sign + set a JWT as cookie after login -- and Django is still using normal cookie sessions.
+The structure required here is roughly the same as cookie based auth, except we sign + set a JWT refresh token as cookie after login -- and Django is still using normal cookie sessions.
 
 To reiterate, this is more work with no added benefit since the JWT is in a HttpOnly cookie (since otherwise it can be scraped), so it's not recommended.
 
@@ -394,7 +396,7 @@ There's even more complexity I'm glossing over around the JWT being stored is th
 
 ##### Initial auth
 - User visits https://app.example.com/foo/bar
-    - React SPA loads, doesn't see `localStorage.loggedIn`, and redirects to auth
+    - React SPA loads, doesn't see `logged_in` non-HttpOnly cookie, and redirects to auth
 - Browser loads https://app.example.com/auth/login?redirect_uri=/foo/bar
     - Django establishes cookie-based session, with `HttpOnly` and `SameSite=strict` set (should double check on implementation)
 - User logs in
@@ -403,7 +405,7 @@ There's even more complexity I'm glossing over around the JWT being stored is th
 
 ##### API usage
 - React SPA makes XHR to https://app.example.com/api/baz
-    - Browser users current cookie, including the JWT one
+    - Browser uses current cookie, including the JWT one
     - Django DRF sees the cookie and uses that
 - We also need to set up CORS properly due to XHR usage
 
@@ -422,17 +424,19 @@ Everything else though is the same.
 ### Same domain with proxy and full React XHR
 There's 2 scenarios here:
 
-- If React SPA stays a static page, then you're starting to interact with `django-allauth` as an AJAX entity without CSRF somehow
-    - Since CSRF tokens can only be rendered by Django, which a static page isn't
-    - This requires removing some safeguards (e.g. disable support for any non-JSON form data), and being certain that nobody re-enables them (read as put some `assert` + strong explanations/language)
-        - Admittedly, disabling CSRF for authentication pages prob isn't the end of the world since I can't imagine what could be done maliciously
-        - but this is again one of those "defense in depth" examples
-    - Then all the endpoints + cookie setting should continue to work
-    - This setup also leads to headaches for things like handling email verification, since that's a request at page load, in addition to other requests - but it blocks the UI
-- Alternatively, you make Django host React for these pages + React picks up the CSRF token from the rendered page
-    - In these scenarios, the flow should work as above (e.g. cookie setting and all)
-    - Though there's complexity for things like handling password reset tokens
-        - In this case, be sure to use `#token=foo` instead of `?token=foo` to avoid leaking to HTTP referrer with third party scripts
+- If React SPA stays a static page, then you're starting to interact with `django-allauth` as an AJAX entity (leveraging CSRF non-HttpOnly cookie)
+    - This requires something to touch the `/auth` URL via AJAX first to ensure a cookie, but that's easily done
+        - e.g. `useCsrfCookie()`: Sees if no cookie -> runs `async/await fetch('/auth/login' or build something lighter)` -> reads/returns cookie
+    - Once that's done, it still might be tricky to build all the pages + deal with edge cases like mandatory email verification, since that'd be a request at page load (hopefully done in parallel with other requests)
+    - In this case, be sure to use `#token=foo` instead of `?token=foo` to avoid leaking to HTTP referrer with third party scripts
+- Alternatively, you make Django host React for these pages + React gets the CSRF cookie for free when rendering the page
+    - In these scenarios, the flow should work as above (e.g. cookie setting and all) but it leads to headaches with the development web server (e.g. websockets, dynamic bundle hashes)
+    - The rest of the points from the React SPA version hold
+
+### Different domain with full React XHR
+This will not work because there's no way for React to get the CSRF cookie or rendered HTML.
+
+Maybe there's some hack/workaround with a callback URL/endpoint but that's likely opening the door for further security issues.
 
 ### Recap
 - Django hosting `django-allauth` + styling similarly is the sanest path to develop on
@@ -443,4 +447,3 @@ There's 2 scenarios here:
 - Same or separate domains with cookies are comparable, though same domain is nicer due to no CORS frustrations + stricter `SameSite` policy
 
 TODO: Move security discussion to its own file (maybe even its own release)
-TODO: Re-evaluate everything with new learnings

@@ -27,8 +27,8 @@ The information here will go out of date, so take it a grain of salt and as a sn
     - For a very interactive app:
         - Django with `django-allauth` pre-authentication (valauble due to admin tools, user standard, and authentication)
         - Single page application (SPA) post-authentication (e.g. React)
-        - django-allauth should support building SPA around authentication pages as well, but that has way more implementation time
-            - Be careful to still allow tokens to be handle by django-allauth on the server though, otherwise third party scripts will see referrer (security issue)
+        - `django-allauth` should support building SPA around authentication pages as well, but that has way more implementation time
+            - Be careful to still allow password reset tokens/similar to be handle by `django-allauth` on the server though, otherwise third party scripts will see referrer (security issue)
 
 [explorations-django-allauth]: docs/explorations.md#2-django-allauth
 
