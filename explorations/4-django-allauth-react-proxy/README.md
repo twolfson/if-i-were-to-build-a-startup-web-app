@@ -252,3 +252,8 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - TODO: Room for improvement based on video + CSRF realization, instead of `localStorage.loggedIn`, we could do a JSON non-HttpOnly cookie with user info that the browser can consume ASAP (though it comes with all the same issues as JWT)
     - Yea, it's tricky because it's valid at login but then becomes junk if they change mid-session =/ So need to wire in to all those points .\_. YAGNI + KISS
 - Actually... yea, going with a basic replacement of `localStorage` because it simplifies the React side greatly =)
+
+- Cookies were a bit of a hassle, but it's done
+- and the end result does feel a lot simpler (e.g. no mismatched expiration concerns)
+
+- `django-loginas` has also been added, and works very quickly and easily =D
