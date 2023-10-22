@@ -10,7 +10,7 @@ In typical production environments, Django is already behind a reverse proxy (e.
 ## Missing implementation
 - `fetch` usages don't handle errors like API giving a 404 and trying JSON parsing
 - Handling redirects on login or sign-up isn't built out
-    - TODO: Link back to architectural layout
+    - More details in [docs/django-react-security-and-architecture.md](../../docs/django-react-security-and-architecture.md)
 - `django-allauth` has many knobs/dials but we didn't explore adjusting all of them, https://docs.allauth.org/en/latest/account/configuration.html
 - Building a developer friendly guard to prevent accidentally working on <http://localhost:8000/> (React is running on <http://localhost:3000/>) (`ALLOWED_HOSTS` sadly ignores ports)
 
@@ -230,7 +230,7 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 
 - Back from a walk/break
 - CSRF is not so bad tbh, and changes nothing here
-- TODO: Update nuance in the security detour and #3 to talk through CSRF tweaks (i.e. no field needed, but still need to touch a Django page)
+- DONE: Update nuance in the security detour and #3 to talk through CSRF tweaks (i.e. no field needed, but still need to touch a Django page)
 - I also did a sanity check video watch of a demo of Auth0 to verify the URL scheme is roughly where we're at with nothing unexpected, https://www.youtube.com/watch?v=RpfEk6drhPc
 - DONE: Room for improvement based on video + CSRF realization, instead of `localStorage.loggedIn`, we could do a JSON non-HttpOnly cookie with user info that the browser can consume ASAP (though it comes with all the same issues as JWT)
     - Yea, it's tricky because it's valid at login but then becomes junk if they change mid-session =/ So need to wire in to all those points .\_. YAGNI + KISS
