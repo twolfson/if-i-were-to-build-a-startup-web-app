@@ -1,6 +1,6 @@
 // Import our dependencies
 import { useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, redirect } from "react-router-dom";
 import { useEffectOnce } from "react-use";
 
 import { Index } from "./pages/Index";
@@ -16,7 +16,8 @@ const AuthRequired = ({ children }) => {
   );
 
   if (!isLoggedIn) {
-    return "TODO: Redirect to auth URL with current URL as query param";
+    // TODO: Note in README about missing URL redirect support on login
+    return redirect("/auth/login/")
   }
   return children;
 };
@@ -29,7 +30,8 @@ const AuthSuccessPage = () => {
     window.localStorage[LOGGED_IN_KEY] = LOGGED_IN_SUCCESS_VALUE;
   });
 
-  return "TODO: Redirect to provided URL or /"
+  // TODO: Note in README about missing URL redirect support on login
+  return redirect("/")
 }
 
 // TODO: Relocate to proper place
@@ -39,7 +41,7 @@ const LogoutPage = () => {
     delete window.localStorage[LOGGED_IN_KEY];
   });
 
-  return "TODO: Redirect to /auth/logout"
+  return redirect("/auth/logout/")
 }
 
 const router = createBrowserRouter([
