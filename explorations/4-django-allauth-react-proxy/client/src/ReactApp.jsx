@@ -5,7 +5,7 @@ import { useCookie } from "react-use";
 import "react-toastify/dist/ReactToastify.css";
 
 import { AuthSuccessLoader } from "./loaders/AuthSuccessLoader";
-import { Index } from "./pages/Index";
+import { IndexPage } from "./pages/IndexPage";
 import { LOGGED_IN_COOKIE_NAME } from "./utils/constants";
 import { NotificationContainer } from "./containers/NotificationContainer";
 
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Index />,
+    element: <IndexPage />,
   },
 ]);
 
