@@ -4,10 +4,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Index } from "./pages/Index";
 
 const LOGGED_IN_KEY = "logged_in";
+const LOGGED_IN_SUCCESS_VALUE = "1";
 
 const AuthRequired = ({ children }) => {
+  // DEV: Use `useState` so we cache initial value (assumes always logged in) and doesn't touch `localStorage` until later
+  // TODO: Handle actually changing state on auth success
   const [isLoggedIn, setIsLoggedIn] = useState(
-    window.localStorage[LOGGED_IN_KEY] === "1",
+    window.localStorage[LOGGED_IN_KEY] === LOGGED_IN_SUCCESS_VALUE
   );
 
   if (!isLoggedIn) {
@@ -15,6 +18,13 @@ const AuthRequired = ({ children }) => {
   }
   return children;
 };
+
+const AuthSuccessPage = () => {
+  // TODO: Handle redirect
+  useEffectOnce(() => {
+
+  })
+}
 
 const router = createBrowserRouter([
   {
