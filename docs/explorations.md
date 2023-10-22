@@ -337,12 +337,12 @@ The following is describing how an implementation *should* go (i.e. specificatio
     - React SPA loads and looks for `localStorage.loggedIn`
     - It doesn't see it so it redirect to https://app.example.com/auth/login?redirect_uri=/foo/bar
 - Browser loads https://app.example.com/auth/login?redirect_uri=/foo/bar
-    - Django establishes cookie-based session, with `HttpOnly` and `SameSite=strict` set (should double check on implementation)
-        - `HttpOnly` is required to prevent third party scripts from stealing `document.cookie`
-        - `SameSite` is required for API piece, will explain there
     - Django presents HTML form with CSRF field
 - User logs in
-    - Django rotates session id (to prevent session fixation attack)
+    - Django establishes cookie-based session, with `HttpOnly` and `SameSite=strict` set
+        - `HttpOnly` is required to prevent third party scripts from stealing `document.cookie`
+        - `SameSite` is required for API piece, will explain there
+        - On some applications, sessions can be established first. In that case, I'd still expect session id rotation here (to prevent session fixation attack)
     - Django saves user ID to session in DB
     - Django redirects user to https://app.example.com/auth-success?redirect_uri=/foo/bar (Auth0 calls this [`/callback`](https://developer.auth0.com/resources/guides/spa/react/basic-authentication), but I like these semantics more)
 - Browser loads https://app.example.com/auth-success?redirect_uri=/foo/bar
@@ -443,3 +443,4 @@ There's 2 scenarios here:
 - Same or separate domains with cookies are comparable, though same domain is nicer due to no CORS frustrations + stricter `SameSite` policy
 
 TODO: Move security discussion to its own file (maybe even its own release)
+TODO: Re-evaluate everything with new learnings

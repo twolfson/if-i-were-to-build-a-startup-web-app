@@ -1,35 +1,18 @@
 # django-allauth / React proxy exploration
-
-# TODO: See TODOs
-
-TODO: Django doesn't have a session set up on login page... so unsure session fixation/rotation applies -- prob review/update plan once done
-
-TODO: Update references in README regarding `api` + `ui` -> `django` + `react`
-
-TODO: Walk through django-allauth more thoroughly, https://docs.allauth.org/en/latest/account/configuration.html
-
-TODO: Provide a safeguard that checks `Host` header in development to deter :8000 access
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
-
-TODO: Update after security exploration
 
 A common setup in the wild is a JWT-based API and a React development server (e.g. `create-react-app`) as 2 separate servers talking over CORS.
 
 I'd like to explore consolidating these 2 on the same server with a proxy, and seeing the benefits that fall out (potentially cookies, no annoying JWT tracking/handoffs, no CORS + preflight `OPTIONS` requests, immediate standup of `django-allauth` with ability for full customization, and ability to fully integrate UI in the future).
 
-## How to proxy
-In the Django case, it might be possible to have Django proxy the React development server, but those servers typically use Websockets, which is quite the headache.
-
-NGINX would be another alternative but it's abnormal to have that run in development.
-
-We could do a Node.js proxy server as well, but instead of 2 separate Node.js servers (proxy + React development server), we can just repurpose the React development one as well =)
-
-In production, the setup would be an NGINX server with the same proxy routing pointing towards Django
+In typical production environments, Django is already behind a reverse proxy (e.g. NGINX) to avoid running with elevated permissions. We're simply adding the step of hosting React as the default.
 
 ## Missing implementation
 - `fetch` usages don't handle errors like API giving a 404 and trying JSON parsing
 - Handling redirects on login or sign-up isn't built out
     - TODO: Link back to architectural layout
+- `django-allauth` has many knobs/dials but we didn't explore adjusting all of them, https://docs.allauth.org/en/latest/account/configuration.html
+- Building a developer friendly guard to prevent accidentally working on <http://localhost:8000/> (React is running on <http://localhost:3000/>) (`ALLOWED_HOSTS` sadly ignores ports)
 
 ## Getting Started
 To set up this repo, install the following dependencies:
@@ -41,8 +24,8 @@ To set up this repo, install the following dependencies:
 then run the following:
 
 ```bash
-# Navigate to our API folder
-cd api/
+# Navigate to our Django folder
+cd server/
 
 # Open Poetry shell
 poetry shell
@@ -57,8 +40,8 @@ poetry install
 # Run our Django server
 ./manage.py runserver
 
-# In a separate tab, navigate to our UI folder
-cd ui/
+# In a separate tab, navigate to our React folder
+cd client/
 
 # Install our Node.js dependencies
 npm install
@@ -67,15 +50,26 @@ npm install
 npm start
 ```
 
-We can now see our server running locally at <http://127.0.0.1:8000/>
+We can now see our server running locally at <http://localhost:3000/>
 
 ## Screenshots
-TODO: Add screenshots
+We're using `django-allauth-ui`, so please see their repo for screenshots:
+
+<https://github.com/danihodovic/django-allauth-ui>
 
 ## Development
 ### File structure
-- Roughly same as `2-django-allauth` exploration
-- New addition: `ui/`, container for all React files
+- `server/` holds all Django files
+- `ui/` holds all React files
+- Hopefully content is intuitive if you've worked in those frameworks before
+
+### URL structure
+- `http://localhost:3000/`
+    - `api/` - Django REST Framework (DRF) content
+    - `auth/` - `django-allauth` pages + anything that isn't on top of DRF
+        - Maps to `server/authn` Django app (`auth` is already taken as a name)
+    - `admin/` - Django Admin, including "Login as" functionality
+    - Any other URLs are hosted by `create-react-app's` dev server (e.g. their websocket, favicon, JS bundles)
 
 ### Django Admin
 Django Admin can be set up via the following:
@@ -101,7 +95,7 @@ user.save()
 
 You can now log in to Django Admin to view things like user and email verification:
 
-http://127.0.0.1:8000/admin/
+http://localhost:3000/admin/
 
 **We strongly recommend using a separate [browser profile](https://support.google.com/chrome/answer/2364824) (Chrome) or [container tab](https://support.mozilla.org/en-US/kb/containers) (Firefox). Otherwise, Django Admin shares the same session with the app, and this complicates debugging.**
 
@@ -139,6 +133,15 @@ Additionally, we get `shell_plus` which gives us the same `--print-sql` support 
 
 Additionally, inside templates, a handy utility is `{% debug %}` which dumps all available context variables
 
+## Proxy considerations
+In the Django case, it might be possible to have Django proxy the React development server, but those servers typically use Websockets, which is quite the headache.
+
+NGINX would be another alternative but it's abnormal to have that run in development.
+
+We could do a Node.js proxy server as well, but instead of 2 separate Node.js servers (proxy + React development server), we can just repurpose the React development one as well =)
+
+In production, the setup would be an NGINX server with the same proxy routing pointing towards Django
+
 ## Setup Log
 ### Django setup
 - Starting fresh without other explorations (though will copy/paste)
@@ -171,7 +174,6 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - Transferred `package.json`
 - And realizing all of `3-django-server-react-ui/ui` was prob good off the shelf
 - Grabbed that + modified/reduced down pages
-    - TODO: Delete `AuthLayout.jsx` if unused
 - Finding ourselves missing UI + styles
 - Using part of `index.html` from exploration 3
 
