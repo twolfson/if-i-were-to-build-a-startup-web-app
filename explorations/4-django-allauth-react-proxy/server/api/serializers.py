@@ -6,4 +6,4 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ['url', 'username', 'email', 'groups']
-        # TODO: Build + sanity check readonly fields
+        read_only_fields = fields
