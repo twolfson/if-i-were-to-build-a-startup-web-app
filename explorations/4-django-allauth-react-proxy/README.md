@@ -26,7 +26,7 @@ We could do a Node.js proxy server as well, but instead of 2 separate Node.js se
 
 In production, the setup would be an NGINX server with the same proxy routing pointing towards Django
 
-## What's missing from this implementation
+## Missing implementation
 - `fetch` usages don't handle errors like API giving a 404 and trying JSON parsing
 - Handling redirects on login or sign-up isn't built out
     - TODO: Link back to architectural layout
@@ -258,4 +258,7 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - Deciding to keep pushing on messages, otherwise it's an incomplete experience
 - Also realized there's prob AJAX Django messages support out there
 - Sadly, all seems out of date =(
-- TODO: Create one-off gist for messages endpoint
+
+- Also implemented `useUser` and feeling quite happy with repo location
+
+- Feeling like the repo is reasonable enough, going to polish + cleanup now
