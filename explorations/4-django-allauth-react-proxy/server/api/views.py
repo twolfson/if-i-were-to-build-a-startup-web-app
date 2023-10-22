@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import permissions, viewsets
+from rest_framework.decorators import action
 
 from api.serializers import UserSerializer, GroupSerializer
 
@@ -12,6 +13,9 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    @action(detail=True, methods=["GET"])
+    def me(
 
 
 class GroupViewSet(viewsets.ModelViewSet):
