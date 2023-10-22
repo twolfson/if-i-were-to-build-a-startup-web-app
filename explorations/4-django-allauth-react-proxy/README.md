@@ -205,4 +205,5 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - Removed `.venv` + reinstalled Poetry packages
 - Relocated `django/app` to `django/auth`
 - Created `django/api` via `./manage.py startapp api`
+- Started Django REST Framework setup
 - Performed another rename due to fearing `django` import possibly getting messed up by top level folder
