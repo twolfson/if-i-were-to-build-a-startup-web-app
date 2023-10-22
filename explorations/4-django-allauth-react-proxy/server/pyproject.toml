@@ -16,6 +16,7 @@ django-allauth-ui = "^0.1.4"
 djangorestframework = "^3.14.0"
 django-filter = "^23.3"
 django-loginas = "^0.3.11"
+drf-messages = "^1.1.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"

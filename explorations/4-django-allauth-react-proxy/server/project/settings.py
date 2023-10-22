@@ -61,6 +61,8 @@ INSTALLED_APPS = [
     # Nothing set up yet
     # https://www.django-rest-framework.org/
     "rest_framework",
+    # https://drf-messages.readthedocs.io/en/latest/installation/quick_start.html
+    "drf_messages",
 ]
 
 MIDDLEWARE = [
@@ -136,6 +138,8 @@ AUTHENTICATION_BACKENDS = [
 # TODO: In production, error out
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+# https://drf-messages.readthedocs.io/en/latest/installation/quick_start.html
+MESSAGE_STORAGE = "drf_messages.storage.DBStorage"
 
 # Set up CSRF overrides due to Django/React proxy
 # https://github.com/django/django/blob/4.2.6/django/conf/global_settings.py#L582
