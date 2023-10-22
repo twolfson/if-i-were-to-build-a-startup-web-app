@@ -533,21 +533,6 @@ django = ">=3.0"
 pytz = "*"
 
 [[package]]
-name = "drf-messages"
-version = "1.1.1"
-description = "Use Django's Messages Framework with Django Rest Framework project."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "drf-messages-1.1.1.tar.gz", hash = "sha256:2860dd0f6c6e539715b12798faba5a7cbc9e46b55dd8f727f2ae0762ae39f137"},
-    {file = "drf_messages-1.1.1-py3-none-any.whl", hash = "sha256:0cf13aa1a5769768d80554949875dc482715a431ed5a2f0d8ce75b108ccf1d41"},
-]
-
-[package.dependencies]
-Django = ">=2.2"
-
-[[package]]
 name = "executing"
 version = "1.2.0"
 description = "Get the currently executing AST node of a frame, and other information"
@@ -1205,4 +1190,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1"
-content-hash = "9ad4eb12d11655c23e9f7ac9c108ac518462e0c1721cddb6ae46907dcde30a5b"
+content-hash = "3d13a582b94544d196c8adc67cab464a301b7f45607290bd3082193ab4631e3b"
