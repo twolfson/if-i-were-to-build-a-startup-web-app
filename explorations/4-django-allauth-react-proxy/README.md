@@ -255,3 +255,9 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
     - and the structure isn't easily alleviated
     - and we had a pretty good patter from before with `_layout` JSX + statuses
     - https://reactrouter.com/en/main/guides/data-libs
+
+- Next day
+- Deciding to keep pushing on messages, otherwise it's an incomplete experience
+- Also realized there's prob AJAX Django messages support out there
+- Sadly, all seems out of date =(
+- TODO: Create one-off gist for messages endpoint
