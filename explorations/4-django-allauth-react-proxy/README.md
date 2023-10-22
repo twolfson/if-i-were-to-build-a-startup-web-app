@@ -247,3 +247,10 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - and the end result does feel a lot simpler (e.g. no mismatched expiration concerns)
 
 - `django-loginas` has also been added, and works very quickly and easily =D
+
+- Fixed up permissions for DRF endpoints we made
+
+- Exploring messages and Toast libraries
+- This one has put effort into accessibility apparently =D
+    - https://fkhadra.github.io/react-toastify/introduction/
+    - https://github.com/fkhadra/react-toastify/issues/121
