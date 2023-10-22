@@ -62,8 +62,6 @@ This is a non-`HttpOnly` cookie so we avoid exposing our session cookie to third
 
 The following is describing how an implementation *should* go (i.e. specification). We've yet to do this in practice.
 
-TODO: Come back to CSRF in other sections where we thought we needed the HTML page version, when cookie was fine all along
-
 #### Initial auth
 - User visits https://app.example.com/foo/bar
     - React SPA loads and looks for `loggedd_in`
@@ -98,7 +96,6 @@ TODO: Come back to CSRF in other sections where we thought we needed the HTML pa
 
 #### Logout
 - When a user navigates to https://app.example.com/logout
-    - TODO: Implement me
     - React SPA redirects to https://app.example.com/auth/logout
 - Browser navigates to https://app.example.com/auth/logout
     - (Double check implementation) Django loads, unsets the cookie, and removes the session from the DB

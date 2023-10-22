@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthSuccessLoader } from "./loaders/AuthSuccessLoader";
 import { IndexPage } from "./pages/IndexPage";
 import { LOGGED_IN_COOKIE_NAME } from "./utils/constants";
+import { LogoutPage } from "./pages/LogoutPage";
 import { NotificationContainer } from "./containers/NotificationContainer";
 
 const queryClient = new QueryClient();
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <IndexPage />,
+  },
+  {
+    path: "/logout",
+    element: <LogoutPage />,
   },
 ]);
 

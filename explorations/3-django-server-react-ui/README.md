@@ -9,6 +9,7 @@ It's painful because:
 
 - React is performing an HTML `<form>` submission to Django Allauth (by design)
 - Django would render with tokens/objects in the `<head>` for React to pick up (e.g. CSRF token, validation errors, field values to refill for inputs)
+    - EDIT: CSRF token is slightly easier now that we learned it's also in a non-HttpOnly cookie
 - Then React would need to properly handle these on a case by case basis
 - It's a lot of work and rebuilding for something we prefer to cheap or batteries included!
 
