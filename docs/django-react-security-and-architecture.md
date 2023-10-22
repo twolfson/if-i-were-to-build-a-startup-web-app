@@ -116,6 +116,10 @@ To reiterate, this is more work with no added benefit since the JWT is in a Http
 
 There's even more complexity I'm glossing over around the JWT being stored is the *refresh* token, not the *access* token, meaning even more work is needed on the React side =/
 
+More reading:
+- https://blog.logrocket.com/jwt-authentication-best-practices/#whyyoushouldnt
+- https://www.loginradius.com/blog/engineering/guest-post/jwt-authentication-best-practices-and-when-to-use/
+
 #### Initial auth
 - User visits https://app.example.com/foo/bar
     - React SPA loads, doesn't see `logged_in` non-HttpOnly cookie, and redirects to auth
@@ -142,6 +146,24 @@ It might need to change from `SameSite=strict` to `SameSite=lax` to allow permis
 This is an example where I'd need to implement and adjust to check.
 
 Everything else though is the same.
+
+### Reasons for different domains
+I've seen different domains be argued for because it enables things like being pre-configured for CORS, allowing for easy interaction between environments (e.g. develop locally with beta API).
+
+I believe that any configuration done with different domains can also be achieved with same domain + proxy.
+
+- Local development against beta API: Set up React Dev Server to point to beta API, all cookies and such should work as expected
+- [Deploy Previews][] (e.g. Netlify): These should support the same kind of proxying as React Dev Server and NGINX, https://docs.netlify.com/routing/redirects/rewrites-proxies/
+- CDN for React content:
+    - This seems like misplaced priorities since React is still largely going to be talking to the API backend
+    - If you're scaling 1 of these, you prob should scale both
+- Expose API to customers
+    - Both same and different domain versions can be done, but the API you'd expose to customers isn't the same as what you consume
+    - Customers expect stability and versioning for theirs
+    - Whereas an application API changes rapidly, especially as a startup
+    - You'd be building this as a standalone product as-is
+
+[Deploy Previews]: (https://docs.netlify.com/site-deploys/deploy-previews/)
 
 ## Same domain with proxy and full React XHR
 There's 2 scenarios here:
