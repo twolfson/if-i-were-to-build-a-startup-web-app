@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "devDependencies": {
+    "foundry": "~4.7.0"
+  },
+  "foundry": {
+    "releaseCommands": []
+  }
+}
