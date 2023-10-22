@@ -198,7 +198,7 @@ ACCOUNT_PRESERVE_USERNAME_CASING = False
 LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = "/auth/login/"
 # If we don't provide this, then logout confirmation page is in Django Admin
-LOGOUT_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/auth/login"
 
 # django-allauth configuration, https://docs.allauth.org/en/latest/installation/quickstart.html
 SOCIALACCOUNT_PROVIDERS = {

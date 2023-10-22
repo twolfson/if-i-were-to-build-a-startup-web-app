@@ -26,10 +26,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/logout",
-    action: () => {
+    loader: () => {
       // DEV: If we ever need to put this back into a component, then use `useEffectOnce`
       delete window.localStorage[LOGGED_IN_KEY];
-      return redirect("/auth/logout/");
+      // DEV: We can't use `redirect` since that uses `history.pushState`
+      window.location = "/auth/logout/";
+      return null
     },
     element: null,
   },
@@ -40,7 +42,9 @@ const router = createBrowserRouter([
       const isLoggedIn = window.localStorage[LOGGED_IN_KEY] === LOGGED_IN_SUCCESS_VALUE;
       if (!isLoggedIn) {
         // TODO: Note in README about missing URL redirect support on login
-        return redirect("/auth/login/");
+        // DEV: We can't use `redirect` since that uses `history.pushState`
+        window.location = "/auth/login/";
+        return false;
       }
     },
     element: (
