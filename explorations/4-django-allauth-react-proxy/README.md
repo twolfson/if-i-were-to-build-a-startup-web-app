@@ -1,5 +1,7 @@
 # TODO: See TODOs
 
+TODO: Resolve messages + clear via DRF
+
 - [x] Complete rough django-allauth
 - [x] Set up DRF
 - [ ] Finish implementing spec we discussed in the explorations file
@@ -7,9 +9,6 @@
 
 """
 ##### Initial auth
-- User visits https://app.example.com/foo/bar
-    - React SPA loads and looks for `localStorage.loggedIn`
-    - It doesn't see it so it redirect to https://app.example.com/auth/login?redirect_uri=/foo/bar
 - Browser loads https://app.example.com/auth/login?redirect_uri=/foo/bar
     - Django establishes cookie-based session, with `HttpOnly` and `SameSite=strict` set (should double check on implementation)
         - `HttpOnly` is required to prevent third party scripts from stealing `document.cookie`
@@ -269,3 +268,12 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - Performed another rename due to fearing `django` import possibly getting messed up by top level folder
 - Renamed `AppConfig` for `auth` to `server-auth` due to conflict with Django's `auth` package
 - Then to `authn` when it wanted the name for the containing folder
+
+- Started walking through specification we laid out
+- Had a weird state where I was logged in but no cookie - so thought Django somehow had no sessions by default, but nope =)
+- and that won't be the case in practice =P
+- Aaah, it was an allauth setting for cookie duration =)
+
+- Huuuh, the CSRF piece is accessible as a cookie, https://docs.djangoproject.com/en/4.2/ref/settings/#csrf-cookie-httponly
+    - which breaks my brain on some levels but also makes a lot of sense
+    - and almost warrants another security detour ._.

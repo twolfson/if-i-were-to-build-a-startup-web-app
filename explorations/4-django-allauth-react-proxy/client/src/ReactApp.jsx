@@ -42,6 +42,7 @@ const LogoutPage = () => {
   return null;
 }
 
+// TODO: Put all this logic into an `AuthRouter`?
 const router = createBrowserRouter([
   {
     path: "/auth-success",

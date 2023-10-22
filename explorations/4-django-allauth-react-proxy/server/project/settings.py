@@ -20,10 +20,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# TODO: Add check for if production env
 SECRET_KEY = "django-insecure-secret-key"
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# TODO: Add check for if production env
 DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -141,6 +144,12 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:3000",
 ]
+# TODO: Set as secure in production
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = "Strict"
+SESSION_COOKIE_SAMESITE = "Strict"
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -196,6 +205,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 ACCOUNT_LOGOUT_ON_GET = True
 # Don't preserve casing as it uses `__iexact` which can be expensive,
 ACCOUNT_PRESERVE_USERNAME_CASING = False
+ACCOUNT_SESSION_REMEMBER = True
 LOGIN_REDIRECT_URL = "/auth-success"
 LOGIN_URL = "/auth/login/"
 # If we don't provide this, then logout confirmation page is in Django Admin
