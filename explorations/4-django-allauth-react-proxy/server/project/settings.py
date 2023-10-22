@@ -71,6 +71,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # https://docs.allauth.org/en/latest/installation/quickstart.html
     "allauth.account.middleware.AccountMiddleware",
+    # Handle setting a logged_in cookie after every other request
+    "authn.middleware.logged_in_cookie_middleware",
 ]
 
 ROOT_URLCONF = "project.urls"
