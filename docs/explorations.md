@@ -280,7 +280,12 @@ i.e. React as main server, proxying Django for auth + API with JWT handoff -- th
 
 But yea, I want -- React as main server, Django as `/auth` + `/api` routes with no shared CSS (pages are minimal as-is) (though I do understand not preferred, but that's something that can be addressed with time)
 
-## Security detour
+----
 
+We took a security and architecture detour in [Django <> React Security and Architecture](./django-react-security-and-architecture.md)
 
-TODO: Move security discussion to its own file (maybe even its own release)
+and completed our exploration.
+
+The proxy solution is definitely workable =D It's a little frustrating to get down (lots of odds and ends), but it's probably the fastest solution outside of Auth0/similar.
+
+It does make me finally understand why that's a valuable product for others, though I still disagree with the tradeoff of 1-3 days for setup vs vendor lock-in for your users + really painful migration if need to change (e.g. acquisition, limited features like custom fields/logic).

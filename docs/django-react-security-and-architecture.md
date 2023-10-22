@@ -8,8 +8,6 @@ Since this is inside of `if-i-were-to-build-a-startup-web-app`, I'm going to try
 - Building our own security is risky (even if we're picking/choosing from other libraries)
 - Building our own security adds significant time (e.g. building many authentication pages (login, sign up, password reset, password reset confirm, verify email, corresponding email messages) + their interconnectedness)
 
-I'm going to also skip over solutions like Auth0 because I talk through those in other places in this repo (TODO).
-
 ## Same domain with proxy
 In this setup, Django and React are hosted on the same domain:
 
@@ -166,6 +164,16 @@ This will not work because there's no way for React to get the CSRF cookie or re
 Maybe there's some hack/workaround with a callback URL/endpoint but that's likely opening the door for further security issues.
 
 As a result, the implementer is likely stuck hacking together their own full security implementation =/
+
+## Third party authentication providers
+Auth0 and such are viable alternatives to setting up all this handshaking yourself. At the same time, it foregoes a lot of long-term tradeoffs as well as doesn't save that much time (e.g. maybe 2 days).
+
+Tradeoffs include:
+
+- Long-term Vendor lock-in for users (very hard to migrate)
+- Additional existential risks for company (e.g. risk of abrupt shutdown, uptime limitations)
+- Not being able to see user info inside Django admin
+- Possible limitations around custom logic/fields
 
 ## Recap
 - Django hosting `django-allauth` + styling similarly is the sanest path to develop on

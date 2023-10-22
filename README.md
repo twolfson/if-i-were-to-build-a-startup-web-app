@@ -125,6 +125,10 @@ With interactivity (contained) and aesthetics (Bootstrap) decided, we can now st
 - [Development Containment: Language level, nothing else](docs/development-containment.rst)
 - [UI <> Server Interface](docs/ui-server-interface.rst)
 
+There's also various explorations/discussions as well:
+- [Explorations](docs/explorations.md)
+- [Django <> React Security and Architecture](docs/django-react-security-and-architecture.md)
+
 ## Content not covered
 There are many many decision I'd like to talk through, but my motivation around this repo has waned (large time sink with uncertain value for others).
 
@@ -148,7 +152,7 @@ As a result, there's a lightning round of content I didn't cover:
     - Admittedly, this never happens with JSX (prob since I can TDD around it), only things like logic errors
 - Hosting provider selection
     - Landscape and pricing changes too often, do an evaluation table comparison
-- Database provider selcetion
+- Database provider selection
     - Landscape and pricing changes too often, do an evaluation table comparison
 - Documenting in-repo vs outside of repo
     - I'd been team "in-repo" for years,
@@ -242,7 +246,6 @@ One-off time consuming info like:
 - Providing eval table with years for newer content like product interactivity and aesthetics systems
 
 ### Things I wanted to dig into/explore more
-
 - Alternative CSS frameworks like Bourbon or SuitCSS
     - Bootstrap is generally good but lacks the full breadth of Tailwind (e.g. `space-y-*`)
 
