@@ -1,3 +1,5 @@
+# django-allauth / React proxy exploration
+
 # TODO: See TODOs
 
 TODO: Django doesn't have a session set up on login page... so unsure session fixation/rotation applies -- prob review/update plan once done
@@ -7,8 +9,6 @@ TODO: Update references in README regarding `api` + `ui` -> `django` + `react`
 TODO: Walk through django-allauth more thoroughly, https://docs.allauth.org/en/latest/account/configuration.html
 
 TODO: Provide a safeguard that checks `Host` header in development to deter :8000 access
-
-# django-allauth / React proxy exploration
 This is an exploration for [if-i-were-to-build-a-startup-web-app](https://github.com/twolfson/if-i-were-to-build-a-startup-web-app)
 
 TODO: Update after security exploration
@@ -25,6 +25,11 @@ NGINX would be another alternative but it's abnormal to have that run in develop
 We could do a Node.js proxy server as well, but instead of 2 separate Node.js servers (proxy + React development server), we can just repurpose the React development one as well =)
 
 In production, the setup would be an NGINX server with the same proxy routing pointing towards Django
+
+## What's missing from this implementation
+- `fetch` usages don't handle errors like API giving a 404 and trying JSON parsing
+- Handling redirects on login or sign-up isn't built out
+    - TODO: Link back to architectural layout
 
 ## Getting Started
 To set up this repo, install the following dependencies:

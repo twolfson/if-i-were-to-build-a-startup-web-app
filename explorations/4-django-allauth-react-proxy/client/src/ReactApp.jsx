@@ -32,7 +32,6 @@ const InnerApp = () => {
 
   // If we're not logged in, navigate to Django's auth pages
   if (!isLoggedIn) {
-    // TODO: Note in README about missing URL redirect support on login
     // DEV: We can't use `redirect` since that uses `history.pushState`
     window.location = "/auth/login/";
     return null;
