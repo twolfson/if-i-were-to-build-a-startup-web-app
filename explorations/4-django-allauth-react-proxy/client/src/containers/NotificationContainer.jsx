@@ -1,14 +1,9 @@
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect } from "react";
-import { useQuery } from "react-query";
+import { useMessages } from "../queries";
 
 export const NotificationContainer = () => {
-  const { error: messagesError, data: messagesData } = useQuery(
-    "messages",
-    () =>
-      // TODO: Fetch isn't handling errors like 404
-      fetch("/auth/messages/").then((res) => res.json()),
-  );
+  const { error: messagesError, data: messagesData } = useMessages();
 
   useEffect(() => {
     if (messagesError) {
