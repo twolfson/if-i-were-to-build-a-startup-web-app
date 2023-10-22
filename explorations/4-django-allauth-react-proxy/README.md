@@ -1,12 +1,5 @@
 # TODO: See TODOs
 
-TODO: Resolve messages + clear via DRF
-
-- [x] Complete rough django-allauth
-- [x] Set up DRF
-- [x] Finish implementing spec we discussed in the explorations file
-- [x] Polish django-allauth (e.g. `messages` handling)
-
 TODO: Django doesn't have a session set up on login page... so unsure session fixation/rotation applies -- prob review/update plan once done
 
 TODO: Update references in README regarding `api` + `ui` -> `django` + `react`
