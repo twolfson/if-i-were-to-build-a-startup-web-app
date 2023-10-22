@@ -23,30 +23,13 @@ const router = createBrowserRouter([
 ]);
 
 // Define our component
-const InnerApp = () => {
+export const ReactApp = () => {
   // Determine our login status
   // DEV: Use `useState` so we cache initial value (assumes always logged in) and doesn't touch `localStorage` until later
   //   Caching as `false` doesn't matter because the page will redirect to login
   const [loggedInStr] = useCookie(LOGGED_IN_COOKIE_NAME);
   const isLoggedIn = !!loggedInStr;
 
-  // TODO: Should be in a `useMessages` format?
-  const { error: messagesError, data: messagesData } = useQuery(
-    "messages",
-    () =>
-      fetch("/api/messages/").then((res) => res.json()),
-    {
-      enabled: isLoggedIn,
-    },
-  );
-
-  if (messagesError) {
-    throw messagesError;
-  }
-  if (messagesData) {
-    // TODO: Parse + iterate + do proper types
-    toast(JSON.stringify(messagesData), { type: "info" });
-  }
   // If we're not logged in, navigate to Django's auth pages
   if (!isLoggedIn) {
     // TODO: Note in README about missing URL redirect support on login
@@ -57,17 +40,9 @@ const InnerApp = () => {
 
   // Otherwise, perform routing as per normal
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <ToastContainer position="top-center" />
       <RouterProvider router={router} />
-    </>
-  );
-};
-
-export const ReactApp = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <InnerApp />
     </QueryClientProvider>
   );
 };

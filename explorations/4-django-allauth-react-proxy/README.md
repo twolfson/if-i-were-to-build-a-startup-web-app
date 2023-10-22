@@ -4,17 +4,10 @@ TODO: Resolve messages + clear via DRF
 
 - [x] Complete rough django-allauth
 - [x] Set up DRF
-- [ ] Finish implementing spec we discussed in the explorations file
+- [x] Finish implementing spec we discussed in the explorations file
 - [x] Polish django-allauth (e.g. `messages` handling)
 
 TODO: Django doesn't have a session set up on login page... so unsure session fixation/rotation applies -- prob review/update plan once done
-
-"""
-##### API usage
-- React SPA makes XHR to https://app.example.com/api/baz
-    - Browser uses current cookie, including our session one
-    - Django DRF sees the cookie and uses that
-"""
 
 TODO: Update references in README regarding `api` + `ui` -> `django` + `react`
 
@@ -254,3 +247,11 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - This one has put effort into accessibility apparently =D
     - https://fkhadra.github.io/react-toastify/introduction/
     - https://github.com/fkhadra/react-toastify/issues/121
+
+- Toast is working great
+- `drf-messges` doesn't work out of the box
+- I started to consider a fetch/similar for `react-query`, but then started looping on trying to understand logic behind `actions`
+    - Def some mixed feelings since there's been aggressive rewrites
+    - and the structure isn't easily alleviated
+    - and we had a pretty good patter from before with `_layout` JSX + statuses
+    - https://reactrouter.com/en/main/guides/data-libs
