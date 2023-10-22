@@ -29,6 +29,7 @@ The information here will go out of date, so take it a grain of salt and as a sn
         - Single page application (SPA) post-authentication (e.g. React)
         - `django-allauth` should support building SPA around authentication pages as well, but that has way more implementation time
             - Be careful to still allow password reset tokens/similar to be handle by `django-allauth` on the server though, otherwise third party scripts will see referrer (security issue)
+        - [Working example of this](explorations/4-django-allauth-react-proxy)
 
 [explorations-django-allauth]: docs/explorations.md#2-django-allauth
 
