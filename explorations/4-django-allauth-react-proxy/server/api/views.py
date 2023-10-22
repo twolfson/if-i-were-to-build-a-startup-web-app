@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import permissions, viewsets
-from rest_framework.decorators import action
 
 from api.serializers import UserSerializer, GroupSerializer
 
@@ -14,8 +13,14 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    @action(detail=True, methods=["GET"])
-    def me(
+    # Support "me` as pk, https://stackoverflow.com/a/36626403/1960509
+    def get_object(self):
+        pk = self.kwargs.get('pk')
+
+        if pk == "me":
+            return self.request.user
+
+        return super().get_object()
 
 
 class GroupViewSet(viewsets.ModelViewSet):

@@ -1,5 +1,65 @@
 # TODO: See TODOs
 
+- [x] Complete rough django-allauth
+- [x] Set up DRF
+- [ ] Finish implementing spec we discussed in the explorations file
+- [ ] Polish django-allauth (e.g. `messages` handling)
+
+"""
+##### Initial auth
+- User visits https://app.example.com/foo/bar
+    - React SPA loads and looks for `localStorage.loggedIn`
+    - It doesn't see it so it redirect to https://app.example.com/auth/login?redirect_uri=/foo/bar
+- Browser loads https://app.example.com/auth/login?redirect_uri=/foo/bar
+    - Django establishes cookie-based session, with `HttpOnly` and `SameSite=strict` set (should double check on implementation)
+        - `HttpOnly` is required to prevent third party scripts from stealing `document.cookie`
+        - `SameSite` is required for API piece, will explain there
+    - Django presents HTML form with CSRF field
+- User logs in
+    - Django rotates session id (to prevent session fixation attack)
+    - Django saves user ID to session in DB
+    - Django redirects user to https://app.example.com/auth-success?redirect_uri=/foo/bar (Auth0 calls this [`/callback`](https://developer.auth0.com/resources/guides/spa/react/basic-authentication), but I like these semantics more)
+- Browser loads https://app.example.com/auth-success?redirect_uri=/foo/bar
+    - React SPA loads and sets `localStorage.loggedIn = true`
+        - We use `true` instead of an expiration because cookies typically self-refresh expiration upon usage
+        - Without this `/auth-success` page, React would still think the user is logged out
+        - We could use a query parameter as well, but that means handling it on every page and a possible flash of content while it's sorted (this is why Auth0 pushes for it)
+        - This page also gives us a common location to capture any relevant events
+    - React SPA pushes browser to https://app.example.com/foo/bar
+
+##### API usage
+- React SPA makes XHR to https://app.example.com/api/baz
+    - Browser uses current cookie, including our session one
+    - Django DRF sees the cookie and uses that
+    - To mitigate CSRF risk, we need to use `SameSite=strict` when setting the cookie
+        - Otherwise, someone could manufacture an HTML form to submit to our API as elaborated above
+
+##### Session expiration
+- If the user hasn't interfaced with the app in a while, then their cookie will expire but they'll have `localStorage.loggedIn` still
+- User visits https://app.example.com/foo/bar
+    - React SPA loads and makes request to Django DRF (our API)
+    - (Double check implementation) Django DRF responds with "401 Unauthorized" (we'd use "403 Forbidden" for permission issues)
+    - React SPA identifies 401 and unset `localStorage.loggedIn`
+    - React SPA continues by redirecting to https://app.example.com/auth/login
+
+##### Logout
+- When a user navigates to https://app.example.com/logout
+    - React SPA loads and routes to logout page
+    - React SPA unsets `localStorage.loggedIn`
+    - React SPA redirects to https://app.example.com/auth/logout
+- Browser navigates to https://app.example.com/auth/logout
+    - (Double check implementation) Django loads, unsets the cookie, and removes the session from the DB
+        - Session removal from DB is to prevent session fixation
+
+##### Admin "Login as"
+- `django-loginas` is a Django extension which allows logging in as a user via Django Admin
+- This is very useful for supporting your team internally
+- Intended implementation for us: When the button is pressed
+    - It will update the session and cookie to the relevant user
+    - Navigate to the redirect URL, which we'll set to our `/auth-success` one
+    - `/auth-success` interacts as per usual, treating user as logged in and such
+"""
+
 TODO: Update references in README regarding `api` + `ui` -> `django` + `react`
 
 TODO: Walk through django-allauth more thoroughly, https://docs.allauth.org/en/latest/account/configuration.html
