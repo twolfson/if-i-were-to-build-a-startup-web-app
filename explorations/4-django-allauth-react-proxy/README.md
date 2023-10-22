@@ -5,25 +5,15 @@ TODO: Resolve messages + clear via DRF
 - [x] Complete rough django-allauth
 - [x] Set up DRF
 - [ ] Finish implementing spec we discussed in the explorations file
-- [ ] Polish django-allauth (e.g. `messages` handling)
+- [x] Polish django-allauth (e.g. `messages` handling)
 
-TODO: Django doesn't have a session set up yet... so unsure session fixation/rotation applies -- prob review/update plan once done
+TODO: Django doesn't have a session set up on login page... so unsure session fixation/rotation applies -- prob review/update plan once done
 
 """
 ##### API usage
 - React SPA makes XHR to https://app.example.com/api/baz
     - Browser uses current cookie, including our session one
     - Django DRF sees the cookie and uses that
-    - To mitigate CSRF risk, we need to use `SameSite=strict` when setting the cookie
-        - Otherwise, someone could manufacture an HTML form to submit to our API as elaborated above
-
-##### Admin "Login as"
-- `django-loginas` is a Django extension which allows logging in as a user via Django Admin
-- This is very useful for supporting your team internally
-- Intended implementation for us: When the button is pressed
-    - It will update the session and cookie to the relevant user
-    - Navigate to the redirect URL, which we'll set to our `/auth-success` one
-    - `/auth-success` interacts as per usual, treating user as logged in and such
 """
 
 TODO: Update references in README regarding `api` + `ui` -> `django` + `react`

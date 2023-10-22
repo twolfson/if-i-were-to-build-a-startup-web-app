@@ -1,15 +1,18 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from rest_framework import permissions, viewsets
 
-from api.serializers import UserSerializer, GroupSerializer
+from api.serializers import UserSerializer
 
 
 # TODO: Prob want to only allow users within same group, or even just self
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
+    For now, limited to user themself
     """
-    queryset = User.objects.all().order_by('-date_joined')
+    def get_queryset(self):
+        user = self.request.user
+        return User.objects.filter(pk=user.pk)
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
@@ -21,12 +24,3 @@ class UserViewSet(viewsets.ModelViewSet):
             return self.request.user
 
         return super().get_object()
-
-
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
