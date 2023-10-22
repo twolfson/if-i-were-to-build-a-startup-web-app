@@ -232,7 +232,7 @@ $ cp ../../3-django-server-react-ui/setup.cfg .
 - CSRF is not so bad tbh, and changes nothing here
 - TODO: Update nuance in the security detour and #3 to talk through CSRF tweaks (i.e. no field needed, but still need to touch a Django page)
 - I also did a sanity check video watch of a demo of Auth0 to verify the URL scheme is roughly where we're at with nothing unexpected, https://www.youtube.com/watch?v=RpfEk6drhPc
-- TODO: Room for improvement based on video + CSRF realization, instead of `localStorage.loggedIn`, we could do a JSON non-HttpOnly cookie with user info that the browser can consume ASAP (though it comes with all the same issues as JWT)
+- DONE: Room for improvement based on video + CSRF realization, instead of `localStorage.loggedIn`, we could do a JSON non-HttpOnly cookie with user info that the browser can consume ASAP (though it comes with all the same issues as JWT)
     - Yea, it's tricky because it's valid at login but then becomes junk if they change mid-session =/ So need to wire in to all those points .\_. YAGNI + KISS
 - Actually... yea, going with a basic replacement of `localStorage` because it simplifies the React side greatly =)
 
