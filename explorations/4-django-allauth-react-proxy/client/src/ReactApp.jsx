@@ -11,8 +11,7 @@ const LOGGED_IN_SUCCESS_VALUE = "1";
 const AuthRequired = ({ children }) => {
   // DEV: Use `useState` so we cache initial value (assumes always logged in) and doesn't touch `localStorage` until later
   //   Caching as `false` doesn't matter because the page will redirect to login
-  // TODO: Handle actually changing state on auth success
-  const [isLoggedIn, setIsLoggedIn] = useState(
+  const [isLoggedIn, ] = useState(
     window.localStorage[LOGGED_IN_KEY] === LOGGED_IN_SUCCESS_VALUE
   );
 
@@ -31,13 +30,26 @@ const AuthSuccessPage = () => {
   });
 
   return "TODO: Redirect to provided URL or /"
-  // TODO: Handle redirect
+}
+
+// TODO: Relocate to proper place
+const LogoutPage = () => {
+  // Only unset localStorage once at load
+  useEffectOnce(() => {
+    delete window.localStorage[LOGGED_IN_KEY];
+  });
+
+  return "TODO: Redirect to /auth/logout"
 }
 
 const router = createBrowserRouter([
   {
     path: "/auth-success",
     element: <AuthSuccessPage />,
+  },
+  {
+    path: "/logout",
+    element: <LogoutPage />,
   },
   {
     path: "/",
