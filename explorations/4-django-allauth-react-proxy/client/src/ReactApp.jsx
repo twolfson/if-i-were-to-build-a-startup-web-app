@@ -1,8 +1,20 @@
 // Import our dependencies
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import { ErrorPage } from "./pages/ErrorPage";
 import { Index } from "./pages/Index";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: < Index />,
+    errorElement: <ErrorPage />,
+  },
+]);
 
 // Define our component
 export const ReactApp = () => {
-  // DEV: This is missing routing (e.g. dashboard, 404 pages)
-  return < Index />;
+  return <RouterProvider router={router} />;
 };
