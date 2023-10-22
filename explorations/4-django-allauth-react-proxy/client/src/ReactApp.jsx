@@ -1,16 +1,33 @@
 // Import our dependencies
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import { ErrorPage } from "./pages/ErrorPage";
+import { useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Index } from "./pages/Index";
+
+const LOGGED_IN_KEY = "logged_in";
+
+const AuthRequired = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    window.localStorage[LOGGED_IN_KEY] === "1",
+  );
+
+  if (!isLoggedIn) {
+    return "TODO: Redirect";
+  }
+  return children;
+};
 
 const router = createBrowserRouter([
   {
+    path: "/auth-success",
+    element: <div>TODO</div>,
+  },
+  {
     path: "/",
-    element: < Index />,
-    errorElement: <ErrorPage />,
+    element: (
+      <AuthRequired>
+        <Index />
+      </AuthRequired>
+    ),
   },
 ]);
 
