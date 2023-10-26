@@ -8,7 +8,7 @@ import { AuthSuccessLoader } from "./loaders/AuthSuccessLoader";
 import { IndexPage } from "./pages/IndexPage";
 import { LOGGED_IN_COOKIE_NAME } from "./utils/constants";
 import { LogoutPage } from "./pages/LogoutPage";
-import { NotificationContainer } from "./containers/NotificationContainer";
+import { MessagesContainer } from "./containers/MessagesContainer";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -45,7 +45,7 @@ const InnerApp = () => {
   // Otherwise, perform routing as per normal
   return (
     <>
-      <NotificationContainer />
+      <MessagesContainer />
       <RouterProvider router={router} />
     </>
   );
@@ -54,7 +54,7 @@ const InnerApp = () => {
 export const ReactApp = () => {
   return (
     <>
-      {/* DEV: We place `ToastContainer` at top level, to avoid re-renders which clear existing Toast (see */}
+      {/* DEV: We place `ToastContainer` at top level, to avoid re-renders which clear existing Toast (see https://github.com/twolfson/if-i-were-to-build-a-startup-web-app/commit/b3b24897b75985ba52ff46582d56931934890ba7) */}
       <ToastContainer position="top-center" />
       <QueryClientProvider client={queryClient}>
         <InnerApp />
