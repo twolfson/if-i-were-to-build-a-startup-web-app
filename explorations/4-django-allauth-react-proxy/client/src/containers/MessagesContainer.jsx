@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useInvalidateMessages, useMessages } from "../queries";
 import "react-toastify/dist/ReactToastify.css";
 
-export const NotificationContainer = () => {
+export const MessagesContainer = () => {
   const { error: messagesError, data: messagesData } = useMessages();
   const invalidateMessages = useInvalidateMessages();
 
