@@ -13,6 +13,7 @@ In typical production environments, Django is already behind a reverse proxy (e.
     - More details in [docs/django-react-security-and-architecture.md](../../docs/django-react-security-and-architecture.md)
 - `django-allauth` has many knobs/dials but we didn't explore adjusting all of them, https://docs.allauth.org/en/latest/account/configuration.html
 - Building a developer friendly guard to prevent accidentally working on <http://localhost:8000/> (React is running on <http://localhost:3000/>) (`ALLOWED_HOSTS` sadly ignores ports)
+- Production configuration, which would require similar proxies to the `client/src/setupProxy.js` in NGINX or similar
 
 ## Getting Started
 To set up this repo, install the following dependencies:
