@@ -1,9 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 const e = encodeURIComponent;
+
+const MESSAGES_KEY = ["messages"];
+
+export const useInvalidateMessages = () => {
+  const queryClient = useQueryClient();
+  return () => {
+    queryClient.invalidateQueries({ queryKey: MESSAGES_KEY });
+  };
+};
 
 export const useMessages = (options) => {
   return useQuery(
-    ["messages"],
+    MESSAGES_KEY,
     () =>
       fetch("/auth/messages/").then((res) => res.json()),
     options
