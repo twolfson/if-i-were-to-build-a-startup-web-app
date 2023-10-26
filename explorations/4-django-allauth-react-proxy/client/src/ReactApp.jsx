@@ -2,6 +2,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useCookie } from "react-use";
+import { ToastContainer } from "react-toastify";
 
 import { AuthSuccessLoader } from "./loaders/AuthSuccessLoader";
 import { IndexPage } from "./pages/IndexPage";
@@ -52,8 +53,12 @@ const InnerApp = () => {
 
 export const ReactApp = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <InnerApp />
-    </QueryClientProvider>
+    <>
+      {/* DEV: We place `ToastContainer` at top level, to avoid re-renders which clear existing Toast (see */}
+      <ToastContainer position="top-center" />
+      <QueryClientProvider client={queryClient}>
+        <InnerApp />
+      </QueryClientProvider>
+    </>
   );
 };

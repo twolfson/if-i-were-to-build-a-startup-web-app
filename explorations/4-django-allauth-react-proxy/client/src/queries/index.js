@@ -6,8 +6,7 @@ const MESSAGES_KEY = ["messages"];
 export const useInvalidateMessages = () => {
   const queryClient = useQueryClient();
   return () => {
-    // queryClient.invalidateQueries({ queryKey: MESSAGES_KEY });
-    queryClient.setQueryData(MESSAGES_KEY, { messages: [] });
+    queryClient.invalidateQueries({ queryKey: MESSAGES_KEY });
   };
 };
 

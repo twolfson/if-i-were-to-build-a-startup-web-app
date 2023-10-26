@@ -1,4 +1,4 @@
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { useInvalidateMessages, useMessages } from "../queries";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,5 +19,5 @@ export const NotificationContainer = () => {
     }
   }, [messagesError, messagesData, invalidateMessages]);
 
-  return <ToastContainer position="top-center" />;
+  return null;
 };
