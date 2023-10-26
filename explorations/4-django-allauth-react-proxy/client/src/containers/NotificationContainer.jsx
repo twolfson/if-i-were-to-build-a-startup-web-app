@@ -1,6 +1,7 @@
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect } from "react";
 import { useMessages } from "../queries";
+import "react-toastify/dist/ReactToastify.css";
 
 export const NotificationContainer = () => {
   const { error: messagesError, data: messagesData } = useMessages();

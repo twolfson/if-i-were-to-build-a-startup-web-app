@@ -2,7 +2,6 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useCookie } from "react-use";
-import "react-toastify/dist/ReactToastify.css";
 
 import { AuthSuccessLoader } from "./loaders/AuthSuccessLoader";
 import { IndexPage } from "./pages/IndexPage";
