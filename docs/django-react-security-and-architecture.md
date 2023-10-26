@@ -8,7 +8,14 @@ Since this is inside of `if-i-were-to-build-a-startup-web-app`, I'm going to try
 - Building our own security is risky (even if we're picking/choosing from other libraries)
 - Building our own security adds significant time (e.g. building many authentication pages (login, sign up, password reset, password reset confirm, verify email, corresponding email messages) + their interconnectedness)
 
-## Same domain with proxy
+## Terminology
+- https://app.example.com/ is a URL with the parts of protocol: `https`, subdomain: `app.`, domain: `example.com`, [and more](https://nodejs.org/api/url.html#url-strings-and-url-objects)
+    - We'll say origin if it's the whole `app.example.com`
+- For 2 URLs to be "same site", we need protocol and domain to be the same
+- e.g. https://foo.example.com/ and https://bar.example.com/ are same site but different origin
+- e.g. https://foo.example.com/ and https://foo.google.com/ are different site and different origin
+
+## Same origin with proxy
 In this setup, Django and React are hosted on the same domain:
 
 - https://app.example.com
@@ -138,17 +145,15 @@ More reading:
 #### Admin "Login as"
 - Same as before but requires extra step to also set said JWT cookie
 
-## Different domains
-The rough architecture as above also applies to different domains.
+## Different origin + same site
+The rough architecture as above also applies to different origins on the same site.
 
-It might need to change from `SameSite=strict` to `SameSite=lax` to allow permission for an XHR to use the cookie, or to set it initially (pretty confident we don't just set on 302, but I could be wrong).
-
-This is an example where I'd need to implement and adjust to check.
+We need to change from `SameSite=strict` to `SameSite=lax` to allow permission for an XHR to use the cookie, add CORS headers to server responses, and make any XHR use [`withCredentials`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials).
 
 Everything else though is the same.
 
-### Reasons for different domains
-I've seen different domains be argued for because it enables things like being pre-configured for CORS, allowing for easy interaction between environments (e.g. develop locally with beta API).
+### Reasons for different origin + same site
+I've seen different origin + same site be argued for because it enables things like being pre-configured for CORS, allowing for easy interaction between environments (e.g. develop locally with beta API).
 
 I believe that any configuration done with different domains can also be achieved with same domain + proxy.
 
@@ -165,7 +170,7 @@ I believe that any configuration done with different domains can also be achieve
 
 [Deploy Previews]: (https://docs.netlify.com/site-deploys/deploy-previews/)
 
-## Same domain with proxy and full React XHR
+## Same origin with proxy and full React XHR
 There's 2 scenarios here:
 
 - If React SPA stays a static page, then you're starting to interact with `django-allauth` as an AJAX entity (leveraging CSRF non-HttpOnly cookie)
@@ -177,12 +182,17 @@ There's 2 scenarios here:
     - In these scenarios, the flow should work as above (e.g. cookie setting and all) but it leads to headaches with the development web server (e.g. websockets, dynamic bundle hashes)
     - The rest of the points from the React SPA version hold
 
-## Different domain with full React XHR
+## Different origin + same site with full React XHR
 This will not work because there's no way for React to get the CSRF cookie or rendered HTML to use with `django-allauth` here.
 
-Maybe there's some hack/workaround with a callback URL/endpoint but that's likely opening the door for further security issues.
+Maybe there's some hack/workaround with a callback URL/endpoint, or setting the cookie domain to the root domain, but that's likely opening the door for further security issues.
 
 As a result, the implementer is likely stuck hacking together their own full security implementation =/
+
+## Different sites
+This will not work with cookies or JWT as `HttpOnly` cookies because there's no way to transfer data through those cookies without removing the `SameSite` rule, which opens up CSRF vulnerabilities.
+
+Session can be stored in-memory but this is probably a frustrating end user experience. We don't want to use `localStorage` as it will allow session theft from compromised third party scripts.
 
 ## Third party authentication providers
 Auth0 and such are viable alternatives to setting up all this handshaking yourself. At the same time, it foregoes a lot of long-term tradeoffs as well as doesn't save that much time (e.g. maybe 2 days).
