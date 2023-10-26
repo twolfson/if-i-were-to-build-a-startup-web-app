@@ -199,7 +199,7 @@ Auth0 and such are viable alternatives to setting up all this handshaking yourse
 
 Tradeoffs include:
 
-- Long-term Vendor lock-in for users (very hard to migrate)
+- Long-term vendor lock-in for users (very hard to migrate)
 - Additional existential risks for company (e.g. risk of abrupt shutdown, uptime limitations)
 - Not being able to see user info inside Django admin
 - Possible limitations around custom logic/fields
