@@ -1,5 +1,5 @@
 // Import our dependencies
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useCookie } from "react-use";
 
